@@ -34,14 +34,13 @@ class magnetboardController extends \BaseController {
 	{
 		//
 		$clients = Client::all();
-		$users = User::where('role','=', 4)->get();
-
+		$users = User::whereIn('role',[3,4])->select('id', 'first_name', 'last_name', 'user_name', 'email', 'role')->get()->toArray();
 		$data = [
 			'clients' 	=> $clients,
 			'users'		=> $users,
 			'input'		=> ''
 		];
-		return View::make('magnet_board.add', $data);
+		return View::make('magnet_board.add');
 	}
 
 

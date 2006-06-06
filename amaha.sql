@@ -10,13 +10,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping database structure for lp
-CREATE DATABASE IF NOT EXISTS `lp` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `lp`;
-
-
 -- Dumping structure for table lp.client
-DROP TABLE IF EXISTS `client`;
 CREATE TABLE IF NOT EXISTS `client` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `client_auto_id` varchar(50) DEFAULT NULL,
@@ -54,7 +48,6 @@ INSERT INTO `client` (`id`, `client_auto_id`, `first_name`, `last_name`, `compan
 
 
 -- Dumping structure for table lp.elfinder_file
-DROP TABLE IF EXISTS `elfinder_file`;
 CREATE TABLE IF NOT EXISTS `elfinder_file` (
   `id` int(7) unsigned NOT NULL AUTO_INCREMENT,
   `parent_id` int(7) unsigned NOT NULL,
@@ -81,7 +74,6 @@ DELETE FROM `elfinder_file`;
 
 
 -- Dumping structure for table lp.equipment
-DROP TABLE IF EXISTS `equipment`;
 CREATE TABLE IF NOT EXISTS `equipment` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -98,7 +90,6 @@ DELETE FROM `equipment`;
 
 
 -- Dumping structure for table lp.labour_rate
-DROP TABLE IF EXISTS `labour_rate`;
 CREATE TABLE IF NOT EXISTS `labour_rate` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `class` varchar(50) NOT NULL DEFAULT '0',
@@ -115,11 +106,11 @@ DELETE FROM `labour_rate`;
 
 
 -- Dumping structure for table lp.magnet_board
-DROP TABLE IF EXISTS `magnet_board`;
 CREATE TABLE IF NOT EXISTS `magnet_board` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `started_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `client_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `supervisor_id` int(11) unsigned NOT NULL DEFAULT '0',
   `worksite_id` int(11) unsigned NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT '0000-00-00 00:00:00',
@@ -129,17 +120,16 @@ CREATE TABLE IF NOT EXISTS `magnet_board` (
 -- Dumping data for table lp.magnet_board: ~5 rows (approximately)
 DELETE FROM `magnet_board`;
 /*!40000 ALTER TABLE `magnet_board` DISABLE KEYS */;
-INSERT INTO `magnet_board` (`id`, `started_at`, `client_id`, `worksite_id`, `created_at`, `updated_at`) VALUES
-	(2, '2014-12-11 00:00:00', 1, 2, '0000-00-00 00:00:00', '2014-12-14 17:21:43'),
-	(3, '2014-12-12 00:00:00', 2, 3, '0000-00-00 00:00:00', '2014-12-06 13:09:27'),
-	(4, '1970-01-01 00:00:00', 1, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-	(6, '2015-01-13 00:00:00', 2, 3, '2014-12-13 16:42:57', '2014-12-14 17:23:44'),
-	(9, '2014-12-23 00:00:00', 1, 2, '2014-12-14 23:01:43', '0000-00-00 00:00:00');
+INSERT INTO `magnet_board` (`id`, `started_at`, `client_id`, `supervisor_id`, `worksite_id`, `created_at`, `updated_at`) VALUES
+	(2, '2014-12-11 00:00:00', 1, 0, 2, '0000-00-00 00:00:00', '2014-12-14 17:21:43'),
+	(3, '2014-12-12 00:00:00', 2, 0, 3, '0000-00-00 00:00:00', '2014-12-06 13:09:27'),
+	(4, '1970-01-01 00:00:00', 1, 0, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+	(6, '2015-01-13 00:00:00', 2, 0, 3, '2014-12-13 16:42:57', '2014-12-14 17:23:44'),
+	(9, '2014-12-23 00:00:00', 1, 0, 2, '2014-12-14 23:01:43', '0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `magnet_board` ENABLE KEYS */;
 
 
 -- Dumping structure for table lp.magnet_board_user
-DROP TABLE IF EXISTS `magnet_board_user`;
 CREATE TABLE IF NOT EXISTS `magnet_board_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int(10) unsigned NOT NULL DEFAULT '0',
@@ -171,7 +161,6 @@ INSERT INTO `magnet_board_user` (`id`, `user_id`, `start_time`, `end_time`, `mag
 
 
 -- Dumping structure for table lp.material
-DROP TABLE IF EXISTS `material`;
 CREATE TABLE IF NOT EXISTS `material` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
@@ -188,7 +177,6 @@ DELETE FROM `material`;
 
 
 -- Dumping structure for table lp.migrations
-DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
@@ -204,7 +192,6 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 
 
 -- Dumping structure for table lp.password_reminders
-DROP TABLE IF EXISTS `password_reminders`;
 CREATE TABLE IF NOT EXISTS `password_reminders` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -223,7 +210,6 @@ INSERT INTO `password_reminders` (`email`, `token`, `created_at`) VALUES
 
 
 -- Dumping structure for table lp.post
-DROP TABLE IF EXISTS `post`;
 CREATE TABLE IF NOT EXISTS `post` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `page_name` varchar(50) NOT NULL DEFAULT '0',
@@ -244,7 +230,6 @@ INSERT INTO `post` (`id`, `page_name`, `description`, `created_at`, `updated_at`
 
 
 -- Dumping structure for table lp.safety_certificate
-DROP TABLE IF EXISTS `safety_certificate`;
 CREATE TABLE IF NOT EXISTS `safety_certificate` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL DEFAULT '0',
@@ -252,19 +237,21 @@ CREATE TABLE IF NOT EXISTS `safety_certificate` (
   `date_of_expiration` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `files` varchar(50) NOT NULL DEFAULT '0',
   `user_id` int(11) NOT NULL DEFAULT '0',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Dumping data for table lp.safety_certificate: ~1 rows (approximately)
+-- Dumping data for table lp.safety_certificate: ~2 rows (approximately)
 DELETE FROM `safety_certificate`;
 /*!40000 ALTER TABLE `safety_certificate` DISABLE KEYS */;
-INSERT INTO `safety_certificate` (`id`, `title`, `date_of_completion`, `date_of_expiration`, `files`, `user_id`) VALUES
-	(1, 'testests', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '54ca95733d8c2Chrysanthemum.jpg', 1);
+INSERT INTO `safety_certificate` (`id`, `title`, `date_of_completion`, `date_of_expiration`, `files`, `user_id`, `created_at`, `updated_at`) VALUES
+	(1, 'testests', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '54ca95733d8c2Chrysanthemum.jpg', 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+	(2, 'New tset tsedff', '1970-01-01 00:00:00', '1970-01-01 00:00:00', '54cbfbef1f1daip.txt', 6, '0000-00-00 00:00:00', '2015-01-30 22:43:23');
 /*!40000 ALTER TABLE `safety_certificate` ENABLE KEYS */;
 
 
 -- Dumping structure for table lp.timesheet
-DROP TABLE IF EXISTS `timesheet`;
 CREATE TABLE IF NOT EXISTS `timesheet` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `labour_id` int(11) unsigned NOT NULL,
@@ -297,7 +284,6 @@ INSERT INTO `timesheet` (`id`, `labour_id`, `class`, `reg_hour`, `reg_rate`, `ot
 
 
 -- Dumping structure for table lp.users
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `user_auth_id` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
@@ -312,7 +298,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `profile_pic` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `emergency_contact_number` mediumint(12) DEFAULT NULL,
+  `emergency_contact_number` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `gender` enum('male','female') COLLATE utf8_unicode_ci DEFAULT NULL,
   `dob` datetime DEFAULT NULL,
   `spouse_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -321,8 +307,8 @@ CREATE TABLE IF NOT EXISTS `users` (
   `state` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `postcode` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `country` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `phone_number` mediumint(15) DEFAULT NULL,
-  `mobile_number` mediumint(15) DEFAULT NULL,
+  `phone_number` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mobile_number` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `race` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `about` text COLLATE utf8_unicode_ci,
   `disability` text COLLATE utf8_unicode_ci,
@@ -340,16 +326,16 @@ CREATE TABLE IF NOT EXISTS `users` (
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `user_auth_id`, `first_name`, `last_name`, `email`, `user_name`, `password`, `parent_id`, `role`, `remember_token`, `created_at`, `updated_at`, `profile_pic`, `emergency_contact_number`, `gender`, `dob`, `spouse_name`, `address`, `city`, `state`, `postcode`, `country`, `phone_number`, `mobile_number`, `race`, `about`, `disability`, `veterun_status`, `date_of_discharge`, `is_complete`, `rating`, `user_note`, `has_certificate`) VALUES
-	(1, 'AMA-EM-34df4548s3434', 'admin', 'admin', 'jitengaur123@gmail.com', 'admin', '$2y$10$7k.NRvbjGPvZaWLNEbhdd.G0cdYgosNJYkpf6mCFrJ2NBjuw/elXa', 1, 1, 'nh6jV0JxUL4NJlnTu5QS9gm6BDVymYEMBV00rMIwOEv88aj94hPRFa5FxtSi', '2014-10-07 18:38:47', '2015-01-29 20:17:55', 'b.jpg', 456, 'male', '2014-08-11 00:00:00', 'testdfsdf fsd', 'kalkaji', 'cegtst', 'Arkansas', '343434', 'United States', 456, 456, 'Hispanic or Latino', 'test sfdfsdfdsff\r\n\r\n', NULL, '["I am not a protected veteran.","I am a protected veteran but I choose not to self\\u2010identify the classifications to which I belong."]', '1970-04-01 00:00:00', 1, 0, '', 0),
-	(2, 'AMA-EM-547ccec3883b9', 'Raj', 'Kumar', 'vice-president@gmail.com', 'vice_president', '$2y$10$QBA4/Twl2HmPo63S8ZLleePFIkcNmU3W1eRLg4lFdEI7K2hkEW.bi', 1, 2, NULL, '0000-00-00 00:00:00', '2015-01-05 17:01:57', '1420477317far.jpg', 456, 'male', '1970-07-01 00:00:00', 'gyhtfyrty', 'tytyty', 'tuyty', 'American Samoa', '4554545', 'United States', 466, 456, 'Hispanic or Latino', 'fhfhgfhhgh\r\n\r\n', NULL, NULL, '1970-05-01 00:00:00', 1, 0, '', 0),
-	(3, 'AMA-EM-547ccf041600f', 'Foreman', 'User', 'foreman@gmail.com', 'foreman', '$2y$10$mlUKOOYfmXgtsDFxe/4AWeoVk/xC9A0YPLPEYXm0H7iU4OfRO/dFq', 2, 3, NULL, '0000-00-00 00:00:00', '2015-01-29 18:09:08', NULL, 898, 'male', '1970-01-01 00:00:00', 'testseeffsdf', 'test', 't3setesr', 'Arkansas', '334343', 'United States', 898, 898, 'Hispanic or Latino', 'sfsdfsdfsfdfd', NULL, NULL, '2014-02-13 00:00:00', 1, 4, 'testes tsetes ffsdf dsf', 0),
+	(1, 'AMA-EM-34df4548s3434', 'admin', 'admin', 'jitengaur123@gmail.com', 'admin', '$2y$10$7k.NRvbjGPvZaWLNEbhdd.G0cdYgosNJYkpf6mCFrJ2NBjuw/elXa', 1, 1, 'nh6jV0JxUL4NJlnTu5QS9gm6BDVymYEMBV00rMIwOEv88aj94hPRFa5FxtSi', '2014-10-07 18:38:47', '2015-01-29 20:17:55', 'b.jpg', '456', 'male', '2014-08-11 00:00:00', 'testdfsdf fsd', 'kalkaji', 'cegtst', 'Arkansas', '343434', 'United States', '456', '456', 'Hispanic or Latino', 'test sfdfsdfdsff\r\n\r\n', NULL, '["I am not a protected veteran.","I am a protected veteran but I choose not to self\\u2010identify the classifications to which I belong."]', '1970-04-01 00:00:00', 1, 0, '', 0),
+	(2, 'AMA-EM-547ccec3883b9', 'Raj', 'Kumar', 'vice-president@gmail.com', 'vice_president', '$2y$10$QBA4/Twl2HmPo63S8ZLleePFIkcNmU3W1eRLg4lFdEI7K2hkEW.bi', 1, 2, NULL, '0000-00-00 00:00:00', '2015-01-05 17:01:57', '1420477317far.jpg', '456', 'male', '1970-07-01 00:00:00', 'gyhtfyrty', 'tytyty', 'tuyty', 'American Samoa', '4554545', 'United States', '466', '456', 'Hispanic or Latino', 'fhfhgfhhgh\r\n\r\n', NULL, NULL, '1970-05-01 00:00:00', 1, 0, '', 0),
+	(3, 'AMA-EM-547ccf041600f', 'Foreman', 'User', 'foreman@gmail.com', 'foreman', '$2y$10$mlUKOOYfmXgtsDFxe/4AWeoVk/xC9A0YPLPEYXm0H7iU4OfRO/dFq', 2, 3, NULL, '0000-00-00 00:00:00', '2015-01-29 18:09:08', NULL, '898', 'male', '1970-01-01 00:00:00', 'testseeffsdf', 'test', 't3setesr', 'Arkansas', '334343', 'United States', '898', '898', 'Hispanic or Latino', 'sfsdfsdfsfdfd', NULL, NULL, '2014-02-13 00:00:00', 1, 4, 'testes tsetes ffsdf dsf', 0),
 	(4, 'AMA-EM-547ccf5a738da', 'Engineer', 'User', 'engineer@gmail.com', 'engineer', '$2y$10$2zbQTxPpdOhjuw1Mxtw4tO7ePOIG5H14e9HAgpCuH7cmtrRCXG3rS', 3, 4, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '', 0),
 	(5, 'AMA-EM-54824f50ac143', 'Engineer1', 'Engineer1', 'Engineer1@gmail.com', 'Engineer1', '$2y$10$Iv3mPNU66Iw2nDmt1CBNCuXxRWStYmgg1gp24so4CS84R2kj44J8q', 3, 4, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '', 0),
-	(6, 'AMA-EM-54824f6fa85d0', 'Engineer2', 'Engineer2', 'Engineer2@gmail.com', 'Engineer2', '$2y$10$oObJYqPe.KEBU61KZs2Po.zRVT6pCEhUxY.VZG8O5uIeaOCoJ9zaa', 3, 4, NULL, '0000-00-00 00:00:00', '2014-12-14 11:20:29', NULL, 343434, 'male', '1970-03-01 00:00:00', 'test', '', 'test', '', '', 'United States', 0, 0, 'Hispanic or Latino', 'test\r\n\r\n\r\n\r\n', NULL, '["Disabled Veteran: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under as administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a serviceconnect disability."]', '1970-01-01 00:00:00', 1, 0, '', 0),
+	(6, 'AMA-EM-54824f6fa85d0', 'Engineer2', 'Engineer2', 'Engineer2@gmail.com', 'Engineer2', '$2y$10$oObJYqPe.KEBU61KZs2Po.zRVT6pCEhUxY.VZG8O5uIeaOCoJ9zaa', 3, 4, NULL, '0000-00-00 00:00:00', '2015-01-30 22:43:23', NULL, '345-565-4454', 'male', '1970-04-01 00:00:00', 'test', 'testst', 'test', 'Arizona', '343434', 'United States', '345-565-4454', '345-565-4454', 'Hispanic or Latino', 'test\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n', NULL, '["Disabled Veteran: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under as administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a serviceconnect disability."]', '1970-01-01 00:00:00', 1, 0, '', 1),
 	(7, 'AMA-EM-54846d25ca6ba', 'Engineer3', 'Engineer3', 'Engineer3@gmail.com', 'Engineer3', '$2y$10$XXFYaaBaa8TRt8jW5K4b3e6YJeZxxUTEsT08k7fFPKZQAhRz3fEji', 3, 4, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '', 0),
 	(8, 'AMA-EM-54888f037ac5b', 'test', 'test', 'admin@tset.com', 'test', '$2y$10$7WSibiwVfNw98NT7XsOcXuby4LNi60ZhXdhbjLMAW1t9t5HhDb7Wy', 2, 2, NULL, '0000-00-00 00:00:00', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '', 0),
-	(9, 'AMA-EM-548c093171e72', 'test', 'et', 'test1@tset.com', 'test_1', '$2y$10$iQyQj3HgQ/q5gljhjOC4BucJ5n7inuFvLEyxetcO9C8hV8e0j/7a.', 3, 4, NULL, '0000-00-00 00:00:00', '2014-12-14 09:20:32', NULL, 8388607, 'male', '1972-03-20 00:00:00', 'testsest', 'test', 'test', 'American Samoa', '3434343', 'United States', 343434, 3434343, 'Hispanic or Latino', 'tests efdf sfdf sdfdf dfd\r\n\r\n', NULL, '["I am not a protected veteran.","I am a protected veteran but I choose not to self\\u2010identify the classifications to which I belong.","Disabled Veteran: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under as administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a serviceconnect disability."]', '1984-11-16 00:00:00', 1, 0, '', 0),
-	(10, 'AMA-EM-548c0c16a48f6', 'etset', 'test', 'test3@test.com', 'test3', '$2y$10$aHOgsVHTzw9lcLA.yhfzHODHlGJS.i0eJHdDAQBcSy0WpVmUaCUOq', 3, 4, NULL, '2014-12-13 15:21:18', '2014-12-13 09:55:16', NULL, NULL, 'male', '0000-00-00 00:00:00', 'fgfdg dfgdfg ', 'tyrt', NULL, 'American Samoa', NULL, 'United States', 7676767, 676767, 'Hispanic or Latino', NULL, NULL, '"option3"', '0000-00-00 00:00:00', 1, 0, '', 0),
+	(9, 'AMA-EM-548c093171e72', 'test', 'et', 'test1@tset.com', 'test_1', '$2y$10$iQyQj3HgQ/q5gljhjOC4BucJ5n7inuFvLEyxetcO9C8hV8e0j/7a.', 3, 4, NULL, '0000-00-00 00:00:00', '2014-12-14 09:20:32', NULL, '8388607', 'male', '1972-03-20 00:00:00', 'testsest', 'test', 'test', 'American Samoa', '3434343', 'United States', '343434', '3434343', 'Hispanic or Latino', 'tests efdf sfdf sdfdf dfd\r\n\r\n', NULL, '["I am not a protected veteran.","I am a protected veteran but I choose not to self\\u2010identify the classifications to which I belong.","Disabled Veteran: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under as administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a serviceconnect disability."]', '1984-11-16 00:00:00', 1, 0, '', 0),
+	(10, 'AMA-EM-548c0c16a48f6', 'etset', 'test', 'test3@test.com', 'test3', '$2y$10$aHOgsVHTzw9lcLA.yhfzHODHlGJS.i0eJHdDAQBcSy0WpVmUaCUOq', 3, 4, NULL, '2014-12-13 15:21:18', '2014-12-13 09:55:16', NULL, NULL, 'male', '0000-00-00 00:00:00', 'fgfdg dfgdfg ', 'tyrt', NULL, 'American Samoa', NULL, 'United States', '7676767', '676767', 'Hispanic or Latino', NULL, NULL, '"option3"', '0000-00-00 00:00:00', 1, 0, '', 0),
 	(11, 'AMA-EM-54aac8687d8d4', 'grdgdfg', 'dfgdfg', 'dfgdfg@test.com', 'testsets', '$2y$10$EEbVoItRS2pGhyURIgf/euWcjY64kZbcUrxnTSLmB5AEnRzCinPNW', 3, 4, NULL, '2015-01-05 22:52:48', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '', 0),
 	(12, 'AMA-EM-54bd48f10fbea', 'test', 'test', 'tester1@gmail.com', 'tester1', '$2y$10$0tly2t5POnb66J0fJfuVee1V1B5Psirnub5jFMTr6ig/yDWv07K/W', 2, 3, NULL, '2015-01-19 23:42:01', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '', 0),
 	(13, 'AMA-EM-54bd49627c990', 'test', 'test', 'tester2@gmail.com', 'tester2', '$2y$10$fbmkxxMsy/8BkEjHNWgWLeORla/IHSP4cCjJjRhBdqU1RtGb.XCDq', 2, 3, NULL, '2015-01-19 23:43:54', '0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0, 0, '', 0),
@@ -358,7 +344,6 @@ INSERT INTO `users` (`id`, `user_auth_id`, `first_name`, `last_name`, `email`, `
 
 
 -- Dumping structure for table lp.user_role
-DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE IF NOT EXISTS `user_role` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL DEFAULT '0',
@@ -380,7 +365,6 @@ INSERT INTO `user_role` (`id`, `name`, `title`) VALUES
 
 
 -- Dumping structure for table lp.worksite
-DROP TABLE IF EXISTS `worksite`;
 CREATE TABLE IF NOT EXISTS `worksite` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `work_auto_id` varchar(50) NOT NULL DEFAULT '0',
@@ -421,7 +405,6 @@ INSERT INTO `worksite` (`id`, `work_auto_id`, `started_at`, `client_id`, `job_na
 
 
 -- Dumping structure for table lp.work_reports
-DROP TABLE IF EXISTS `work_reports`;
 CREATE TABLE IF NOT EXISTS `work_reports` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `job_number` varchar(50) NOT NULL,

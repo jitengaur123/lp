@@ -20,175 +20,124 @@
         </div>
         <!-- Main Content Element  Start-->
         
-        <div class="row">
-          <div class="col-md-12">
-             @include('notification')
-           <div class="panel-body"> 
-                <!--form Wrapper Start-->
-                  <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default">
+         <div class="row">
+          <div class="col-md-3 userlist_brd">
+          <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Allocate users to different work sites in this section.</h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <form class="formular form-horizontal ls_form" id="magnetForm" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/magnet') }}">
-                                            <div id="verticalWizard" class="swMainVertical">
-                                            <ul>
-                                                <li>
-                                                    <a href="#step-1">
-                                                        <span class="stepNumber">1</span>
-                                                        <span class="stepDesc">
-                                                            Step 1<br/>
-                                                            <small>select the client</small>
-
+                                    <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="search from users...">
+                                    <span class="input-group-btn">
+                                                            <button type="button" class="btn btn-default">Go!</button>
                                                         </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#step-2">
-                                                        <span class="stepNumber">2</span>
-                                                        <span class="stepDesc">
-                                                            Step 2<br/>
-                                                            <small>select worksites</small>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#step-3">
-                                                        <span class="stepNumber">3</span>
-                                                        <span class="stepDesc">
-                                                            Step 3<br/>
-                                                            <small>Allocate the Users</small>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                                
-                                            </ul>
-                                            <div id="step-1">
-                                                <h2 class="StepTitle">Select The Client & Date You Want To Create Board For</h2>
-                                                <p>Please select the client for which you want to create the board for, based upon this selection the worksites will be made available in the next section.</p>
-
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        <div class="form-group col-md-4">
-                                                          <label><i class="fa fa-user"></i> Client</label>
-                                                          <select id="client" class="demo-default form-control" name="client_id" placeholder="Select client...">
-                                                              <option value="" selected="selected">Select Client...</option>
-                                                              @foreach($clients as $client )
-                                                              <option value="{{ $client['id'] }}">{{ $client['first_name'] }} {{ $client['last_name'] }}</option>
-                                                              @endforeach
-                                                          </select>
-                                                        </div>
-
-                                                        <div class="form-group col-md-4">
-                                                          <div class="form-group">
-                                                          <label><i class="fa fa-calendar marginl25"></i> Date</label>
-                                                          <input class="form-control datePickerOnly marginl25 boardStartedAt" name="started_at" value="{{ date('d/m/Y') }}" type="text">
-                                                       
-                                                          </div>
-
-                                                        </div>
-
-                                                  </div>
-
-                                                </div>
-                                            </div>
-                                            <div id="step-2">
-                                                <h2 class="StepTitle">Select Worksites</h2>
-                                                <p>Select form the worksites that are registered under selected client in step one.</p>
-
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        <div class="form-group col-md-4">
-                                                          <label><i class="fa fa-user"></i> Worksite</label>
-                                                          <select id="worksite" class="demo-default form-control" name="worksite_id" placeholder="Select  Work site...">
-                                                              <option value="">Select Work site...</option>
-                                                          </select>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div id="step-3">
-                
-
-                                                <div class="container-fluid">
-                                                     <div class="panel panel-default userform no-border"><!--time logging panel starts here -->
-                                                      <div class="panel-heading ">
-                                                          <h3 class="panel-title">Select Users & Shift Time</h3>
-                                                      </div>
-                                                      <!--section 1 starts here-->
-                                        <div class="col-md-12">
-                                            <div id="entry1" class="clonedInput row"><!--clonedinput starts-->
-                                                <fieldset class="col-md-6 col-md-6"><!--entry 1-->
-                                                    
-                                                    <select id="select-labor" name="users[]" class="demo-default" placeholder="Select Labor...">
-                                                          @foreach($users as $user)
-                                                           <option value="{{ $user['id'] }}">{{ $user['first_name'] }} {{ $user['last_name'] }}</option>
-                                                          @endforeach
-                                                           
-                                                    </select>
-                                                </fieldset><!--entry 1 ends-->
-
-                                                <fieldset class="col-md-2 col-md-6"><!--entry 3-->
- 
-                                                  <input class="form-control" name="start_time[]" type="text" value="10 : 00"/>
-                                                </fieldset><!--entry 3 ends-->
-
-                                                <div class="col-md-1"><span class="seper">To</span></div>
-
-                                                
-                                                <fieldset class="col-md-2 col-md-6"><!--entry 3-->
-                                                  <input class="form-control" name="end_time[]" type="text" value="18 : 00"/>
-                                                 
-                                                </fieldset><!--entry 3 ends-->
-
-
-                                                <fieldset class="col-md-10">
-                                                </fieldset>
-                                           </div><!-- cloned input ends -->
-
-
-                                          <div id="addDelButtons" class="margint15 col-md-6">
-                                            <input type="button" id="btnAdd" value="add section" class="btn ls-light-green-btn"> 
-                                            <input type="button" id="btnDel" value="remove section above" class="btn ls-red-btn">
-                                          </div>
-                                        </div>
-                                        <!--section ends here-->
-                                
-                                                      <div class="panel-body">
-                                    
-
-                                        
-
-                                </div><!--panel ends here-->
-                            </div><!--time logging ends here-->
-
-                                                   
-                                                </div>
-                                            </div>
-                                       
-                                            </div>
-                                            <!-- End SmartWizard Content -->
-                                            </form>
-                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                <!--form Wrapper Finish--> 
-              </div>
+                                <div class="panel-body no-padding nano">
+                                    <ul class="nano-content">
+                                      @foreach($users as $user)
+                                      <li data-id="{{ $user['id'] }}">{{ $user['user_name'] }} <span><i class="fa fa-arrows"></i></span></li>
+                                      @foreach
+                                    </ul>
+                                </div>
           </div>
+          </div>
+
+        <div class="col-md-9 ">
+          <div class="row site_det"> 
+            <div class="col-md-4"><label>Date</label><input class="form-control datePickerOnly" type="text"/></div>
+            <div class="col-md-6 site_sel">
+              <label>Site</label>
+              <div class="control-group">
+                                <select id="select-country" class="demo-default" placeholder="Select a country...">
+                                    <option value="">Select Work Site...</option>
+                                    <option value="AF">Afghanistan</option>
+                                    <option value="AX">&Aring;land Islands</option>
+                                    <option value="AL">Albania</option>
+                                    <option value="DZ">Algeria</option>
+                                    <option value="AS">American Samoa</option>
+                                    <option value="AD">Andorra</option>
+                                    <option value="AO">Angola</option>
+                                    <option value="AI">Anguilla</option>
+                                    <option value="AQ">Antarctica</option>
+                                    <option value="AG">Antigua and Barbuda</option>
+                                    <option value="AR">Argentina</option>
+                                    <option value="AM">Armenia</option>
+                                </select>
+              </div>
+
+            </div>
+            <div class="col-md-2">
+              <button class="btn ls-light-blue-btn"><i class="fa fa-arrow-right"></i> Go !</button>
+            </div>
+
+          </div>
+
+          <div class="wrksite_drop"><!--worksite drop box start (where the users will be dropped)-->
+
+            <!--this is where the users will start-->
+            <div class="panel panel-default"><!--first user starts-->
+                  <div class="panel-heading">
+                    <h3 class="panel-title">User Number One</h3>
+                      <ul class="panel-control">
+                        <li><a class="minus" href="javascript:void(0)"><i class="fa fa-minus"></i></a></li>
+                        <li><a class="close-panel" href="javascript:void(0)"><i class="fa fa-times"></i></a></li>
+                      </ul>
+                  </div>
+                  <div class="panel-body usrshft">
+                    <div id="wrk_1">
+                       <div class="row">
+                        <div class="col-md-3">
+                            <h6>Shift Start Time</h6>
+                            <input class="form-control timePickerOnly" type="text"/>
+                        </div>
+                        <div class="col-md-3">
+                            <h6>Shift End Time</h6>
+                            <input class="form-control timePickerOnly" type="text"/>
+                        </div>
+                        <div class="col-md-3">
+                            
+                          <button class="btn ls-light-green-btn"><i class="fa fa-save"></i> Save The Shift</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+            </div><!--user ends-->
+
+            <div class="panel panel-default"><!--second user starts-->
+              <div class="panel-heading">
+                <h3 class="panel-title">User Number Two</h3>
+                  <ul class="panel-control">
+                    <li><a class="minus" href="javascript:void(0)"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="close-panel" href="javascript:void(0)"><i class="fa fa-times"></i></a></li>
+                  </ul>
+              </div>
+              <div class="panel-body usrshft">
+                <div id="wrk_1">
+                  <div class="row">
+                    <div class="col-md-3">
+                        <h6>Shift Start Time</h6>
+                        <input class="form-control timePickerOnly" type="text"/>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>Shift End Time</h6>
+                        <input class="form-control timePickerOnly" type="text"/>
+                    </div>
+                    <div class="col-md-3">
+                        
+                      <button class="btn ls-light-green-btn"><i class="fa fa-save"></i> Save The Shift</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+                </div><!--user ends-->
+            </div>
+            <!--this is where the users will end-->
+
+            <!--this is a static button to save the worksite-->
+            <div class="svwrkst"><button class="btn ls-light-green-btn staticsv">Save The User Allocation For Worksite One</button></div>
+          </div><!--worksite drop box end (where the users will be dropped)-->
         </div>
-         <script type="text/javascript">
-        $(document).ready(function(){
-          $(document).on('change','#client', changeWorksite);
-        });
-        </script>
   
         
 @stop
@@ -235,35 +184,46 @@
 
 @section('footerjs')
 
-    <!--Editable-table Start--> 
-    <script src="{{ URL::asset('assets/js/editable-table/jquery.dataTables.js') }}"></script> 
-    <script src="{{ URL::asset('assets/js/editable-table/jquery.validate.js') }}"></script> 
-    <script src="{{ URL::asset('assets/js/editable-table/jquery.jeditable.js') }}"></script> 
-    <script src="{{ URL::asset('assets/js/editable-table/jquery.dataTables.editable.js') }}"></script> 
+<script type="text/javascript" src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/lib/jquery-migrate-1.1.0.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/jquery-ui-1.8.custom.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/max_js.min.js') }}"></script>
+<!-- Max Javascript END -->
 
-<!--Editable-table Finish --> 
-<script src="{{ URL::asset('assets/js/jquery.smartWizard.js') }}"></script>
-    <!--Form Wizard CSS End-->
+<script type="text/javascript" src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script> 
+<script type="text/javascript" src="{{ URL::asset('assets/js/multipleAccordion.js') }}"></script> 
+ 
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>-->
+<!--jqueryui for table end--> 
 
-    <!--Demo Wizard Script Start-->
-    <script src="{{ URL::asset('assets/js/pages/formWizard.js') }}"></script>
-
-    <!--Demo Wizard Script End-->
-     <script src="{{ URL::asset('assets/js/jquery.datetimepicker.js') }}"></script> <!-- Date & Time Picker Library Script End -->
-     <script src="{{ URL::asset('assets/js/pages/pickerTool.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
-    <script src="{{ URL::asset('assets/js/pages/addfieldset.js') }}"></script><!--for adding fields-->
-
-
-     <!--selectize Library start-->
-     <script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>
-     <!--selectize Library End-->
-
-     <!--Select & Tag demo start-->
-     <script src="{{ URL::asset('assets/js/pages/selectTag.js') }}"></script>
-     <!--Select & Tag demo end-->
+<!--easing Library Script Start --> 
+<script src="{{ URL::asset('assets/js/lib/jquery.easing.js') }}"></script> 
+<!--easing Library Script End --> 
+<!--Nano Scroll Script Start -->
+<script src="{{ URL::asset('assets/js/jquery.nanoscroller.min.js') }}"></script>
+    <!--Nano Scroll Script End -->
 
 
-     <script src="{{ URL::asset('assets/js/amaha.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
+
+<script type="text/javascript" src="{{ URL::asset('assets/js/pages/layout.js') }}"></script> 
+<!--Layout Script End --> 
+<!--selectize Library start-->
+<script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>
+<!--selectize Library End-->
+
+<!--Select & Tag demo start-->
+<script src="{{ URL::asset('assets/js/pages/selectTag.js') }}"></script>
+<!--Select & Tag demo end-->
+
+
+<!--Demo Wizard Script End-->
+<script src="{{ URL::asset('assets/js/jquery.datetimepicker.js') }}"></script> <!-- Date & Time Picker Library Script End -->
+<script src="{{ URL::asset('assets/js/pages/pickerTool.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
+
+
+
+
+<script src="{{ URL::asset('assets/js/amaha.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
 
 
 @stop
