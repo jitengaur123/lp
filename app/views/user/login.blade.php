@@ -49,7 +49,7 @@
                         @endif
                         <form id="form-login" action="{{ url('login') }}" method="post" class="form-horizontal ls_form">
                             <div class="input-group ls-group-input">
-                                <input class="form-control" placeholder="Username" name="email" type="email" autofocus>
+                                <input class="form-control" placeholder="Username" name="user_name" type="text" autofocus>
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                             </div>
 

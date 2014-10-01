@@ -23,12 +23,7 @@ Route::post('/login', 'userController@postLogin');
 
 Route::group(array('before'=>'auth'), function(){
 
-	$prefix = 'admin';
-	if(Auth::check()){
-		if(Auth::user()->level == 2){
-			$prefix = 'supervisor';
-		}	
-	}
+	$prefix = Helpers::prefixUrl();
 
 	Route::group(array('prefix' => $prefix), function(){
 
@@ -36,6 +31,7 @@ Route::group(array('before'=>'auth'), function(){
 			return Auth::user();
 
 		});
+
 	});
 
 	Route::get('/logout', function(){

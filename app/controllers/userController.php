@@ -10,10 +10,7 @@ class userController extends \BaseController {
 	public function login()
 	{
 		if(Auth::check()){
-			$prefix = 'admin';
-			if(Auth::user()->level == 2){
-				$prefix = 'supervisor';
-			}
+			$prefix = Helpers::prefixUrl();	
 	        return Redirect::to($prefix.'/dashboard');
 		}
 
@@ -39,14 +36,16 @@ class userController extends \BaseController {
 		}
 
 		$user = [
-            'email' 	=> Input::get('email'),
+            'user_name' => Input::get('user_name'),
             'password' 	=> Input::get('password')
         ];
 
         $auth = $this->_attemptUserLogin($user);
 
         if($auth){
-        	Redirect::to($prefix.'/dashboard');
+
+			$prefix = Helpers::prefixUrl();	
+			Redirect::to($prefix.'/dashboard');
         }
 
         // authentication failure! lets go back to the login page
@@ -55,8 +54,6 @@ class userController extends \BaseController {
 	        
 	}
 
-
-	
 	/**
 	 * Attempt User Login
 	 * 
@@ -89,7 +86,7 @@ class userController extends \BaseController {
 		$input = Input::all();
 
 		$rules = [
-			'email' => 'required|email',
+			'user_name' => 'required',
 			'password' => 'required',
 		];
 
