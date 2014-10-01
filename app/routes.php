@@ -15,3 +15,33 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+
+Route::get('/login', 'userController@login');
+Route::post('/login', 'userController@postLogin');
+
+
+Route::group(array('before'=>'auth'), function(){
+
+	$prefix = 'admin';
+	if(Auth::check()){
+		if(Auth::user()->level == 2){
+			$prefix = 'supervisor';
+		}	
+	}
+
+	Route::group(array('prefix' => $prefix), function(){
+
+		Route::get('/dashboard', function(){
+			return Auth::user();
+
+		});
+	});
+
+	Route::get('/logout', function(){
+		
+		Auth::logout();
+		return Redirect::to('login');
+	});	
+});
+
