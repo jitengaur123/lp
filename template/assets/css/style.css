@@ -630,6 +630,19 @@ ul.mainNav li a span{
     line-height: 13px;
     font-size: 13px;
 }
+
+.contact_block {
+background: rgb(0, 189, 255);
+margin: 0px;
+padding: 15px;
+}
+
+.contact_block h2,.contact_block a, .contact_block p{
+    margin-top: 0px;
+    color:#fff;
+    line-height: 22px;
+}
+
 ul.mainNav li a span.badge{
     border-radius: 2px;
     -moz-border-radius: 2px;
@@ -639,7 +652,7 @@ ul.mainNav li a span.badge{
     line-height: 13px;
     padding: 2px 5px;
     position: absolute;
-    right: 20px;
+    right: 30px;
 }
 #left-navigation.active ul.mainNav li a span.badge{
     right: 25px;
