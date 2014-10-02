@@ -1,11 +1,11 @@
 /*------------------------------------------------------------------
 [Master Stylesheet]
 
-Project     :	Fickle Responsive Admin Template
+Project     :	Amaha Admin Template
 Version     :	1.0
-Author      : 	AimMateTeam
-URL         :   http://aimmate.com
-Support     :   aimmateteam@gmail.com
+Author      : 	Amaha Team
+URL         :   http://Amahaelecticals.com
+Support     :   support@amahaelectricals.com
 Primary use :	Dashboard
 
 -------------------------------------------------------------------*/
@@ -478,7 +478,7 @@ nav{
     margin: 0 5px;
 }
 #left-navigation .social-icon li a{
-    color: #FF7878;
+    color: #bfbfbf;
     font-size: 15px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -636,10 +636,10 @@ ul.mainNav li a span.badge{
     -webkit-border-radius: 2px;
     font-size: 10px;
     font-weight: 400;
-    line-height: 10px;
+    line-height: 13px;
     padding: 2px 5px;
     position: absolute;
-    right: 30px;
+    right: 20px;
 }
 #left-navigation.active ul.mainNav li a span.badge{
     right: 25px;
@@ -1443,7 +1443,7 @@ div.status-box-content h5 i{
 .pie-widget{
     text-align: center;
     margin: auto;
-    border: 1px solid #e0e0e0;
+    border: 0px solid #e0e0e0;
     padding: 20px 0;
 }
 .pie-widget p{

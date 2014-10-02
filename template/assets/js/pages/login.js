@@ -58,7 +58,7 @@ function ladda_button_call(){
                     jacked.log("<i class='fa fa-smile-o'></i> Successfully logedin ");
 
                     setInterval(function () {
-                        var setUrl = '/index.html';
+                        var setUrl = 'file:///C:/Users/acer/Documents/GitHub/lp/template/admin-dashboard.html';
                         window.location.assign(setUrl);
                     }, 500);
                 }
