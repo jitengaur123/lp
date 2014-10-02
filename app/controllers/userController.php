@@ -50,7 +50,7 @@ class userController extends \BaseController {
 
         // authentication failure! lets go back to the login page
         return Redirect::to('login')
-            	->with('flash_error', 'Your username/password combination was incorrect.');
+            	->with('error', 'Your username/password combination was incorrect.');
 	        
 	}
 

@@ -14,9 +14,9 @@ jQuery(document).ready(function($) {
 
     bootstrap_switch_trigger_call();
     forgo_password_view();
-    //login_view_submit();
+    login_view_submit();
     // Bind progress buttons and simulate loading progress
-    //ladda_button_call();
+    ladda_button_call();
 });
 /*** Switch Call ***/
 function bootstrap_switch_trigger_call(){
@@ -32,12 +32,10 @@ function forgo_password_view(){
 
 }
 function login_view_submit(){
-    $('#form-login').submit(function (e) {
+    $('#form-login').submit(function () {
         /*var setUrl = window.location.origin + '/index.html'
          window.location.assign(setUrl);*/
-         //alert('test');
-         e.preventDefault();
-         var l = Ladda.bind('.ladda-button');
+
         return false;
     });
 }
@@ -60,7 +58,7 @@ function ladda_button_call(){
                     jacked.log("<i class='fa fa-smile-o'></i> Successfully logedin ");
 
                     setInterval(function () {
-                        var setUrl = '/index.html';
+                        var setUrl = 'file:///C:/Users/acer/Documents/GitHub/lp/template/admin-dashboard.html';
                         window.location.assign(setUrl);
                     }, 500);
                 }

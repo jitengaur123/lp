@@ -9,7 +9,7 @@ class RemindersController extends Controller {
 	 */
 	public function getRemind()
 	{
-		return View::make('password.remind');
+		return View::make('user.forgot');
 	}
 
 	/**
@@ -19,6 +19,14 @@ class RemindersController extends Controller {
 	 */
 	public function postRemind()
 	{
+		$rules = ['email' => 'required'];
+		$validation = Validator::make(Input::all(), $rules);
+
+		if($validation->fails()){
+			return Redirect::back()->withErrors($validation->errors());
+		}
+
+
 		switch ($response = Password::remind(Input::only('email')))
 		{
 			case Password::INVALID_USER:
@@ -39,7 +47,7 @@ class RemindersController extends Controller {
 	{
 		if (is_null($token)) App::abort(404);
 
-		return View::make('password.reset')->with('token', $token);
+		return View::make('user.reset')->with('token', $token);
 	}
 
 	/**
@@ -49,6 +57,7 @@ class RemindersController extends Controller {
 	 */
 	public function postReset()
 	{
+
 		$credentials = Input::only(
 			'email', 'password', 'password_confirmation', 'token'
 		);

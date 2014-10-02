@@ -20,17 +20,20 @@ Route::get('/', function()
 Route::get('/login', 'userController@login');
 Route::post('/login', 'userController@postLogin');
 
+Route::get('/forgotpass', 'RemindersController@getRemind');
+Route::post('/postRemind', 'RemindersController@postRemind');
+Route::get('/resetpass', 'RemindersController@getReset');
+Route::post('/postReset', 'RemindersController@postReset');
 
 Route::group(array('before'=>'auth'), function(){
 
 	$prefix = Helpers::prefixUrl();
 
+	Route::get('admin/dashboard', 'adminController@adminDashboard');
+
 	Route::group(array('prefix' => $prefix), function(){
 
-		Route::get('/dashboard', function(){
-			return Auth::user();
-
-		});
+		
 
 	});
 

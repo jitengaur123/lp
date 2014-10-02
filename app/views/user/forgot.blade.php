@@ -28,38 +28,24 @@
                         </div>
                     </div>
                        
-                   <div class="login-form">
+                    <div class="forgot-pass-box" style="display:block">
                         @include('notification')
-                        <form id="form-login" action="{{ url('login') }}" method="post" class="form-horizontal ls_form">
-                            <div class="input-group ls-group-input">
-                                <input class="form-control" placeholder="Username" name="user_name" type="text" autofocus>
-                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            </div>
-
+                        <form action="{{ url('postRemind') }}" method="POST" class="form-horizontal ls_form">
 
                             <div class="input-group ls-group-input">
-                               <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            </div>
-
-                            <div class="remember-me">
-                                <input name="remember" class="switchCheckBox" type="checkbox" checked data-size="mini"
-                                       data-on-text="<i class='fa fa-check'><i>"
-                                       data-off-text="<i class='fa fa-times'><i>">
-                                <span>Remember me</span>
+                                <input class="form-control" name="email" type="text" placeholder="someone@mail.com">
+                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                             </div>
                             <div class="input-group ls-group-input login-btn-box">
-                                <button type="submit" class="btn ls-dark-btn ladda-button col-md-12 col-sm-12 col-xs-12" data-style="slide-down">
-                                    <span class="ladda-label"><i class="fa fa-key"></i></span>
+                                <button type="submit" class="btn ls-dark-btn col-md-12 col-sm-12 col-xs-12">
+                                    <i class="fa fa-rocket"></i> Send
                                 </button>
 
-                                <a href="{{url('/forgotpass')}}">Forgot password</a>
-                                | <a class="forgot-password" href="{{url('/')}}">Back To Amaha Electricals</a>
+                                <a class="login-view" href="{{ URL::to('/login') }}">Login</a>
 
                             </div>
                         </form>
                     </div>
-                    
 
                 </div>
             </div>
