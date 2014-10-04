@@ -38,7 +38,6 @@ Route::group(array('before'=>'auth'), function(){
 	});
 
 	Route::get('/logout', function(){
-		
 		Auth::logout();
 		return Redirect::to('login');
 	});	
