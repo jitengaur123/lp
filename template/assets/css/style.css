@@ -5198,15 +5198,15 @@ button.addEvent{
 .ls-user-details .ls-user-links ul {
     padding: 0;
     margin: 0;
-    text-align: right;
+    text-align: left;
 }
 .ls-user-details .ls-user-links ul li {
     list-style: none;
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 28px;
+    height: 28px;
     line-height: 45px;
-    border: 1px solid #cbc5ba;
+    border: 0px solid #cbc5ba;
     border-radius: 50%;
     text-align: center;
 }
@@ -5222,9 +5222,10 @@ button.addEvent{
     padding: 0 10px;
 }
 .ls-user-details .user-detail .ls-user-position {
-    padding: 5px 10px;
-    background: #dfdfdf;
-    margin-bottom: 15px;
+    padding: 10px 10px;
+    background: #1FB5AD;
+    margin-bottom: 0px;
+    color: #fff;
 }
 .ls-user-details .user-detail .ls-user-position h4 {
     margin-top: 0;
@@ -5287,10 +5288,11 @@ button.addEvent{
     padding: 5px 10px 5px 45px;
 }
 .ls-user-details .ls-user-info .ls-user-text2 {
-    background: #dfdfdf;
+    background: #1FB5AD;
     text-align: right;
-    margin-top: 15px;
+    margin-top: 0px;
     padding: 5px 10px 5px 45px;
+    color: #fff;
 }
 .ls-user-details .ls-user-info .ls-user-text2 h4 {
     margin: 0 0 5px 0;
@@ -8347,4 +8349,16 @@ hr.footer-border {
     border-right: 1px solid #e3dfd8;
 }
 
+.userpic button {
+margin-top: 10px;
+}
+
+.userpic {
+margin-top: 25px;
+}
+
+a {
+color: #FF7878;
+text-decoration: none;
+}
 /*-----------------------------------------------------------------*/
