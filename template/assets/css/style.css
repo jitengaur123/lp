@@ -8357,8 +8357,41 @@ margin-top: 10px;
 margin-top: 25px;
 }
 
+.userform textarea{
+    height: 200px;
+}
 a {
 color: #FF7878;
 text-decoration: none;
 }
+
+form.ls_form label.radio{
+    margin-top: 0px;
+}
+
+.margint10{
+    margin-top: 20px;
+}
+
+.margint15{
+    margin-top: 15px;
+}
+
+.padtop5{
+    padding-top: 5px;
+}
+
+.padtop15{
+    padding-top: 15px;
+}
+
+.marginl15{
+    margin-left: 15px;
+}
+
+.veteran label {
+padding-top: 10px;
+}
+
+
 /*-----------------------------------------------------------------*/
