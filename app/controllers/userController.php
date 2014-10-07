@@ -31,7 +31,7 @@ class userController extends \BaseController {
 
 		if( $validation->fails() ) {
 
-			return Redirect::to('login')->withErrors($validation->errors())->withInput();
+			return Response::json(array('result'=>false, 'errors'=>$validation->errors()));
 
 		}
 
@@ -45,12 +45,14 @@ class userController extends \BaseController {
         if($auth){
 
 			$prefix = Helpers::prefixUrl();	
-			Redirect::to($prefix.'/dashboard');
+			
+			$url = url($prefix.'/dashboard');
+			return Response::json(array('result'=>true, 'redirectUrl' => $url));
         }
 
         // authentication failure! lets go back to the login page
-        return Redirect::to('login')
-            	->with('error', 'Your username/password combination was incorrect.');
+        return Response::json(array('result'=>false, 'errors'=>array('Your username/password combination was incorrect.')));
+
 	        
 	}
 

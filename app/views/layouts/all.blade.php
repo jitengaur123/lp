@@ -30,6 +30,7 @@
     <!--Page loading plugin Start -->
     <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/pace.css') }}">
     <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script>
+    <script src="assets/js/common.js"></script>
     <!--Page loading plugin End   -->
 
     <!-- Plugin Css Put Here -->
