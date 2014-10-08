@@ -14,6 +14,7 @@ jQuery(document).ready(function($) {
     'use strict';
 
     select_country_call();
+    select_your_state_call();
     select_state_call();
     select_state_disabled_call();
     input_sortable_call();
@@ -40,6 +41,21 @@ function select_country_call(){
         onInitialize: eventHandler('onInitialize')
     });
 }
+
+function select_your_state_call(){
+    var $select = $('#select-your-state').selectize({
+        create: false,
+        onChange: eventHandler('onChange'),
+        onItemAdd: eventHandler('onItemAdd'),
+        onItemRemove: eventHandler('onItemRemove'),
+        onOptionAdd: eventHandler('onOptionAdd'),
+        onOptionRemove: eventHandler('onOptionRemove'),
+        onDropdownOpen: eventHandler('onDropdownOpen'),
+        onDropdownClose: eventHandler('onDropdownClose'),
+        onInitialize: eventHandler('onInitialize')
+    });
+}
+
 function select_state_call(){
     $('#select-state').selectize({
         maxItems: 3,
