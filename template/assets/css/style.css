@@ -8377,6 +8377,10 @@ form.ls_form label.radio{
     margin-top: 15px;
 }
 
+.marginb15{
+    margin-bottom: 15px;
+}
+
 .padtop5{
     padding-top: 5px;
 }
@@ -8398,6 +8402,10 @@ background: rgb(255, 255, 255);
 margin-bottom: 20px;
 margin-top: 20px;
 border: 1px solid #F1F0F0;
+}
+
+.no-border{
+    border: 0px;
 }
 
 .veteran .icheckbox_minimal-green {
