@@ -8412,5 +8412,17 @@ border: 1px solid #F1F0F0;
 margin-right: 15px;
 }
 
+.userform label i {
+margin-right: 8px;
+}
+
+.userform label {
+font-size: 13px;
+margin-bottom: 9px;
+}
+
+.userform .iradio_minimal-green {
+margin-right: 10px;
+}
 
 /*-----------------------------------------------------------------*/
