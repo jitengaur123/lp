@@ -8393,6 +8393,14 @@ form.ls_form label.radio{
     margin-left: 15px;
 }
 
+.marginb10{
+    margin-bottom: 10px;
+}
+
+.marginb20{
+    margin-bottom: 20px;
+}
+
 .veteran label {
 padding-top: 10px;
 }
@@ -8423,6 +8431,26 @@ margin-bottom: 9px;
 
 .userform .iradio_minimal-green {
 margin-right: 10px;
+}
+
+.details_left {
+text-align: left;
+font-size: 13px;
+}
+
+.details_left p {
+margin: 3px;
+}
+
+.details_left h2 {
+font-size: 14px;
+}
+
+.meta-details {
+border: 1px solid #D3D3D3;
+padding: 10px;
+border-radius: 5px;
+margin-top: 15px;
 }
 
 /*-----------------------------------------------------------------*/

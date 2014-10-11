@@ -65,12 +65,7 @@ function data_editable_table(){
         {
             "sPaginationType": "full_numbers"
         }
-    ).makeEditable({
-            //sUpdateURL: "UpdateData.php",
-            sUpdateURL: function (value, settings) {
-                return (value);
-            }
-    });
+    );
 }
 
 /*---------------- TABLE ROW COLUMN COLOR -----------------*/
