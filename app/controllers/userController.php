@@ -2,6 +2,99 @@
 
 class userController extends \BaseController {
 
+	public $prefix = '';
+
+	function __construct(){
+		$this->prefix = Helpers::prefixUrl();
+	}
+
+
+	/**
+	* Display a profile view
+	*
+	* @return Response
+	*/
+	public function profile()
+	{
+		
+		$user_id = Auth::user()->id;
+		$data = User::find($user_id);
+
+		return View::make('user.profile')->with('data', $data);
+	}
+
+	/**
+	 * Display a edit profile page
+	 */
+	public function editProfile()
+	{
+
+		$user_id = Auth::user()->id;
+		$data = User::find($user_id);
+		return View::make('user.edit_profile')->with('data', $data);
+	}
+
+
+	/**
+	 * Update profile data
+	 *
+	 * return response
+	 */
+	public function updateProfile(){
+
+		$validation = $this->_validateProfile();
+
+		if($validation->fails()){
+			return Redirect::to($this->prefix. '/editprofile')->withErrors($validation);
+		}
+
+		try{
+
+			$input = Input::all();
+			User::updateProfile($input);
+
+			return Redirect::to($this->prefix. '/editprofile')->withStatus('Profile has been successfully updated.');
+
+		}
+		catch(Exception $e){
+			//echo $e->getMessage();
+			return Redirect::to($this->prefix. '/editprofile')->withErrors([$e->getMessage()]);	
+		}
+		
+		
+	}
+
+	private function _validateProfile(){
+
+		$rules = [
+			'first_name'	=> 'required',
+			'last_name'		=> 'required',
+			'email'			=> 'required|email',
+			'profile_pic' 	=> 'mimes:jpeg,jpg,png,gif'
+		];
+
+		$input = Input::all();
+
+		$validation = Validator::make($input, $rules);
+
+		return $validation;
+
+	}
+
+
+
+	/**
+	 * Add Users as per record
+	 *	
+	 * 
+	 * return response
+	 */
+	public function adduser()
+	{
+		return View::make('user.adduser');
+	}
+
+
 	/**
 	 * Display a Login Page.
 	 *

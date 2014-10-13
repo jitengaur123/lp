@@ -5198,15 +5198,15 @@ button.addEvent{
 .ls-user-details .ls-user-links ul {
     padding: 0;
     margin: 0;
-    text-align: right;
+    text-align: left;
 }
 .ls-user-details .ls-user-links ul li {
     list-style: none;
     display: inline-block;
-    width: 40px;
-    height: 40px;
+    width: 28px;
+    height: 28px;
     line-height: 45px;
-    border: 1px solid #cbc5ba;
+    border: 0px solid #cbc5ba;
     border-radius: 50%;
     text-align: center;
 }
@@ -5222,9 +5222,10 @@ button.addEvent{
     padding: 0 10px;
 }
 .ls-user-details .user-detail .ls-user-position {
-    padding: 5px 10px;
-    background: #dfdfdf;
-    margin-bottom: 15px;
+    padding: 10px 10px;
+    background: #1FB5AD;
+    margin-bottom: 0px;
+    color: #fff;
 }
 .ls-user-details .user-detail .ls-user-position h4 {
     margin-top: 0;
@@ -5287,10 +5288,11 @@ button.addEvent{
     padding: 5px 10px 5px 45px;
 }
 .ls-user-details .ls-user-info .ls-user-text2 {
-    background: #dfdfdf;
+    background: #1FB5AD;
     text-align: right;
-    margin-top: 15px;
+    margin-top: 0px;
     padding: 5px 10px 5px 45px;
+    color: #fff;
 }
 .ls-user-details .ls-user-info .ls-user-text2 h4 {
     margin: 0 0 5px 0;
@@ -8345,6 +8347,110 @@ hr.footer-border {
     border-bottom: 1px solid #e3dfd8;
     border-left: 1px solid #e3dfd8;
     border-right: 1px solid #e3dfd8;
+}
+
+.userpic button {
+margin-top: 10px;
+}
+
+.userpic {
+margin-top: 25px;
+}
+
+.userform textarea{
+    height: 200px;
+}
+a {
+color: #FF7878;
+text-decoration: none;
+}
+
+form.ls_form label.radio{
+    margin-top: 0px;
+}
+
+.margint10{
+    margin-top: 20px;
+}
+
+.margint15{
+    margin-top: 15px;
+}
+
+.marginb15{
+    margin-bottom: 15px;
+}
+
+.padtop5{
+    padding-top: 5px;
+}
+
+.padtop15{
+    padding-top: 15px;
+}
+
+.marginl15{
+    margin-left: 15px;
+}
+
+.marginb10{
+    margin-bottom: 10px;
+}
+
+.marginb20{
+    margin-bottom: 20px;
+}
+
+.veteran label {
+padding-top: 10px;
+}
+
+.whitebox{
+background: rgb(255, 255, 255);
+margin-bottom: 20px;
+margin-top: 20px;
+border: 1px solid #F1F0F0;
+}
+
+.no-border{
+    border: 0px;
+}
+
+.veteran .icheckbox_minimal-green {
+margin-right: 15px;
+}
+
+.userform label i {
+margin-right: 8px;
+}
+
+.userform label {
+font-size: 13px;
+margin-bottom: 9px;
+}
+
+.userform .iradio_minimal-green {
+margin-right: 10px;
+}
+
+.details_left {
+text-align: left;
+font-size: 13px;
+}
+
+.details_left p {
+margin: 3px;
+}
+
+.details_left h2 {
+font-size: 14px;
+}
+
+.meta-details {
+border: 1px solid #D3D3D3;
+padding: 10px;
+border-radius: 5px;
+margin-top: 15px;
 }
 
 /*-----------------------------------------------------------------*/

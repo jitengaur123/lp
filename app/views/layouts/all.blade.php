@@ -25,48 +25,8 @@
     <!-- TODO: Add a favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/ico/fab.ico') }}">
 
-    <title>Amaha Electricals - Dashboard</title>
-
-    <!--Page loading plugin Start -->
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/pace.css') }}">
-    <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script>
-    <script src="assets/js/common.js"></script>
-    <!--Page loading plugin End   -->
-
-    <!-- Plugin Css Put Here -->
-    <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/bootstrap-progressbar-3.1.1.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/jquery-jvectormap.css') }}">
-
-    <!--AmaranJS Css Start-->
-    <link href="{{ URL::asset('assets/css/plugins/amaranjs/jquery.amaran.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/amaranjs/theme/all-themes.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/amaranjs/theme/awesome.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/amaranjs/theme/default.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/amaranjs/theme/blur.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/amaranjs/theme/user.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/amaranjs/theme/rounded.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/amaranjs/theme/readmore.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/amaranjs/theme/metro.css') }}" rel="stylesheet">
-    <!--AmaranJS Css End -->
-
-    <!-- Plugin Css End -->
-    <!-- Custom styles Style -->
-    <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
-    <!-- Custom styles Style End-->
-
-    <!-- Responsive Style For-->
-    <link href="{{ URL::asset('assets/css/responsive.css') }}" rel="stylesheet">
-    <!-- Responsive Style For-->
-
-    <!-- Custom styles for this template -->
-
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
+    @yield('head')
 </head>
 <body class="">
 
@@ -87,120 +47,13 @@
         <i class="fa fa-bars"></i>
     </a>
 </div>
-<div class="search-box">
-    <ul>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
-                <span class="fa fa-search"></span>
-            </a>
-            <div class="dropdown-menu  top-dropDown-1">
-                <h4>Search</h4>
-                <form>
-                    <input type="search" placeholder="what you want to search ?">
-                </form>
-            </div>
 
-        </li>
-    </ul>
-</div>
 
 <!--Collapse navigation menu icon end -->
 <!--Top Navigation Start-->
 
 <ul>
   
-    <li class="dropdown">
-        <!--Notification drop down start-->
-        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
-            <span class="fa fa-bell-o"></span>
-            <span class="badge badge-red">6</span>
-        </a>
-
-        <div class="dropdown-menu right top-notification">
-            <h4>Recently Published Posts</h4>
-            <ul class="ls-feed">
-                <li>
-                    <a href="javascript:void(0)">
-                                        <span class="label label-red">
-                                            <i class="fa fa-check white"></i>
-                                        </span>
-                        Please keep account of OT
-                        <span class="date">Just now</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">
-                                        <span class="label label-red">
-                                            <i class="fa fa-check white"></i>
-                                        </span>
-                        Safety Instructions Updated
-                        <span class="date">30 min</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">
-                                        <span class="label label-red">
-                                            <i class="fa fa-check white"></i>
-                                        </span>
-                        New opportunities with amara
-                        <span class="date">45 min</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">
-                                        <span class="label label-red">
-                                            <i class="fa fa-check white"></i>
-                                        </span>
-                        Important instructions
-                        <span class="date">50 min</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">
-                                        <span class="label label-red">
-                                            <i class="fa fa-check white"></i>
-                                        </span>
-                        Server hardware upgraded
-                        <span class="date">1 hr</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">
-                                        <span class="label label-red">
-                                            <i class="fa fa-check white"></i>
-                                        </span>
-                        IPO Report for
-                        <span class="lightGreen">2014</span>
-                        <span class="date">5 hrs</span>
-                    </a>
-                </li>
-                <li class="only-link">
-                    <a href="javascript:void(0)">View All</a>
-                </li>
-            </ul>
-        </div>
-        <!--Notification drop down end-->
-    </li>
-    <li class="dropdown">
-        <!--user account start-->
-        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
-            <span class="fa fa-user"></span>
-        </a>
-
-
-        <!--user account-->
-    </li>
-    
-    <li class="hidden-xs">
-        <a class="right-sidebar-setting" href="javascript:void(0)">
-            <i class="fa fa-cogs"></i>
-        </a>
-    </li>
-    <li>
-        <a href="#">
-            <i class="fa fa-lock"></i>
-        </a>
-    </li>
     <li>
         <a href="{{ URL::to('/logout') }}">
             <i class="fa fa-power-off"></i>
@@ -217,30 +70,7 @@
 
 <!--Left navigation section start-->
 <section id="left-navigation">
-<!--Left navigation user details start-->
-<div class="user-image">
-    <img src="{{ URL::asset('assets/images/demo/avatar-80.png') }}" alt=""/>
-    
-</div>
-<ul class="social-icon">
-    <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
-    <li><a href="javascript:void(0)"><i class="fa fa-twitter"></i></a></li>
-    <li><a href="javascript:void(0)"><i class="fa fa-youtube"></i></a></li>
-    <li><a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a></li>
-</ul>
-<!--Left navigation user details end-->
 
-<!--Phone Navigation Menu icon start-->
-<div class="phone-nav-box visible-xs">
-    <a class="phone-logo" href="index.html" title="">
-        <h1>Amaha</h1>
-    </a>
-    <a class="phone-nav-control" href="javascript:void(0)">
-        <span class="fa fa-bars"></span>
-    </a>
-    <div class="clearfix"></div>
-</div>
-<!--Phone Navigation Menu icon start-->
 
 <!--Left navigation start-->
  @include('layouts.leftnav')
@@ -253,7 +83,7 @@
 <section id="min-wrapper">
 <div id="main-content">
 <div class="container-fluid">
->
+
 <!-- Main Content Element  Start-->
 @yield('content')
 <!-- Main Content Element  End-->
@@ -461,61 +291,9 @@
 
 
     
-<!--Layout Script start -->
-<script type="text/javascript" src="{{ URL::asset('assets/js/color.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/js/multipleAccordion.js') }}"></script>
 
-<!--easing Library Script Start -->
-<script src="{{ URL::asset('assets/js/lib/jquery.easing.js') }}"></script>
-<!--easing Library Script End -->
-
-<!--Nano Scroll Script Start -->
-<script src="{{ URL::asset('assets/js/jquery.nanoscroller.min.js') }}"></script>
-<!--Nano Scroll Script End -->
-
-<!--switchery Script Start -->
-<script src="{{ URL::asset('assets/js/switchery.min.js') }}"></script>
-<!--switchery Script End -->
-
-<!--bootstrap switch Button Script Start-->
-<script src="{{ URL::asset('assets/js/bootstrap-switch.js') }}"></script>
-<!--bootstrap switch Button Script End-->
-
-<!--easypie Library Script Start -->
-<script src="{{ URL::asset('assets/js/jquery.easypiechart.min.js') }}"></script>
-<!--easypie Library Script Start -->
-
-<!--bootstrap-progressbar Library script Start-->
-<script src="{{ URL::asset('assets/js/bootstrap-progressbar.min.js') }}"></script>
-<!--bootstrap-progressbar Library script End-->
-
-<!--FLoat library Script Start -->
-<script type="text/javascript" src="{{ URL::asset('assets/js/chart/flot/jquery.flot.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/js/chart/flot/jquery.flot.pie.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/js/chart/flot/jquery.flot.resize.js') }}"></script>
-<!--FLoat library Script End -->
-
-<script type="text/javascript" src="{{ URL::asset('assets/js/pages/layout.js') }}"></script>
-<!--Layout Script End -->
+@yield('footerjs')
 
 
-
-<script src="{{ URL::asset('assets/js/countUp.min.js') }}"></script>
-
-<!-- skycons script start -->
-<script src="{{ URL::asset('assets/js/skycons.js') }}"></script>
-<!-- skycons script end   -->
-
-<!--Vector map library start-->
-<script src="{{ URL::asset('assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
-<script src="{{ URL::asset('assets/js/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-<!--Vector map library end-->
-
-<!--AmaranJS library script Start -->
-<script src="{{ URL::asset('assets/js/jquery.amaran.js') }}"></script>
-<!--AmaranJS library script End   -->
-<script src="{{ URL::asset('assets/js/pages/dashboard.js') }}"></script>
 </body>
 </html>

@@ -30,8 +30,16 @@ Route::group(array('before'=>'auth'), function(){
 	$prefix = Helpers::prefixUrl();
 
 	Route::get('admin/dashboard', 'adminController@adminDashboard');
+	Route::get('admin/', 'adminController@adminDashboard');
 
 	Route::group(array('prefix' => $prefix), function(){
+
+		Route::get('/profile', 'userController@profile');
+		Route::get('/editprofile', 'userController@editProfile');
+		Route::post('/editprofile', 'userController@updateProfile');
+
+		Route::get('/adduser', 'userController@addUser');
+		Route::post('/adduser', 'userController@postAddUser');
 
 		
 
