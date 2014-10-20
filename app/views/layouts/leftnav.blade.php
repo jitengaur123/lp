@@ -24,7 +24,7 @@
 <!--Phone Navigation Menu icon start-->
 
 
-<?php $prefix = Helpers::prefixUrl() ?>
+<?php $prefix = Config::get('constants.PREFIX'); ?>
 
 <?php $segment = Request::segment(2) ?>
 

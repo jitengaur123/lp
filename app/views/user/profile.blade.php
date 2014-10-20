@@ -68,7 +68,7 @@
             <p>Gender : {{ $data['gender'] }}</p>
             
             <?php if(!empty($data['veterun_status'])): ?>
-                <p>Veteran Status : <?php  implode(json_decode($data['veterun_status'], true)); ?></p>
+                <p>Veteran Status : <?php  implode(', ', json_decode($data['veterun_status'], true)); ?></p>
             <?php endif; ?>
            
             <div class="ls-user-links">

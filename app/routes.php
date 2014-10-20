@@ -22,28 +22,23 @@ Route::post('/login', 'userController@postLogin');
 
 Route::get('/forgotpass', 'RemindersController@getRemind');
 Route::post('/postRemind', 'RemindersController@postRemind');
+
 Route::get('/resetpass', 'RemindersController@getReset');
 Route::post('/postReset', 'RemindersController@postReset');
 
-Route::group(array('before'=>'auth'), function(){
+Route::group(array('before'=>'auth', 'prefix' => Config::get('constants.PREFIX')), function(){
 
-	$prefix = Helpers::prefixUrl();
+	Route::get('/dashboard', 'adminController@adminDashboard');
+	Route::get('/', 'adminController@adminDashboard');
 
-	Route::get('admin/dashboard', 'adminController@adminDashboard');
-	Route::get('admin/', 'adminController@adminDashboard');
+	Route::get('/profile', 'userController@profile');
+	Route::get('/editprofile', 'userController@editProfile');
+	Route::post('/editprofile', 'userController@updateProfile');
 
-	Route::group(array('prefix' => $prefix), function(){
+	Route::get('/adduser', 'userController@addUser');
+	Route::post('/adduser', 'userController@postAddUser');
 
-		Route::get('/profile', 'userController@profile');
-		Route::get('/editprofile', 'userController@editProfile');
-		Route::post('/editprofile', 'userController@updateProfile');
 
-		Route::get('/adduser', 'userController@addUser');
-		Route::post('/adduser', 'userController@postAddUser');
-
-		
-
-	});
 
 	Route::get('/logout', function(){
 		Auth::logout();

@@ -53,15 +53,17 @@
           <!--form section 2 starts here-->
           
           <div class="col-md-6 margint15">
+
             <div class="form-group">
               <label><i class="fa fa-key"></i>Password</label>
               <input class="form-control" name="password" placeholder="Enter Password" type="password">
             </div>
+
             <div class="form-group">
               <label><i class="fa fa-random"></i> Confirm Password</label>
               <input class="form-control" name="confirm_password"  placeholder="Enter Password Again"  type="password">
             </div>
-            
+
             <div class="form-group">
               <label><i class="fa fa-paper-plane"></i> Position/Job
                 Title</label>

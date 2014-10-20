@@ -25,6 +25,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 
 	/**
+	 * The attributes from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $fiilable = array('first_name', 'last_name', 'email', 'emergency_contact_number', 'gender', 'spouse_name', 'address', 
+				'city', 'state', 'country', 'postcode', 'country', 'phone_number', 'mobile_number', 'race', 'about', 'disability',
+				 'veterun_status', 'date_of_discharge', 'dob', 'profile_pic');
+
+
+	/**
 	 * Update Profile method
 	 **
 	 * @param $input
