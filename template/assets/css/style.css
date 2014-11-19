@@ -8369,6 +8369,10 @@ form.ls_form label.radio{
     margin-top: 0px;
 }
 
+.margint5{
+    margin-top: 5px;
+}
+
 .margint10{
     margin-top: 20px;
 }
@@ -8389,8 +8393,24 @@ form.ls_form label.radio{
     padding-top: 15px;
 }
 
+.padtop25{
+    padding-top: 25px;
+}
+
+.padtop50{
+    padding-top: 50px;
+}
+
+.padtop100{
+    padding-top: 100px;
+}
+
 .marginl15{
     margin-left: 15px;
+}
+
+.marginl25{
+    margin-left: 25px;
 }
 
 .marginb10{
@@ -8451,6 +8471,16 @@ border: 1px solid #D3D3D3;
 padding: 10px;
 border-radius: 5px;
 margin-top: 15px;
+}
+
+h5.emp_code {
+text-align: Center;
+margin-top: 25px;
+margin-bottom: 25px;
+background: rgb(236, 236, 236);
+padding: 11px;
+color: #7D7D7D;
+font-size: 14px;
 }
 
 /*-----------------------------------------------------------------*/
