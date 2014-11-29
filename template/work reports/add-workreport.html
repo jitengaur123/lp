@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <!-- Viewport metatags -->
+    <meta content="true" name="HandheldFriendly">
+    <meta content="320" name="MobileOptimized">
+    <meta content=
+    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    name="viewport"><!-- iOS webapp metatags -->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!-- iOS webapp icons -->
+    <link href="assets/images/ios/fickle-logo-72.png" rel=
+    "apple-touch-icon-precomposed">
+    <link href="assets/images/ios/fickle-logo-72.png" rel=
+    "apple-touch-icon-precomposed" sizes="72x72">
+    <link href="assets/images/ios/fickle-logo-114.png" rel=
+    "apple-touch-icon-precomposed" sizes="114x114"><!-- TODO: Add a favicon -->
+    <link href="assets/images/ico/fab.ico" rel="shortcut icon">
+
+    <title>Amaha - Add New Workreport</title><!--Page loading plugin Start -->
+    <link href="assets/css/plugins/pace.css" rel="stylesheet">
+    <script src="assets/js/pace.min.js"></script><!--Page loading plugin End   -->
+    <!-- Plugin Css Put Here -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/plugins/fileinput.min.css" rel="stylesheet">
+    <link href="assets/css/plugins/icheck/skins/all.css" rel="stylesheet">
+    <link href="assets/css/plugins/jquery.datetimepicker.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/plugins/selectize.bootstrap3.css">
+    <!-- Plugin Css End -->
+    <!-- Custom styles Style -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <!-- Custom styles Style End-->
+    <!-- Responsive Style For-->
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    <!-- Responsive Style For-->
+    <!-- Custom styles for this template -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="">
+    <!--Navigation Top Bar Start-->
+
+    <nav class="navigation">
+        <div class="container-fluid">
+            <!--Logo text start-->
+
+            <div class="header-logo">
+                <a href="admin-dashboard.html" title="">
+                <h1>Amaha</h1></a>
+            </div><!--Logo text End-->
+
+            <div class="top-navigation">
+                <!--Collapse navigation menu icon start -->
+
+                <div class="menu-control hidden-xs">
+                    <a class="fa fa-bars" href="javascript:void(0)"></a>
+                </div>
+
+                <div class="search-box">
+                    <ul>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"
+                            href="javascript:void(0)"><span class=
+                            "fa fa-search"></span></a>
+
+                            <div class="dropdown-menu top-dropDown-1">
+                                <h4>Search</h4>
+
+                                <form>
+                                    <input placeholder=
+                                    "what you want to search ?" type="search">
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div><!--Collapse navigation menu icon end -->
+                <!--Top Navigation Start-->
+
+                <ul>
+                    <li class="dropdown">
+                        <!--Notification drop down start-->
+                        <a class="dropdown-toggle" data-toggle="dropdown" href=
+                        "javascript:void(0)"><span class="fa fa-bell-o"></span>
+                        <span class="badge badge-red">6</span></a>
+
+                        <div class="dropdown-menu right top-notification">
+                            <h4>Recently Published Posts</h4>
+
+                            <ul class="ls-feed">
+                                <li>
+                                    <a href="javascript:void(0)"><span class=
+                                    "label label-red fa fa-check white" style=
+                                    "font-style: italic"></span> Please keep
+                                    account of OT <span class="date">Just
+                                    now</span></a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)"><span class=
+                                    "label label-red fa fa-check white" style=
+                                    "font-style: italic"></span> Safety
+                                    Instructions Updated <span class="date">30
+                                    min</span></a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)"><span class=
+                                    "label label-red fa fa-check white" style=
+                                    "font-style: italic"></span> New
+                                    opportunities with amara <span class=
+                                    "date">45 min</span></a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)"><span class=
+                                    "label label-red fa fa-check white" style=
+                                    "font-style: italic"></span> Important
+                                    instructions <span class="date">50
+                                    min</span></a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)"><span class=
+                                    "label label-red fa fa-check white" style=
+                                    "font-style: italic"></span> Server
+                                    hardware upgraded <span class="date">1
+                                    hr</span></a>
+                                </li>
+
+                                <li>
+                                    <a href="javascript:void(0)"><span class=
+                                    "label label-red fa fa-check white" style=
+                                    "font-style: italic"></span> IPO Report for
+                                    <span class="lightGreen">2014</span>
+                                    <span class="date">5 hrs</span></a>
+                                </li>
+
+                                <li class="only-link">
+                                    <a href="javascript:void(0)">View All</a>
+                                </li>
+                            </ul>
+                        </div><!--Notification drop down end-->
+                    </li>
+
+                    <li class="dropdown">
+                        <!--user account start-->
+                        <a class="dropdown-toggle" data-toggle="dropdown" href=
+                        "javascript:void(0)"><span class=
+                        "fa fa-user"></span></a> <!--user account-->
+                    </li>
+
+                    <li class="hidden-xs">
+                        <a class="right-sidebar-setting fa fa-cogs" href=
+                        "javascript:void(0)"></a>
+                    </li>
+
+                    <li>
+                        <a class="fa fa-lock" href="#"></a>
+                    </li>
+
+                    <li>
+                        <a class="fa fa-power-off" href="login.html"></a>
+                    </li>
+                </ul><!--Top Navigation End-->
+            </div>
+        </div>
+    </nav><!--Navigation Top Bar End-->
+
+    <section id="main-container">
+        <!--Left navigation section start-->
+
+        <section id="left-navigation">
+            <!--Left navigation user details start-->
+
+            <div class="user-image"><img alt="" src=
+            "assets/images/demo/avatar-80.png"></div>
+
+            <ul class="social-icon">
+                <li>
+                    <a class="fa fa-facebook" href="javascript:void(0)"></a>
+                </li>
+
+                <li>
+                    <a class="fa fa-twitter" href="javascript:void(0)"></a>
+                </li>
+
+                <li>
+                    <a class="fa fa-linkedin" href="javascript:void(0)"></a>
+                </li>
+
+                <li>
+                    <a class="fa fa-google-plus" href="javascript:void(0)"
+                    ></a>
+                </li>
+            </ul><!--Left navigation user details end-->
+            <!--Phone Navigation Menu icon start-->
+
+            <div class="phone-nav-box visible-xs">
+                <a class="phone-logo" href="index.html" title="">
+                <h1>Amaha</h1></a> <a class="phone-nav-control" href=
+                "javascript:void(0)"><span class="fa fa-bars"></span></a>
+
+                <div class="clearfix"></div>
+            </div><!--Phone Navigation Menu icon start-->
+            <!--Left navigation start-->
+
+            <ul class="mainNav">
+                <li class="active">
+                    <a class="active" href="admin-dashboard.html"><i class=
+                    "fa fa-dashboard"></i> <span>Dashboard</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-user"></i> <span>My
+                    Profile</span></a>
+
+                    <ul>
+                        <li>
+                            <a href="#">View Profile</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Edit Profile</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-group"></i> <span>Users</span>
+                    <span class="badge badge-red">58</span></a>
+
+                    <ul>
+                        <li>
+                            <a href="#">All Users</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Add Users</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Edit/Delete Users</a>
+                        </li>
+                    </ul>
+                </li>
+
+                 <li> <a href="#"><i class="fa fa-group"></i> <span>Clients</span> <span class="badge badge-red">18</span></a>
+        <ul>
+          <li> <a href="#">All Clients</a> </li>
+          <li> <a href="#">Add Clients</a> </li>
+          <li> <a href="#">Edit/Delete Clients</a> </li>
+        </ul>
+      </li>
+
+      
+
+                <li>
+                    <a href="#"><i class="fa fa-building"></i> <span>Work Sites
+                    <span class="badge badge-red">15</span></span></a>
+
+                    <ul>
+                        <li>
+                            <a href="#">View Work Sites</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Add New Sites</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Edit/Delete Sites</a>
+                        </li>
+                    </ul>
+                </li>
+
+                 <li> <a href="#"><i class="fa fa-file-o"></i> <span>Work Reports <span class="badge badge-red">114</span></span></a>
+        <ul>
+          <li> <a href="#">View Work Reports</a> </li>
+          <li> <a href="#">Add New Work Report</a> </li>
+          <li> <a href="#">Edit/Delete Work Report</a> </li>
+        </ul>
+      </li>
+
+      
+
+                <li>
+                    <a href="#"><i class="fa fa-file"></i>
+                    <span>Posts</span></a>
+
+                    <ul>
+                        <li>
+                            <a href="#">Add New Post</a>
+                        </li>
+
+                        <li>
+                            <a href="#">View All Posts</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-clock-o"></i> <span>TimeLine
+                    View</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-copy"></i>
+                    <span>Repositories</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-file-text"></i>
+                    <span>Forms</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-magnet"></i> <span>Magnet
+                    Board</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-calendar-o"></i>
+                    <span>Calender</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-gears"></i>
+                    <span>Settings</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-flag-o"></i>
+                    <span>Policies/Update</span> <span class=
+                    "badge badge-red">15</span></a>
+
+                    <ul>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Add New Policy Update</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-flash"></i> <span>Safety
+                    Instructions</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-random"></i>
+                    <span>Organizational Chart</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-list-alt"></i>
+                    <span>Documentation</span></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fa fa-power-off"></i>
+                    <span>Logout</span></a>
+                </li>
+            </ul><!--Left navigation end-->
+        </section><!--Left navigation section end-->
+        <!--Page main section start-->
+
+        <section id="min-wrapper">
+            <div id="main-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!--Top header start-->
+
+                            <h3 class="ls-top-header">Add New Work Report</h3>
+                            <!--Top header end -->
+                            <!--Top breadcrumb start -->
+
+                            <ol class="breadcrumb">
+                                <li>
+                                    <a class="fa fa-home" href="#"></a>
+                                </li>
+
+                                <li class="active">Add New Work Report</li>
+                            </ol><!--Top breadcrumb start -->
+                        </div>
+                    </div><!-- Main Content Element  Start-->
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <form class="ls_form"><!--form starts here-->
+                            <div class="panel panel-default userform no-border">
+                                <div class="panel-heading ">
+                                    <h3 class="panel-title">Add New Work Report In This Section</h3>
+                                </div>
+                                <p class="margint15">You can create a new work report in this section by filling up the fields below. The fields with * are required & can not be left empty. For more information please refer to the documentation.<br/>If you are a journeyman the work reports will need the approval from project manager and will remain in pending status, if you are the admin then you can check the reports and change the status of report to available states.</p>
+                                
+                                <div class="panel-body">
+                                    
+                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label><i class="fa fa-info-circle"></i> Job Number (Autogenerated)</label>
+                                                <input class="form-control"
+                                                disabled placeholder=
+                                                "Job Number" type="text"
+                                                value="AMA-JB-4187">
+                                            </div>
+
+                                            <div class="form-group">
+                                                    <label><i class="fa fa-user"></i> Client</label>
+                                                    <select id="select-client" class="demo-default" placeholder="Select Client...">
+                                                        <option value="">Select A Client...</option>
+                                                        <option value="AF">SI GROUP</option>
+                                                        <option value="AX">CHAT'S</option>
+                                                        <option value="AL">FPI MECH.</option>
+                                                        
+                                                    </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label><i class="fa fa-building"></i> Work Site</label>
+                                                    <select id="select-worksite" class="demo-default" placeholder="Select WorkSite...">
+                                                        <option value="">Select A Site...</option>
+                                                        <option value="AF">WORKSITE ONE</option>
+                                                        <option value="AX">WORKSITE TWO</option>
+                                                        <option value="AL">WORKSITE THREE</option>
+                                                        
+                                                    </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label><i class="fa fa-calendar"></i> Date</label>
+                                                <input class=
+                                                "form-control datePickerOnly"
+                                                type="text">
+                                            </div>
+
+                                        </div><!--form section 1 ends here-->
+                                        
+
+                                        <div class="col-md-6"><!--form section 2 starts here-->
+                                            <div class="address"><!--this address will generate automatically when the client & worksite will be selected-->
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Client Name</td>
+                                                            <td>Quantum Web Solutions</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Worksite Name</td>
+                                                            <td>Reeds Avenue</td>
+                                                        </tr>    
+                                                        <tr>
+                                                            <td>Site Address:</td>
+                                                            <td>E 295,LGF</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Locality:</td>
+                                                            <td>Greater Kailash Part II</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>State:</td>
+                                                            <td>New Delhi</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Post Code:</td>
+                                                            <td>110048</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Country:</td>
+                                                            <td>India</td>
+                                                        </tr>
+                                                        
+                                                    </tbody>
+                                                </table>
+                                            </div>   
+                                        
+                                        </div><!--form section 2 ends here-->
+                                </div><!--panel ends here-->
+                            </div>
+
+                            <div class="panel panel-default userform no-border"><!--time logging panel starts here -->
+                                <div class="panel-heading ">
+                                    <h3 class="panel-title">Create TimeSheet</h3>
+                                </div>
+                                
+                                
+                                <div class="panel-body">
+                                    
+                                        
+                                        <div class="col-md-12"><!--section 1 starts here-->
+                                            <div id="entry1" class="clonedInput row"><!--clonedinput starts-->
+                                                <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                                    
+                                                    <select id="select-labor" class="demo-default" placeholder="Select Labor...">
+                                                        <option value="">Select Labor...</option>
+                                                            <option value="AF">Sudhir Yadav</option>
+                                                            <option value="AX">Kunal Sukhija</option>
+                                                            <option value="AL">Ivan Pavlov</option>
+                                                            <option value="DZ">Temperley Hammer</option>
+                                                            <option value="AS">Nikki Samoa</option>
+                                                            <option value="AD">Andorra Andrea</option>
+                                                            <option value="AO">Roughe Ruth</option>
+                                                            <option value="AI">Angeline Burk</option>
+                                                            <option value="AQ">Imam Michael</option>
+                                                    </select>
+                                                </fieldset><!--entry 1 ends-->
+
+                                                <fieldset class="col-md-3 col-md-6"><!--entry 2-->
+                                                    
+                                                     <input class="form-control" placeholder="Enter Class" type="text">                                                    
+                                                </fieldset><!--entry 2 ends-->
+
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 3-->
+                                                    
+                                                     <input class="form-control" placeholder="Reg Hours" type="text">                                                    
+                                                </fieldset><!--entry 3 ends-->
+
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 4-->
+                                                    
+                                                     <input class="form-control" placeholder="Reg Rate" type="text">                                                    
+                                                </fieldset><!--entry 4 ends-->
+
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 5-->
+                                                    <input class="form-control" placeholder="Amount" type="text">
+                                                </fieldset><!--entry 5 ends-->
+
+                                                
+                                                <!--ot details start-->
+                                                <fieldset class="col-md-3 col-md-6"><!--entry 6-->
+                                                </fieldset><!--entry 6 end-->
+
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 7-->
+                                                    <input class="form-control" placeholder="OT Hours" type="text">
+                                                </fieldset><!--entry 7 end-->
+
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 7-->
+                                                    <input class="form-control" placeholder="OT Rate" type="text">
+                                                </fieldset><!--entry 7 end-->
+
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 8-->
+                                                    <input class="form-control" placeholder="Amount" type="text">
+                                                </fieldset><!--entry 8 ends-->
+                                                <!--ot details end-->
+
+                                                <!--dt details start-->
+                                                <fieldset class="col-md-6 col-md-6"><!--entry 6-->
+                                                </fieldset><!--entry 6 end-->
+
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 7-->
+                                                    <input class="form-control" placeholder="DT Hours" type="text">
+                                                </fieldset><!--entry 7 end-->
+
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 7-->
+                                                    <input class="form-control" placeholder="DT Rate" type="text">
+                                                </fieldset><!--entry 7 end-->
+
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 8-->
+                                                    <input class="form-control" placeholder="Amount" type="text">
+                                                </fieldset><!--entry 8 ends-->
+                                                <!--dt details end-->
+                                                <fieldset class="col-md-10">
+                                                </fieldset>
+                                                <fieldset class="col-md-2">
+                                                    <label><i class="fa fa-plus"></i> Total Labor</label>
+                                                    <input class="form-control auto" placeholder="Amount" type="text" value="1200.00" disabled>
+                                                    <!--total labor will be calculated autmatically by multiplying reg, ot and dt hours with rate-->
+                                                </fieldset>
+
+
+                                            </div><!-- cloned input ends -->
+
+                                            
+                                            
+                                            <div id="addDelButtons" class="margint15 col-md-6">
+                                                <input type="button" id="btnAdd" value="add section" class="btn ls-light-green-btn"> 
+                                                <input type="button" id="btnDel" value="remove section above" class="btn ls-red-btn">
+                                            </div>
+
+                                            
+
+                                
+                                        </div><!--section ends here-->
+                                        
+
+                                </div><!--panel ends here-->
+                            </div><!--time logging ends here-->
+
+                            <!--additional comments-->
+                            <div class="col-md-12 message">
+                                <p>additional comments</p>
+                                <textarea class="form-control autogrow" placeholder="Type your comments & additional notes here....."></textarea>
+                            </div>
+                            <!--additiona comments end-->
+
+                             
+                           
+                            <div class="row marginb50">
+                            <div class="col-md-6 total_all">
+                                                <h3>Grand Total : $<span>1200</span></h3>
+                                            </div>
+
+                             <div class="col-md-6 total_all">
+                            <input type="submit" value="Submit Report" class="btn btn-primary">
+                            </div>
+                            </div>
+                            </form><!--form ends here-->
+                        </div>
+                    </div>
+
+ 
+                </div>
+
+
+<!-- Main Content Element  End-->
+            </div>
+        </section><!--Page main section end -->
+        <!--Right hidden  section start-->
+
+        <section id="right-wrapper">
+            <!--Right hidden  section close icon start-->
+
+            <div class="close-right-wrapper">
+                <a class="fa fa-times" href="javascript:void(0)"></a>
+            </div><!--Right hidden  section close icon end-->
+            <!--Tab navigation start-->
+
+            <ul class="nav nav-tabs" id="setting-tab">
+                <li class="active">
+                    <a data-toggle="tab" href="#chatTab"><i class=
+                    "fa fa-comment-o"></i> Chat</a>
+                </li>
+
+                <li>
+                    <a data-toggle="tab" href="#settingTab"><i class=
+                    "fa fa-cogs"></i> Setting</a>
+                </li>
+            </ul><!--Tab navigation end -->
+            <!--Tab content start-->
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="chatTab">
+                    <div class="nano">
+                        <div class="nano-content">
+                            <div class="chat-group chat-group-fav">
+                                <h3 class="ls-header">Favorites</h3><a href=
+                                "javascript:void(0)"><span class=
+                                "user-status is-online"></span> Catherine J.
+                                Watkins <span class=
+                                "badge badge-lightBlue">1</span></a> <a href=
+                                "javascript:void(0)"><span class=
+                                "user-status is-idle"></span> Fernando G.
+                                Olson</a> <a href=
+                                "javascript:void(0)"><span class=
+                                "user-status is-busy"></span> Susan J. Best</a>
+                                <a href="javascript:void(0)"><span class=
+                                "user-status is-offline"></span> Brandon S.
+                                Young</a>
+                            </div>
+
+                            <div class="chat-group chat-group-coll">
+                                <h3 class="ls-header">Colleagues</h3><a href=
+                                "javascript:void(0)"><span class=
+                                "user-status is-offline"></span> Brandon S.
+                                Young</a> <a href=
+                                "javascript:void(0)"><span class=
+                                "user-status is-idle"></span> Fernando G.
+                                Olson</a> <a href=
+                                "javascript:void(0)"><span class=
+                                "user-status is-online"></span> Catherine J.
+                                Watkins <span class=
+                                "badge badge-lightBlue">3</span></a> <a href=
+                                "javascript:void(0)"><span class=
+                                "user-status is-busy"></span> Susan J. Best</a>
+                            </div>
+
+                            <div class="chat-group chat-group-social">
+                                <h3 class="ls-header">Social</h3><a href=
+                                "javascript:void(0)"><span class=
+                                "user-status is-online"></span> Catherine J.
+                                Watkins <span class=
+                                "badge badge-lightBlue">5</span></a> <a href=
+                                "javascript:void(0)"><span class=
+                                "user-status is-busy"></span> Susan J. Best</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-box">
+                        <div class="chat-box-header">
+                            <h5><span class="user-status is-online"></span>
+                            Catherine J. Watkins</h5>
+                        </div>
+
+                        <div class="chat-box-content">
+                            <div class="nano nano-chat">
+                                <div class="nano-content">
+                                    <ul>
+                                        <li>
+                                            <span class="user">Catherine</span>
+
+                                            <p>Are you here?</p><span class=
+                                            "time">10:10</span>
+                                        </li>
+
+                                        <li>
+                                            <span class="user">Catherine</span>
+
+                                            <p>Whohoo!</p><span class=
+                                            "time">10:12</span>
+                                        </li>
+
+                                        <li>
+                                            <span class="user">Catherine</span>
+
+                                            <p>This message is
+                                            pre-queued.</p><span class=
+                                            "time">10:15</span>
+                                        </li>
+
+                                        <li>
+                                            <span class="user">Catherine</span>
+
+                                            <p>Do you like it?</p><span class=
+                                            "time">10:20</span>
+                                        </li>
+
+                                        <li>
+                                            <span class="user">Catherine</span>
+
+                                            <p>This message is
+                                            pre-queued.</p><span class=
+                                            "time">11:00</span>
+                                        </li>
+
+                                        <li>
+                                            <span class="user">Catherine</span>
+
+                                            <p>Hi, you there ?</p><span class=
+                                            "time">12:00</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-write">
+                        <textarea class="form-control autogrow" placeholder=
+                        "Type your message">
+</textarea>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="settingTab">
+                    <div class="setting-box">
+                        <h3 class="ls-header">Account Setting</h3>
+
+                        <div class="setting-box-content">
+                            <ul>
+                                <li><span class="pull-left">Online
+                                status:</span> <input class="js-switch-red"
+                                type="checkbox"></li>
+
+                                <li><span class="pull-left">Show offline
+                                contact:</span> <input class=
+                                "js-switch-light-blue" type="checkbox"></li>
+
+                                <li><span class="pull-left">Invisible
+                                mode:</span> <input checked class="js-switch"
+                                type="checkbox"></li>
+
+                                <li><span class="pull-left">Log all
+                                message:</span><input checked class=
+                                "js-switch-light-green" type="checkbox"></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="setting-box">
+                        <h3 class="ls-header">Maintenance</h3>
+
+                        <div class="setting-box-content">
+                            <div class="easy-pai-box">
+                                <span class="easyPieChart" data-percent=
+                                "90"><span class=
+                                "easyPiePercent"></span></span>
+                            </div>
+
+                            <div class="easy-pai-box">
+                                <button class=
+                                "btn btn-xs ls-red-btn js_update">Update
+                                Data</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-box">
+                        <h3 class="ls-header">Progress</h3>
+
+                        <div class="setting-box-content">
+                            <h5>File uploading</h5>
+
+                            <div class="progress">
+                                <div class=
+                                "progress-bar ls-light-blue-progress six-sec-ease-in-out">
+                                </div>
+                            </div>
+
+                            <h5>Plugin setup</h5>
+
+                            <div class="progress progress-striped active">
+                                <div class=
+                                "progress-bar six-sec-ease-in-out ls-light-green-progress">
+                                </div>
+                            </div>
+
+                            <h5>Post New Article</h5>
+
+                            <div class="progress progress-striped active">
+                                <div class=
+                                "progress-bar ls-yellow-progress six-sec-ease-in-out">
+                                </div>
+                            </div>
+
+                            <h5>Create New User</h5>
+
+                            <div class="progress progress-striped active">
+                                <div class=
+                                "progress-bar ls-red-progress six-sec-ease-in-out">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!--Tab content -->
+        </section><!--Right hidden  section end -->
+    </section><!--Layout Script start -->
+
+
+    <script src="assets/js/color.js" type="text/javascript"></script> 
+    <script src="assets/js/lib/jquery-1.11.min.js" type="text/javascript"></script> 
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script> 
+    <script src="assets/js/multipleAccordion.js" type="text/javascript"></script>
+
+    <script src="assets/js/lib/jqueryui.js"></script>
+    <!--easing Library Script Start -->
+
+
+     <script src="assets/js/lib/jquery.easing.js"></script> <!--easing Library Script End -->
+     <!--Nano Scroll Script Start -->
+     <script src="assets/js/jquery.nanoscroller.min.js"></script> <!--Nano Scroll Script End -->
+     <!--switchery Script Start -->
+     <script src="assets/js/switchery.min.js"></script> <!--switchery Script End -->
+     <!--bootstrap switch Button Script Start-->
+     <script src="assets/js/bootstrap-switch.js"></script> <!--bootstrap switch Button Script End-->
+     <!--easypie Library Script Start -->
+     <script src="assets/js/jquery.easypiechart.min.js"></script> <!--easypie Library Script Start -->
+     <!--bootstrap-progressbar Library script Start-->
+     <script src="assets/js/bootstrap-progressbar.min.js"></script> <!--bootstrap-progressbar Library script End-->
+     <script src="assets/js/pages/layout.js" type="text/javascript"></script> <!--Layout Script End -->
+     <!--Upload button Script Start-->
+
+     <!--selectize Library start-->
+     <script src="assets/js/selectize.min.js"></script>
+     <!--selectize Library End-->
+
+     <!--Select & Tag demo start-->
+     <script src="assets/js/pages/selectTag.js"></script>
+     <!--Select & Tag demo end-->
+
+     <script src="assets/js/fileinput.min.js"></script> <!--Upload button Script End-->
+     <!--Auto resize  text area Script Start-->
+     <script src="assets/js/jquery.autosize.js"></script> <!--Auto resize  text area Script Start-->
+     <script src="assets/js/pages/sampleForm.js"></script> <!-- Script For Icheck -->
+     <script src="assets/js/icheck.min.js"></script> <!-- Script For Icheck -->
+     <!--Advance Radio and checkbox demo start-->
+     <script src="assets/js/pages/checkboxRadio.js"></script> <!--Advance Radio and checkbox demo start-->
+     <!-- Date & Time Picker Library Script Start -->
+     <script src="assets/js/jquery.datetimepicker.js"></script> <!-- Date & Time Picker Library Script End -->
+     <!--Demo for Date, Time Color Picker Script Start -->
+     <script src="assets/js/pages/pickerTool.js"></script> <!--Demo for Date, Time Color Picker Script End -->
+     <script src="assets/js/pages/addfieldset.js"></script>
+</body>
+</html>

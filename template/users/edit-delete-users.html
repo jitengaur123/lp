@@ -25,7 +25,7 @@
     "apple-touch-icon-precomposed" sizes="114x114">
 <!-- TODO: Add a favicon -->
 <link href="assets/images/ico/fab.ico" rel="shortcut icon">
-<title>Amaha - Edit Or Delete Clients</title>
+<title>Amaha - Edit Or Delete Users</title>
 <!--Page loading plugin Start -->
 <script src="assets/js/pace.min.js"></script><!--Page loading plugin End   -->
 <!-- Plugin Css Put Here -->
@@ -178,6 +178,15 @@
           <li> <a href="#">Edit/Delete Sites</a> </li>
         </ul>
       </li>
+
+       <li> <a href="#"><i class="fa fa-file-o"></i> <span>Work Reports <span class="badge badge-red">114</span></span></a>
+        <ul>
+          <li> <a href="#">View Work Reports</a> </li>
+          <li> <a href="#">Add New Work Report</a> </li>
+          <li> <a href="#">Edit/Delete Work Report</a> </li>
+        </ul>
+      </li>
+      
       <li> <a href="#"><i class="fa fa-file"></i> <span>Posts</span></a>
         <ul>
           <li> <a href="#">Add New Post</a> </li>
@@ -217,13 +226,13 @@
           <div class="col-md-12"> 
             <!--Top header start-->
             
-            <h3 class="ls-top-header">Edit/Delete Clients</h3>
+            <h3 class="ls-top-header">Edit/Delete Users</h3>
             <!--Top header end --> 
             <!--Top breadcrumb start -->
             
             <ol class="breadcrumb">
               <li> <a class="fa fa-home" href="#"></a> </li>
-              <li class="active">Edit Or Delete Clients</li>
+              <li class="active">Edit Or Delete Users</li>
             </ol>
             <!--Top breadcrumb start --> 
           </div>
@@ -234,14 +243,14 @@
           <div class="col-md-12">
             <div class="panel panel-default userform no-border">
               <div class="panel-heading">
-                <h3 class="panel-title">Edit Or Delete Registered Client</h3>
+                <h3 class="panel-title">Edit Or Delete User Profiles</h3>
               </div>
               <div class="panel-body"> 
                 <!--Select Box Start-->
                    <div class="row">
                     <div class="col-md-6">
-                        <h3 class="ls-header">Select & search from registered clients</h3>
-                        <p>You can search and select from available clients on this application and perform the actions of editing or deleting their profile</p>
+                        <h3 class="ls-header">Select & search from registered users</h3>
+                        <p>You can search and select from available users on this application and perform the actions of editing or deleting their profile</p>
                             <div class="control-group">
                                 <select id="select-country" class="demo-default" placeholder="Select a user...">
                                     <option value="">Select a user...</option>
@@ -249,13 +258,13 @@
                                     <option value="AX">Username Two</option>
                                     <option value="AL">Username Three</option>
                                 </select>
-                                <span class="help_text">Select One Client</span>
+                                <span class="help_text">Select One User</span>
                             </div>
                     </div>
                     <div class="col-md-6 padtop100">
                        <!--action buttons-->
-                       <div class="col-md-3"><a href="edit-profile.html"><button class="btn ls-light-blue-btn">Edit Selected Client Profile</button></a></div>
-                       <div class="col-md-3"><button type="button" class="btn btn-danger confirmBox marginl25">Delete Selected Client Profile</button></div>
+                       <div class="col-md-3"><a href="edit-profile.html"><button class="btn ls-light-blue-btn">Edit Selected User Profile</button></a></div>
+                       <div class="col-md-3"><button type="button" class="btn btn-danger confirmBox marginl25">Delete Selected User Profile</button></div>
                        
                        <!--action buttons end-->
                     </div>

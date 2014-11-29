@@ -25,16 +25,14 @@
     "apple-touch-icon-precomposed" sizes="114x114">
 <!-- TODO: Add a favicon -->
 <link href="assets/images/ico/fab.ico" rel="shortcut icon">
-<title>Amaha - Edit Or Delete Users</title>
+<title>Amaha - View All Worksites</title>
 <!--Page loading plugin Start -->
 <script src="assets/js/pace.min.js"></script><!--Page loading plugin End   -->
 <!-- Plugin Css Put Here -->
-
-
-
-
 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/plugins/selectize.bootstrap3.css">
+<link rel="stylesheet" href="assets/css/plugins/jquery.remodal.css">
+<link rel="stylesheet" href="assets/css/plugins/dndTable.css">
+<link rel="stylesheet" href="assets/css/plugins/tsort.css">
 
 <!-- Plugin Css End -->
 <!-- Custom styles Style -->
@@ -161,21 +159,25 @@
           <li> <a href="#">Edit/Delete Users</a> </li>
         </ul>
       </li>
-
-       <li> <a href="#"><i class="fa fa-group"></i> <span>Clients</span> <span class="badge badge-red">18</span></a>
+      <li> <a href="#"><i class="fa fa-group"></i> <span>Clients</span> <span class="badge badge-red">18</span></a>
         <ul>
           <li> <a href="#">All Clients</a> </li>
           <li> <a href="#">Add Clients</a> </li>
           <li> <a href="#">Edit/Delete Clients</a> </li>
         </ul>
       </li>
-
-      
       <li> <a href="#"><i class="fa fa-building"></i> <span>Work Sites <span class="badge badge-red">15</span></span></a>
         <ul>
           <li> <a href="#">View Work Sites</a> </li>
           <li> <a href="#">Add New Sites</a> </li>
           <li> <a href="#">Edit/Delete Sites</a> </li>
+        </ul>
+      </li>
+       <li> <a href="#"><i class="fa fa-file-o"></i> <span>Work Reports <span class="badge badge-red">114</span></span></a>
+        <ul>
+          <li> <a href="#">View Work Reports</a> </li>
+          <li> <a href="#">Add New Work Report</a> </li>
+          <li> <a href="#">Edit/Delete Work Report</a> </li>
         </ul>
       </li>
       <li> <a href="#"><i class="fa fa-file"></i> <span>Posts</span></a>
@@ -217,13 +219,13 @@
           <div class="col-md-12"> 
             <!--Top header start-->
             
-            <h3 class="ls-top-header">Edit/Delete Users</h3>
+            <h3 class="ls-top-header">View All Worksites</h3>
             <!--Top header end --> 
             <!--Top breadcrumb start -->
             
             <ol class="breadcrumb">
               <li> <a class="fa fa-home" href="#"></a> </li>
-              <li class="active">Edit Or Delete Users</li>
+              <li class="active">View All Worksites</li>
             </ol>
             <!--Top breadcrumb start --> 
           </div>
@@ -234,33 +236,55 @@
           <div class="col-md-12">
             <div class="panel panel-default userform no-border">
               <div class="panel-heading">
-                <h3 class="panel-title">Edit Or Delete User Profiles</h3>
+                <h3 class="panel-title">View All Worksites In Database</h3>
               </div>
               <div class="panel-body"> 
-                <!--Select Box Start-->
-                   <div class="row">
-                    <div class="col-md-6">
-                        <h3 class="ls-header">Select & search from registered users</h3>
-                        <p>You can search and select from available users on this application and perform the actions of editing or deleting their profile</p>
-                            <div class="control-group">
-                                <select id="select-country" class="demo-default" placeholder="Select a user...">
-                                    <option value="">Select a user...</option>
-                                    <option value="AF">Username One</option>
-                                    <option value="AX">Username Two</option>
-                                    <option value="AL">Username Three</option>
-                                </select>
-                                <span class="help_text">Select One User</span>
-                            </div>
-                    </div>
-                    <div class="col-md-6 padtop100">
-                       <!--action buttons-->
-                       <div class="col-md-3"><a href="edit-profile.html"><button class="btn ls-light-blue-btn">Edit Selected User Profile</button></a></div>
-                       <div class="col-md-3"><button type="button" class="btn btn-danger confirmBox marginl25">Delete Selected User Profile</button></div>
-                       
-                       <!--action buttons end-->
-                    </div>
+                <!--Table Wrapper Start-->
+                <div class="ls-editable-table table-responsive ls-table">
+                  <table class="table table-bordered table-striped table-bottomless" id="ls-editable-table">
+                    <thead>
+                      <tr>
+                        <th class="id_emp">Site Id</th>
+                        <th>Site Name</th>
+                        <th>Client Name</th>
+                        <th>Post Code</th>
+                        <th>Created On</th>
+                        <th class="text-center">View/Edit/Delete</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                       <td>AMA-12-12321</td>
+                        <td>Gk2 Office Solutions</td>
+                        <td>Quantum Web Solutions</td>
+                        <td>110048</td>
+                        <td>14/01/2014</td>
+                        <td class="text-center"><a href="#reModal">
+                          <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
+                          </a> <a href="edit-profile.html">
+                          <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button>
+                          </a> <a href="delete-users.html">
+                          <button class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
+                          </a></td>
+                      </tr>
+                      <tr>
+                        <td>AMA-12-12321</td>
+                        <td>Gk2 Office Solutions</td>
+                        <td>Quantum Web Solutions</td>
+                        <td>110048</td>
+                        <td>14/01/2014</td>
+                        <td class="text-center"><a href="#reModal">
+                          <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
+                          </a> <a href="edit-profile.html">
+                          <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button>
+                          </a> <a href="delete-users.html">
+                          <button class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
+                          </a></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-                <!--Seect Box Finish--> 
+                <!--Table Wrapper Finish--> 
               </div>
             </div>
           </div>
@@ -401,6 +425,47 @@
   <!--Right hidden  section end --> 
 </section>
 
+<!--modal start-->
+<div class="remodal" data-remodal-id="reModal">
+  <h3>View Worksite Details</h3>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>GK2 OFFICE SOLUTIONS</h2>
+      <div class="col-md-6 details_left">
+        
+        <p>Client Name : Quantum Web Solutions</p>
+        <p>Site Id : AMA-454-324</p>
+        <h2>Site Address</h2>
+        <address>
+        795 Folsom Ave, Suite 600<br>
+        San Francisco, CA 94107<br>
+        </address>
+
+         <p>Phone (mobile 2): (123) 456-7890</p>
+        <p>Location : California</p>
+        <p>Post Code : 94107</p>
+        
+        <p>PM: MJM</p>
+        <p>CERT PR: YES</p>
+        
+       
+       
+      </div>
+      <div class="col-md-6 details_left">
+        <p>Start Date: 10/10/2013</p>
+        <h3>Job Description</h3>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <p>OCIP: YES</p>
+        <p>BILLING TYPE: LUMP SUM</p>
+         <p>Last Edited By : John Doe (Admin)</p>
+        
+      </div>
+    </div>
+  </div>
+  <br>
+  <a class="remodal-cancel ls-red-btn btn" href="#">Close</a> <a class="remodal-confirm ls-light-green-btn btn" href="#">Edit Client Profile</a> </div>
+<!--modal ends--> 
+
 <!--Layout Script start --> 
 <script type="text/javascript" src="assets/js/color.js"></script> 
 <script type="text/javascript" src="assets/js/lib/jquery-1.11.min.js"></script> 
@@ -429,31 +494,26 @@
 <script type="text/javascript" src="assets/js/pages/layout.js"></script> 
 <!--Layout Script End --> 
 
-  <!--selectize Library start-->
-    <script src="assets/js/selectize.min.js"></script>
-    <!--selectize Library End-->
+<!--Drag & Drop & Sort  table start--> 
+<script src="assets/js/tsort.js"></script> 
+<script src="assets/js/jquery.tablednd.js"></script> 
+<script src="assets/js/jquery.dragtable.js"></script> 
+<!--Drag & Drop & Sort table end--> 
 
-    <!--Select & Tag demo start-->
-    <script src="assets/js/pages/selectTag.js"></script>
-    <!--Select & Tag demo end-->
+<!--Editable-table Start--> 
+<script src="assets/js/editable-table/jquery.dataTables.js"></script> 
+<script src="assets/js/editable-table/jquery.validate.js"></script> 
+<script src="assets/js/editable-table/jquery.jeditable.js"></script> 
+<script src="assets/js/editable-table/jquery.dataTables.editable.js"></script> 
+<!--Editable-table Finish --> 
 
+<!--Demo table script start--> 
+<script src="assets/js/pages/table.js"></script> 
+<!--Demo table script end--> 
 
-    <!--notify library script-->
-    <script src="assets/js/notify.min.js"></script>
-
-    <!--botbox library script-->
-    <script src="assets/js/bootbox.min.js"></script>
-
-    <!--human library script-->
-    <script src="assets/js/humane.min.js"></script>
-
-
-<!--AmaranJS library script Start -->
-    <script src="assets/js/jquery.amaran.js"></script>
-    <!--AmaranJS library script End   -->
-
-    <!--Demo notification pages-->
-    <script src="assets/js/pages/notification.js"></script>
+<!-- Remodal Js Start--> 
+<script src="assets/js/jquery.remodal.js"></script> 
+<!-- Remodal Js Finished-->
 
 </body>
 </html>

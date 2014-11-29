@@ -25,7 +25,7 @@
     "apple-touch-icon-precomposed" sizes="114x114">
 <!-- TODO: Add a favicon -->
 <link href="assets/images/ico/fab.ico" rel="shortcut icon">
-<title>Amaha - View All Worksites</title>
+<title>Amaha - View All Clients</title>
 <!--Page loading plugin Start -->
 <script src="assets/js/pace.min.js"></script><!--Page loading plugin End   -->
 <!-- Plugin Css Put Here -->
@@ -173,6 +173,13 @@
           <li> <a href="#">Edit/Delete Sites</a> </li>
         </ul>
       </li>
+       <li> <a href="#"><i class="fa fa-file-o"></i> <span>Work Reports <span class="badge badge-red">114</span></span></a>
+        <ul>
+          <li> <a href="#">View Work Reports</a> </li>
+          <li> <a href="#">Add New Work Report</a> </li>
+          <li> <a href="#">Edit/Delete Work Report</a> </li>
+        </ul>
+      </li>
       <li> <a href="#"><i class="fa fa-file"></i> <span>Posts</span></a>
         <ul>
           <li> <a href="#">Add New Post</a> </li>
@@ -212,13 +219,13 @@
           <div class="col-md-12"> 
             <!--Top header start-->
             
-            <h3 class="ls-top-header">View All Worksites</h3>
+            <h3 class="ls-top-header">View All Clients</h3>
             <!--Top header end --> 
             <!--Top breadcrumb start -->
             
             <ol class="breadcrumb">
               <li> <a class="fa fa-home" href="#"></a> </li>
-              <li class="active">View All Worksites</li>
+              <li class="active">View All Clients</li>
             </ol>
             <!--Top breadcrumb start --> 
           </div>
@@ -229,7 +236,7 @@
           <div class="col-md-12">
             <div class="panel panel-default userform no-border">
               <div class="panel-heading">
-                <h3 class="panel-title">View All Worksites In Database</h3>
+                <h3 class="panel-title">View All Clients & Status</h3>
               </div>
               <div class="panel-body"> 
                 <!--Table Wrapper Start-->
@@ -237,20 +244,20 @@
                   <table class="table table-bordered table-striped table-bottomless" id="ls-editable-table">
                     <thead>
                       <tr>
-                        <th class="id_emp">Site Id</th>
-                        <th>Job Name</th>
+                        <th class="id_emp">Client Id</th>
+                        <th>Company Name</th>
                         <th>Client Name</th>
-                        <th>Post Code</th>
+                        <th>Location</th>
                         <th>Created On</th>
                         <th class="text-center">View/Edit/Delete</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                       <td>AMA-12-12321</td>
-                        <td>Gk2 Office Solutions</td>
-                        <td>Quantum Web Solutions</td>
-                        <td>110048</td>
+                        <td>AMA-12-12322</td>
+                        <td>SudhirYadav347</td>
+                        <td>Sudhir Yadav</td>
+                        <td>Foreman</td>
                         <td>14/01/2014</td>
                         <td class="text-center"><a href="#reModal">
                           <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
@@ -262,9 +269,9 @@
                       </tr>
                       <tr>
                         <td>AMA-12-12321</td>
-                        <td>Gk2 Office Solutions</td>
-                        <td>Quantum Web Solutions</td>
-                        <td>110048</td>
+                        <td>SudhirYadav347</td>
+                        <td>Sudhir Yadav</td>
+                        <td>Foreman</td>
                         <td>14/01/2014</td>
                         <td class="text-center"><a href="#reModal">
                           <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
@@ -420,37 +427,36 @@
 
 <!--modal start-->
 <div class="remodal" data-remodal-id="reModal">
-  <h3>View Worksite Details</h3>
+  <h3>View Client Profile</h3>
   <div class="row">
     <div class="col-md-12">
-      <h2>GK2 OFFICE SOLUTIONS</h2>
+      <h2>Quantum Web Solutions</h2>
       <div class="col-md-6 details_left">
         
-        <p>Client Name : Quantum Web Solutions</p>
-        <p>Site Id : AMA-454-324</p>
-        <h2>Site Address</h2>
+        <p>User Role : Client</p>
+        <p>Client Id : AMA-454-324</p>
+        <h2>Address</h2>
         <address>
         795 Folsom Ave, Suite 600<br>
         San Francisco, CA 94107<br>
         </address>
+        <p>Phone (Office): (123) 456-7890</p>
 
-         <p>Phone (mobile 2): (123) 456-7890</p>
-        <p>Location : California</p>
-        <p>Post Code : 94107</p>
         
-        <p>PM: MJM</p>
-        <p>CERT PR: YES</p>
+      
+      
+     
+     
         
-       
-       
       </div>
       <div class="col-md-6 details_left">
-        <p>Start Date: 10/10/2013</p>
-        <h3>Job Description</h3>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-        <p>OCIP: YES</p>
-        <p>BILLING TYPE: LUMP SUM</p>
-         <p>Last Edited By : John Doe (Admin)</p>
+        <p>Account Created On: 10/10/2013</p>
+                <p>Phone (mobile 1): (123) 456-7890</p>
+        <p>Phone (mobile 2): (123) 456-7890</p>
+        <p>Location : California</p>
+        
+        <p>Email: <a href="#">admin@amahaelectricals.com</a></p>
+        <p>Last Edited By : John Doe (Admin)</p>
         
       </div>
     </div>
