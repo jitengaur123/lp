@@ -9,7 +9,7 @@ class adminController extends \BaseController {
 	 */
 	public function adminDashboard()
 	{
-		
+
 		return View::make('dashboard.admin');
 	}
 

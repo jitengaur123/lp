@@ -9,6 +9,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
 
+
 	/**
 	 * The database table used by the model.
 	 *
@@ -41,7 +42,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @access public
 	 * @return bool
 	 */
-	public static function updateProfile($input = NULL)
+	public static function updateProfile($input = NULL, $userid = NULL)
 	{
 		if(empty($input)) return false;
 		$data = [];
@@ -85,7 +86,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		
 		if(isset($input['password']))
-			$data['password'] = $input['password'];
+			$data['password'] = Hash::make($input['password']);
 
 		if(isset($input['dob']))
 			$data['dob'] = date('m-d-Y', strtotime($input['dob']));
@@ -105,9 +106,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		   	Input::file('profile_pic')->move($destinationPath, $file_name);
 		   	$data['profile_pic'] = $file_name;
 		}
-		$userid= Auth::user()->id;
+		
 		User::whereId($userid)->update($data);
 		return true;
 	}	
+
+
+	public function userrole()
+    {
+        return $this->belongsTo('UserRole', 'role');
+    }
 
 }

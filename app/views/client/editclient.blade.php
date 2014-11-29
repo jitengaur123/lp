@@ -1,272 +1,36 @@
-<!DOCTYPE html>
+@extends('layouts.all') 
 
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta content="IE=edge" http-equiv="X-UA-Compatible">
-<meta content="" name="description">
-<meta content="" name="author">
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<!-- Viewport metatags -->
-<meta content="true" name="HandheldFriendly">
-<meta content="320" name="MobileOptimized">
-<meta content=
-    "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    name="viewport">
-<!-- iOS webapp metatags -->
-<meta content="yes" name="apple-mobile-web-app-capable">
-<meta content="black" name="apple-mobile-web-app-status-bar-style">
-<!-- iOS webapp icons -->
-<link href="assets/images/ios/fickle-logo-72.png" rel=
-    "apple-touch-icon-precomposed">
-<link href="assets/images/ios/fickle-logo-72.png" rel=
-    "apple-touch-icon-precomposed" sizes="72x72">
-<link href="assets/images/ios/fickle-logo-114.png" rel=
-    "apple-touch-icon-precomposed" sizes="114x114">
-<!-- TODO: Add a favicon -->
-<link href="assets/images/ico/fab.ico" rel="shortcut icon">
-<title>Amaha - Add New Client</title>
-<!--Page loading plugin Start -->
-<link href="assets/css/plugins/pace.css" rel="stylesheet">
-<script src="assets/js/pace.min.js"></script><!--Page loading plugin End   -->
-<!-- Plugin Css Put Here -->
-<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-<link href="assets/css/plugins/fileinput.min.css" rel="stylesheet">
-<link href="assets/css/plugins/icheck/skins/all.css" rel="stylesheet">
-<link href="assets/css/plugins/jquery.datetimepicker.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/plugins/selectize.bootstrap3.css">
-<!-- Plugin Css End -->
-<!-- Custom styles Style -->
-<link href="assets/css/style.css" rel="stylesheet">
-<!-- Custom styles Style End-->
-<!-- Responsive Style For-->
-<link href="assets/css/responsive.css" rel="stylesheet">
-<!-- Responsive Style For-->
-<!-- Custom styles for this template -->
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
+@section('content')
+ <div class="row">
+    <div class="col-md-12">
+        <!--Top header start-->
 
-<body class="">
-<!--Navigation Top Bar Start-->
+        <h3 class="ls-top-header">Edit Client</h3>
+        <!--Top header end -->
+        <!--Top breadcrumb start -->
 
-<nav class="navigation">
-  <div class="container-fluid"> 
-    <!--Logo text start-->
-    
-    <div class="header-logo"> <a href="admin-dashboard.html" title="">
-      <h1>Amaha</h1>
-      </a> </div>
-    <!--Logo text End-->
-    
-    <div class="top-navigation"> 
-      <!--Collapse navigation menu icon start -->
-      
-      <div class="menu-control hidden-xs"> <a class="fa fa-bars" href="javascript:void(0)"></a> </div>
-      <div class="search-box">
-        <ul>
-          <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown"
-                            href="javascript:void(0)"><span class=
-                            "fa fa-search"></span></a>
-            <div class="dropdown-menu top-dropDown-1">
-              <h4>Search</h4>
-              <form>
-                <input placeholder=
-                                    "what you want to search ?" type="search">
-              </form>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <!--Collapse navigation menu icon end --> 
-      <!--Top Navigation Start-->
-      
-      <ul>
-        <li class="dropdown"> 
-          <!--Notification drop down start--> 
-          <a class="dropdown-toggle" data-toggle="dropdown" href=
-                        "javascript:void(0)"><span class="fa fa-bell-o"></span> <span class="badge badge-red">6</span></a>
-          <div class="dropdown-menu right top-notification">
-            <h4>Recently Published Posts</h4>
-            <ul class="ls-feed">
-              <li> <a href="javascript:void(0)"><span class=
-                                    "label label-red fa fa-check white" style=
-                                    "font-style: italic"></span> Please keep
-                account of OT <span class="date">Just
-                now</span></a> </li>
-              <li> <a href="javascript:void(0)"><span class=
-                                    "label label-red fa fa-check white" style=
-                                    "font-style: italic"></span> Safety
-                Instructions Updated <span class="date">30
-                min</span></a> </li>
-              <li> <a href="javascript:void(0)"><span class=
-                                    "label label-red fa fa-check white" style=
-                                    "font-style: italic"></span> New
-                opportunities with amara <span class=
-                                    "date">45 min</span></a> </li>
-              <li> <a href="javascript:void(0)"><span class=
-                                    "label label-red fa fa-check white" style=
-                                    "font-style: italic"></span> Important
-                instructions <span class="date">50
-                min</span></a> </li>
-              <li> <a href="javascript:void(0)"><span class=
-                                    "label label-red fa fa-check white" style=
-                                    "font-style: italic"></span> Server
-                hardware upgraded <span class="date">1
-                hr</span></a> </li>
-              <li> <a href="javascript:void(0)"><span class=
-                                    "label label-red fa fa-check white" style=
-                                    "font-style: italic"></span> IPO Report for <span class="lightGreen">2014</span> <span class="date">5 hrs</span></a> </li>
-              <li class="only-link"> <a href="javascript:void(0)">View All</a> </li>
-            </ul>
-          </div>
-          <!--Notification drop down end--> 
-        </li>
-        <li class="dropdown"> 
-          <!--user account start--> 
-          <a class="dropdown-toggle" data-toggle="dropdown" href=
-                        "javascript:void(0)"><span class=
-                        "fa fa-user"></span></a> <!--user account--> 
-        </li>
-        <li class="hidden-xs"> <a class="right-sidebar-setting fa fa-cogs" href=
-                        "javascript:void(0)"></a> </li>
-        <li> <a class="fa fa-lock" href="#"></a> </li>
-        <li> <a class="fa fa-power-off" href="login.html"></a> </li>
-      </ul>
-      <!--Top Navigation End--> 
+        <ol class="breadcrumb">
+            <li>
+                <a class="fa fa-home" href="#"></a>
+            </li>
+
+            <li class="active">Edit Client</li>
+        </ol><!--Top breadcrumb start -->
     </div>
-  </div>
-</nav>
-<!--Navigation Top Bar End-->
-
-<section id="main-container"> 
-  <!--Left navigation section start-->
-  
-  <section id="left-navigation"> 
-    <!--Left navigation user details start-->
-    
-    <div class="user-image"><img alt="" src=
-            "assets/images/demo/avatar-80.png"></div>
-    <ul class="social-icon">
-      <li> <a class="fa fa-facebook" href="javascript:void(0)"></a> </li>
-      <li> <a class="fa fa-twitter" href="javascript:void(0)"></a> </li>
-      <li> <a class="fa fa-linkedin" href="javascript:void(0)"></a> </li>
-      <li> <a class="fa fa-google-plus" href="javascript:void(0)"
-                    ></a> </li>
-    </ul>
-    <!--Left navigation user details end--> 
-    <!--Phone Navigation Menu icon start-->
-    
-    <div class="phone-nav-box visible-xs"> <a class="phone-logo" href="index.html" title="">
-      <h1>Amaha</h1>
-      </a> <a class="phone-nav-control" href=
-                "javascript:void(0)"><span class="fa fa-bars"></span></a>
-      <div class="clearfix"></div>
-    </div>
-    <!--Phone Navigation Menu icon start--> 
-    <!--Left navigation start-->
-    
-    <ul class="mainNav">
-      <li class="active"> <a class="active" href="admin-dashboard.html"><i class=
-                    "fa fa-dashboard"></i> <span>Dashboard</span></a> </li>
-      <li> <a href="#"><i class="fa fa-user"></i> <span>My
-        Profile</span></a>
-        <ul>
-          <li> <a href="#">View Profile</a> </li>
-          <li> <a href="#">Edit Profile</a> </li>
-        </ul>
-      </li>
-      <li> <a href="#"><i class="fa fa-group"></i> <span>Users</span> <span class="badge badge-red">58</span></a>
-        <ul>
-          <li> <a href="#">All Users</a> </li>
-          <li> <a href="#">Add Users</a> </li>
-          <li> <a href="#">Edit/Delete Users</a> </li>
-        </ul>
-      </li>
-      <li> <a href="#"><i class="fa fa-group"></i> <span>Clients</span> <span class="badge badge-red">18</span></a>
-        <ul>
-          <li> <a href="#">All Clients</a> </li>
-          <li> <a href="#">Add Clients</a> </li>
-          <li> <a href="#">Edit/Delete Clients</a> </li>
-        </ul>
-      </li>
-      <li> <a href="#"><i class="fa fa-building"></i> <span>Work Sites <span class="badge badge-red">15</span></span></a>
-        <ul>
-          <li> <a href="#">View Work Sites</a> </li>
-          <li> <a href="#">Add New Sites</a> </li>
-          <li> <a href="#">Edit/Delete Sites</a> </li>
-        </ul>
-      </li>
-      <li> <a href="#"><i class="fa fa-file"></i> <span>Posts</span></a>
-        <ul>
-          <li> <a href="#">Add New Post</a> </li>
-          <li> <a href="#">View All Posts</a> </li>
-        </ul>
-      </li>
-      <li> <a href="#"><i class="fa fa-clock-o"></i> <span>TimeLine
-        View</span></a> </li>
-      <li> <a href="#"><i class="fa fa-copy"></i> <span>Repositories</span></a> </li>
-      <li> <a href="#"><i class="fa fa-file-text"></i> <span>Forms</span></a> </li>
-      <li> <a href="#"><i class="fa fa-magnet"></i> <span>Magnet
-        Board</span></a> </li>
-      <li> <a href="#"><i class="fa fa-calendar-o"></i> <span>Calender</span></a> </li>
-      <li> <a href="#"><i class="fa fa-gears"></i> <span>Settings</span></a> </li>
-      <li> <a href="#"><i class="fa fa-flag-o"></i> <span>Policies/Update</span> <span class=
-                    "badge badge-red">15</span></a>
-        <ul>
-          <li> <a href="#">View All</a> </li>
-          <li> <a href="#">Add New Policy Update</a> </li>
-        </ul>
-      </li>
-      <li> <a href="#"><i class="fa fa-flash"></i> <span>Safety
-        Instructions</span></a> </li>
-      <li> <a href="#"><i class="fa fa-random"></i> <span>Organizational Chart</span></a> </li>
-      <li> <a href="#"><i class="fa fa-list-alt"></i> <span>Documentation</span></a> </li>
-      <li> <a href="#"><i class="fa fa-power-off"></i> <span>Logout</span></a> </li>
-    </ul>
-    <!--Left navigation end--> 
-  </section>
-  <!--Left navigation section end--> 
-  <!--Page main section start-->
-  
-  <section id="min-wrapper">
-
-    <div id="main-content">
-      <div class="container-fluid">
-
-
-        
-        <div class="row">
-          <div class="col-md-12"> 
-            <!--Top header start-->
-            
-            <h3 class="ls-top-header">Add New Client</h3>
-            <!--Top header end --> 
-            <!--Top breadcrumb start -->
-            
-            <ol class="breadcrumb">
-              <li> <a class="fa fa-home" href="#"></a> </li>
-              <li class="active">Add New Client</li>
-            </ol>
-            <!--Top breadcrumb start --> 
-          </div>
-        </div>
-        <!-- Main Content Element  Start-->
-        
-        <div class="row">
+</div><!-- Main Content Element  Start-->
+<div class="row">
           <div class="col-md-12">
+
             <div class="panel panel-default userform no-border">
+              @include('notification')
               <div class="panel-heading ">
-                <h3 class="panel-title">Add New Client</h3>
+                <h3 class="panel-title">Edit Client</h3>
               </div>
               <div class="panel-body client">
-                <p><i class="fa fa-users"></i> You can add new client in this section in order to create a work site. Please note that you will not get the select option in worksite if you have not added the client first. Please refer to documentation for reference</p>
+                <p><i class="fa fa-users"></i> You can add edit client in this section in order to create a work site. Please note that you will not get the select option in worksite if you have not added the client first. Please refer to documentation for reference</p>
 
                 <h5 class="emp_code">Generated Client Id : AMA-454-324</h5>
-              <form class="ls_form">
+              <form class="ls_form" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/client/updateclient/'.$client['id']) }}">
                 <!--user profile form ends here--> 
                 <!--form section 1 starts here-->
                 
@@ -274,55 +38,36 @@
                
                   <div class="form-group">
                     <label><i class="fa fa-quote-left"></i>First Name</label>
-                    <input class="form-control"
-                                                placeholder=
-                                                "Enter first name" type="text"
-                                                >
+                    <input class="form-control"  placeholder="Enter first name" value="{{ $client['first_name'] }}" name="first_name" type="text" >
                   </div>
                   <div class="form-group">
                     <label><i class="fa fa-quote-right"></i>Last Name</label>
-                    <input class="form-control"
-                                                placeholder=
-                                                "Enter last name" type="text"
-                                                >
+                    <input class="form-control" placeholder= "Enter last name" value="{{ $client['last_name'] }}" type="text" name="last_name" >
                   </div>
                   <div class="form-group margint10">
                     <label><i class="fa fa-check"></i> Company Name</label>
-                    <input class=
-                                                "form-control" name=
-                                                "company name" placeholder=
-                                                "Name of company" type="name">
+                    <input class="form-control" name="company_name"  value="{{ $client['company_name'] }}" placeholder="Name of company" type="text">
                   </div>
                   <div class="form-group">
                     <label><i class="fa fa-fax"></i> Phone Number
                       (Office)</label>
-                    <input class=
-                                                "form-control" placeholder=
-                                                "Office phone number" type="tel">
+                    <input class="form-control" placeholder="Office phone number"  value="{{ $client['phone_office'] }}" name="phone_office" type="tel">
                   </div>
                   <div class="form-group">
                     <label><i class="fa fa-mobile-phone"></i> Phone Number
                       (Mobile)</label>
-                    <input class=
-                                                "form-control" placeholder=
-                                                "Mobile phone number" type=
-                                                "tel">
+                    <input class="form-control" placeholder="Mobile phone number"  value="{{ $client['mobile1'] }}" type="tel"  name="mobile1">
                   </div>
 
                    <div class="form-group">
                     <label><i class="fa fa-mobile-phone"></i> Phone Number
                       (Mobile 2)</label>
-                    <input class=
-                                                "form-control" placeholder=
-                                                "Mobile phone number" type=
-                                                "tel">
+                    <input class="form-control" placeholder="Mobile phone number"  value="{{ $client['mobile2'] }}" type="tel" name="mobile2">
                   </div>
 
                   <div class="form-group">
                     <label><i class="fa fa-envelope-o"></i> Email address</label>
-                    <input class="form-control"
-                                                placeholder="Enter email" type=
-                                                "email">
+                    <input class="form-control" placeholder="Enter email"  value="{{ $client['email'] }}" type="email" name="email">
                   </div>
 
                   
@@ -334,28 +79,20 @@
                   
 
                    <label><i class="fa fa-fax"></i>Fax</label>
-                    <input class="form-control"
-                                                placeholder=
-                                                "Fax Number" type=
-                                                "text">
+                    <input class="form-control"  placeholder="Fax Number"  value="{{ $client['fax'] }}" type="text"  name="fax">
                     <br>
 
                   <div class="form-group">
                     <label><i class="fa fa-home"></i>Address</label>
-                    <input class="form-control"
-                                                placeholder=
-                                                "block name/number or street name" type=
-                                                "text">
+                    <input class="form-control" placeholder="block name/number or street name"  value="{{ $client['address'] }}" type="text"  name="address">
                     <br>
                     <label><i class="fa fa-thumb-tack"></i> Locality</label>
-                    <input class="form-control"
-                                                placeholder="locality / city"
-                                                type="text">
+                    <input class="form-control" placeholder="locality / city"  type="text"  value="{{ $client['city'] }}" name="city">
                     <br>
                     <label><i class="fa fa-map-marker"></i> State</label>
                     <div class="form-group">
                       <div class="control-group">
-                        <select id="select-your-state" class="demo-default" placeholder="Select a state...">
+                        <select id="select-your-state" class="demo-default" name="state"  placeholder="Select a state...">
                           <option value="">Select a state...</option>
                           <option value="AF">Afghanistan</option>
                           <option value="AX">&Aring;land Islands</option>
@@ -607,14 +344,12 @@
                       </div>
                     </div>
                     <label><i class="fa fa-pencil"></i> Postal Code</label>
-                    <input class="form-control"
-                                                placeholder="Postal Code" type=
-                                                "text">
+                    <input class="form-control" placeholder="Postal Code"  value="{{ $client['postal_code'] }}" type="text" name="postal_code">
                   </div>
                   <div class="form-group">
                     <label><i class="fa fa-flag"></i> Country</label>
                     <div class="control-group">
-                      <select id="select-country" class="demo-default" placeholder="Select a country...">
+                      <select id="select-country" class="demo-default" name="country" placeholder="Select a country...">
                         <option value="">Select a country...</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">&Aring;land Islands</option>
@@ -866,9 +601,7 @@
                     </div>
                   </div>
                   <div class="form-group">
-                    <button class=
-                                                "btn ls-light-blue-btn margint5" type=
-                                                "submit"><i class="fa fa-cloud-upload"></i> Add
+                    <button class="btn ls-light-blue-btn margint5" type="submit"><i class="fa fa-cloud-upload"></i> Update
                     Client</button>
                   </div>
                 </div>
@@ -883,229 +616,76 @@
           </div>
         </div>
       </div>
-    </div>
-    
-    <!-- Main Content Element  End-->
-    </div>
-  </section>
-  <!--Page main section end --> 
-  <!--Right hidden  section start-->
-  
-  <section id="right-wrapper"> 
-    <!--Right hidden  section close icon start-->
-    
-    <div class="close-right-wrapper"> <a class="fa fa-times" href="javascript:void(0)"></a> </div>
-    <!--Right hidden  section close icon end--> 
-    <!--Tab navigation start-->
-    
-    <ul class="nav nav-tabs" id="setting-tab">
-      <li class="active"> <a data-toggle="tab" href="#chatTab"><i class=
-                    "fa fa-comment-o"></i> Chat</a> </li>
-      <li> <a data-toggle="tab" href="#settingTab"><i class=
-                    "fa fa-cogs"></i> Setting</a> </li>
-    </ul>
-    <!--Tab navigation end --> 
-    <!--Tab content start-->
-    
-    <div class="tab-content">
-      <div class="tab-pane active" id="chatTab">
-        <div class="nano">
-          <div class="nano-content">
-            <div class="chat-group chat-group-fav">
-              <h3 class="ls-header">Favorites</h3>
-              <a href=
-                                "javascript:void(0)"><span class=
-                                "user-status is-online"></span> Catherine J.
-              Watkins <span class=
-                                "badge badge-lightBlue">1</span></a> <a href=
-                                "javascript:void(0)"><span class=
-                                "user-status is-idle"></span> Fernando G.
-              Olson</a> <a href=
-                                "javascript:void(0)"><span class=
-                                "user-status is-busy"></span> Susan J. Best</a> <a href="javascript:void(0)"><span class=
-                                "user-status is-offline"></span> Brandon S.
-              Young</a> </div>
-            <div class="chat-group chat-group-coll">
-              <h3 class="ls-header">Colleagues</h3>
-              <a href=
-                                "javascript:void(0)"><span class=
-                                "user-status is-offline"></span> Brandon S.
-              Young</a> <a href=
-                                "javascript:void(0)"><span class=
-                                "user-status is-idle"></span> Fernando G.
-              Olson</a> <a href=
-                                "javascript:void(0)"><span class=
-                                "user-status is-online"></span> Catherine J.
-              Watkins <span class=
-                                "badge badge-lightBlue">3</span></a> <a href=
-                                "javascript:void(0)"><span class=
-                                "user-status is-busy"></span> Susan J. Best</a> </div>
-            <div class="chat-group chat-group-social">
-              <h3 class="ls-header">Social</h3>
-              <a href=
-                                "javascript:void(0)"><span class=
-                                "user-status is-online"></span> Catherine J.
-              Watkins <span class=
-                                "badge badge-lightBlue">5</span></a> <a href=
-                                "javascript:void(0)"><span class=
-                                "user-status is-busy"></span> Susan J. Best</a> </div>
-          </div>
-        </div>
-        <div class="chat-box">
-          <div class="chat-box-header">
-            <h5><span class="user-status is-online"></span> Catherine J. Watkins</h5>
-          </div>
-          <div class="chat-box-content">
-            <div class="nano nano-chat">
-              <div class="nano-content">
-                <ul>
-                  <li> <span class="user">Catherine</span>
-                    <p>Are you here?</p>
-                    <span class=
-                                            "time">10:10</span> </li>
-                  <li> <span class="user">Catherine</span>
-                    <p>Whohoo!</p>
-                    <span class=
-                                            "time">10:12</span> </li>
-                  <li> <span class="user">Catherine</span>
-                    <p>This message is
-                      pre-queued.</p>
-                    <span class=
-                                            "time">10:15</span> </li>
-                  <li> <span class="user">Catherine</span>
-                    <p>Do you like it?</p>
-                    <span class=
-                                            "time">10:20</span> </li>
-                  <li> <span class="user">Catherine</span>
-                    <p>This message is
-                      pre-queued.</p>
-                    <span class=
-                                            "time">11:00</span> </li>
-                  <li> <span class="user">Catherine</span>
-                    <p>Hi, you there ?</p>
-                    <span class=
-                                            "time">12:00</span> </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="chat-write">
-          <textarea class="form-control autogrow" placeholder=
-                        "Type your message">
-</textarea>
-        </div>
-      </div>
-      <div class="tab-pane" id="settingTab">
-        <div class="setting-box">
-          <h3 class="ls-header">Account Setting</h3>
-          <div class="setting-box-content">
-            <ul>
-              <li><span class="pull-left">Online
-                status:</span>
-                <input class="js-switch-red"
-                                type="checkbox">
-              </li>
-              <li><span class="pull-left">Show offline
-                contact:</span>
-                <input class=
-                                "js-switch-light-blue" type="checkbox">
-              </li>
-              <li><span class="pull-left">Invisible
-                mode:</span>
-                <input checked class="js-switch"
-                                type="checkbox">
-              </li>
-              <li><span class="pull-left">Log all
-                message:</span>
-                <input checked class=
-                                "js-switch-light-green" type="checkbox">
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="setting-box">
-          <h3 class="ls-header">Maintenance</h3>
-          <div class="setting-box-content">
-            <div class="easy-pai-box"> <span class="easyPieChart" data-percent=
-                                "90"><span class=
-                                "easyPiePercent"></span></span> </div>
-            <div class="easy-pai-box">
-              <button class=
-                                "btn btn-xs ls-red-btn js_update">Update
-              Data</button>
-            </div>
-          </div>
-        </div>
-        <div class="setting-box">
-          <h3 class="ls-header">Progress</h3>
-          <div class="setting-box-content">
-            <h5>File uploading</h5>
-            <div class="progress">
-              <div class=
-                                "progress-bar ls-light-blue-progress six-sec-ease-in-out"> </div>
-            </div>
-            <h5>Plugin setup</h5>
-            <div class="progress progress-striped active">
-              <div class=
-                                "progress-bar six-sec-ease-in-out ls-light-green-progress"> </div>
-            </div>
-            <h5>Post New Article</h5>
-            <div class="progress progress-striped active">
-              <div class=
-                                "progress-bar ls-yellow-progress six-sec-ease-in-out"> </div>
-            </div>
-            <h5>Create New User</h5>
-            <div class="progress progress-striped active">
-              <div class=
-                                "progress-bar ls-red-progress six-sec-ease-in-out"> </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!--Tab content --> 
-  </section>
-  <!--Right hidden  section end --> 
-</section>
-<!--Layout Script start --> 
-<script src="assets/js/color.js" type="text/javascript"></script> <script src="assets/js/lib/jquery-1.11.min.js" type=
-"text/javascript"></script> <script src="assets/js/bootstrap.min.js" type="text/javascript"></script> <script src="assets/js/multipleAccordion.js" type="text/javascript"></script> 
-<script src="assets/js/lib/jqueryui.js"></script> 
-<!--easing Library Script Start --> 
+@stop
 
-<script src="assets/js/lib/jquery.easing.js"></script> <!--easing Library Script End --> 
-<!--Nano Scroll Script Start --> 
-<script src="assets/js/jquery.nanoscroller.min.js"></script> <!--Nano Scroll Script End --> 
-<!--switchery Script Start --> 
-<script src="assets/js/switchery.min.js"></script> <!--switchery Script End --> 
-<!--bootstrap switch Button Script Start--> 
-<script src="assets/js/bootstrap-switch.js"></script> <!--bootstrap switch Button Script End--> 
-<!--easypie Library Script Start --> 
-<script src="assets/js/jquery.easypiechart.min.js"></script> <!--easypie Library Script Start --> 
-<!--bootstrap-progressbar Library script Start--> 
-<script src="assets/js/bootstrap-progressbar.min.js"></script> <!--bootstrap-progressbar Library script End--> 
-<script src="assets/js/pages/layout.js" type="text/javascript"></script> <!--Layout Script End --> 
-<!--Upload button Script Start--> 
+@section('head')
 
-<!--selectize Library start--> 
-<script src="assets/js/selectize.min.js"></script> 
-<!--selectize Library End--> 
+<title>Amaha - Edit Profile</title>
+<!--Page loading plugin Start -->
+    <link href="{{ URL::asset('assets/css/plugins/pace.css') }}" rel="stylesheet">
+    <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script><!--Page loading plugin End   -->
+    <!-- Plugin Css Put Here -->
+    <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/plugins/fileinput.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/plugins/icheck/skins/all.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/plugins/jquery.datetimepicker.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/selectize.bootstrap3.css') }}">
+    <!-- Plugin Css End -->
+    <!-- Custom styles Style -->
+    <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
+    <!-- Custom styles Style End-->
+    <!-- Responsive Style For-->
+    <link href="{{ URL::asset('assets/css/responsive.css') }}" rel="stylesheet">
+    <!-- Responsive Style For-->
+    <!-- Custom styles for this template -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+@stop
 
-<!--Select & Tag demo start--> 
-<script src="assets/js/pages/selectTag.js"></script> 
-<!--Select & Tag demo end--> 
+@section('footerjs')
+    <script src="{{ URL::asset('assets/js/color.js') }}" type="text/javascript"></script> 
+    <script src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}" type="text/javascript"></script> 
+    <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script> 
+    <script src="{{ URL::asset('assets/js/multipleAccordion.js') }}" type="text/javascript"></script>
 
-<script src="assets/js/fileinput.min.js"></script> <!--Upload button Script End--> 
-<!--Auto resize  text area Script Start--> 
-<script src="assets/js/jquery.autosize.js"></script> <!--Auto resize  text area Script Start--> 
-<script src="assets/js/pages/sampleForm.js"></script> <!-- Script For Icheck --> 
-<script src="assets/js/icheck.min.js"></script> <!-- Script For Icheck --> 
-<!--Advance Radio and checkbox demo start--> 
-<script src="assets/js/pages/checkboxRadio.js"></script> <!--Advance Radio and checkbox demo start--> 
-<!-- Date & Time Picker Library Script Start --> 
-<script src="assets/js/jquery.datetimepicker.js"></script> <!-- Date & Time Picker Library Script End --> 
-<!--Demo for Date, Time Color Picker Script Start --> 
-<script src="assets/js/pages/pickerTool.js"></script> <!--Demo for Date, Time Color Picker Script End -->
-</body>
-</html>
+    <script src="{{ URL::asset('assets/js/lib/jqueryui.js') }}"></script>
+    <!--easing Library Script Start -->
+
+
+     <script src="{{ URL::asset('assets/js/lib/jquery.easing.js') }}"></script> <!--easing Library Script End -->
+     <!--Nano Scroll Script Start -->
+     <script src="{{ URL::asset('assets/js/jquery.nanoscroller.min.js') }}"></script> <!--Nano Scroll Script End -->
+     <!--switchery Script Start -->
+     <script src="{{ URL::asset('assets/js/switchery.min.js') }}"></script> <!--switchery Script End -->
+     <!--bootstrap switch Button Script Start-->
+     <script src="{{ URL::asset('assets/js/bootstrap-switch.js') }}"></script> <!--bootstrap switch Button Script End-->
+     <!--easypie Library Script Start -->
+     <script src="{{ URL::asset('assets/js/jquery.easypiechart.min.js') }}"></script> <!--easypie Library Script Start -->
+     <!--bootstrap-progressbar Library script Start-->
+     <script src="{{ URL::asset('assets/js/bootstrap-progressbar.min.js') }}"></script> <!--bootstrap-progressbar Library script End-->
+     <script src="{{ URL::asset('assets/js/pages/layout.js') }}" type="text/javascript"></script> <!--Layout Script End -->
+     <!--Upload button Script Start-->
+
+     <!--selectize Library start-->
+     <script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>
+     <!--selectize Library End-->
+
+     <!--Select & Tag demo start-->
+     <script src="{{ URL::asset('assets/js/pages/selectTag.js') }}"></script>
+     <!--Select & Tag demo end-->
+
+     <script src="{{ URL::asset('assets/js/fileinput.min.js') }}"></script> <!--Upload button Script End-->
+     <!--Auto resize  text area Script Start-->
+     <script src="{{ URL::asset('assets/js/jquery.autosize.js') }}"></script> <!--Auto resize  text area Script Start-->
+     <script src="{{ URL::asset('assets/js/pages/sampleForm.js') }}"></script> <!-- Script For Icheck -->
+     <script src="{{ URL::asset('assets/js/icheck.min.js') }}"></script> <!-- Script For Icheck -->
+     <!--Advance Radio and checkbox demo start-->
+     <script src="{{ URL::asset('assets/js/pages/checkboxRadio.js') }}"></script> <!--Advance Radio and checkbox demo start-->
+     <!-- Date & Time Picker Library Script Start -->
+     <script src="{{ URL::asset('assets/js/jquery.datetimepicker.js') }}"></script> <!-- Date & Time Picker Library Script End -->
+     <!--Demo for Date, Time Color Picker Script Start -->
+     <script src="{{ URL::asset('assets/js/pages/pickerTool.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
+@stop

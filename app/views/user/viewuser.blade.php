@@ -15,7 +15,7 @@
         <p>You can view your profile in this section, please use the edit/update button to update the profile details, we prefer the users to please keep their profile updated in order to have the most accurate data in our databases & help the management to keep the records up to date. Thank you.</p><br/>
         <div class="col-md-3 userpic">
             <img src="{{URL::asset('assets/images/demo/avatar.png') }}">
-            <a href="{{ URL::to($prefix.'/editprofile') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Profile</a>
+            <a href="{{ URL::to($prefix.'/edituser/'.$data['id']) }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Profile</a>
         </div>
         <div class="col-md-4 details_left">
             <h2>{{ $data['first_name'] }} {{ $data['last_name'] }}</h2>
@@ -63,12 +63,12 @@
             <p><a href="#">Supervisor : None</a></p>
             <p>About : {{ $data['about'] }} </p>
             <p><i class="fa fa-envelope"></i> Email: {{ $data['email'] }}</p>
-            <p>Disabilities : <?php if(!empty($data['disability'])){ $disability = json_decode($data['disability'], true); if(!empty($disability)) echo implode(', ',$disability); }else echo 'No, I do not have a disability'; ?></p>
+            <p>Disabilities : <?php if(!empty($data['disability'])) implode(', ',json_decode($data['disability'], true)); else echo 'No, I do not have a disability'; ?></p>
             <p>Race : {{ $data['race'] }}</p>
             <p>Gender : {{ $data['gender'] }}</p>
             
             <?php if(!empty($data['veterun_status'])): ?>
-                <p>Veteran Status : <?php $veterun_status = json_decode($data['veterun_status'], true);  if(!empty($veterun_status)) echo implode(', ', $veterun_status); ?></p>
+                <p>Veteran Status : <?php  implode(', ', json_decode($data['veterun_status'], true)); ?></p>
             <?php endif; ?>
            
             <div class="ls-user-links">

@@ -27,7 +27,8 @@
       <div class="panel-body">
         <p>You can add new users by entering the information in the fields below, the new users will have the ability to complete their profile by logging in and edit/update user profile section. New users will be sent the user details with the username and password that you will set below on their email address.</p>
         <p>The automated email will have the instructions for changing the password after logging in for the first time and completing their profile using the appropriate section.</p>
-        <form class="ls_form" name="addUser" id="addUser" method="post">
+        @include('notification')
+        <form class="ls_form" name="addUser" id="addUser" action="{{ url(Config::get('constants.PREFIX').'/adduser') }}" method="post">
           <!--user profile form ends here--> 
           <!--form section 1 starts here-->
           
@@ -61,27 +62,26 @@
 
             <div class="form-group">
               <label><i class="fa fa-random"></i> Confirm Password</label>
-              <input class="form-control" name="confirm_password"  placeholder="Enter Password Again"  type="password">
+              <input class="form-control" name="password_confirmation"  placeholder="Enter Password Again"  type="password">
             </div>
 
             <div class="form-group">
               <label><i class="fa fa-paper-plane"></i> Position/Job
                 Title</label>
-              <select class="form-control">
-                <option> Foreman </option>
-                <option selected="selected"> Field Worker </option>
+              <select class="form-control roleClass" name="role">
+
+                @foreach($roles as $role)
+                  <option value="{{$role['id']}}"> {{ $role['title'] }} </option>
+                @endforeach
               </select>
             </div>
 
             <div class="form-group">
-              <label><i class="fa fa-sitemap"></i> Assign
-                Supervisor/Manager</label>
-              <select class="form-control">
-                <option> option one </option>
-                <option> option two </option>
-                <option> option three </option>
-                <option selected="selected"> option four</option>
-                <option> option five </option>
+              <label><i class="fa fa-sitemap"></i> Assign Supervisor/Manager</label>
+              <select class="form-control parentUserData" name="parent_id">
+                @foreach($parentUser as $puser)
+                  <option value="{{ $puser['id'] }}"> {{ $puser['first_name'] }}</option>
+                @endforeach
               </select>
             </div>
           </div>
@@ -174,5 +174,5 @@
      <!-- Date & Time Picker Library Script Start -->
      <script src="{{ URL::asset('assets/js/jquery.datetimepicker.js') }}"></script> <!-- Date & Time Picker Library Script End -->
      <!--Demo for Date, Time Color Picker Script Start -->
-     <script src="{{ URL::asset('assets/js/pages/pickerTool.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
+     <script src="{{ URL::asset('assets/js/amaha.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
 @stop

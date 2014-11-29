@@ -3,73 +3,42 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <h3 class="ls-top-header">View Profile</h3>
+        <h3 class="ls-top-header">View Client</h3>
         <ol class="breadcrumb">
             <li><a href="{{ URL::to($prefix.'/dashboard') }}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{{ URL::to($prefix.'/profile') }}">View Profile</a></li>
+            <li><a href="{{ URL::to($prefix.'/client') }}">Client</a></li>
         </ol>
     </div>
 </div>
 <div class="row">
     <div class="col-md-12">
-        <p>You can view your profile in this section, please use the edit/update button to update the profile details, we prefer the users to please keep their profile updated in order to have the most accurate data in our databases & help the management to keep the records up to date. Thank you.</p><br/>
-        <div class="col-md-3 userpic">
+
+        <p>You can view your profile in this section, please use the edit/update button to update the profile details, we prefer the users to please keep their profile updated in order to have the most accurate client in our clientbases & help the management to keep the records up to date. Thank you.</p><br/>
+        <!-- <div class="col-md-3 userpic">
             <img src="{{URL::asset('assets/images/demo/avatar.png') }}">
-            <a href="{{ URL::to($prefix.'/editprofile') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Profile</a>
-        </div>
+            
+        </div> -->
         <div class="col-md-4 details_left">
-            <h2>{{ $data['first_name'] }} {{ $data['last_name'] }}</h2>
-            <?php 
-                switch($data['level']){
-                    case '1':
-                    default: 
-                        $title = 'President';
-                        $userRole = 'Administrator';
-                        break;
-                    case '2':
-                        $title = 'Vice-President';
-                        $userRole = 'Project Manager';
-                        break;
-                    case '3':
-                        $title = 'Foreman';
-                        $userRole = 'Supervisor';
-                        break;
-                    case '4':
-                        $title = 'Engineer';
-                        $userRole = 'End User';
-                        break;
-                }
-             ?>
-            <p>Position/Job Title : {{ $title }}</p>
-            <p>User Role : {{ $userRole }}</p>
-            <p>Employee Id : {{ $data['id'] }}</p>
+            <h2>{{ $client['first_name'] }} {{ $client['last_name'] }}</h2>
+            <p>Company Name : {{ $client['company_name'] }}</p>
             <h3>Address</h3>
             <address>
                 <i class="fa fa-map-marker"></i>
-                {{ $data['address'] }}, {{ $data['city'] }}<br>
-                {{ $data['state'] }}, {{ $data['country'] }} {{ $data['postcode'] }} <br>               
+                {{ $client['address'] }}, {{ $client['city'] }}<br>
+                {{ $client['state'] }}, {{ $client['country'] }} {{ $client['postal_code'] }} <br>               
             </address>
-            <p><i class="fa fa-phone"></i> Phone (Home): {{ $data['phone_number'] }}</p>
-            <p><i class="fa fa-mobile"></i> Phone (mobile): {{ $data['mobile_number'] }}</p>
-            <p>Account Created On : <?php echo date('d/m/Y', strtotime($data['created_at'])); ?></p>
-            <p>Emergency Contact Number : {{ $data['emergency_contact_number'] }}</p>
-            <p>Date Of Birth : <?php if(isset($data['dob'])) echo date('m/d/Y', strtotime($data['dob'])); ?></p>
-            <p>Name Of Spouse : {{ $data['spouse_name'] }}</p>
-
+            <p><i class="fa fa-phone"></i> Phone (Office): {{ $client['phone_office'] }}</p>
+            <p><i class="fa fa-mobile"></i> Phone (mobile 1): {{ $client['mobile1'] }}</p>
+            <p><i class="fa fa-mobile"></i> Phone (mobile 2): {{ $client['mobile2'] }}</p>
+            <p>Account Created On : <?php echo date('d/m/Y', strtotime($client['created_at'])); ?></p>
+            <a href="{{ URL::to($prefix.'/client/'.$client['id'].'/edit') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Client</a>
 
         </div>
         <div class="col-md-5 ls-user-details">
-            <h2>Date Of Joining: <?php echo date('d/m/Y', strtotime($data['created_at'])); ?></h2>
-            <p><a href="#">Supervisor : None</a></p>
-            <p>About : {{ $data['about'] }} </p>
-            <p><i class="fa fa-envelope"></i> Email: {{ $data['email'] }}</p>
-            <p>Disabilities : <?php if(!empty($data['disability'])){ $disability = json_decode($data['disability'], true); if(!empty($disability)) echo implode(', ',$disability); }else echo 'No, I do not have a disability'; ?></p>
-            <p>Race : {{ $data['race'] }}</p>
-            <p>Gender : {{ $data['gender'] }}</p>
-            
-            <?php if(!empty($data['veterun_status'])): ?>
-                <p>Veteran Status : <?php $veterun_status = json_decode($data['veterun_status'], true);  if(!empty($veterun_status)) echo implode(', ', $veterun_status); ?></p>
-            <?php endif; ?>
+            <h2>Date Of Joining: <?php echo date('d/m/Y', strtotime($client['created_at'])); ?></h2>
+            <p><i class="fa fa-envelope"></i> Email: {{ $client['email'] }}</p>
+            <p>Fax : {{ $client['fax'] }}</p>
+          
            
             <div class="ls-user-links">
             
@@ -84,7 +53,7 @@
 
 @section('head')
 
-<title>Amaha - View Profile</title>
+<title>Amaha - View Client</title>
 <!--Page loading plugin Start -->
     <link href="{{ URL::asset('assets/css/plugins/pace.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script><!--Page loading plugin End   -->

@@ -2,89 +2,68 @@
 <?php $prefix = Config::get('constants.PREFIX') ?>
 @section('content')
 <div class="row">
-    <div class="col-md-12">
-        <h3 class="ls-top-header">View Profile</h3>
-        <ol class="breadcrumb">
-            <li><a href="{{ URL::to($prefix.'/dashboard') }}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{{ URL::to($prefix.'/profile') }}">View Profile</a></li>
-        </ol>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <p>You can view your profile in this section, please use the edit/update button to update the profile details, we prefer the users to please keep their profile updated in order to have the most accurate data in our databases & help the management to keep the records up to date. Thank you.</p><br/>
-        <div class="col-md-3 userpic">
-            <img src="{{URL::asset('assets/images/demo/avatar.png') }}">
-            <a href="{{ URL::to($prefix.'/editprofile') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Profile</a>
-        </div>
-        <div class="col-md-4 details_left">
-            <h2>{{ $data['first_name'] }} {{ $data['last_name'] }}</h2>
-            <?php 
-                switch($data['level']){
-                    case '1':
-                    default: 
-                        $title = 'President';
-                        $userRole = 'Administrator';
-                        break;
-                    case '2':
-                        $title = 'Vice-President';
-                        $userRole = 'Project Manager';
-                        break;
-                    case '3':
-                        $title = 'Foreman';
-                        $userRole = 'Supervisor';
-                        break;
-                    case '4':
-                        $title = 'Engineer';
-                        $userRole = 'End User';
-                        break;
-                }
-             ?>
-            <p>Position/Job Title : {{ $title }}</p>
-            <p>User Role : {{ $userRole }}</p>
-            <p>Employee Id : {{ $data['id'] }}</p>
-            <h3>Address</h3>
-            <address>
-                <i class="fa fa-map-marker"></i>
-                {{ $data['address'] }}, {{ $data['city'] }}<br>
-                {{ $data['state'] }}, {{ $data['country'] }} {{ $data['postcode'] }} <br>               
-            </address>
-            <p><i class="fa fa-phone"></i> Phone (Home): {{ $data['phone_number'] }}</p>
-            <p><i class="fa fa-mobile"></i> Phone (mobile): {{ $data['mobile_number'] }}</p>
-            <p>Account Created On : <?php echo date('d/m/Y', strtotime($data['created_at'])); ?></p>
-            <p>Emergency Contact Number : {{ $data['emergency_contact_number'] }}</p>
-            <p>Date Of Birth : <?php if(isset($data['dob'])) echo date('m/d/Y', strtotime($data['dob'])); ?></p>
-            <p>Name Of Spouse : {{ $data['spouse_name'] }}</p>
-
-
-        </div>
-        <div class="col-md-5 ls-user-details">
-            <h2>Date Of Joining: <?php echo date('d/m/Y', strtotime($data['created_at'])); ?></h2>
-            <p><a href="#">Supervisor : None</a></p>
-            <p>About : {{ $data['about'] }} </p>
-            <p><i class="fa fa-envelope"></i> Email: {{ $data['email'] }}</p>
-            <p>Disabilities : <?php if(!empty($data['disability'])){ $disability = json_decode($data['disability'], true); if(!empty($disability)) echo implode(', ',$disability); }else echo 'No, I do not have a disability'; ?></p>
-            <p>Race : {{ $data['race'] }}</p>
-            <p>Gender : {{ $data['gender'] }}</p>
+          <div class="col-md-12"> 
+            <!--Top header start-->
             
-            <?php if(!empty($data['veterun_status'])): ?>
-                <p>Veteran Status : <?php $veterun_status = json_decode($data['veterun_status'], true);  if(!empty($veterun_status)) echo implode(', ', $veterun_status); ?></p>
-            <?php endif; ?>
-           
-            <div class="ls-user-links">
+            <h3 class="ls-top-header">Edit/Delete Users</h3>
+            <!--Top header end --> 
+            <!--Top breadcrumb start -->
             
-            </div>
-
+            <ol class="breadcrumb">
+              <li> <a class="fa fa-home" href="#"></a> </li>
+              <li class="active">Edit Or Delete Users</li>
+            </ol>
+            <!--Top breadcrumb start --> 
+          </div>
         </div>
+        <!-- Main Content Element  Start-->
         
-    </div>
-</div>
-@stop
+        <div class="row">
+          <div class="col-md-12">
+            <div class="panel panel-default userform no-border">
+              <div class="panel-heading">
+                <h3 class="panel-title">Edit Or Delete Registered Users</h3>
+              </div>
+              <div class="panel-body">
+                @include('notification')
+              <form method="post" onsubmit="return confirm('Are you sure want to delete?');">
+                <!--Select Box Start-->
+                   <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="ls-header">Select & search from registered users</h3>
+                        <p>You can search and select from available clients on this application and perform the actions of editing or deleting their profile</p>
+                            <div class="control-group">
+                                <select id="select-country" name="id" class="demo-default id" placeholder="Select a user...">
+                                    <option value="">Select a user...</option>
+                                    @foreach($users as $user)
+                                    <option value="{{ $user['id'] }}">{{ $user['user_name'] }}</option>
+                                   @endforeach
+                                </select>
+                                <input type="hidden" class="editUrl" value="{{ URL::to($prefix . '/edituser/') }}" >
+                                <span class="help_text">Select One Users</span>
+                            </div>
+                    </div>
+                    <div class="col-md-6 padtop100">
+                       <!--action buttons-->
+                       <div class="col-md-3"><button type="button" class="btn ls-light-blue-btn editSelected">Edit Selected Users Profile</button></a></div>
+                       <div class="col-md-3"><button type="submit" class="btn btn-danger deleteSelected confirmBox marginl25">Delete Selected Users Profile</button></div>
+                       <!--action buttons end-->
+                    </div>
+                </div>
+                </form> 
 
+                <!--Seect Box Finish--> 
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+@stop
 
 @section('head')
 
-<title>Amaha - View Profile</title>
+<title>Amaha - Edit/Delete Users</title>
 <!--Page loading plugin Start -->
     <link href="{{ URL::asset('assets/css/plugins/pace.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script><!--Page loading plugin End   -->
@@ -151,5 +130,6 @@
      <!-- Date & Time Picker Library Script Start -->
      <script src="{{ URL::asset('assets/js/jquery.datetimepicker.js') }}"></script> <!-- Date & Time Picker Library Script End -->
      <!--Demo for Date, Time Color Picker Script Start -->
-     <script src="{{ URL::asset('assets/js/pages/pickerTool.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
+     <script src="{{ URL::asset('assets/js/amaha.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
+
 @stop

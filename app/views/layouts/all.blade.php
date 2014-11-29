@@ -25,7 +25,12 @@
     <!-- TODO: Add a favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/ico/fab.ico') }}">
 
-    
+     <script type="text/javascript">
+
+        var ae = window.ae || {};
+        ae.baseUrl = '{{ URL::asset('/') }}';
+        
+    </script>
     @yield('head')
 </head>
 <body class="">

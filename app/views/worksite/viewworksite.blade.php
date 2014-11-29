@@ -1,75 +1,43 @@
 @extends('layouts.all') 
 <?php $prefix = Config::get('constants.PREFIX') ?>
 @section('content')
+
 <div class="row">
     <div class="col-md-12">
-        <h3 class="ls-top-header">View Profile</h3>
+        <h3 class="ls-top-header">View Worksite</h3>
         <ol class="breadcrumb">
             <li><a href="{{ URL::to($prefix.'/dashboard') }}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{{ URL::to($prefix.'/profile') }}">View Profile</a></li>
+            <li><a href="{{ URL::to($prefix.'/worksite') }}">Worksite</a></li>
         </ol>
     </div>
 </div>
+<?php $worksite = $worksite[0]; ?>
 <div class="row">
     <div class="col-md-12">
-        <p>You can view your profile in this section, please use the edit/update button to update the profile details, we prefer the users to please keep their profile updated in order to have the most accurate data in our databases & help the management to keep the records up to date. Thank you.</p><br/>
-        <div class="col-md-3 userpic">
-            <img src="{{URL::asset('assets/images/demo/avatar.png') }}">
-            <a href="{{ URL::to($prefix.'/editprofile') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Profile</a>
-        </div>
+
+        <p>You can view your worksite in this section, please use the edit/update button to update the worksite details, we prefer the users to please keep their profile updated in order to have the most accurate client in our clientbases & help the management to keep the records up to date. Thank you.</p><br/>
         <div class="col-md-4 details_left">
-            <h2>{{ $data['first_name'] }} {{ $data['last_name'] }}</h2>
-            <?php 
-                switch($data['level']){
-                    case '1':
-                    default: 
-                        $title = 'President';
-                        $userRole = 'Administrator';
-                        break;
-                    case '2':
-                        $title = 'Vice-President';
-                        $userRole = 'Project Manager';
-                        break;
-                    case '3':
-                        $title = 'Foreman';
-                        $userRole = 'Supervisor';
-                        break;
-                    case '4':
-                        $title = 'Engineer';
-                        $userRole = 'End User';
-                        break;
-                }
-             ?>
-            <p>Position/Job Title : {{ $title }}</p>
-            <p>User Role : {{ $userRole }}</p>
-            <p>Employee Id : {{ $data['id'] }}</p>
+            <h2>{{ $worksite['job_name'] }}</h2>
+            <p>Started at : {{ date('d/m/Y', strtotime($worksite['started_at'])) }}</p>
             <h3>Address</h3>
             <address>
                 <i class="fa fa-map-marker"></i>
-                {{ $data['address'] }}, {{ $data['city'] }}<br>
-                {{ $data['state'] }}, {{ $data['country'] }} {{ $data['postcode'] }} <br>               
+                {{ $worksite['address'] }}, {{ $worksite['city'] }}<br>
+                {{ $worksite['state'] }}, {{ $worksite['country'] }} {{ $worksite['postal_code'] }} <br>               
             </address>
-            <p><i class="fa fa-phone"></i> Phone (Home): {{ $data['phone_number'] }}</p>
-            <p><i class="fa fa-mobile"></i> Phone (mobile): {{ $data['mobile_number'] }}</p>
-            <p>Account Created On : <?php echo date('d/m/Y', strtotime($data['created_at'])); ?></p>
-            <p>Emergency Contact Number : {{ $data['emergency_contact_number'] }}</p>
-            <p>Date Of Birth : <?php if(isset($data['dob'])) echo date('m/d/Y', strtotime($data['dob'])); ?></p>
-            <p>Name Of Spouse : {{ $data['spouse_name'] }}</p>
 
+            <p>Worksite Created On : <?php echo date('d/m/Y', strtotime($worksite['created_at'])); ?></p>
+            <a href="{{ URL::to($prefix.'/worksite/'.$worksite['id'].'/edit') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Worksite</a>
 
         </div>
         <div class="col-md-5 ls-user-details">
-            <h2>Date Of Joining: <?php echo date('d/m/Y', strtotime($data['created_at'])); ?></h2>
-            <p><a href="#">Supervisor : None</a></p>
-            <p>About : {{ $data['about'] }} </p>
-            <p><i class="fa fa-envelope"></i> Email: {{ $data['email'] }}</p>
-            <p>Disabilities : <?php if(!empty($data['disability'])){ $disability = json_decode($data['disability'], true); if(!empty($disability)) echo implode(', ',$disability); }else echo 'No, I do not have a disability'; ?></p>
-            <p>Race : {{ $data['race'] }}</p>
-            <p>Gender : {{ $data['gender'] }}</p>
-            
-            <?php if(!empty($data['veterun_status'])): ?>
-                <p>Veteran Status : <?php $veterun_status = json_decode($data['veterun_status'], true);  if(!empty($veterun_status)) echo implode(', ', $veterun_status); ?></p>
-            <?php endif; ?>
+            <h2>Client: {{ $worksite['client']['company_name'] }} </h2>
+            <p>Description: {{ $worksite['description'] }}</p>
+            <p>OCIP : {{ $worksite['ocip'] }}</p>
+            <p>PM : {{ $worksite['pm'] }}</p>
+            <p>Billing Type : {{ $worksite['billing_type'] }}</p>
+            <p>CERT PR : {{ $worksite['cret_pr'] }}</p>
+          
            
             <div class="ls-user-links">
             
@@ -84,7 +52,7 @@
 
 @section('head')
 
-<title>Amaha - View Profile</title>
+<title>Amaha - View Worksite</title>
 <!--Page loading plugin Start -->
     <link href="{{ URL::asset('assets/css/plugins/pace.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script><!--Page loading plugin End   -->

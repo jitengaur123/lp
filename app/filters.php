@@ -48,6 +48,21 @@ Route::filter('auth', function()
 	}
 });
 
+Route::filter('complete', function(){
+
+	if(Auth::user()->is_complete == 0){
+		return Redirect::to(Config::get('constants.PREFIX'). '/editprofile')
+					->with('status', 'Please complete your profile.');
+	}
+});
+
+Route::filter('roles', function(){
+
+	if(Auth::user()->role == 4){
+		return Response::make('Unauthorized', 401);
+	}
+});
+
 
 Route::filter('auth.basic', function()
 {

@@ -27,7 +27,7 @@
 <?php $prefix = Config::get('constants.PREFIX'); ?>
 
 <?php $segment = Request::segment(2) ?>
-
+<?php $thirdsegment = Request::segment(3) ?>
 <ul class="mainNav">
 <li>
     <a @if($segment == 'dashbord') class="active" @endif href="{{ URL::to('/'.$prefix.'/dashboard') }}">
@@ -43,24 +43,38 @@
         <li><a @if($segment == 'editprofile' ) class="active" @endif href="{{ URL::to('/'.$prefix.'/editprofile') }}">Edit Profile</a></li>
     </ul>
 </li>
-<li @if ($segment == 'users' || $segment == 'adduser') class="active" @endif>
+@if(Auth::user()->role != 4)
+<li @if ($segment == 'users' || $segment == 'adduser' || $segment == "editdeleteuser") class="active" @endif>
     <a href="#">
-        <i class="fa fa-group"></i> <span>Users</span> <span class="badge badge-red">58</span></a>
+        <i class="fa fa-group"></i> <span>Users</span> <!-- <span class="badge badge-red">58</span> --></a>
     </a>
     <ul>
         <li><a @if($segment == 'users' ) class="active" @endif href="{{ URL::to('/'.$prefix.'/users') }}">All Users</a></li>
         <li><a @if($segment == 'adduser' ) class="active" @endif href="{{ URL::to('/'.$prefix.'/adduser') }}">Add Users</a></li>
+        <li><a @if ($segment == "editdeleteuser") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeleteuser') }}">Edit/Delete User</a></li>
     </ul>
 </li>
-<li>
+
+<li @if ($segment == 'client' || $segment == "editdeleteclient") class="active" @endif>
     <a href="#">
-        <i class="fa fa-building"></i>
-        <span>Work Sites <span class="badge badge-red">15</span></span>
+        <i class="fa fa-group"></i> <span>Client</span> <!-- <span class="badge badge-red">58</span> --></a>
     </a>
     <ul>
-        <li><a href="#">View Work Sites</a></li>
-        <li><a href="#">Add New Sites</a></li>
-        <li><a href="#">Edit/Delete Sites</a></li>
+        <li><a @if($segment == 'client' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/client') }}">All Client</a></li>
+        <li><a @if($thirdsegment == 'create' ) class="active" @endif href="{{ URL::to('/'.$prefix.'/client/create') }}">Add Client</a></li>
+        <li><a @if ($segment == "editdeleteclient") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeleteclient') }}">Edit/Delete Client</a></li>
+    </ul>
+</li>
+
+<li @if ($segment == 'worksite' || $segment == "editdeletesite") class="active" @endif>
+    <a href="#">
+        <i class="fa fa-building"></i>
+        <span>Work Sites <!-- <span class="badge badge-red">15</span> --></span>
+    </a>
+    <ul>
+        <li><a  @if ($segment == 'worksite' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/worksite') }}">View Work Sites</a></li>
+        <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/worksite/create') }}">Add New Sites</a></li>
+        <li><a @if ($segment == "editdeletesite") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletesite') }}">Edit/Delete Sites</a></li>
     </ul>
 </li>
 <li>
@@ -93,6 +107,8 @@
         <i class="fa fa-magnet"></i> <span>Magnet Board</span>
     </a>
 </li>
+@endif
+
 <li>
     <a href="#">
         <i class="fa fa-calendar-o"></i> <span>Calender</span>
@@ -132,6 +148,8 @@
         <span>Documentation</span>
     </a>
 </li>
+
+
 <li>
     <a href="{{ URL::to('/logout') }}">
         <i class="fa fa-power-off"></i>
