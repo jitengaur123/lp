@@ -54,12 +54,7 @@ function icheck_check_and_radio_call(){
         increaseArea: '20%' // optional
     });
 
-    $('input.icheck-aero').iCheck({
-        checkboxClass: 'icheckbox_flat-aero',
-        radioClass: 'iradio_flat-aero',
-        increaseArea: '20%' // optional
-    });
-
+   
     $('input.icheck-black').iCheck({
         checkboxClass: 'icheckbox_flat',
         radioClass: 'iradio_flat',

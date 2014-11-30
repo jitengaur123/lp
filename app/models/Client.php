@@ -19,6 +19,6 @@ class Client extends Eloquent {
 	protected $fiilable = array('id','first_name', 'last_name', 'company_name', 'phone_office', 'mobile1',
 	'mobile2','email',	'fax', 'address','city', 'state','postal_code' ,'country' );
 
-
+	
 
 }

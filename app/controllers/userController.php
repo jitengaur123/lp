@@ -73,7 +73,7 @@ class userController extends \BaseController {
 	private function _attemptUserLogin($user){
 
 		if(Input::has('remember')){
-        	$auth = Auth::attempt($user);
+        	$auth = Auth::attempt($user, true);
         }else{
         	$auth = Auth::attempt($user);
         }

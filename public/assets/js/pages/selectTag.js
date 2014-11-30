@@ -22,6 +22,10 @@ jQuery(document).ready(function($) {
     demo_code_language_call();
     select_repeated_options_call();
     select_to_call();
+    select_client_call();
+    select_worksite_call();
+    select_labor_call();
+
 });
 var eventHandler = function (name) {
     return function () {
@@ -62,6 +66,50 @@ function select_state_call(){
         create: false
     });
 }
+
+function select_client_call(){
+    var $select = $('#select-client').selectize({
+        create: false,
+        onChange: eventHandler('onChange'),
+        onItemAdd: eventHandler('onItemAdd'),
+        onItemRemove: eventHandler('onItemRemove'),
+        onOptionAdd: eventHandler('onOptionAdd'),
+        onOptionRemove: eventHandler('onOptionRemove'),
+        onDropdownOpen: eventHandler('onDropdownOpen'),
+        onDropdownClose: eventHandler('onDropdownClose'),
+        onInitialize: eventHandler('onInitialize')
+    });
+}
+
+function select_labor_call(){
+    var $select = $('#select-labor').selectize({
+        create: false,
+        onChange: eventHandler('onChange'),
+        onItemAdd: eventHandler('onItemAdd'),
+        onItemRemove: eventHandler('onItemRemove'),
+        onOptionAdd: eventHandler('onOptionAdd'),
+        onOptionRemove: eventHandler('onOptionRemove'),
+        onDropdownOpen: eventHandler('onDropdownOpen'),
+        onDropdownClose: eventHandler('onDropdownClose'),
+        onInitialize: eventHandler('onInitialize')
+    });
+}
+
+
+function select_worksite_call(){
+    var $select = $('#select-worksite').selectize({
+        create: false,
+        onChange: eventHandler('onChange'),
+        onItemAdd: eventHandler('onItemAdd'),
+        onItemRemove: eventHandler('onItemRemove'),
+        onOptionAdd: eventHandler('onOptionAdd'),
+        onOptionRemove: eventHandler('onOptionRemove'),
+        onDropdownOpen: eventHandler('onDropdownOpen'),
+        onDropdownClose: eventHandler('onDropdownClose'),
+        onInitialize: eventHandler('onInitialize')
+    });
+}
+
 function select_state_disabled_call(){
     $('#select-state-disabled').selectize({
         maxItems: 3

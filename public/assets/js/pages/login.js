@@ -1,9 +1,9 @@
 /*------------------------------------------------------------------
  [ Login  Trigger Js]
 
- Project     :  Fickle Responsive Admin Template
- Version     :  1.0
- Author      :  AimMateTeam
+ Project     :	Fickle Responsive Admin Template
+ Version     :	1.0
+ Author      : 	AimMateTeam
  URL         :   http://aimmate.com
  Support     :   aimmateteam@gmail.com
  Primary use :   Login Page
@@ -33,30 +33,9 @@ function forgo_password_view(){
 }
 function login_view_submit(){
     $('#form-login').submit(function () {
-        var url = ae.baseUrl + 'login',
-            data = $(this).serialize();
+        /*var setUrl = window.location.origin + '/index.html'
+         window.location.assign(setUrl);*/
 
-        
-         $.post(url, data, function(resultData){
-               if(resultData.result){
-                    var jacked = humane.create({baseCls: 'humane-jackedup', addnCls: 'humane-jackedup-success'});
-                    jacked.log("<i class='fa fa-smile-o'></i> Successfully logedin ");
-
-                    setTimeout(function () {
-                        var setUrl = resultData.redirectUrl;
-                        window.location.assign(setUrl);
-                    }, 500);
-               }
-               else{
-                    var errorsHtml = '';
-                    $.each(resultData.errors, function(index, val){
-                        errorsHtml += '<li>'+val+'</li>';
-                    });
-                    var errorsHTML = errorHtml(errorsHtml);
-
-                    $('.login-form').prepend(errorsHTML);
-               }
-         }, 'json');
         return false;
     });
 }
@@ -74,7 +53,14 @@ function ladda_button_call(){
                     clearInterval(interval);
                     //Checking Login in here
 
-                  
+
+                    var jacked = humane.create({baseCls: 'humane-jackedup', addnCls: 'humane-jackedup-success'});
+                    jacked.log("<i class='fa fa-smile-o'></i> Successfully logedin ");
+
+                    setInterval(function () {
+                        var setUrl = 'file:///C:/Users/acer/Documents/GitHub/lp/template/admin-dashboard.html';
+                        window.location.assign(setUrl);
+                    }, 500);
                 }
             }, 200);
         }

@@ -77,6 +77,18 @@
         <li><a @if ($segment == "editdeletesite") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletesite') }}">Edit/Delete Sites</a></li>
     </ul>
 </li>
+
+<li @if ($segment == 'workreport' || $segment == "editdeletereport") class="active" @endif>
+    <a href="#">
+        <i class="fa fa-building"></i>
+        <span>Work Reports <!-- <span class="badge badge-red">15</span> --></span>
+    </a>
+    <ul>
+        <li><a  @if ($segment == 'workreport' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/workreport') }}">View Work Report</a></li>
+        <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/workreport/create') }}">Add New Report</a></li>
+        <li><a @if ($segment == "editdeletereport") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletereport') }}">Edit/Delete Report</a></li>
+    </ul>
+</li>
 <li>
     <a href="#">
         <i class="fa fa-file"></i>

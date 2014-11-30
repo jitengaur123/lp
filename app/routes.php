@@ -59,6 +59,9 @@ function allRoutes(){
 
 	//worksite routes
 	workSiteRoutes();
+
+	//workreport routes
+	workReportRoutes();
 }
 
 function userRoutes(){
@@ -103,6 +106,18 @@ function workSiteRoutes(){
 
 	Route::get('/editdeletesite', 'worksiteController@editDeleteWorkSite');
 	Route::post('/editdeletesite', 'worksiteController@postEditDeleteWorkSite');	
+}
+
+
+function workReportRoutes(){
+
+	//Client section 
+	Route::resource('/workreport', 'workreportController');
+	Route::get('/workreport/delete/{id}', 'workreportController@deleteReport')->where('id', '[0-9]+');
+	Route::post('/workreport/updatereport/{id}', 'workreportController@updateReport')->where('id', '[0-9]+');
+
+	Route::get('/editdeletereport', 'workreportController@editDeleteWorkSite');
+	Route::post('/editdeletereport', 'workreportController@postEditDeleteWorkSite');	
 }
 
 /*Route::group(array('before'=>'auth|complete', 'prefix' => Config::get('constants.PREFIX')), function(){
