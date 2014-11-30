@@ -8629,4 +8629,32 @@ font-size: 13px;
 line-height: 14px;
 margin-top: 10px;
 }
+
+.swMainVertical .stepContainer {
+display: block;
+position: relative;
+margin: 0;
+padding: 0;
+border: 0px solid #CCC;
+overflow: hidden;
+clear: right;
+height: 300px;
+overflow: visible;
+float: left;
+width: 80%;
+}
+
+#verticalWizard .panel-body{
+background: #EDEDED;
+}
+
+#verticalWizard .panel-body p{
+padding-left: 0px;
+}
+
+#step-2 p,#step-1 p, #step-3 p {
+    
+padding: 0px;
+}
+
 /*-----------------------------------------------------------------*/

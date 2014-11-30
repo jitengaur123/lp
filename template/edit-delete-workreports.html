@@ -25,7 +25,7 @@
     "apple-touch-icon-precomposed" sizes="114x114">
 <!-- TODO: Add a favicon -->
 <link href="assets/images/ico/fab.ico" rel="shortcut icon">
-<title>Amaha - View Work Reports</title>
+<title>Amaha - Edit/Delete Work Reports</title>
 <!--Page loading plugin Start -->
 <script src="assets/js/pace.min.js"></script><!--Page loading plugin End   -->
 <!-- Plugin Css Put Here -->
@@ -33,8 +33,15 @@
 <link rel="stylesheet" href="assets/css/plugins/jquery.remodal.css">
 <link rel="stylesheet" href="assets/css/plugins/dndTable.css">
 <link rel="stylesheet" href="assets/css/plugins/tsort.css">
+  <link rel="stylesheet" href="assets/css/plugins/selectize.bootstrap3.css">
 
 <!-- Plugin Css End -->
+
+
+<!-- Plugin Css Put Here -->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/plugins/custom_smart_wizard.css">
+
 <!-- Custom styles Style -->
 <link href="assets/css/style.css" rel="stylesheet">
 <!-- Custom styles Style End-->
@@ -219,13 +226,13 @@
           <div class="col-md-12"> 
             <!--Top header start-->
             
-            <h3 class="ls-top-header">View Work Reports</h3>
+            <h3 class="ls-top-header">Edit/Delete Work Reports</h3>
             <!--Top header end --> 
             <!--Top breadcrumb start -->
             
             <ol class="breadcrumb">
               <li> <a class="fa fa-home" href="#"></a> </li>
-              <li class="active">View Work Reports</li>
+              <li class="active">Edit/Delete Work Reports</li>
             </ol>
             <!--Top breadcrumb start --> 
           </div>
@@ -235,6 +242,99 @@
         <div class="row">
           <div class="col-md-12">
             <div class="panel panel-default userform no-border">
+              <div class="panel-heading">
+                <h3 class="panel-title">Edit/Delete Work Reports</h3>
+              </div>
+              <div class="panel-body"> 
+                <!--form Wrapper Start-->
+                  <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Select the proper fields to get list of submitted reports.</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form id="formID" class="formular form-horizontal ls_form" method="post" action="">
+                                            <div id="verticalWizard" class="swMainVertical">
+                                            <ul>
+                                                <li>
+                                                    <a href="#step-1">
+                                                        <span class="stepNumber">1</span>
+                                                        <span class="stepDesc">
+                                                            Step 1<br/>
+                                                            <small>select the client</small>
+
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#step-2">
+                                                        <span class="stepNumber">2</span>
+                                                        <span class="stepDesc">
+                                                            Step 2<br/>
+                                                            <small>select worksites</small>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#step-3">
+                                                        <span class="stepNumber">3</span>
+                                                        <span class="stepDesc">
+                                                            Step 3<br/>
+                                                            <small>Select reports to edit</small>
+                                                        </span>
+                                                    </a>
+                                                </li>
+                                                
+                                            </ul>
+                                            <div id="step-1">
+                                                <h2 class="StepTitle">Select The Client You Want To Shortlist</h2>
+                                                <p>Please select the client in this step for which you would like to see the reports submitted, in next steps you will get the option to view and edit from the reports submitted for selected client</p>
+
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-4">
+                                                          <label><i class="fa fa-user"></i> Client</label>
+                                                          <select id="select-client" class="demo-default" placeholder="Select Client...">
+                                                          <option value="">Select A Client...</option>
+                                                          <option value="AF">SI GROUP</option>
+                                                          <option value="AX">CHAT'S</option>
+                                                          <option value="AL">FPI MECH.</option>
+                                                          </select>
+                                                        </div>
+                                                    </div>
+
+                                        
+
+                                                </div>
+                                            </div>
+                                            <div id="step-2">
+                                                <h2 class="StepTitle">Select Worksites</h2>
+                                                <p>Select form the worksites that are registered under selected client in step one.</p>
+
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-4">
+                                                          <label><i class="fa fa-user"></i> Worksite</label>
+                                                          <select id="select-worksite" class="demo-default" placeholder="Select worksite...">
+                                                          <option value="">Select A Worksite...</option>
+                                                          <option value="AF">SI GROUP</option>
+                                                          <option value="AX">CHAT'S</option>
+                                                          <option value="AL">FPI MECH.</option>
+                                                          </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div id="step-3">
+                                                <h2 class="StepTitle">Work Reports Submitted For ShortListed WorkSite</h2>
+
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="panel panel-default userform no-border">
               <div class="panel-heading">
                 <h3 class="panel-title">View All Work Reports & Review</h3>
               </div>
@@ -251,7 +351,7 @@
                         <th>Submitted On</th>
                         <th>Status</th>
                         <th>Total</th>
-                        <th class="text-center">View/Edit/Delete</th>
+                        <th class="text-center">Edit/Delete</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -263,9 +363,7 @@
                         <td>14/01/2014</td>
                         <td>Pending</td>
                         <td>$1200.00</td>
-                        <td class="text-center"><a href="#reModal">
-                          <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
-                          </a> <a href="edit-profile.html">
+                        <td class="text-center"><a href="edit-profile.html">
                           <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button>
                           </a> <a href="delete-users.html">
                           <button class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
@@ -279,9 +377,7 @@
                         <td>14/01/2014</td>
                         <td>Pending</td>
                         <td>$1200.00</td>
-                        <td class="text-center"><a href="#reModal">
-                          <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
-                          </a> <a href="edit-profile.html">
+                        <td class="text-center"><a href="edit-profile.html">
                           <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button>
                           </a> <a href="delete-users.html">
                           <button class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
@@ -291,6 +387,24 @@
                   </table>
                 </div>
                 <!--Table Wrapper Finish--> 
+              </div>
+            </div>
+                                                    </div>
+
+                                                   
+                                                </div>
+                                            </div>
+                                       
+                                            </div>
+                                            <!-- End SmartWizard Content -->
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!--form Wrapper Finish--> 
               </div>
             </div>
           </div>
@@ -431,180 +545,30 @@
   <!--Right hidden  section end --> 
 </section>
 
-<!--modal start-->
-<div class="remodal wreport_1" data-remodal-id="reModal">
-  <h3>View Work Report</h3>
-  <div class="row">
-    <div class="col-md-12">
-      <h2>Client : Quantum Web Solutions</h2>
-      <h3>Worksite : Name of the worksite</h2>
-      <div class="col-md-6 details_right">
-        <p>Job No.: AMA-454-324</p>
-        <p>Submitted By: Sudhir Yadav</p>
-        <p>Status : PENDING</p>
-        <p>Total Amount : $1200.00</p>
-        
-      </div>
 
-      <div class="col-md-6 details_left">
-        <p>Submitted On: 10/10/2013</p>
-        <h2>Site Address</h2>
-        <address>
-        795 Folsom Ave, Suite 600<br>
-        San Francisco, CA 94107<br>
-        </address>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <table class="table table-bordered table-striped table-bottomless">
-                    <thead>
-                      <tr>
-                        <th class="id_emp">Labor</th>
-                        <th>Class</th>
-                        <th>Reg Hours</th>
-                        <th>Reg Rate</th>
-                        <th>Amount</th>
-                        
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>John Doe</td>
-                        <td>JM</td>
-                        <td>30.00</td>
-                        <td>90.00</td>
-                        <td>1200.00</td>
-                        
-                      </tr>
-                      <tr>
-                        <th class="id_emp"></th>
-                        <th></th>
-                        <th>OT Hours</th>
-                        <th>OT Rate</th>
-                        <th>Amount</th>
-                        
-                      </tr>
-                    
-                    
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td>30.00</td>
-                        <td>90.00</td>
-                        <td>1800.00</td>
-                        
-                      </tr>
-
-                      <tr>
-                        <th class="id_emp"></th>
-                        <th></th>
-                        <th>DT Hours</th>
-                        <th>DT Rate</th>
-                        <th>Amount</th>
-                        
-                      </tr>
-                    
-                    
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td>30.00</td>
-                        <td>90.00</td>
-                        <td>1800.00</td>
-                        
-                      </tr>
-
-                    </tbody>
-    </table>
-
-    <table class="table table-bordered table-striped table-bottomless">
-                    <thead>
-                      <tr>
-                        <th class="id_emp">Labor</th>
-                        <th>Class</th>
-                        <th>Reg Hours</th>
-                        <th>Reg Rate</th>
-                        <th>Amount</th>
-                        
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Kevin Richard</td>
-                        <td>JM</td>
-                        <td>30.00</td>
-                        <td>90.00</td>
-                        <td>1200.00</td>
-                        
-                      </tr>
-                      <tr>
-                        <th class="id_emp"></th>
-                        <th></th>
-                        <th>OT Hours</th>
-                        <th>OT Rate</th>
-                        <th>Amount</th>
-                        
-                      </tr>
-                    
-                    
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td>30.00</td>
-                        <td>90.00</td>
-                        <td>1800.00</td>
-                        
-                      </tr>
-
-                      <tr>
-                        <th class="id_emp"></th>
-                        <th></th>
-                        <th>DT Hours</th>
-                        <th>DT Rate</th>
-                        <th>Amount</th>
-                        
-                      </tr>
-                    
-                    
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td>30.00</td>
-                        <td>90.00</td>
-                        <td>1800.00</td>
-                        
-                      </tr>
-
-                    </tbody>
-    </table>
-
-  </div>
-  <br>
-  <a class="remodal-cancel ls-red-btn btn" href="#">Close</a> <a class="remodal-confirm ls-light-green-btn btn" href="#">Edit This Report</a><a class="remodal-approve ls-blue-btn btn" href="#">Mark As Approved</a> </div>
-<!--modal ends--> 
 
 <!--Layout Script start --> 
-<script type="text/javascript" src="assets/js/color.js"></script> 
+
 <script type="text/javascript" src="assets/js/lib/jquery-1.11.min.js"></script> 
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script> 
 <script type="text/javascript" src="assets/js/multipleAccordion.js"></script> 
-<!--jqueryui for table start--> 
+ 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script> 
 <!--jqueryui for table end--> 
+
 
 <!--easing Library Script Start --> 
 <script src="assets/js/lib/jquery.easing.js"></script> 
 <!--easing Library Script End --> 
 
-<!--Nano Scroll Script Start --> 
-<script src="assets/js/jquery.nanoscroller.min.js"></script> 
-<!--Nano Scroll Script End --> 
 
-<!--switchery Script Start --> 
-<script src="assets/js/switchery.min.js"></script> 
-<!--switchery Script End --> 
+<!--Select & Tag demo start-->
+<script src="assets/js/pages/selectTag.js"></script>
+<!--Select & Tag demo end-->
+
+<!--selectize Library start-->
+<script src="assets/js/selectize.min.js"></script>
+<!--selectize Library End-->
 
 <!--bootstrap switch Button Script Start--> 
 <script src="assets/js/bootstrap-switch.js"></script> 
@@ -613,12 +577,6 @@
 <script type="text/javascript" src="assets/js/pages/layout.js"></script> 
 <!--Layout Script End --> 
 
-<!--Drag & Drop & Sort  table start--> 
-<script src="assets/js/tsort.js"></script> 
-<script src="assets/js/jquery.tablednd.js"></script> 
-<script src="assets/js/jquery.dragtable.js"></script> 
-<!--Drag & Drop & Sort table end--> 
-
 <!--Editable-table Start--> 
 <script src="assets/js/editable-table/jquery.dataTables.js"></script> 
 <script src="assets/js/editable-table/jquery.validate.js"></script> 
@@ -626,13 +584,19 @@
 <script src="assets/js/editable-table/jquery.dataTables.editable.js"></script> 
 <!--Editable-table Finish --> 
 
-<!--Demo table script start--> 
-<script src="assets/js/pages/table.js"></script> 
-<!--Demo table script end--> 
+<!--jqueryui for table start--> 
 
-<!-- Remodal Js Start--> 
-<script src="assets/js/jquery.remodal.js"></script> 
-<!-- Remodal Js Finished-->
+ <!--Form Wizard CSS Start-->
+    <script src="assets/js/jquery.smartWizard.js"></script>
+    <!--Form Wizard CSS End-->
+
+    <!--Demo Wizard Script Start-->
+    <script src="assets/js/pages/formWizard.js"></script>
+    <!--Demo Wizard Script End-->
+
+ 
+
+
 
 </body>
 </html>

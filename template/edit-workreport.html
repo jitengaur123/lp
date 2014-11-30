@@ -24,7 +24,7 @@
     "apple-touch-icon-precomposed" sizes="114x114"><!-- TODO: Add a favicon -->
     <link href="assets/images/ico/fab.ico" rel="shortcut icon">
 
-    <title>Amaha - Add New Workreport</title><!--Page loading plugin Start -->
+    <title>Amaha - Edit Workreport</title><!--Page loading plugin Start -->
     <link href="assets/css/plugins/pace.css" rel="stylesheet">
     <script src="assets/js/pace.min.js"></script><!--Page loading plugin End   -->
     <!-- Plugin Css Put Here -->
@@ -385,7 +385,7 @@
                         <div class="col-md-12">
                             <!--Top header start-->
 
-                            <h3 class="ls-top-header">Add New Work Report</h3>
+                            <h3 class="ls-top-header">Edit or Delete Work Report</h3>
                             <!--Top header end -->
                             <!--Top breadcrumb start -->
 
@@ -394,7 +394,7 @@
                                     <a class="fa fa-home" href="#"></a>
                                 </li>
 
-                                <li class="active">Add New Work Report</li>
+                                <li class="active">Edit or Delete Work Report</li>
                             </ol><!--Top breadcrumb start -->
                         </div>
                     </div><!-- Main Content Element  Start-->
@@ -405,7 +405,7 @@
                             <form class="ls_form"><!--form starts here-->
                             <div class="panel panel-default userform no-border">
                                 <div class="panel-heading ">
-                                    <h3 class="panel-title">Add New Work Report In This Section</h3>
+                                    <h3 class="panel-title">Edit or Delete Reports In This Section</h3>
                                 </div>
                                 <p class="margint15">You can create a new work report in this section by filling up the fields below. The fields with * are required & can not be left empty. For more information please refer to the documentation.<br/>If you are a journeyman the work reports will need the approval from project manager and will remain in pending status, if you are the admin then you can check the reports and change the status of report to available states.</p>
                                 
@@ -423,8 +423,8 @@
 
                                             <div class="form-group">
                                                     <label><i class="fa fa-user"></i> Client</label>
-                                                    <select id="select-client" class="demo-default" placeholder="Select Client...">
-                                                        <option value="">Select A Client...</option>
+                                                    <select id="select-client" class="demo-default" placeholder="Select Client..." value="CHAT'S">
+                                                       
                                                         <option value="AF">SI GROUP</option>
                                                         <option value="AX">CHAT'S</option>
                                                         <option value="AL">FPI MECH.</option>
@@ -434,8 +434,7 @@
 
                                             <div class="form-group">
                                                 <label><i class="fa fa-building"></i> Work Site</label>
-                                                    <select id="select-worksite" class="demo-default" placeholder="Select WorkSite...">
-                                                        <option value="">Select A Site...</option>
+                                                    <select id="select-worksite" class="demo-default" placeholder="Select WorkSite..." value="WORKSITE ONE">
                                                         <option value="AF">WORKSITE ONE</option>
                                                         <option value="AX">WORKSITE TWO</option>
                                                         <option value="AL">WORKSITE THREE</option>
@@ -447,7 +446,7 @@
                                                 <label><i class="fa fa-calendar"></i> Date</label>
                                                 <input class=
                                                 "form-control datePickerOnly"
-                                                type="text">
+                                                type="text" value="30/10/2014">
                                             </div>
 
                                         </div><!--form section 1 ends here-->
@@ -507,8 +506,8 @@
                                             <div id="entry1" class="clonedInput row"><!--clonedinput starts-->
                                                 <fieldset class="col-md-3 col-md-6"><!--entry 1-->
                                                     
-                                                    <select id="select-labor" class="demo-default" placeholder="Select Labor...">
-                                                        <option value="">Select Labor...</option>
+                                                    <select id="select-labor" class="demo-default" placeholder="Select Labor..." value="Andorra Andrea">
+                                                        
                                                             <option value="AF">Sudhir Yadav</option>
                                                             <option value="AX">Kunal Sukhija</option>
                                                             <option value="AL">Ivan Pavlov</option>
@@ -523,21 +522,21 @@
 
                                                 <fieldset class="col-md-3 col-md-6"><!--entry 2-->
                                                     
-                                                     <input class="form-control" placeholder="Enter Class" type="text">                                                    
+                                                     <input class="form-control" placeholder="Enter Class" type="text" value="FM">                                                    
                                                 </fieldset><!--entry 2 ends-->
 
                                                 <fieldset class="col-md-2 col-md-6"><!--entry 3-->
                                                     
-                                                     <input class="form-control" placeholder="Reg Hours" type="text">                                                    
+                                                     <input class="form-control" placeholder="Reg Hours" type="text" value="40">                                                    
                                                 </fieldset><!--entry 3 ends-->
 
                                                 <fieldset class="col-md-2 col-md-6"><!--entry 4-->
                                                     
-                                                     <input class="form-control" placeholder="Reg Rate" type="text">                                                    
+                                                     <input class="form-control" placeholder="Reg Rate" type="text" value="90">                                                    
                                                 </fieldset><!--entry 4 ends-->
 
                                                 <fieldset class="col-md-2 col-md-6"><!--entry 5-->
-                                                    <input class="form-control" placeholder="Amount" type="text">
+                                                    <input class="form-control" placeholder="Amount" type="text" value="360">
                                                 </fieldset><!--entry 5 ends-->
 
                                                 
@@ -546,15 +545,16 @@
                                                 </fieldset><!--entry 6 end-->
 
                                                 <fieldset class="col-md-2 col-md-6"><!--entry 7-->
-                                                    <input class="form-control" placeholder="OT Hours" type="text">
+                                                    <input class="form-control" placeholder="OT Hours" type="text" value="10">
                                                 </fieldset><!--entry 7 end-->
 
                                                 <fieldset class="col-md-2 col-md-6"><!--entry 7-->
-                                                    <input class="form-control" placeholder="OT Rate" type="text">
+                                                    <input class="form-control" placeholder="OT Rate" type="text"
+                                                    value="90">
                                                 </fieldset><!--entry 7 end-->
 
                                                 <fieldset class="col-md-2 col-md-6"><!--entry 8-->
-                                                    <input class="form-control" placeholder="Amount" type="text">
+                                                    <input class="form-control" placeholder="Amount" type="text" value="900">
                                                 </fieldset><!--entry 8 ends-->
                                                 <!--ot details end-->
 
@@ -563,22 +563,22 @@
                                                 </fieldset><!--entry 6 end-->
 
                                                 <fieldset class="col-md-2 col-md-6"><!--entry 7-->
-                                                    <input class="form-control" placeholder="DT Hours" type="text">
+                                                    <input class="form-control" placeholder="DT Hours" type="text" value="0">
                                                 </fieldset><!--entry 7 end-->
 
                                                 <fieldset class="col-md-2 col-md-6"><!--entry 7-->
-                                                    <input class="form-control" placeholder="DT Rate" type="text">
+                                                    <input class="form-control" placeholder="DT Rate" type="text" value="0">
                                                 </fieldset><!--entry 7 end-->
 
                                                 <fieldset class="col-md-2 col-md-6"><!--entry 8-->
-                                                    <input class="form-control" placeholder="Amount" type="text">
+                                                    <input class="form-control" placeholder="Amount" type="text" value="0">
                                                 </fieldset><!--entry 8 ends-->
                                                 <!--dt details end-->
                                                 <fieldset class="col-md-10">
                                                 </fieldset>
                                                 <fieldset class="col-md-2">
                                                     <label><i class="fa fa-plus"></i> Total Labor</label>
-                                                    <input class="form-control auto" placeholder="Amount" type="text" value="1200.00" disabled>
+                                                    <input class="form-control auto" placeholder="Amount" type="text" value="1260.00" disabled>
                                                     <!--total labor will be calculated autmatically by multiplying reg, ot and dt hours with rate-->
                                                 </fieldset>
 
@@ -604,7 +604,9 @@
                             <!--additional comments-->
                             <div class="col-md-12 message">
                                 <p>additional comments</p>
-                                <textarea class="form-control autogrow" placeholder="Type your comments & additional notes here....."></textarea>
+                                <textarea class="form-control autogrow" placeholder="Type your comments & additional notes here.....">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                            </textarea>
                             </div>
                             <!--additiona comments end-->
 
@@ -612,11 +614,12 @@
                            
                             <div class="row marginb50">
                             <div class="col-md-6 total_all">
-                                                <h3>Grand Total : $<span>1200</span></h3>
+                                                <h3>Grand Total : $<span>1260</span></h3>
                                             </div>
 
                              <div class="col-md-6 total_all">
-                            <input type="submit" value="Submit Report" class="btn btn-primary">
+                            <input type="submit" value="Update Report" class="btn btn-primary">
+                            <input type="submit" value="Delete Report" class="btn btn-danger">
                             </div>
                             </div>
                             </form><!--form ends here-->
