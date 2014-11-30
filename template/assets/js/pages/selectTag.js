@@ -25,6 +25,7 @@ jQuery(document).ready(function($) {
     select_client_call();
     select_worksite_call();
     select_labor_call();
+    select_client2_call();
 
 });
 var eventHandler = function (name) {
@@ -80,6 +81,21 @@ function select_client_call(){
         onInitialize: eventHandler('onInitialize')
     });
 }
+
+function select_client2_call(){
+    var $select = $('#select-client2').selectize({
+        create: false,
+        onChange: eventHandler('onChange'),
+        onItemAdd: eventHandler('onItemAdd'),
+        onItemRemove: eventHandler('onItemRemove'),
+        onOptionAdd: eventHandler('onOptionAdd'),
+        onOptionRemove: eventHandler('onOptionRemove'),
+        onDropdownOpen: eventHandler('onDropdownOpen'),
+        onDropdownClose: eventHandler('onDropdownClose'),
+        onInitialize: eventHandler('onInitialize')
+    });
+}
+
 
 function select_labor_call(){
     var $select = $('#select-labor').selectize({
