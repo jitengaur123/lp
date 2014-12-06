@@ -28,7 +28,7 @@
      <script type="text/javascript">
 
         var ae = window.ae || {};
-        ae.baseUrl = '{{ URL::asset('/') }}';
+        ae.baseUrl = '{{ URL::to('/') }}/';
         
     </script>
     @yield('head')

@@ -62,6 +62,9 @@ function allRoutes(){
 
 	//workreport routes
 	workReportRoutes();
+
+	//magnet board
+	magnetBoardRoutes();
 }
 
 function userRoutes(){
@@ -105,7 +108,9 @@ function workSiteRoutes(){
 	Route::post('/worksite/updatesite/{id}', 'worksiteController@updateSite')->where('id', '[0-9]+');
 
 	Route::get('/editdeletesite', 'worksiteController@editDeleteWorkSite');
-	Route::post('/editdeletesite', 'worksiteController@postEditDeleteWorkSite');	
+	Route::post('/editdeletesite', 'worksiteController@postEditDeleteWorkSite');
+
+	Route::post('/client_worksite', 'worksiteController@clientWorksite');	
 }
 
 
@@ -119,6 +124,19 @@ function workReportRoutes(){
 	Route::get('/editdeletereport', 'workreportController@editDeleteWorkSite');
 	Route::post('/editdeletereport', 'workreportController@postEditDeleteWorkSite');	
 }
+
+
+function magnetBoardRoutes(){
+
+	//Client section 
+	Route::resource('/magnet', 'magnetboardController');
+	Route::get('/magnet/delete/{id}', 'magnetboardController@delete')->where('id', '[0-9]+');
+	Route::post('/magnet/updatereport/{id}', 'magnetboardController@update')->where('id', '[0-9]+');
+
+	Route::get('/editdeletemagnet', 'magnetboardController@editDelete');
+	Route::post('/editdeletemagnet', 'magnetboardController@postEditDelete');	
+}
+
 
 /*Route::group(array('before'=>'auth|complete', 'prefix' => Config::get('constants.PREFIX')), function(){
 

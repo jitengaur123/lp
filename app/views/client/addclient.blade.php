@@ -29,7 +29,6 @@
               <div class="panel-body client">
                 <p><i class="fa fa-users"></i> You can add new client in this section in order to create a work site. Please note that you will not get the select option in worksite if you have not added the client first. Please refer to documentation for reference</p>
 
-                <h5 class="emp_code">Generated Client Id : AMA-454-324</h5>
               <form class="ls_form" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/client') }}">
                 <!--user profile form ends here--> 
                 <!--form section 1 starts here-->

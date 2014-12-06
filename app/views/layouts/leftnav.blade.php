@@ -54,7 +54,7 @@
         <li><a @if ($segment == "editdeleteuser") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeleteuser') }}">Edit/Delete User</a></li>
     </ul>
 </li>
-
+@if(Auth::user()->role != 3 && Auth::user()->role != 4) 
 <li @if ($segment == 'client' || $segment == "editdeleteclient") class="active" @endif>
     <a href="#">
         <i class="fa fa-group"></i> <span>Client</span> <!-- <span class="badge badge-red">58</span> --></a>
@@ -78,6 +78,20 @@
     </ul>
 </li>
 
+<li @if ($segment == 'magnet' || $segment == "editdeletemagnet") class="active" @endif>
+    <a href="#">
+       <i class="fa fa-magnet"></i>
+        <span>Magnet Board <!-- <span class="badge badge-red">15</span> --></span>
+    </a>
+    <ul>
+        <li><a @if ($segment == 'magnet' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnet') }}">View Board</a></li>
+        <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnet/create') }}">Add New Board</a></li>
+    </ul>
+</li>
+@endif
+
+
+
 <li @if ($segment == 'workreport' || $segment == "editdeletereport") class="active" @endif>
     <a href="#">
         <i class="fa fa-building"></i>
@@ -89,6 +103,7 @@
         <li><a @if ($segment == "editdeletereport") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletereport') }}">Edit/Delete Report</a></li>
     </ul>
 </li>
+
 <li>
     <a href="#">
         <i class="fa fa-file"></i>
@@ -114,11 +129,8 @@
         <i class="fa fa-file-text"></i> <span>Forms</span>
     </a>
 </li>
-<li>
-    <a href="#">
-        <i class="fa fa-magnet"></i> <span>Magnet Board</span>
-    </a>
-</li>
+
+
 @endif
 
 <li>

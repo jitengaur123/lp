@@ -1,19 +1,17 @@
 @extends('layouts.all') 
 
 @section('content')
- <div id="main-content">
-      <div class="container-fluid">
-        <div class="row">
+ <div class="row">
           <div class="col-md-12"> 
             <!--Top header start-->
             
-            <h3 class="ls-top-header">View All Users</h3>
+            <h3 class="ls-top-header">View All  Magnet Board</h3>
             <!--Top header end --> 
             <!--Top breadcrumb start -->
             
             <ol class="breadcrumb">
               <li> <a class="fa fa-home" href="#"></a> </li>
-              <li class="active">View All Users</li>
+              <li class="active">View All  Magnet Board</li>
             </ol>
             <!--Top breadcrumb start --> 
           </div>
@@ -24,42 +22,38 @@
           <div class="col-md-12">
             <div class="panel panel-default userform no-border">
               <div class="panel-heading">
-                <h3 class="panel-title">View All Users & Status</h3>
+                <h3 class="panel-title">View All Magnet Board</h3>
               </div>
-              <div class="panel-body">
-               @include('notification') 
+              <div class="panel-body"> 
+                @include('notification') 
                 <!--Table Wrapper Start-->
                 <div class="ls-editable-table table-responsive ls-table">
-
                   <table class="table table-bordered table-striped table-bottomless" id="ls-editable-table">
                     <thead>
                       <tr>
-                        <th class="id_emp">Employee Id</th>
-                        <th>User Name</th>
-                        <th>Full Name</th>
-                        <th>Job Title</th>
-                        <th>Created On</th>
+                        <th>Started At</th>
+                        <th>Client Name</th>
+                        <th>WorkSite Name</th>
                         <th class="text-center">View/Edit/Delete</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach($users as $user)
+                       @foreach($magnetboard as $row)
                       <tr>
-                        <td>{{ $user['user_auth_id'] }}</td>
-                        <td>{{ $user['user_name'] }}</td>
-                        <td>{{ $user['first_name'] }} {{ $user['last_name'] }}</td>
-                        <td>{{ $user['userrole']['title'] }}</td>
-                        <td>{{ date('d/m/y', strtotime($user['created_at'])) }}</td>
-                        <td class="text-center"><a data-userid="{{ $user['id'] }}" class="viewUserModel" href="{{ URL::to(Config::get('constants.PREFIX') . '/viewuser/'.$user['id']) }}"><!-- #reModal -->
-                          <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
-                          </a> <a href="{{ URL::to(Config::get('constants.PREFIX') . '/edituser/'.$user['id']) }}">
-                          <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button>
-                          </a> <a onclick="return confirm('Are you sure want to delete?');" href="{{ URL::to(Config::get('constants.PREFIX') . '/delete_user/'.$user['id']) }}">
+                        <td>{{ date('d/m/Y',strtotime($row['started_at'])) }}</td>
+                        <td>{{ $row['client']['company_name'] }}</td>
+                        <td>{{ $row['worksite']['job_name'] }}</td>
+                        <td class="text-center">
+                          <a data-userid="{{ $row['id'] }}" class="viewsiteModel" href="{{ URL::to(Config::get('constants.PREFIX') . '/magnet/'.$row['id']) }}"><!-- #reModal -->
+                          <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button> </a> 
+                          <a href="{{ URL::to(Config::get('constants.PREFIX') . '/magnet/'.$row['id']) }}/edit">
+                          <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button> </a>
+                           <a onclick="return confirm('Are you sure want to delete?');" href="{{ URL::to(Config::get('constants.PREFIX') . '/magnet/delete/'.$row['id']) }}">
                           <button class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
-                          </a></td>
+                          </a>
+                        </td>
                       </tr>
                       @endforeach
-
                     </tbody>
                   </table>
                 </div>
@@ -68,28 +62,12 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- Main Content Element  End--> 
-    </div>
-
-
-
-    <!--modal start-->
-<div class="remodal" data-remodal-id="reModal">
-  <h3>View User Profile</h3>
-  <div class="row">
-    <div class="col-md-12 viewProfileData">
-      Loading...
-    </div>
-  </div>
-  <br>
-  <a class="remodal-cancel ls-red-btn btn" href="#">Close</a> <a class="remodal-confirm ls-light-green-btn btn" href="#">Edit User Profile</a> </div>
 <!--modal ends--> 
 @stop
 
 @section('head')
 
-<title>Amaha - User List</title>
+<title>Amaha - Magnet List</title>
 <!--Page loading plugin Start -->
 
 

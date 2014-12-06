@@ -42,7 +42,7 @@
                     <tbody>
                        @foreach($worksites as $site)
                       <tr>
-                        <td>{{ $site['id'] }}</td>
+                        <td>{{ $site['work_auto_id'] }}</td>
                         <td>{{ $site['job_name'] }}</td>
                         <td>{{ $site['client']['company_name'] }}</td>
                         <td>{{ $site['postal_code'] }}</td>

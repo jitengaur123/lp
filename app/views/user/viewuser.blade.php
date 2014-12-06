@@ -42,7 +42,7 @@
              ?>
             <p>Position/Job Title : {{ $title }}</p>
             <p>User Role : {{ $userRole }}</p>
-            <p>Employee Id : {{ $data['id'] }}</p>
+            <p>Employee Id : {{ $data['user_auth_id'] }}</p>
             <h3>Address</h3>
             <address>
                 <i class="fa fa-map-marker"></i>

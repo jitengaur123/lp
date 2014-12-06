@@ -42,7 +42,7 @@
                     <tbody>
                        @foreach($clients as $client)
                       <tr>
-                        <td>{{ $client['id'] }}</td>
+                        <td>{{ $client['client_auto_id'] }}</td>
                         <td>{{ $client['company_name'] }}</td>
                         <td>{{ $client['first_name'] }} {{ $client['last_name'] }}</td>
                         <td>{{ $client['phone_office'] }}</td>

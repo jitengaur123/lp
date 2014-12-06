@@ -71,7 +71,7 @@ class clientController extends \BaseController {
 		try{
 
 			$input = Input::all();
-
+			$input['client_auto_id'] = 'AMA-CL-'.uniqid();
 			Client::insert($input);
 
 			return Redirect::to( $this->prefix . '/client/create' )->withStatus('Client has been successfully added.');

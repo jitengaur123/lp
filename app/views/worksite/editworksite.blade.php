@@ -35,7 +35,7 @@
 
                 <p>Please add the appropriate client first to have the client populate automatically in the client section.</p>
 
-                <h5 class="emp_code">Generated Site Id : AMA-454-324</h5>
+                <h5 class="emp_code">Generated Site Id : {{ $worksite['work_auto_id'] }}</h5>
 
                @include('notification')
                 <form class="ls_form" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/worksite/updatesite/'.$worksite['id']) }}">

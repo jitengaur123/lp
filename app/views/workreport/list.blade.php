@@ -43,7 +43,7 @@
                     <tbody>
                        @foreach($reports as $report)
                       <tr>
-                        <td>{{ $report['id'] }}</td>
+                        <td>{{ $report['job_number'] }}</td>
                         <td>{{ $report['client']['company_name'] }}</td>
                         <td>{{ $report['worksite']['job_name'] }}</td>
                         <td>{{ $report['submit_by']['user_name'] }}</td>

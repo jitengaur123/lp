@@ -71,7 +71,7 @@ class workreportController extends \BaseController {
 
 
 			$data = [
-				'job_number'	=> 1,
+				'job_number'	=> $input['job_number'],
 				'client_id' 	=> $input['client'],
 				'site_id' 		=> $input['site'],
 				'date_create' 	=> date('Y-m-d H:i:s', strtotime($input['date_create'])),
@@ -183,7 +183,6 @@ class workreportController extends \BaseController {
 
 
 			$data = [
-				'job_number'	=> 1,
 				'client_id' 	=> $input['client'],
 				'site_id' 		=> $input['site'],
 				'date_create' 	=> date('Y-m-d H:i:s', strtotime($input['date_create'])),
@@ -261,9 +260,9 @@ class workreportController extends \BaseController {
 	public function editDeleteWorkSite(){
 
 		$data = [
-			'workreport' => Workreport::all()
+			'workreports' => Workreport::all()
 		];
-		return View::make('workreport.editdelete`', $data);
+		return View::make('workreport.editdelete', $data);
 	}
 
 	

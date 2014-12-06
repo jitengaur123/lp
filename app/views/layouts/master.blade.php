@@ -18,37 +18,37 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
     <!-- iOS webapp icons -->
-    <link rel="apple-touch-icon-precomposed" href="assets/images/ios/fickle-logo-72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/ios/fickle-logo-72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/ios/fickle-logo-114.png" />
+    <link rel="apple-touch-icon-precomposed" href="{{ URL::asset('assets/images/ios/fickle-logo-72.png') }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ URL::asset('assets/images/ios/fickle-logo-72.png') }}" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ URL::asset('assets/images/ios/fickle-logo-114.png') }}" />
 
     <!-- TODO: Add a favicon -->
-    <link rel="shortcut icon" href="assets/images/ico/fab.ico">
+    <link rel="shortcut icon" href="{{ URL::asset('assets/images/ico/fab.ico') }}">
 
     <title>Amaha Electricals - Login</title>
 
     <!--Page loading plugin Start -->
-    <link rel="stylesheet" href="assets/css/plugins/pace.css">
-    <script src="assets/js/pace.min.js"></script>
-    <script src="assets/js/common.js"></script>
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/pace.css') }}">
+    <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script>
+    <script src="{{ URL::asset('assets/js/common.js') }}"></script>
     <!--Page loading plugin End   -->
 
     <!-- Plugin Css Put Here -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/plugins/bootstrap-switch.min.css">
-    <link rel="stylesheet" href="assets/css/plugins/ladda-themeless.min.css">
+    <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/bootstrap-switch.min.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/ladda-themeless.min.css') }}">
 
-    <link href="assets/css/plugins/humane_themes/bigbox.css" rel="stylesheet">
-    <link href="assets/css/plugins/humane_themes/libnotify.css" rel="stylesheet">
-    <link href="assets/css/plugins/humane_themes/jackedup.css" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/plugins/humane_themes/bigbox.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/plugins/humane_themes/libnotify.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/plugins/humane_themes/jackedup.css') }}" rel="stylesheet">
 
     <!-- Plugin Css End -->
     <!-- Custom styles Style -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
     <!-- Custom styles Style End-->
 
     <!-- Responsive Style For-->
-    <link href="assets/css/responsive.css" rel="stylesheet">
+    <link href="{{ URL::asset('assets/css/responsive.css') }}" rel="stylesheet">
     <!-- Responsive Style For-->
 
     <!-- Custom styles for this template -->
@@ -63,7 +63,7 @@
     <script type="text/javascript">
 
         var ae = window.ae || {};
-        ae.baseUrl = '{{ URL::asset('/') }}';
+        ae.baseUrl = '{{ URL::to('/') }}/';
         
     </script>
 </head>
@@ -71,14 +71,14 @@
 @yield('content');
     
 
-<script src="assets/js/lib/jquery-2.1.1.min.js"></script>
-<script src="assets/js/lib/jquery.easing.js"></script>
-<script src="assets/js/bootstrap-switch.min.js"></script>
+<script src="{{ URL::asset('assets/js/lib/jquery-2.1.1.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/lib/jquery.easing.js') }}"></script>
+<script src="{{ URL::asset('assets/js/bootstrap-switch.min.js') }}"></script>
 <!--Script for notification start-->
-<script src="assets/js/loader/spin.js"></script>
-<script src="assets/js/loader/ladda.js"></script>
-<script src="assets/js/humane.min.js"></script>
+<script src="{{ URL::asset('assets/js/loader/spin.js') }}"></script>
+<script src="{{ URL::asset('assets/js/loader/ladda.js') }}"></script>
+<script src="{{ URL::asset('assets/js/humane.min.js') }}"></script>
 <!--Script for notification end-->
 
-<script src="assets/js/pages/login.js"></script>
+<script src="{{ URL::asset('assets/js/pages/login.js') }}"></script>
 </html>

@@ -85,11 +85,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			$data['date_of_discharge'] = $input['date_of_discharge'];
 
 		
-		if(isset($input['password']))
+		if(isset($input['password']) && $input['password'] != "")
 			$data['password'] = Hash::make($input['password']);
 
 		if(isset($input['dob']))
 			$data['dob'] = date('m-d-Y', strtotime($input['dob']));
+
+		$data['is_complete'] = 1;
 
 		if (Input::hasFile('profile_pic'))
 		{

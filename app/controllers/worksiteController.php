@@ -74,6 +74,7 @@ class worksiteController extends \BaseController {
 		try{
 
 			$input = Input::all();
+			$input['work_auto_id'] = "AMA-WS-".uniqid();
 			$input['started_at'] = date('Y-m-d H:i:s' , strtotime($input['started_at']));
 			Worksite::insert($input);
 
@@ -208,5 +209,14 @@ class worksiteController extends \BaseController {
 		return Redirect::to( $this->prefix . '/editdeletesite' )->withStatus('WorkSite has been successfully deleted.');
 	}
 
+
+	public function clientWorksite(){
+		$id = Input::get('id');
+		if(empty($id)) return Response::json(['result'=>false]);
+
+		$data = Worksite::where('client_id' , '=', $id)->get()->toArray();
+
+		return Response::json(['result'=>true, 'data'=>$data]);
+	}
 
 }

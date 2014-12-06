@@ -2,6 +2,8 @@ $(function(){
 	$('.roleClass').on('change', parentUserChange);
 	//$('.viewUserModel').on('click', viewUser);
 
+	$('#client').on('change', changeWorksite);
+
 	  $('.editSelected').on('click', function(e){
 	  		e.preventDefault();
             var $id = $('.id').val();
@@ -13,7 +15,7 @@ $(function(){
             window.location = $('.editUrl').val()+'/'+$id;
         });
 
-	  $('.editSelectedData').on('click', function(e){
+	  	$('.editSelectedData').on('click', function(e){
 	  		e.preventDefault();
             var $id = $('.id').val();
             if($id == ""){
@@ -24,6 +26,27 @@ $(function(){
             window.location = $('.editUrl').val()+'/'+$id+'/edit';
         });
 });
+
+
+function changeWorksite(e){
+	e.preventDefault();
+
+	$('.showCompanyName').text($('option:selected', this).text());
+
+	var url = ae.baseUrl + 'administrator/client_worksite';
+	$.post(url, {'id':$(this).val()}, function(resultData){
+		var $data = '<option value="">Select A Site...</option>';
+		if(resultData.result){
+			$.each(resultData.data, function(index){
+				$data += '<option data="'+resultData.data[index]+'" value="'+this.id+'">'+this.job_name+'</option>';
+			});
+		}
+		$('select#worksite').html($data);
+	},'json');
+
+}
+
+
 
 function parentUserChange(){
 	var $role = $(this).val();

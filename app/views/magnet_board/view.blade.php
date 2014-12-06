@@ -18,7 +18,6 @@
         <p>You can view your worksite in this section, please use the edit/update button to update the worksite details, we prefer the users to please keep their profile updated in order to have the most accurate client in our clientbases & help the management to keep the records up to date. Thank you.</p><br/>
         <div class="col-md-4 details_left">
             <h2>{{ $worksite['job_name'] }}</h2>
-            <p>Site Id : {{ $worksite['work_auto_id'] }}</p>
             <p>Started at : {{ date('d/m/Y', strtotime($worksite['started_at'])) }}</p>
             <h3>Address</h3>
             <address>

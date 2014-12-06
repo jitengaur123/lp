@@ -2,7 +2,7 @@
 <div class="col-md-6 details_left">
 <p>Position/Job Title : {{ $user['userrole']['title'] }}</p>
 <p>User Role : {{ $user['userrole']['name'] }}</p>
-<p>Employee Id : {{ $user['id'] }}</p>
+<p>Employee Id : {{ $user['user_auth_id'] }}</p>
 <h2>Address</h2>
 <address>
 {{ $user['address'] }}, {{ $user['city'] }}<br>

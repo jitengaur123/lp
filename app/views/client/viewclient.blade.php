@@ -20,6 +20,8 @@
         </div> -->
         <div class="col-md-4 details_left">
             <h2>{{ $client['first_name'] }} {{ $client['last_name'] }}</h2>
+            
+            <p>Client Id : {{ $client['client_auto_id'] }}</p>
             <p>Company Name : {{ $client['company_name'] }}</p>
             <h3>Address</h3>
             <address>

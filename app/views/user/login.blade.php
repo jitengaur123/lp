@@ -11,7 +11,7 @@
                     <div class="login-content">
                         <div class="login-user-icon">
                             <!--<i class="glyphicon glyphicon-user"></i>-->
-                            <img src="assets/images/logo.png">
+                            <img src="{{ URL::asset('assets/images/logo.png') }}">
 
                         </div>
                         <h3>Identify Yourself</h3>

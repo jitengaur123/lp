@@ -234,7 +234,7 @@ class userController extends \BaseController {
 			unset($input['password_confirmation']);
 
 			$mailData = $input;
-
+			$input['user_auth_id'] = 'AMA-EM-'.uniqid();
 			$input['password'] = Hash::make($input['password']);
 			User::insert($input);
 
