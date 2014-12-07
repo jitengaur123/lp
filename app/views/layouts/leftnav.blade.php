@@ -88,9 +88,6 @@
         <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnet/create') }}">Add New Board</a></li>
     </ul>
 </li>
-@endif
-
-
 
 <li @if ($segment == 'workreport' || $segment == "editdeletereport") class="active" @endif>
     <a href="#">
@@ -103,6 +100,11 @@
         <li><a @if ($segment == "editdeletereport") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletereport') }}">Edit/Delete Report</a></li>
     </ul>
 </li>
+@endif
+
+
+
+
 
 <li>
     <a href="#">

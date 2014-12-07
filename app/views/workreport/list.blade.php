@@ -46,7 +46,7 @@
                         <td>{{ $report['job_number'] }}</td>
                         <td>{{ $report['client']['company_name'] }}</td>
                         <td>{{ $report['worksite']['job_name'] }}</td>
-                        <td>{{ $report['submit_by']['user_name'] }}</td>
+                        <td>{{ $report['submitby']['user_name'] }}</td>
                         <td>{{ date('d/m/Y', strtotime($report['date_create'])) }}</td>
                         <td>@if($report['status'] == 0) Pending @else Approved @endif</td>
                         <td class="text-center">

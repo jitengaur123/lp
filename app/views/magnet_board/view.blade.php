@@ -4,47 +4,54 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h3 class="ls-top-header">View Worksite</h3>
+        <h3 class="ls-top-header">View Magnet Board</h3>
         <ol class="breadcrumb">
             <li><a href="{{ URL::to($prefix.'/dashboard') }}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{{ URL::to($prefix.'/worksite') }}">Worksite</a></li>
+            <li><a href="{{ URL::to($prefix.'/magnet') }}">Magnet Board</a></li>
         </ol>
     </div>
 </div>
-<?php $worksite = $worksite[0]; ?>
+<?php $Magnetboard = $Magnetboard[0]; ?>
 <div class="row">
     <div class="col-md-12">
 
-        <p>You can view your worksite in this section, please use the edit/update button to update the worksite details, we prefer the users to please keep their profile updated in order to have the most accurate client in our clientbases & help the management to keep the records up to date. Thank you.</p><br/>
+        <p>You can view your magnet in this section, please use the edit/update button to update the magnet details, we prefer the users to please keep their profile updated in order to have the most accurate client in our clientbases & help the management to keep the records up to date. Thank you.</p><br/>
         <div class="col-md-4 details_left">
-            <h2>{{ $worksite['job_name'] }}</h2>
-            <p>Started at : {{ date('d/m/Y', strtotime($worksite['started_at'])) }}</p>
-            <h3>Address</h3>
-            <address>
-                <i class="fa fa-map-marker"></i>
-                {{ $worksite['address'] }}, {{ $worksite['city'] }}<br>
-                {{ $worksite['state'] }}, {{ $worksite['country'] }} {{ $worksite['postal_code'] }} <br>               
-            </address>
-
-            <p>Worksite Created On : <?php echo date('d/m/Y', strtotime($worksite['created_at'])); ?></p>
-            <a href="{{ URL::to($prefix.'/worksite/'.$worksite['id'].'/edit') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Worksite</a>
+            <p>Started at : {{ date('d/m/Y', strtotime($Magnetboard['started_at'])) }}</p>
+            <h2>Client: {{ $Magnetboard['client']['company_name'] }} </h2>
+            <p>Work Site: {{ $Magnetboard['worksite']['job_name'] }}</p>
+            <a href="{{ URL::to($prefix.'/magnet/'.$Magnetboard['id'].'/edit') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Magnet Board</a>
 
         </div>
-        <div class="col-md-5 ls-user-details">
-            <h2>Client: {{ $worksite['client']['company_name'] }} </h2>
-            <p>Description: {{ $worksite['description'] }}</p>
-            <p>OCIP : {{ $worksite['ocip'] }}</p>
-            <p>PM : {{ $worksite['pm'] }}</p>
-            <p>Billing Type : {{ $worksite['billing_type'] }}</p>
-            <p>CERT PR : {{ $worksite['cret_pr'] }}</p>
-          
-           
-            <div class="ls-user-links">
-            
-            </div>
+        <div class="clear"></div>
+         <div class="ls-editable-table table-responsive ls-table">
 
-        </div>
-        
+                  <table class="table table-bordered table-striped table-bottomless" id="ls-editable-table">
+                    <thead>
+                      <tr>
+                        <th class="id_emp">Employee Id</th>
+                        <th>User Name</th>
+                        <th>Full Name</th>
+                        <th>Job Title</th>
+                        <th>Created On</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($MagnetboardUser as $user)
+                      <tr>
+                        <td>{{ $user['users']['user_auth_id'] }}</td>
+                        <td>{{ $user['users']['user_name'] }}</td>
+                        <td>{{ $user['users']['first_name'] }} {{ $user['users']['last_name'] }}</td>
+                        <td>{{ $user['users']['userrole']['title'] }}</td>
+                        <td>{{ date('d/m/y', strtotime($user['users']['created_at'])) }}</td>
+                      
+                      </tr>
+                      @endforeach
+
+                    </tbody>
+                  </table>
+                </div>
+      
     </div>
 </div>
 @stop
@@ -52,7 +59,7 @@
 
 @section('head')
 
-<title>Amaha - View Worksite</title>
+<title>Amaha - View Magnet Board</title>
 <!--Page loading plugin Start -->
     <link href="{{ URL::asset('assets/css/plugins/pace.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script><!--Page loading plugin End   -->

@@ -16,7 +16,7 @@ class Workreport extends Eloquent {
 	 *
 	 * @var array
 	 */
-	protected $fiilable = array('id','job_number', 'client_id', 'site_id', 'date', 'description');
+	protected $fiilable = array('id','job_number', 'client_id', 'site_id', 'date_create', 'description', 'submit_by');
 
 	public function timesheet(){
 
@@ -33,7 +33,7 @@ class Workreport extends Eloquent {
 		return $this->belongsTo('Worksite', 'site_id');
 	}
 
-	public function submit_by(){
+	public function submitby(){
 
 		return $this->belongsTo('User', 'submit_by');
 	}

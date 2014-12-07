@@ -10,17 +10,19 @@ class MagnetboardUser extends Eloquent {
 	 */
 	protected $table = 'magnet_board_user';
 
+
+
 	
 	/**
 	 * The attributes from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $fiilable = array('id','user_id', 'magnet_board_id');
+	protected $fiilable = array('id','user_id', 'magnetboard_id');
 
 	
 
 	public function users(){
-		return $this->belongsTo('Users','user_id');
+		return $this->belongsTo('User','user_id');
 	}
 }

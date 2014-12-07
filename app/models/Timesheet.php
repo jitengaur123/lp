@@ -23,5 +23,9 @@ class Timesheet extends Eloquent {
 		return $this->belongsTo('Client');
 	}
 
+	public function labor(){
+		return $this->belongsTo('User', 'labour_id');
+	}
+
 
 }

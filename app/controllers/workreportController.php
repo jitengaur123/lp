@@ -16,7 +16,7 @@ class workreportController extends \BaseController {
 	public function index()
 	{
 		
-		$reports = Workreport::with('client')->with('worksite')->with('submit_by')->get();
+		$reports = Workreport::with('client')->with('worksite')->with('submitby')->get();
 		$data = [
 			'reports' => $reports
 		];
@@ -35,6 +35,7 @@ class workreportController extends \BaseController {
 		//
 		$clients = Client::all();
 		$worksites = Worksite::all();
+
 		$labours = User::where('role', '=', 4)->get();
 		$data = [
 			'clients' => $clients,
@@ -118,11 +119,23 @@ class workreportController extends \BaseController {
 	public function show($id)
 	{
 		//
-		$reports = Workreport::whereId($id)->with('timesheet')->with('client')->with('worksite')->with('submit_by')->get();
+		$reports = Workreport::whereId($id)->with('client')->with('worksite')->with('submitby')->get();
+
+		$timesheet = Timesheet::where('workreport_id', '=', $id)->with('labor')->get();
+		$total =0;
+		foreach($timesheet as $row){
+			$reg_amount = $row['reg_hour']*$row['reg_rate'];
+			$ot_amount = $row['ot_hour']*$row['ot_rate'];
+			$dt_amount = $row['dt_hour']*$row['dt_rate'];
+			$total += $reg_amount+$ot_amount+$dt_amount;
+		}
 
 		$data = [
-			'report' => $reports[0]
+			'report' => $reports[0],
+			'timesheet' => $timesheet,
+			'total'     => $total
 		];
+		
 		return View::make('workreport.view', $data);
 
 	}
@@ -162,7 +175,7 @@ class workreportController extends \BaseController {
 	 * @param  int  
 	 * @return Response
 	 */
-	public function updateSite($workreport_id){
+	public function updateReport($workreport_id){
 
 		//
 		$rules = [
@@ -188,13 +201,15 @@ class workreportController extends \BaseController {
 				'date_create' 	=> date('Y-m-d H:i:s', strtotime($input['date_create'])),
 				'description'	=> $input['description'],
 				'submit_by'		=> Auth::user()->id
-			]; 
-			Workreport::find($workreport_id)->update($data);
-			$id = DB::getPdo()->lastInsertId();
+			];
+			
+			Workreport::where('id','=',$workreport_id)->update($data);
+
 			$i =0;
+			$updatetimesheet = $timesheet = [];
 			foreach($input['labour_id'] as $labour_id){
 				if($input['time_sheet_id'] != ""){
-					$updatetimesheet[$input['time_sheet_id']] = [
+					$updatetimesheet[$input['time_sheet_id'][$i]] = [
 						'labour_id' 		=> $labour_id,
 						'class' 			=> $input['class_name'][$i],
 						'reg_hour' 			=> $input['reg_hour'][$i],
@@ -214,24 +229,25 @@ class workreportController extends \BaseController {
 						'ot_rate' 			=> $input['ot_rate'][$i],
 						'dt_hour' 			=> $input['dt_hour'][$i],
 						'dt_rate' 			=> $input['dt_rate'][$i],
-						'workreport_id'	=> $workreport_id
+						'workreport_id'		=> $workreport_id
 					];
 				}
 				
 				$i++;
 			}
+
 			if(!empty($timesheet)){
 				Timesheet::insert($timesheet); 	
 			}
 
 			if(!empty($updatetimesheet)){
 				foreach ($updatetimesheet as $time_id => $update) {
-					Timesheet::find($time_id)->update($update);
+					Timesheet::where('id','=', $time_id)->update($update);
 				}
 			}
 			
 
-			return Redirect::to( $this->prefix . '/workreport'.$workreport_id.'/edit')->withStatus('Work Report has been successfully updated.');
+			return Redirect::to( $this->prefix . '/workreport/'.$workreport_id.'/edit')->withStatus('Work Report has been successfully updated.');
 
 		}
 		catch(Exception $e){
@@ -273,8 +289,42 @@ class workreportController extends \BaseController {
 
 		workreport::find($id)->delete();;
 
-		return Redirect::to( $this->prefix . '/editdeletereport' )->withStatus('WorkSite has been successfully deleted.');
+		return Redirect::to( $this->prefix . '/editdeletereport' )->withStatus('Work Report has been successfully deleted.');
 	}
 
 
+	public function getLabors(){
+
+		$client_id = Input::get('client_id');
+		$worksite_id = Input::get('worksite_id');
+		$started_at = Input::get('started_at');
+
+		$labors = Magnetboard::where('client_id','=', $client_id)->where('worksite_id','=',$worksite_id)->select('id')->get()->toArray();
+
+		if(!empty($labors)) {
+			$labour_data = MagnetboardUser::where('Magnetboard_id','=',$labors[0]['id'])->with('users')->get()->toArray();
+			$labours = [];
+			foreach($labour_data as $row){
+				$labours[] = $row['users'];
+			}
+		}else{
+			$labours = User::where('role', '=', 4)->get()->toArray();
+		}
+			
+
+		return Response::json(['result'=>true, 'data'=> $labours]);
+	}
+
+	public function approve($id){
+
+		if(empty($id)) return Redirect::to( $this->prefix . '/workreport');
+
+		$data = [
+			'status' => 1,
+			'approve_by' => Auth::user()->id
+		];
+		Workreport::where('id', '=', $id)->update($data);
+
+		return  Redirect::to( $this->prefix . '/workreport' )->withStatus('Work Report has been successfully approved.');
+	}
 }

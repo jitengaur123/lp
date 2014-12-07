@@ -123,6 +123,9 @@ function workReportRoutes(){
 
 	Route::get('/editdeletereport', 'workreportController@editDeleteWorkSite');
 	Route::post('/editdeletereport', 'workreportController@postEditDeleteWorkSite');	
+
+	Route::post('/get_labors', 'workreportController@getLabors');
+	Route::get('/workreport/approve/{id}', 'workreportController@approve')->where('id', '[0-9]+');
 }
 
 
@@ -131,10 +134,12 @@ function magnetBoardRoutes(){
 	//Client section 
 	Route::resource('/magnet', 'magnetboardController');
 	Route::get('/magnet/delete/{id}', 'magnetboardController@delete')->where('id', '[0-9]+');
-	Route::post('/magnet/updatereport/{id}', 'magnetboardController@update')->where('id', '[0-9]+');
+	Route::post('/magnet/update/{id}', 'magnetboardController@update')->where('id', '[0-9]+');
 
 	Route::get('/editdeletemagnet', 'magnetboardController@editDelete');
 	Route::post('/editdeletemagnet', 'magnetboardController@postEditDelete');	
+
+
 }
 
 

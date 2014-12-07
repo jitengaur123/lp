@@ -109,11 +109,16 @@ class magnetboardController extends \BaseController {
 	public function show($id)
 	{
 		//
-		$worksite = Worksite::whereId($id)->with('client')->get();
+		$Magnetboard = Magnetboard::where('id','=',$id)->with('magnet_users')->with('client')->with('worksite')->get();
+
+
+		$MagnetboardUser = MagnetboardUser::where('magnetboard_id','=',$id)->with('users')->get();
 		
 		$data = [
-			'worksite' => $worksite
+			'Magnetboard' => $Magnetboard,
+			'MagnetboardUser' => $MagnetboardUser
 		];
+		//return $data;
 		return View::make('magnet_board.view', $data);
 
 	}
@@ -128,12 +133,23 @@ class magnetboardController extends \BaseController {
 	public function edit($id)
 	{
 		//
-		$worksite = Worksite::find($id);
+		$magnetboard = Magnetboard::find($id);
 		$clients = Client::all();
+		$users = User::where('role','=', 4)->get();
+		$m_users =  MagnetboardUser::where('magnetboard_id','=', $id)->select('user_id')->get()->toArray();
+
+		$magnetuser = [];
+		foreach($m_users as  $row){
+			$magnetuser[] = $row['user_id'];
+		}
 		$data = [
-			'worksite' => $worksite,
-			'clients'  => $clients
+			'clients' 	=> $clients,
+			'users'		=> $users,
+			'worksite'  => Worksite::where('client_id','=',$magnetboard['client_id'])->get(),
+			'magnetboard' => $magnetboard,
+			'magnetuser' =>$magnetuser
 		];
+		//return $data;
 		return View::make('magnet_board.edit', $data);
 	}
 
@@ -143,22 +159,13 @@ class magnetboardController extends \BaseController {
 	 * @param  int  
 	 * @return Response
 	 */
-	public function update($worksite_id){
+	public function update($magnet_id){
 
 		$rules = [
 			'started_at'	=> 'required',
 			'client_id'		=> 'required',
-			'job_name'		=> 'required',
-			'description' 	=> 'required',
-			'address' 		=> 'required',
-			'city' 			=> 'required',
-			'state'			=> 'required',
-			'postal_code'	=> 'required',
-			'country'		=> 'required',
-			'ocip' 			=> 'required',
-			'pm' 			=> 'required',
-			'billing_type' 	=> 'required',
-			'cret_pr' 		=> 'required'
+			'worksite_id'	=> 'required',
+			'users' 		=> 'required',
 		];
 
 		$input = Input::all();
@@ -166,21 +173,35 @@ class magnetboardController extends \BaseController {
 		$validation = Validator::make($input, $rules);
 
 		if($validation->fails()){
-			return Redirect::to( $this->prefix . '/magnet/'.$worksite_id.'/edit')->withErrors($validation);
+			return Redirect::to( $this->prefix . '/magnet/'.$magnet_id.'/edit')->withErrors($validation);
 		}
 
 		try{
 
-			$input = Input::all();
-			$input['started_at'] = date('Y-m-d H:i:s', strtotime($input['started_at']));
-			Worksite::whereId($worksite_id)->update($input);
 
-			return Redirect::to( $this->prefix . '/magnet/'.$worksite_id.'/edit' )->withStatus('Worksite has been successfully updated.');
+			$input = Input::all();
+			$input['started_at'] = date('Y-m-d H:i:s' , strtotime($input['started_at']));
+			$users = $input['users'];
+			unset($input['users']);
+			
+			Magnetboard::whereId($magnet_id)->update($input);
+
+			MagnetboardUser::where('magnetboard_id','=',$magnet_id)->delete();
+			$magnet_users = [];
+			foreach($users as $user){
+				$magnet_users[] = [
+					'user_id' => $user,
+					'magnetboard_id'=> $magnet_id
+				];
+			}
+			MagnetboardUser::insert($magnet_users);
+		
+			return Redirect::to( $this->prefix . '/magnet/'.$magnet_id.'/edit' )->withStatus('Worksite has been successfully updated.');
 
 		}
 		catch(Exception $e){
 			//echo $e->getMessage();
-			return Redirect::to( $this->prefix . '/magnet/'.$worksite_id.'/edit')->withErrors([$e->getMessage()]);	
+			return Redirect::to( $this->prefix . '/magnet/'.$magnet_id.'/edit')->withErrors([$e->getMessage()]);	
 		}
 
 	}

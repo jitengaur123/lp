@@ -61,7 +61,7 @@
 
                             <div class="form-group">
                                 <label><i class="fa fa-calendar"></i> Date</label>
-                                <input class="form-control datePickerOnly" type="text" name="date_create">
+                                <input class="form-control datePickerOnly" id="started_at" type="text" value="{{date('d/m/Y')}}" name="date_create">
                             </div>
 
                         </div><!--form section 1 ends here-->
@@ -73,31 +73,31 @@
                                     <tbody>
                                         <tr>
                                             <td>Client Name</td>
-                                            <td><span class="showCompanyName">Quantum Web Solutions</span></td>
+                                            <td><span class="showCompanyName">-</span></td>
                                         </tr>
                                         <tr>
                                             <td>Worksite Name</td>
-                                            <td><span class="showWorkSiteName">Reeds Avenue</span></td>
+                                            <td><span class="showWorkSiteName">-</span></td>
                                         </tr>    
                                         <tr>
                                             <td>Site Address:</td>
-                                            <td><span class="showSiteAddress">E 295,LGF</span></td>
+                                            <td><span class="showSiteAddress">-</span></td>
                                         </tr>
                                         <tr>
                                             <td>Locality:</td>
-                                            <td><span class="showLocality">Greater Kailash Part II</span></td>
+                                            <td><span class="showLocality">-</span></td>
                                         </tr>
                                         <tr>
                                             <td>State:</td>
-                                            <td><span class="showState">New Delhi</span></td>
+                                            <td><span class="showState">-</span></td>
                                         </tr>
                                         <tr>
                                             <td>Post Code:</td>
-                                            <td><span class="showPostCode">110048</span></td>
+                                            <td><span class="showPostCode">-</span></td>
                                         </tr>
                                         <tr>
                                             <td>Country:</td>
-                                            <td><span class="showCountry">India</span></td>
+                                            <td><span class="showCountry">-</span></td>
                                         </tr>
                                         
                                     </tbody>
@@ -121,31 +121,35 @@
                             <div id="entry1" class="clonedInput row"><!--clonedinput starts-->
                                 <fieldset class="col-md-3 col-md-6"><!--entry 1-->
                                     
-                                    <select id="select-labor" class="demo-default" name="labour_id[]" placeholder="Select Labor...">
+                                    <select id="labor" class="demo-default  laborOptions" name="labour_id[]" placeholder="Select Labor...">
                                         <option value="">Select Labor...</option>
-                                        @foreach($labours as  $labour)
-                                        <option value="{{ $labour['id'] }}">{{ $labour['user_name'] }}</option>
-                                        @endforeach
+                                      
                                     </select>
                                 </fieldset><!--entry 1 ends-->
 
                                 <fieldset class="col-md-3 col-md-6"><!--entry 2-->
-                                    
-                                     <input class="form-control" name="class_name[]" placeholder="Enter Class" type="text">                                                    
+                                      <select id="class" class="demo-default  demo-default" name="class_name[]" placeholder="Select Class...">
+                                        <option value="">Select Class...</option>
+                                        <option value="Class A">Class A</option>
+                                        <option value="Class B">Class B</option>
+                                        <option value="Class C">Class C</option>
+                                        <option value="Class D">Class D</option>
+                                    </select>
+
                                 </fieldset><!--entry 2 ends-->
 
                                 <fieldset class="col-md-2 col-md-6"><!--entry 3-->
                                     
-                                     <input class="form-control" name="reg_hour[]"  placeholder="Reg Hours" type="text">                                                    
+                                     <input class="form-control reg_hour" name="reg_hour[]"  placeholder="Reg Hours" type="text">                                                    
                                 </fieldset><!--entry 3 ends-->
 
                                 <fieldset class="col-md-2 col-md-6"><!--entry 4-->
                                     
-                                     <input class="form-control" name="reg_rate[]"  placeholder="Reg Rate" type="text">                                                    
+                                     <input class="form-control reg_rate" name="reg_rate[]"  placeholder="Reg Rate" type="text">                                                    
                                 </fieldset><!--entry 4 ends-->
 
                                 <fieldset class="col-md-2 col-md-6"><!--entry 5-->
-                                    <input class="form-control"  placeholder="Amount" type="text">
+                                    <input class="form-control reg_amount"  placeholder="Amount" type="text">
                                 </fieldset><!--entry 5 ends-->
 
                                 
@@ -154,15 +158,15 @@
                                 </fieldset><!--entry 6 end-->
 
                                 <fieldset class="col-md-2 col-md-6"><!--entry 7-->
-                                    <input class="form-control" name="ot_hour[]"  placeholder="OT Hours" type="text">
+                                    <input class="form-control ot_hour" name="ot_hour[]"  placeholder="OT Hours" type="text">
                                 </fieldset><!--entry 7 end-->
 
                                 <fieldset class="col-md-2 col-md-6"><!--entry 7-->
-                                    <input class="form-control" name="ot_rate[]"  placeholder="OT Rate" type="text">
+                                    <input class="form-control ot_rate" name="ot_rate[]"  placeholder="OT Rate" type="text">
                                 </fieldset><!--entry 7 end-->
 
                                 <fieldset class="col-md-2 col-md-6"><!--entry 8-->
-                                    <input class="form-control"  placeholder="Amount" type="text">
+                                    <input class="form-control ot_amount"  placeholder="Amount" type="text">
                                 </fieldset><!--entry 8 ends-->
                                 <!--ot details end-->
 
@@ -171,22 +175,22 @@
                                 </fieldset><!--entry 6 end-->
 
                                 <fieldset class="col-md-2 col-md-6"><!--entry 7-->
-                                    <input class="form-control" name="dt_hour[]"  placeholder="DT Hours" type="text">
+                                    <input class="form-control dt_hour" name="dt_hour[]"  placeholder="DT Hours" type="text">
                                 </fieldset><!--entry 7 end-->
 
                                 <fieldset class="col-md-2 col-md-6"><!--entry 7-->
-                                    <input class="form-control" name="dt_rate[]"  placeholder="DT Rate" type="text">
+                                    <input class="form-control dt_rate" name="dt_rate[]"  placeholder="DT Rate" type="text">
                                 </fieldset><!--entry 7 end-->
 
                                 <fieldset class="col-md-2 col-md-6"><!--entry 8-->
-                                    <input class="form-control" placeholder="Amount" type="text">
+                                    <input class="form-control dt_amount" placeholder="Amount" type="text">
                                 </fieldset><!--entry 8 ends-->
                                 <!--dt details end-->
                                 <fieldset class="col-md-10">
                                 </fieldset>
                                 <fieldset class="col-md-2">
                                     <label><i class="fa fa-plus"></i> Total Labor</label>
-                                    <input class="form-control auto" placeholder="Amount" type="text" value="00.00" disabled>
+                                    <input class="form-control auto sub_total" placeholder="Amount" type="text" value="00.00" disabled>
                                     <!--total labor will be calculated autmatically by multiplying reg, ot and dt hours with rate-->
                                 </fieldset>
 
@@ -220,7 +224,7 @@
            
             <div class="row marginb50">
             <div class="col-md-6 total_all">
-                                <h3>Grand Total : $<span>1200</span></h3>
+                                <h3>Grand Total : $<span class="final_total">0</span></h3>
                             </div>
 
              <div class="col-md-6 total_all">
@@ -236,7 +240,7 @@
 
 @section('head')
 
-<title>Amaha - Add New WorkSite</title>
+<title>Amaha - Add New Work Report</title>
 
 <!--Page loading plugin Start -->
     <link href="{{ URL::asset('assets/css/plugins/pace.css') }}" rel="stylesheet">
