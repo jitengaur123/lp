@@ -166,7 +166,7 @@ class userController extends \BaseController {
 		$rules = [
 			'first_name'	=> 'required',
 			'last_name'		=> 'required',
-			'email'			=> 'required|email',
+			/*'email'			=> 'required|email',*/
 			'profile_pic' 	=> 'mimes:jpeg,jpg,png,gif'
 		];
 
@@ -214,7 +214,7 @@ class userController extends \BaseController {
 		$rules = [
 			'first_name'	=> 'required',
 			'last_name'		=> 'required',
-			'email'			=> 'required|email',
+			'email'			=> 'required|email|unique:users',
 			'user_name' 	=> 'required|unique:users',
 			'password' 		=> 'required|confirmed:password_confirmation',
 			'password_confirmation' => 'required',
@@ -345,17 +345,16 @@ class userController extends \BaseController {
 
 
 
-	/*public function viewUser(){
+	public function viewUser(){
 
 		$user_id = Input::get('user_id');
 		if(empty($user_id)) return ['data'=>'User Not Found'];
 
-		$user = User::find($user_id)->with('userrole')->get();
-		//return $user;
-		return $data = View::make('user.view_profile_model')->with('user', $user)->render();
+		$user = User::where('id','=',$user_id)->with('userrole')->get()->toArray();
+		$data = View::make('user.view_profile_model')->with('user', $user[0])->render();
 		return Response::Json(['data'=>$data]);
 
-	}*/
+	}
 
 
 	function parentUserChange($role = NULL){

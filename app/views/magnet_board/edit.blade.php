@@ -37,7 +37,7 @@
 
 
                @include('notification')
-                <form class="ls_form" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/magnet/update/'.$magnetboard['id']) }}">
+                <form class="ls_form" id="magnetUpdateForm" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/magnet/update/'.$magnetboard['id']) }}">
                   <!--user profile form ends here--> 
                   <!--form section 1 starts here-->
                   
@@ -49,7 +49,7 @@
                     
                     <label><i class="fa fa-user"></i>Select Client</label>
                     <div class="control-group">
-                        <select id="client" class="demo-default" name="client_id" placeholder="Select client...">
+                        <select id="client" class="demo-default form-control" name="client_id" placeholder="Select client...">
                             <option value="" >Select Client...</option>
                             @foreach($clients as $client )
                             <option value="{{ $client['id'] }}" @if($client['id'] == $magnetboard['client_id']) selected="selected" @endif>{{ $client['first_name'] }} {{ $client['last_name'] }}</option>
@@ -60,7 +60,7 @@
 
                     <label><i class="fa fa-user"></i>Select Work site</label>
                     <div class="control-group">
-                        <select id="worksite" class="demo-default" name="worksite_id" placeholder="Select  Work site...">
+                        <select id="worksite" class="demo-default form-control" name="worksite_id" placeholder="Select  Work site...">
                             <option value="">Select Work site...</option>
                              @foreach($worksite as $site )
                             <option value="{{ $site['id'] }}" @if($site['id'] == $magnetboard['worksite_id']) selected="selected" @endif>{{ $site['job_name'] }}</option>
@@ -77,11 +77,23 @@
                   <div class="col-md-6 margint15">
                     <div class="form-group">
                         <label><i class="fa fa-home"></i> Engineers</label>
-                    <select name="users[]" multiple>
+
+                         <table class="table table-bordered table-striped table-bottomless  no-footer"> 
+                           @foreach($users as $user)
+                          <tr>
+                            <td><input type="checkbox" class="form-control" name="users[]" <?php  if(in_array($user['id'], $magnetuser)): ?>checked="checked" <?php endif ?> value="{{ $user['id'] }}" /></td>
+                            <td>{{ $user['first_name'] }} {{ $user['last_name'] }}</td>
+                            <td><input type="text" class="form-control" name="start_time[{{$user['id']}}]" value="<?php  if(in_array($user['id'], $magnetuser)): ?>{{ $selectdUser[$user['id']]['start_time'] }}<?php endif ?>" /></td>
+                            <td><input type="text" class="form-control" name="end_time[{{$user['id']}}]" value="<?php  if(in_array($user['id'], $magnetuser)): ?>{{ $selectdUser[$user['id']]['end_time'] }}<?php endif ?>" /></td>
+                          </tr>
+                           @endforeach
+                        </table>
+
+                    <!-- <select name="users[]" multiple>
                         @foreach($users as $user)
                         <option value="{{ $user['id'] }}" <?php  if(in_array($user['id'], $magnetuser)): ?>selected="selected" <?php endif ?>>{{ $user['user_name'] }}</option>
                         @endforeach
-                    </select><br>
+                    </select><br> -->
 
                     
                     </div>
@@ -93,7 +105,7 @@
                       <p class="margint10 marginb15"><i class="fa fa-info-circle"></i> This site/worksite will be created with the details that you have updated above, please review the details and check before adding the worksite. The worksite will auto populate in the magnet board & for foreman to while submiting work reports.</p>
                     </div>
                     <div class="form-group">
-                      <button class="btn ls-light-blue-btn" type="submit"> <i class="fa fa-cloud-upload"></i> Create The Worksite & Add It To Database </button>
+                      <button class="btn ls-light-blue-btn" type="submit"> <i class="fa fa-cloud-upload"></i> Allocate Users </button>
                     </div>
                   </div>
                 </form>
@@ -134,28 +146,7 @@
 @stop
 
 @section('footerjs')
-    <script src="{{ URL::asset('assets/js/color.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/multipleAccordion.js') }}" type="text/javascript"></script>
-
-    <script src="{{ URL::asset('assets/js/lib/jqueryui.js') }}"></script>
-    <!--easing Library Script Start -->
-
-
-     <script src="{{ URL::asset('assets/js/lib/jquery.easing.js') }}"></script> <!--easing Library Script End -->
-     <!--Nano Scroll Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.nanoscroller.min.js') }}"></script> <!--Nano Scroll Script End -->
-     <!--switchery Script Start -->
-     <script src="{{ URL::asset('assets/js/switchery.min.js') }}"></script> <!--switchery Script End -->
-     <!--bootstrap switch Button Script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-switch.js') }}"></script> <!--bootstrap switch Button Script End-->
-     <!--easypie Library Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.easypiechart.min.js') }}"></script> <!--easypie Library Script Start -->
-     <!--bootstrap-progressbar Library script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-progressbar.min.js') }}"></script> <!--bootstrap-progressbar Library script End-->
-     <script src="{{ URL::asset('assets/js/pages/layout.js') }}" type="text/javascript"></script> <!--Layout Script End -->
-     <!--Upload button Script Start-->
+   
 
      <!--selectize Library start-->
      <script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>

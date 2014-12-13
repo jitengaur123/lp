@@ -54,68 +54,65 @@
         <li><a @if ($segment == "editdeleteuser") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeleteuser') }}">Edit/Delete User</a></li>
     </ul>
 </li>
-@if(Auth::user()->role != 3 && Auth::user()->role != 4) 
-<li @if ($segment == 'client' || $segment == "editdeleteclient") class="active" @endif>
-    <a href="#">
-        <i class="fa fa-group"></i> <span>Client</span> <!-- <span class="badge badge-red">58</span> --></a>
-    </a>
-    <ul>
-        <li><a @if($segment == 'client' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/client') }}">All Client</a></li>
-        <li><a @if($thirdsegment == 'create' ) class="active" @endif href="{{ URL::to('/'.$prefix.'/client/create') }}">Add Client</a></li>
-        <li><a @if ($segment == "editdeleteclient") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeleteclient') }}">Edit/Delete Client</a></li>
-    </ul>
-</li>
+    @if(Auth::user()->role != 3 && Auth::user()->role != 4) 
+    <li @if ($segment == 'client' || $segment == "editdeleteclient") class="active" @endif>
+        <a href="#">
+            <i class="fa fa-group"></i> <span>Client</span> <!-- <span class="badge badge-red">58</span> --></a>
+        </a>
+        <ul>
+            <li><a @if($segment == 'client' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/client') }}">All Client</a></li>
+            <li><a @if($thirdsegment == 'create' ) class="active" @endif href="{{ URL::to('/'.$prefix.'/client/create') }}">Add Client</a></li>
+            <li><a @if ($segment == "editdeleteclient") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeleteclient') }}">Edit/Delete Client</a></li>
+        </ul>
+    </li>
 
-<li @if ($segment == 'worksite' || $segment == "editdeletesite") class="active" @endif>
-    <a href="#">
-        <i class="fa fa-building"></i>
-        <span>Work Sites <!-- <span class="badge badge-red">15</span> --></span>
-    </a>
-    <ul>
-        <li><a  @if ($segment == 'worksite' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/worksite') }}">View Work Sites</a></li>
-        <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/worksite/create') }}">Add New Sites</a></li>
-        <li><a @if ($segment == "editdeletesite") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletesite') }}">Edit/Delete Sites</a></li>
-    </ul>
-</li>
+    <li @if ($segment == 'worksite' || $segment == "editdeletesite") class="active" @endif>
+        <a href="#">
+            <i class="fa fa-building"></i>
+            <span>Work Sites <!-- <span class="badge badge-red">15</span> --></span>
+        </a>
+        <ul>
+            <li><a  @if ($segment == 'worksite' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/worksite') }}">View Work Sites</a></li>
+            <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/worksite/create') }}">Add New Sites</a></li>
+            <li><a @if ($segment == "editdeletesite") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletesite') }}">Edit/Delete Sites</a></li>
+        </ul>
+    </li>
 
-<li @if ($segment == 'magnet' || $segment == "editdeletemagnet") class="active" @endif>
-    <a href="#">
-       <i class="fa fa-magnet"></i>
-        <span>Magnet Board <!-- <span class="badge badge-red">15</span> --></span>
-    </a>
-    <ul>
-        <li><a @if ($segment == 'magnet' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnet') }}">View Board</a></li>
-        <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnet/create') }}">Add New Board</a></li>
-    </ul>
-</li>
+    <li @if ($segment == 'magnet' || $segment == "editdeletemagnet") class="active" @endif>
+        <a href="#">
+           <i class="fa fa-magnet"></i>
+            <span>Magnet Board <!-- <span class="badge badge-red">15</span> --></span>
+        </a>
+        <ul>
+            <li><a @if ($segment == 'magnet' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnet') }}">View Board</a></li>
+            <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnet/create') }}">Allocate Users</a></li>
+        </ul>
+    </li>
 
-<li @if ($segment == 'workreport' || $segment == "editdeletereport") class="active" @endif>
-    <a href="#">
-        <i class="fa fa-building"></i>
-        <span>Work Reports <!-- <span class="badge badge-red">15</span> --></span>
-    </a>
-    <ul>
-        <li><a  @if ($segment == 'workreport' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/workreport') }}">View Work Report</a></li>
-        <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/workreport/create') }}">Add New Report</a></li>
-        <li><a @if ($segment == "editdeletereport") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletereport') }}">Edit/Delete Report</a></li>
-    </ul>
-</li>
-@endif
+    <li @if ($segment == 'workreport' || $segment == "editdeletereport") class="active" @endif>
+        <a href="#">
+            <i class="fa fa-building"></i>
+            <span>Work Reports <!-- <span class="badge badge-red">15</span> --></span>
+        </a>
+        <ul>
+            <li><a  @if ($segment == 'workreport' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/workreport') }}">View Work Report</a></li>
+            <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/workreport/create') }}">Add New Report</a></li>
+            <li><a @if ($segment == "editdeletereport") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletereport') }}">Edit/Delete Report</a></li>
+        </ul>
+    </li>
 
+    <li  @if ($segment == 'post') class="active" @endif>
+        <a href="#">
+            <i class="fa fa-file"></i>
+            <span>Posts</span>
+        </a>
+        <ul>
+            <li><a @if ($segment == 'post' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/post') }}">View All Posts</a></li>
+            <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/post/create') }}">Add New Post</a></li>
+        </ul>
+    </li>
+    @endif
 
-
-
-
-<li>
-    <a href="#">
-        <i class="fa fa-file"></i>
-        <span>Posts</span>
-    </a>
-    <ul>
-        <li><a href="#">Add New Post</a></li>
-        <li><a href="#">View All Posts</a></li>
-    </ul>
-</li>
 <li>
     <a href="#">
         <i class="fa fa-clock-o"></i> <span>TimeLine View</span>
@@ -157,19 +154,19 @@
     </ul>
 </li>
 <li>
-    <a href="#">
+    <a href="{{ URL::to('/'.$prefix.'/safety_instruction') }}">
         <i class="fa fa-flash"></i>
         <span>Safety Instructions</span>
     </a>
 </li>
 <li>
-    <a href="#">
+    <a href="{{ URL::to('/'.$prefix.'/chart') }}">
         <i class="fa fa-random"></i>
         <span>Organizational Chart</span>
     </a>
 </li>
 <li>
-    <a href="#">
+    <a href="{{ URL::to('/'.$prefix.'/document') }}">
         <i class="fa fa-list-alt"></i>
         <span>Documentation</span>
     </a>

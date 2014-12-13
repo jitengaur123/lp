@@ -4,62 +4,32 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h3 class="ls-top-header">View Magnet Board</h3>
+        <h3 class="ls-top-header">View post</h3>
         <ol class="breadcrumb">
             <li><a href="{{ URL::to($prefix.'/dashboard') }}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{{ URL::to($prefix.'/magnet') }}">Magnet Board</a></li>
+            <li><a href="{{ URL::to($prefix.'/post') }}">post</a></li>
         </ol>
     </div>
 </div>
-<?php $Magnetboard = $Magnetboard[0]; ?>
 <div class="row">
     <div class="col-md-12">
+      <h2>Client : {{ $post['page_name'] }}</h2>
+      <div class="col-md-12 details_right">
+        
+        {{ $post['description'] }}
+      </div>
 
-        <p>You can view your magnet in this section, please use the edit/update button to update the magnet details, we prefer the users to please keep their profile updated in order to have the most accurate client in our clientbases & help the management to keep the records up to date. Thank you.</p><br/>
-        <div class="col-md-4 details_left">
-            <p>Date : {{ date('d/m/Y', strtotime($Magnetboard['started_at'])) }}</p>
-            <h2>Client: {{ $Magnetboard['client']['company_name'] }} </h2>
-            <p>Work Site: {{ $Magnetboard['worksite']['job_name'] }}</p>
-            <a href="{{ URL::to($prefix.'/magnet/'.$Magnetboard['id'].'/edit') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Magnet Board</a>
 
-        </div>
-        <div class="clear"></div>
-         <div class="ls-editable-table table-responsive ls-table">
-
-                  <table class="table table-bordered table-striped table-bottomless" id="ls-editable-table">
-                    <thead>
-                      <tr>
-                        <th class="id_emp">Employee Id</th>
-                        <th>User Name</th>
-                        <th>Full Name</th>
-                        <th>Job Title</th>
-                        <th>Created On</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      @foreach($MagnetboardUser as $user)
-                      <tr>
-                        <td>{{ $user['users']['user_auth_id'] }}</td>
-                        <td>{{ $user['users']['user_name'] }}</td>
-                        <td>{{ $user['users']['first_name'] }} {{ $user['users']['last_name'] }}</td>
-                        <td>{{ $user['users']['userrole']['title'] }}</td>
-                        <td>{{ date('d/m/y', strtotime($user['users']['created_at'])) }}</td>
-                      
-                      </tr>
-                      @endforeach
-
-                    </tbody>
-                  </table>
-                </div>
-      
     </div>
-</div>
+  </div>
+
+
 @stop
 
 
 @section('head')
 
-<title>Amaha - View Magnet Board</title>
+<title>Amaha - View Post</title>
 <!--Page loading plugin Start -->
     <link href="{{ URL::asset('assets/css/plugins/pace.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script><!--Page loading plugin End   -->

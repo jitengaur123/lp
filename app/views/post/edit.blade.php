@@ -1,61 +1,77 @@
 @extends('layouts.all') 
-<?php $prefix = Config::get('constants.PREFIX') ?>
+
 @section('content')
 <div class="row">
-    <div class="col-md-12">
-        <h3 class="ls-top-header">View Client</h3>
-        <ol class="breadcrumb">
-            <li><a href="{{ URL::to($prefix.'/dashboard') }}"><i class="fa fa-home"></i></a></li>
-            <li><a href="{{ URL::to($prefix.'/client') }}">Client</a></li>
-        </ol>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
+        <div class="col-md-12">
+            <!--Top header start-->
 
-        <p>You can view your profile in this section, please use the edit/update button to update the profile details, we prefer the users to please keep their profile updated in order to have the most accurate client in our clientbases & help the management to keep the records up to date. Thank you.</p><br/>
-        <!-- <div class="col-md-3 userpic">
-            <img src="{{URL::asset('assets/images/demo/avatar.png') }}">
-            
-        </div> -->
-        <div class="col-md-4 details_left">
-            <h2>{{ $client['first_name'] }} {{ $client['last_name'] }}</h2>
-            
-            <p>Client Id : {{ $client['client_auto_id'] }}</p>
-            <p>Company Name : {{ $client['company_name'] }}</p>
-            <h3>Address</h3>
-            <address>
-                <i class="fa fa-map-marker"></i>
-                {{ $client['address'] }}, {{ $client['city'] }}<br>
-                {{ $client['state'] }}, {{ $client['country'] }} {{ $client['postal_code'] }} <br>               
-            </address>
-            <p><i class="fa fa-phone"></i> Phone (Office): {{ $client['phone_office'] }}</p>
-            <p><i class="fa fa-mobile"></i> Phone (mobile 1): {{ $client['mobile1'] }}</p>
-            <p><i class="fa fa-mobile"></i> Phone (mobile 2): {{ $client['mobile2'] }}</p>
-            <p>Account Created On : <?php echo date('d/m/Y', strtotime($client['created_at'])); ?></p>
-            <a href="{{ URL::to($prefix.'/client/'.$client['id'].'/edit') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Client</a>
+            <h3 class="ls-top-header">Update Post</h3>
+            <!--Top header end -->
+            <!--Top breadcrumb start -->
 
+            <ol class="breadcrumb">
+                <li>
+                    <a class="fa fa-home" href="#"></a>
+                </li>
+
+                <li class="active">Update Post</li>
+            </ol><!--Top breadcrumb start -->
         </div>
-        <div class="col-md-5 ls-user-details">
-            <h2>Date Of Joining: <?php echo date('d/m/Y', strtotime($client['created_at'])); ?></h2>
-            <p><i class="fa fa-envelope"></i> Email: {{ $client['email'] }}</p>
-            <p>Fax : {{ $client['fax'] }}</p>
-          
-           
-            <div class="ls-user-links">
-            
+    </div><!-- Main Content Element  Start-->
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <form class="ls_form" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/post/update/'.$post['id']) }}"><!--form starts here-->
+            <div class="panel panel-default userform no-border">
+                <div class="panel-heading ">
+                    <h3 class="panel-title">Update Post In This Section</h3>
+                </div>
+                <p class="margint15">You can create a new work report in this section by filling up the fields below. The fields with * are required & can not be left empty. For more information please refer to the documentation.<br/>If you are a journeyman the work reports will need the approval from project manager and will remain in pending status, if you are the admin then you can check the reports and change the status of report to available states.</p>
+                
+                <div class="panel-body">
+                    
+                        @include('notification')
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label><i class="fa fa-info-circle"></i> Page name </label>
+                                <input class="form-control" placeholder="Page name" name="page_name" type="text" value="{{ $post['page_name'] }}">
+                            </div>
+
+                           
+                        </div><!--form section 1 ends here-->
+                        
+
+                </div><!--panel ends here-->
             </div>
 
-        </div>
-        
-    </div>
-</div>
-@stop
 
+            <!--additional comments-->
+            <div class="col-md-12 message">
+                <p>Description</p>
+                <textarea name="description" class="form-control autogrow" placeholder="description">{{ $post['description'] }}</textarea>
+            </div>
+            <!--additiona comments end-->
+
+             
+           
+            <div class="row marginb50">
+        
+             <div class="col-md-6 total_all">
+            <input type="submit" value="Submit Report" class="btn btn-primary">
+            </div>
+            </div>
+            </form><!--form ends here-->
+        </div>
+    </div>
+
+        
+@stop
 
 @section('head')
 
-<title>Amaha - View Client</title>
+<title>Amaha - Update Post</title>
+
 <!--Page loading plugin Start -->
     <link href="{{ URL::asset('assets/css/plugins/pace.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script><!--Page loading plugin End   -->
@@ -81,6 +97,7 @@
 @stop
 
 @section('footerjs')
+
     
 
      <!--selectize Library start-->
@@ -101,5 +118,8 @@
      <!-- Date & Time Picker Library Script Start -->
      <script src="{{ URL::asset('assets/js/jquery.datetimepicker.js') }}"></script> <!-- Date & Time Picker Library Script End -->
      <!--Demo for Date, Time Color Picker Script Start -->
+     <script src="{{ URL::asset('assets/js/amaha.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
+
      <script src="{{ URL::asset('assets/js/pages/pickerTool.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
+      <script src="{{ URL::asset('assets/js/pages/addfieldset.js') }}"></script>
 @stop

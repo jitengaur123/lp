@@ -51,7 +51,7 @@ class clientController extends \BaseController {
 			'company_name'	=> 'required',
 			'phone_office' 	=> 'required',
 			'mobile1' 		=> 'required',
-			'email' 		=> 'required|email',
+			'email' 		=> 'required|email|unique:client',
 			'fax'			=> 'required',
 			'address'		=> 'required',
 			'city'			=> 'required',
@@ -135,7 +135,6 @@ class clientController extends \BaseController {
 			'company_name'	=> 'required',
 			'phone_office' 	=> 'required',
 			'mobile1' 		=> 'required',
-			'email' 		=> 'required|email',
 			'fax'			=> 'required',
 			'address'		=> 'required',
 			'city'			=> 'required',
@@ -202,6 +201,17 @@ class clientController extends \BaseController {
 		return Redirect::to( $this->prefix . '/editdeleteclient' )->withStatus('Client has been successfully deleted.');
 	}
 
+
+	public function viewClient(){
+
+		$id = Input::get('client_id');
+		if(empty($id)) return ['data'=>'Client Not Found'];
+
+		$client = Client::find($id)->toArray();
+		$data = View::make('client.view_model')->with('client', $client)->render();
+		return Response::Json(['data'=>$data]);
+
+	}
 
 
 }

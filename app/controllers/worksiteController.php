@@ -75,7 +75,9 @@ class worksiteController extends \BaseController {
 
 			$input = Input::all();
 			$input['work_auto_id'] = "AMA-WS-".uniqid();
-			$input['started_at'] = date('Y-m-d H:i:s' , strtotime($input['started_at']));
+			list($d,$m,$y) = explode('/', $input['started_at']);
+			$started_at = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
+			$input['started_at'] = $started_at;
 			Worksite::insert($input);
 
 			return Redirect::to( $this->prefix . '/worksite/create' )->withStatus('worksite has been successfully added.');
@@ -161,7 +163,11 @@ class worksiteController extends \BaseController {
 		try{
 
 			$input = Input::all();
-			$input['started_at'] = date('Y-m-d H:i:s', strtotime($input['started_at']));
+
+			list($d,$m,$y) = explode('/', $input['started_at']);
+			$started_at = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
+			$input['started_at'] = $started_at;
+
 			Worksite::whereId($worksite_id)->update($input);
 
 			return Redirect::to( $this->prefix . '/worksite/'.$worksite_id.'/edit' )->withStatus('Worksite has been successfully updated.');
@@ -217,6 +223,18 @@ class worksiteController extends \BaseController {
 		$data = Worksite::where('client_id' , '=', $id)->get()->toArray();
 
 		return Response::json(['result'=>true, 'data'=>$data]);
+	}
+
+
+	public function viewWorksite(){
+
+		$id = Input::get('id');
+		if(empty($id)) return ['data'=>'Client Not Found'];
+
+		$worksite = Worksite::whereId($id)->with('client')->get()->toArray();
+		$data = View::make('worksite.view_model')->with('worksite', $worksite[0])->render();
+		return Response::Json(['data'=>$data]);
+
 	}
 
 }

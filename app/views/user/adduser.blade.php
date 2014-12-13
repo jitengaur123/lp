@@ -57,7 +57,7 @@
 
             <div class="form-group">
               <label><i class="fa fa-key"></i>Password</label>
-              <input class="form-control" name="password" placeholder="Enter Password" type="password">
+              <input class="form-control" id="password" name="password" placeholder="Enter Password" type="password">
             </div>
 
             <div class="form-group">
@@ -133,28 +133,7 @@
 @stop
 
 @section('footerjs')
-    <script src="{{ URL::asset('assets/js/color.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/multipleAccordion.js') }}" type="text/javascript"></script>
-
-    <script src="{{ URL::asset('assets/js/lib/jqueryui.js') }}"></script>
-    <!--easing Library Script Start -->
-
-
-     <script src="{{ URL::asset('assets/js/lib/jquery.easing.js') }}"></script> <!--easing Library Script End -->
-     <!--Nano Scroll Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.nanoscroller.min.js') }}"></script> <!--Nano Scroll Script End -->
-     <!--switchery Script Start -->
-     <script src="{{ URL::asset('assets/js/switchery.min.js') }}"></script> <!--switchery Script End -->
-     <!--bootstrap switch Button Script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-switch.js') }}"></script> <!--bootstrap switch Button Script End-->
-     <!--easypie Library Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.easypiechart.min.js') }}"></script> <!--easypie Library Script Start -->
-     <!--bootstrap-progressbar Library script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-progressbar.min.js') }}"></script> <!--bootstrap-progressbar Library script End-->
-     <script src="{{ URL::asset('assets/js/pages/layout.js') }}" type="text/javascript"></script> <!--Layout Script End -->
-     <!--Upload button Script Start-->
+    
 
      <!--selectize Library start-->
      <script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>

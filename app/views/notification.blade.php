@@ -23,3 +23,7 @@
         </ul>
     </div>
 @endif
+
+<div class="alert alert-danger alert-dismissable validationErrors" style="display:none;">
+  
+</div>

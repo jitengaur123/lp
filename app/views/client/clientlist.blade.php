@@ -48,7 +48,7 @@
                         <td>{{ $client['phone_office'] }}</td>
                         <td>{{ date('d/m/Y', strtotime($client['created_at'])) }}</td>
                         <td class="text-center">
-                          <a data-userid="{{ $client['id'] }}" class="viewClientModel" href="{{ URL::to(Config::get('constants.PREFIX') . '/client/'.$client['id']) }}"><!-- #reModal -->
+                          <a data-clientid="{{ $client['id'] }}" class="viewUserModel viewClientModel"  href="#reModal"><!-- #{{ URL::to(Config::get('constants.PREFIX') . '/client/'.$client['id']) }} -->
                           <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button> </a> 
                           <a href="{{ URL::to(Config::get('constants.PREFIX') . '/client/'.$client['id']) }}/edit">
                           <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button> </a>
@@ -66,6 +66,23 @@
             </div>
           </div>
         </div>
+
+
+
+    <!--modal start-->
+<div class="remodal" data-remodal-id="reModal">
+  <h3>View Client</h3>
+  <div class="viewClientData">
+    <div class="row">
+      <div class="col-md-12 ">
+        Loading...
+      </div>
+    </div>
+    <br>
+    <a class="remodal-cancel ls-red-btn btn" href="#">Close</a> 
+    <a class="remodal-confirm ls-light-green-btn btn editButton" href="#">Edit User Profile</a>
+  </div>
+</div>
 <!--modal ends--> 
 @stop
 
@@ -97,28 +114,7 @@
 @stop
 
 @section('footerjs')
-    <script src="{{ URL::asset('assets/js/color.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/multipleAccordion.js') }}" type="text/javascript"></script>
-
-    <script src="{{ URL::asset('assets/js/lib/jqueryui.js') }}"></script>
-    <!--easing Library Script Start -->
-
-
-     <script src="{{ URL::asset('assets/js/lib/jquery.easing.js') }}"></script> <!--easing Library Script End -->
-     <!--Nano Scroll Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.nanoscroller.min.js') }}"></script> <!--Nano Scroll Script End -->
-     <!--switchery Script Start -->
-     <script src="{{ URL::asset('assets/js/switchery.min.js') }}"></script> <!--switchery Script End -->
-     <!--bootstrap switch Button Script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-switch.js') }}"></script> <!--bootstrap switch Button Script End-->
-     <!--easypie Library Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.easypiechart.min.js') }}"></script> <!--easypie Library Script Start -->
-     <!--bootstrap-progressbar Library script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-progressbar.min.js') }}"></script> <!--bootstrap-progressbar Library script End-->
-     <script src="{{ URL::asset('assets/js/pages/layout.js') }}" type="text/javascript"></script> <!--Layout Script End -->
-     <!--Upload button Script Start-->
+    
 
      <!--selectize Library start-->
      <script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>

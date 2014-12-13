@@ -63,7 +63,7 @@
 
                         <div class="form-group">
                             <label><i class="fa fa-envelope-o"></i> Email address</label>
-                            <input class="form-control" value="{{ $data['email'] }}"
+                            <input class="form-control" disabled value="{{ $data['email'] }}"
                             placeholder="Enter email" name="email" type=
                             "email">
                         </div>
@@ -78,7 +78,7 @@
                         <div class="form-group">
                             <label><i class="fa fa-key"></i> Change Password</label>
                             <input class="form-control"
-                            name="password" placeholder=
+                            name="password" id="password" placeholder=
                             "Enter New Password" type=
                             "password" >
                         </div>
@@ -86,7 +86,7 @@
                         <div class="form-group">
                             <label><i class="fa fa-random"></i> Confirm New
                             Password</label> <input class=
-                            "form-control" name="cnf_password"
+                            "form-control" id="cnf_password" name="cnf_password"
                             placeholder=
                             "Enter New Password Again"
                             type="password">
@@ -106,7 +106,7 @@
                             "col-lg-4 no-padding">
                                 <i class="fa fa-check-circle-o"></i> Gender
                             </div><label class=
-                            "radio col-lg-4"><input @if ($data['gender'] == 'male') checked @endif
+                            "radio col-lg-4"><input @if ($data['gender'] == 'male' || $data['gender'] == "") checked @endif
                             class="icheck-green" id=
                             "optionsRadios4" name=
                             "gender" type="radio"
@@ -147,10 +147,8 @@
                             <div class="form-group">
                             
                             <div class="control-group">
-                                <input class=
-                            "form-control" name=
-                            "state" placeholder=
-                            "State" type="name" value="{{ $data['state'] }}">
+                                @include('layouts.states', array('selected_state'=>$data['state']))
+                                
                             </div>
                         
                         </div>
@@ -189,62 +187,6 @@
                             "Mobile phone number" type=
                             "tel">
                         </div>
-
-                        <!-- <div class="form-group">
-                            <label><i class="fa fa-paper-plane"></i> Position/Job
-                            Title</label> <select class=
-                            "form-control" disabled>
-                                <option>
-                                    option one
-                                </option>
-
-                                <option selected=
-                                "selected">
-                                    option two
-                                </option>
-
-                                <option>
-                                    option three
-                                </option>
-
-                                <option>
-                                    option four
-                                </option>
-
-                                <option>
-                                    option five
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa fa-sitemap"></i> Immediate
-                            Supervisor</label>
-                            <select class="form-control"
-                            disabled>
-                                <option>
-                                    option one
-                                </option>
-
-                                <option>
-                                    option two
-                                </option>
-
-                                <option>
-                                    option three
-                                </option>
-
-                                <option selected=
-                                "selected">
-                                    option four
-                                </option>
-
-                                <option>
-                                    option five
-                                </option>
-                            </select>
-                        </div> -->
-
 
 
 
@@ -601,28 +543,7 @@
 @stop
 
 @section('footerjs')
-    <script src="{{ URL::asset('assets/js/color.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/multipleAccordion.js') }}" type="text/javascript"></script>
-
-    <script src="{{ URL::asset('assets/js/lib/jqueryui.js') }}"></script>
-    <!--easing Library Script Start -->
-
-
-     <script src="{{ URL::asset('assets/js/lib/jquery.easing.js') }}"></script> <!--easing Library Script End -->
-     <!--Nano Scroll Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.nanoscroller.min.js') }}"></script> <!--Nano Scroll Script End -->
-     <!--switchery Script Start -->
-     <script src="{{ URL::asset('assets/js/switchery.min.js') }}"></script> <!--switchery Script End -->
-     <!--bootstrap switch Button Script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-switch.js') }}"></script> <!--bootstrap switch Button Script End-->
-     <!--easypie Library Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.easypiechart.min.js') }}"></script> <!--easypie Library Script Start -->
-     <!--bootstrap-progressbar Library script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-progressbar.min.js') }}"></script> <!--bootstrap-progressbar Library script End-->
-     <script src="{{ URL::asset('assets/js/pages/layout.js') }}" type="text/javascript"></script> <!--Layout Script End -->
-     <!--Upload button Script Start-->
+    
 
      <!--selectize Library start-->
      <script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>

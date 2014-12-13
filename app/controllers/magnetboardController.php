@@ -38,7 +38,8 @@ class magnetboardController extends \BaseController {
 
 		$data = [
 			'clients' 	=> $clients,
-			'users'		=> $users
+			'users'		=> $users,
+			'input'		=> ''
 		];
 		return View::make('magnet_board.add', $data);
 	}
@@ -61,20 +62,34 @@ class magnetboardController extends \BaseController {
 
 		$input = Input::all();
 
-		//return $input;
-
 		$validation = Validator::make($input, $rules);
 
 		if($validation->fails()){
 			return Redirect::to( $this->prefix . '/magnet/create')->withErrors($validation);
 		}
+		list($d,$m,$y) = explode('/', $input['started_at']);
+		$started_at = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
 
+
+		$mData = Magnetboard::where('started_at','=',$started_at)
+				->whereClientId($input['client_id'])
+				->whereWorksiteId($input['worksite_id'])
+				->get()->toArray();
+
+		if(!empty($mData)){
+			return Redirect::to( $this->prefix . '/magnet/create')->withErrors(['Board Allready Exits.']);
+		}
+		
 		try{
 
 			$input = Input::all();
-			$input['started_at'] = date('Y-m-d H:i:s' , strtotime($input['started_at']));
+			$input['started_at'] = $started_at;
 			$users = $input['users'];
+			$start_time = $input['start_time'];
+			$end_time = $input['end_time'];
 			unset($input['users']);
+			unset($input['start_time']);
+			unset($input['end_time']);
 			
 			Magnetboard::insert($input);
 			$id = DB::getPdo()->lastInsertId();
@@ -82,8 +97,10 @@ class magnetboardController extends \BaseController {
 			$magnet_users = [];
 			foreach($users as $user){
 				$magnet_users[] = [
-					'user_id' => $user,
-					'magnetboard_id'=> $id
+					'user_id' 		=> $user,
+					'magnetboard_id'=> $id,
+					'start_time' 	=> $start_time[$user],
+					'end_time' 		=> $end_time[$user],
 				];
 			}
 
@@ -136,18 +153,22 @@ class magnetboardController extends \BaseController {
 		$magnetboard = Magnetboard::find($id);
 		$clients = Client::all();
 		$users = User::where('role','=', 4)->get();
-		$m_users =  MagnetboardUser::where('magnetboard_id','=', $id)->select('user_id')->get()->toArray();
+		$m_users =  MagnetboardUser::where('magnetboard_id','=', $id)->select('user_id', 'start_time','end_time')->get()->toArray();
 
-		$magnetuser = [];
+		$magnetuser = $selectdUser = [];
 		foreach($m_users as  $row){
 			$magnetuser[] = $row['user_id'];
+
+			$selectdUser[$row['user_id']]['start_time'] = $row['start_time'];
+			$selectdUser[$row['user_id']]['end_time'] = $row['end_time'];
 		}
 		$data = [
-			'clients' 	=> $clients,
-			'users'		=> $users,
-			'worksite'  => Worksite::where('client_id','=',$magnetboard['client_id'])->get(),
+			'clients' 	  => $clients,
+			'users'		  => $users,
+			'worksite'    => Worksite::where('client_id','=',$magnetboard['client_id'])->get(),
 			'magnetboard' => $magnetboard,
-			'magnetuser' =>$magnetuser
+			'magnetuser'  => $magnetuser,
+			'selectdUser' => $selectdUser
 		];
 		//return $data;
 		return View::make('magnet_board.edit', $data);
@@ -176,13 +197,30 @@ class magnetboardController extends \BaseController {
 			return Redirect::to( $this->prefix . '/magnet/'.$magnet_id.'/edit')->withErrors($validation);
 		}
 
+		list($d,$m,$y) = explode('/', $input['started_at']);
+		$started_at = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
+
+		$mData = Magnetboard::where('started_at','=',$started_at)
+				->whereClientId($input['client_id'])
+				->whereWorksiteId($input['worksite_id'])
+				->where('id','!=',$magnet_id)
+				->get()->toArray();
+
+		if(!empty($mData)){
+			return Redirect::to( $this->prefix . '/magnet/'.$magnet_id.'/edit')->withErrors(['Board Allready Exits.']);
+		}
+
 		try{
 
 
 			$input = Input::all();
-			$input['started_at'] = date('Y-m-d H:i:s' , strtotime($input['started_at']));
+			$input['started_at'] = $started_at;
 			$users = $input['users'];
+			$start_time = $input['start_time'];
+			$end_time = $input['end_time'];
 			unset($input['users']);
+			unset($input['start_time']);
+			unset($input['end_time']);
 			
 			Magnetboard::whereId($magnet_id)->update($input);
 
@@ -191,12 +229,14 @@ class magnetboardController extends \BaseController {
 			foreach($users as $user){
 				$magnet_users[] = [
 					'user_id' => $user,
-					'magnetboard_id'=> $magnet_id
+					'magnetboard_id'=> $magnet_id,
+					'start_time' 	=> $start_time[$user],
+					'end_time' 		=> $end_time[$user],
 				];
 			}
 			MagnetboardUser::insert($magnet_users);
 		
-			return Redirect::to( $this->prefix . '/magnet/'.$magnet_id.'/edit' )->withStatus('Worksite has been successfully updated.');
+			return Redirect::to( $this->prefix . '/magnet/'.$magnet_id.'/edit' )->withStatus('Magnetboard has been successfully updated.');
 
 		}
 		catch(Exception $e){
@@ -221,6 +261,41 @@ class magnetboardController extends \BaseController {
 		MagnetboardUser::where('magnetboard_id','=',$id)->delete();
 
 		return Redirect::to($this->prefix.'/magnet')->withStatus('Magnetboard has been successfully deleted.');
+	}
+
+
+	function checkBoardExists(){
+
+		$input = Input::all();
+
+		$mData = Magnetboard::where('started_at','=',date('Y-m-d H:i:s' , strtotime($input['started_at'])))
+				->whereClientId($input['client_id'])
+				->whereWorksiteId($input['worksite_id'])
+				->get()->toArray();
+		if(empty($mData)){
+			$data = ['result'=>false];
+		}else{
+			$data = ['result'=>true];
+		}
+		
+		return Response::json($data);
+	}
+
+	public function viewMagnet(){
+
+		$id = Input::get('id');
+		if(empty($id)) return ['data'=>'Magnet Board Not Found'];
+
+		$Magnetboard = Magnetboard::where('id','=',$id)->with('magnet_users')->with('client')->with('worksite')->get();
+		$MagnetboardUser = MagnetboardUser::where('magnetboard_id','=',$id)->with('users')->get();
+		
+		$mdata = [
+			'Magnetboard' => $Magnetboard[0],
+			'MagnetboardUser' => $MagnetboardUser
+		];
+		$data = View::make('magnet_board.view_model', $mdata)->render();
+		return Response::Json(['data'=>$data]);
+
 	}
 
 }

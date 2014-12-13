@@ -30,7 +30,7 @@
                 <p><i class="fa fa-users"></i> You can add edit client in this section in order to create a work site. Please note that you will not get the select option in worksite if you have not added the client first. Please refer to documentation for reference</p>
 
                 <h5 class="emp_code">Generated Client Id : {{ $client['client_auto_id'] }}</h5>
-              <form class="ls_form" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/client/updateclient/'.$client['id']) }}">
+              <form class="ls_form" id="editClient" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/client/updateclient/'.$client['id']) }}">
                 <!--user profile form ends here--> 
                 <!--form section 1 starts here-->
                 
@@ -67,7 +67,7 @@
 
                   <div class="form-group">
                     <label><i class="fa fa-envelope-o"></i> Email address</label>
-                    <input class="form-control" placeholder="Enter email"  value="{{ $client['email'] }}" type="email" name="email">
+                    <input class="form-control" disabled placeholder="Enter email"  value="{{ $client['email'] }}" type="email" name="email">
                   </div>
 
                   
@@ -92,10 +92,8 @@
                     <label><i class="fa fa-map-marker"></i> State</label>
                     <div class="form-group">
                       <div class="control-group">
-                        <select id="select-your-state" class="demo-default" name="state"  placeholder="Select a state...">
-                          <option value="">Select a state...</option>
-                          
-                        </select>
+                        @include('layouts.states', array('selected_state'=>$client['state']))
+                        
                       </div>
                     </div>
                     <label><i class="fa fa-pencil"></i> Postal Code</label>
@@ -104,7 +102,7 @@
                   <div class="form-group">
                     <label><i class="fa fa-flag"></i> Country</label>
                     <div class="control-group">
-                      <select id="select-country" class="demo-default" name="country" placeholder="Select a country...">
+                      <select id="select-country" class="demo-default form-control" name="country" placeholder="Select a country...">
                         <option value="">Select a country...</option>
                        
                         <option value="United States" selected="selected">United States</option>
@@ -158,28 +156,7 @@
 @stop
 
 @section('footerjs')
-    <script src="{{ URL::asset('assets/js/color.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/multipleAccordion.js') }}" type="text/javascript"></script>
-
-    <script src="{{ URL::asset('assets/js/lib/jqueryui.js') }}"></script>
-    <!--easing Library Script Start -->
-
-
-     <script src="{{ URL::asset('assets/js/lib/jquery.easing.js') }}"></script> <!--easing Library Script End -->
-     <!--Nano Scroll Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.nanoscroller.min.js') }}"></script> <!--Nano Scroll Script End -->
-     <!--switchery Script Start -->
-     <script src="{{ URL::asset('assets/js/switchery.min.js') }}"></script> <!--switchery Script End -->
-     <!--bootstrap switch Button Script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-switch.js') }}"></script> <!--bootstrap switch Button Script End-->
-     <!--easypie Library Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.easypiechart.min.js') }}"></script> <!--easypie Library Script Start -->
-     <!--bootstrap-progressbar Library script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-progressbar.min.js') }}"></script> <!--bootstrap-progressbar Library script End-->
-     <script src="{{ URL::asset('assets/js/pages/layout.js') }}" type="text/javascript"></script> <!--Layout Script End -->
-     <!--Upload button Script Start-->
+   
 
      <!--selectize Library start-->
      <script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>

@@ -21,8 +21,36 @@ class adminController extends \BaseController {
 		return View::make('dashboard.admin');
 	}
 
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function document()
+	{
+		return View::make('dashboard.document');
+	}
 
-	
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function chart()
+	{
+		return View::make('dashboard.chart');
+	}
+		
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function instruction()
+	{
+		return View::make('dashboard.instruction');
+	}
 
 
 }

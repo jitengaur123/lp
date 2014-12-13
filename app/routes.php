@@ -36,6 +36,10 @@ Route::group(array('before'=>'auth', 'prefix' => Config::get('constants.PREFIX')
 	Route::get('/dashboard', 'adminController@adminDashboard');
 	Route::get('/', 'adminController@adminDashboard');
 
+	Route::get('/safety_instruction', 'adminController@instruction');
+	Route::get('/document', 'adminController@document');
+	Route::get('/chart', 'adminController@chart');
+
 	Route::get('/profile', 'userController@profile');
 	Route::get('/editprofile', 'userController@editProfile');
 	Route::post('/editprofile', 'userController@updateProfile');
@@ -65,6 +69,9 @@ function allRoutes(){
 
 	//magnet board
 	magnetBoardRoutes();
+
+	//Post routes
+	postRoutes();
 }
 
 function userRoutes(){
@@ -84,6 +91,8 @@ function userRoutes(){
 
 	Route::get('/editdeleteuser', 'userController@editDeleteUser');
 	Route::post('/editdeleteuser', 'userController@postEditDeleteUser');	
+	Route::get('/viewuserdata', 'userController@viewUser');
+	
 	
 
 }
@@ -98,6 +107,7 @@ function clientRoutes(){
 
 	Route::get('/editdeleteclient', 'clientController@editDeleteClient');
 	Route::post('/editdeleteclient', 'clientController@postEditDeleteClient');	
+	Route::get('/viewclientdata', 'clientController@viewClient');
 }
 
 function workSiteRoutes(){
@@ -111,6 +121,7 @@ function workSiteRoutes(){
 	Route::post('/editdeletesite', 'worksiteController@postEditDeleteWorkSite');
 
 	Route::post('/client_worksite', 'worksiteController@clientWorksite');	
+	Route::get('/viewworksitedata', 'worksiteController@viewWorksite');
 }
 
 
@@ -126,6 +137,8 @@ function workReportRoutes(){
 
 	Route::post('/get_labors', 'workreportController@getLabors');
 	Route::get('/workreport/approve/{id}', 'workreportController@approve')->where('id', '[0-9]+');
+	Route::get('/viewworkreportdata', 'workreportController@viewWorkreport');
+	
 }
 
 
@@ -138,6 +151,20 @@ function magnetBoardRoutes(){
 
 	Route::get('/editdeletemagnet', 'magnetboardController@editDelete');
 	Route::post('/editdeletemagnet', 'magnetboardController@postEditDelete');	
+	Route::get('/viewmagnetdata', 'magnetboardController@viewMagnet');
+
+	Route::post('/checkboardexists', 'magnetboardController@checkBoardExists');
+	
+
+}
+
+
+function postRoutes(){
+
+	//Client section 
+	Route::resource('/post', 'postController');
+	Route::get('/post/delete/{id}', 'postController@delete')->where('id', '[0-9]+');
+	Route::post('/post/update/{id}', 'postController@update')->where('id', '[0-9]+');
 
 
 }

@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-md-12">
 
-            <form class="ls_form" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/workreport/updatereport/'.$reports['id']) }}"><!--form starts here-->
+            <form class="ls_form" id="workreportUpdateForm" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/workreport/updatereport/'.$reports['id']) }}"><!--form starts here-->
             <div class="panel panel-default userform no-border">
                   <div class="panel-heading ">
                     <h3 class="panel-title">Update Work Report In This Section</h3>
@@ -40,7 +40,7 @@
 
                             <div class="form-group">
                                     <label><i class="fa fa-user"></i> Client</label>
-                                     <select id="client" class="demo-default" name="client" placeholder="Select Client...">
+                                     <select id="client" class="demo-default form-control" name="client" placeholder="Select Client...">
 
                                         <option value="">Select A Client...</option>
                                         @foreach($clients as  $client)
@@ -52,10 +52,10 @@
 
                             <div class="form-group">
                                 <label><i class="fa fa-building"></i> Work Site</label>
-                                    <select id="worksite" class="demo-default" name="site" placeholder="Select WorkSite...">
+                                    <select id="worksite" class="demo-default form-control" name="site" placeholder="Select WorkSite...">
                                         <option value="">Select A Site...</option>
-                                         @foreach($worksites as  $site)
-                                        <option value="{{ $site['id'] }}" @if($reports['site_id'] == $site['id']) selected="selected" @endif>{{ $site['job_name'] }}</option>
+                                         @foreach($worksites as  $index=>$site)
+                                        <option worksite="{{ $index }}" value="{{ $site['id'] }}" @if($reports['site_id'] == $site['id']) selected="selected" @endif>{{ $site['job_name'] }}</option>
                                         @endforeach
                                     </select>
                             </div>
@@ -125,7 +125,7 @@
                                 <input name="time_sheet_id[]" value="{{ $timesheet['id'] }}" type="hidden">
                                 <fieldset class="col-md-3 col-md-6"><!--entry 1-->
                                     
-                                    <select id="labor" class="demo-default  laborOptions" name="labour_id[]" placeholder="Select Labor...">
+                                    <select id="labor" class="demo-default form-control laborOptions" name="labour_id[]" placeholder="Select Labor...">
                                         <option value="">Select Labor...</option>
                                           @foreach($labours as  $labour)
                                         <option value="{{ $labour['id'] }}" @if($timesheet['labour_id'] == $labour['id']) selected="selected" @endif>{{ $labour['user_name'] }}</option>
@@ -134,7 +134,7 @@
                                 </fieldset><!--entry 1 ends-->
 
                                 <fieldset class="col-md-3 col-md-6"><!--entry 2-->
-                                      <select id="class" class="demo-default  demo-default" name="class_name[]" placeholder="Select Class...">
+                                      <select id="class" class="demo-default form-control demo-default" name="class_name[]" placeholder="Select Class...">
                                         <option value="">Select Class...</option>
                                         <option value="Class A" @if($timesheet['class'] == 'Class A') selected="selected" @endif>Class A</option>
                                         <option value="Class B" @if($timesheet['class'] == 'Class B') selected="selected" @endif>Class B</option>
@@ -160,7 +160,7 @@
 
                                 
                                 <!--ot details start-->
-                                <fieldset class="col-md-3 col-md-6"><!--entry 6-->
+                                <fieldset class="col-md-6 col-md-6"><!--entry 6-->
                                 </fieldset><!--entry 6 end-->
 
                                 <fieldset class="col-md-2 col-md-6"><!--entry 7-->
@@ -274,29 +274,11 @@
 
 @section('footerjs')
 
-     <script src="{{ URL::asset('assets/js/color.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script> 
-    <script src="{{ URL::asset('assets/js/multipleAccordion.js') }}" type="text/javascript"></script>
-
-    <script src="{{ URL::asset('assets/js/lib/jqueryui.js') }}"></script>
-    <!--easing Library Script Start -->
-
-
-     <script src="{{ URL::asset('assets/js/lib/jquery.easing.js') }}"></script> <!--easing Library Script End -->
-     <!--Nano Scroll Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.nanoscroller.min.js') }}"></script> <!--Nano Scroll Script End -->
-     <!--switchery Script Start -->
-     <script src="{{ URL::asset('assets/js/switchery.min.js') }}"></script> <!--switchery Script End -->
-     <!--bootstrap switch Button Script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-switch.js') }}"></script> <!--bootstrap switch Button Script End-->
-     <!--easypie Library Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.easypiechart.min.js') }}"></script> <!--easypie Library Script Start -->
-     <!--bootstrap-progressbar Library script Start-->
-     <script src="{{ URL::asset('assets/js/bootstrap-progressbar.min.js') }}"></script> <!--bootstrap-progressbar Library script End-->
-     <script src="{{ URL::asset('assets/js/pages/layout.js') }}" type="text/javascript"></script> <!--Layout Script End -->
-     <!--Upload button Script Start-->
-
+   
+<script type="text/javascript">
+    var workSiteData = '<?php echo json_encode($worksite_data); ?>';
+    workSiteData = JSON.parse(workSiteData);
+</script>
      <!--selectize Library start-->
      <script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>
      <!--selectize Library End-->

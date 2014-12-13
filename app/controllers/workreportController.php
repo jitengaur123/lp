@@ -69,16 +69,18 @@ class workreportController extends \BaseController {
 		}
 
 		try{
-
+			list($d,$m,$y) = explode('/', $input['date_create']);
+			$date_create = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
 
 			$data = [
 				'job_number'	=> $input['job_number'],
 				'client_id' 	=> $input['client'],
 				'site_id' 		=> $input['site'],
-				'date_create' 	=> date('Y-m-d H:i:s', strtotime($input['date_create'])),
+				'date_create' 	=> $date_create,
 				'description'	=> $input['description'],
 				'submit_by'		=> Auth::user()->id
 			]; 
+
 			Workreport::insert($data);
 			$id = DB::getPdo()->lastInsertId();
 			$i =0;
@@ -151,20 +153,20 @@ class workreportController extends \BaseController {
 	{
 		//
 		$clients = Client::all();
-		$worksites = Worksite::all();
 		$labours = User::where('role', '=', 4)->get();
 		$reports = Workreport::whereId($id)->with('timesheet')->get();
-
 		$clientData = Client::find($reports[0]['client_id']);
 		$siteData = Worksite::find($reports[0]['site_id']);
+		$worksite = Worksite::where('client_id' , '=', $reports[0]['client_id'])->get()->toArray();
 
 		$data = [
 			'clients' 	=> $clients,
-			'worksites' => $worksites,
+			'worksites' => $worksite,
 			'labours'  	=> $labours,
 			'reports'  	=> $reports[0],
 			'client_data' => $clientData,
-			'site_data'	  => $siteData
+			'site_data'	  => $siteData,
+			'worksite_data' => $worksite
 		];
 		return View::make('workreport.edit', $data);
 	}
@@ -193,12 +195,13 @@ class workreportController extends \BaseController {
 		}
 
 		try{
-
+			list($d,$m,$y) = explode('/', $input['date_create']);
+			$date_create = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
 
 			$data = [
 				'client_id' 	=> $input['client'],
 				'site_id' 		=> $input['site'],
-				'date_create' 	=> date('Y-m-d H:i:s', strtotime($input['date_create'])),
+				'date_create' 	=> $date_create,
 				'description'	=> $input['description'],
 				'submit_by'		=> Auth::user()->id
 			];
@@ -327,4 +330,33 @@ class workreportController extends \BaseController {
 
 		return  Redirect::to( $this->prefix . '/workreport' )->withStatus('Work Report has been successfully approved.');
 	}
+
+	public function viewWorkreport(){
+
+		$id = Input::get('id');
+		if(empty($id)) return ['data'=>'Report Not Found'];
+
+		$reports = Workreport::whereId($id)->with('client')->with('worksite')->with('submitby')->get();
+
+		$timesheet = Timesheet::where('workreport_id', '=', $id)->with('labor')->get();
+		$total =0;
+		foreach($timesheet as $row){
+			$reg_amount = $row['reg_hour']*$row['reg_rate'];
+			$ot_amount = $row['ot_hour']*$row['ot_rate'];
+			$dt_amount = $row['dt_hour']*$row['dt_rate'];
+			$total += $reg_amount+$ot_amount+$dt_amount;
+		}
+
+		$report = [
+			'report' => $reports[0],
+			'timesheet' => $timesheet,
+			'total'     => $total
+		];
+		$data = View::make('workreport.view_model',$report)->render();
+		return Response::Json(['data'=>$data]);
+
+	}
+
+
+	
 }

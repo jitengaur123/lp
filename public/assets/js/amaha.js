@@ -1,7 +1,14 @@
-var workSiteData = '';
+
 $(function(){
 	$('.roleClass').on('change', parentUserChange);
-	//$('.viewUserModel').on('click', viewUser);
+	$('.viewUserDataModel').on('click', viewUser);
+	$('.viewClientModel').on('click', viewClient);
+	$('.viewSiteDataModel').on('click', viewWorksite);
+	$('.viewMagnetDataModel').on('click', viewMagnet);
+	$('.viewReportDataModel').on('click', viewWorkReport);
+	//$('.boardStartedAt').on('blur',checkBoardExists);
+
+
 	$('#client').on('change', changeWorksite);
 	$('.editSelected').on('click', editSelected);
 	$('.editSelectedData').on('click', editSelectedData);
@@ -76,8 +83,21 @@ function worksite(){
 	$('.showPostCode').text(workData['postal_code']);
 	$('.showCountry').text(workData['country']);
 	getLabors();
+	//checkBoardExists();
 }
 
+
+function checkBoardExists(){
+
+	$('.exists').html('');
+	var url = ae.baseUrl + 'administrator/checkboardexists';
+	var postData = $('#magnetForm').serialize();
+	$.post(url, postData, function(resultData){
+		if(resultData.result){
+			$('.exists').html('Board Allready Exits.');
+		}
+	},'json');
+}
 function editSelected(e){
 	e.preventDefault();
     var $id = $('.id').val();
@@ -136,10 +156,48 @@ function parentUserChange(){
 }
 
 
+
 function viewUser(){
+	$('.viewProfileData').html('Loading...')
 	var $user_id = $(this).data('userid');
-	var url = ae.baseUrl + 'administrator/viewuser';
+	var url = ae.baseUrl + 'administrator/viewuserdata';
 	$.get(url, {user_id:$user_id}, function(resultData){
 		$('.viewProfileData').html(resultData.data);
+	},'json');
+}
+
+function viewClient(){
+	$('.viewClientData').html('Loading...')
+	var $client_id = $(this).data('clientid');
+	var url = ae.baseUrl + 'administrator/viewclientdata';
+	$.get(url, {client_id:$client_id}, function(resultData){
+		$('.viewClientData').html(resultData.data);
+	},'json');
+}
+
+function viewWorksite(){
+	$('.viewWorksiteData').html('Loading...')
+	var $id = $(this).data('id');
+	var url = ae.baseUrl + 'administrator/viewworksitedata';
+	$.get(url, {id:$id}, function(resultData){
+		$('.viewWorksiteData').html(resultData.data);
+	},'json');
+}
+
+function viewMagnet(){
+	$('.viewMagnetData').html('Loading...')
+	var $id = $(this).data('id');
+	var url = ae.baseUrl + 'administrator/viewmagnetdata';
+	$.get(url, {id:$id}, function(resultData){
+		$('.viewMagnetData').html(resultData.data);
+	},'json');
+}
+
+function viewWorkReport(){
+	$('.viewWorkreportData').html('Loading...')
+	var $id = $(this).data('id');
+	var url = ae.baseUrl + 'administrator/viewworkreportdata';
+	$.get(url, {id:$id}, function(resultData){
+		$('.viewWorkreportData').html(resultData.data);
 	},'json');
 }

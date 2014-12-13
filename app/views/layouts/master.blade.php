@@ -81,4 +81,5 @@
 <!--Script for notification end-->
 
 <script src="{{ URL::asset('assets/js/pages/login.js') }}"></script>
+<script src="{{ URL::asset('assets/js/jquery.validation.js') }}"></script>
 </html>

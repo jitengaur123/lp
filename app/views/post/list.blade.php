@@ -5,13 +5,13 @@
           <div class="col-md-12"> 
             <!--Top header start-->
             
-            <h3 class="ls-top-header">View All  Magnet Board</h3>
+            <h3 class="ls-top-header">View Post</h3>
             <!--Top header end --> 
             <!--Top breadcrumb start -->
             
             <ol class="breadcrumb">
               <li> <a class="fa fa-home" href="#"></a> </li>
-              <li class="active">View All  Magnet Board</li>
+              <li class="active">View Post</li>
             </ol>
             <!--Top breadcrumb start --> 
           </div>
@@ -22,7 +22,7 @@
           <div class="col-md-12">
             <div class="panel panel-default userform no-border">
               <div class="panel-heading">
-                <h3 class="panel-title">View All Magnet Board</h3>
+                <h3 class="panel-title">View All Post</h3>
               </div>
               <div class="panel-body"> 
                 @include('notification') 
@@ -31,24 +31,22 @@
                   <table class="table table-bordered table-striped table-bottomless" id="ls-editable-table">
                     <thead>
                       <tr>
-                        <th>Date</th>
-                        <th>Client Name</th>
-                        <th>WorkSite Name</th>
+                        <th class="id_emp">Id</th>
+                        <th>Page name</th>
                         <th class="text-center">View/Edit/Delete</th>
                       </tr>
                     </thead>
                     <tbody>
-                       @foreach($magnetboard as $row)
+                       @foreach($posts as $post)
                       <tr>
-                        <td>{{ date('d/m/Y',strtotime($row['started_at'])) }}</td>
-                        <td>{{ $row['client']['first_name'] }} {{ $row['client']['last_name'] }}</td>
-                        <td>{{ $row['worksite']['job_name'] }}</td>
+                        <td>{{ $post['id'] }}</td>
+                        <td>{{ $post['page_name'] }}</td>
                         <td class="text-center">
-                          <a data-id="{{ $row['id'] }}" class="viewsiteModel viewMagnetDataModel" href="#reModal"><!--  {{ URL::to(Config::get('constants.PREFIX') . '/magnet/'.$row['id']) }} -->
+                          <a class="viewsiteModel" href="{{ URL::to(Config::get('constants.PREFIX') . '/post/'.$post['id']) }}"><!-- #reModal -->
                           <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button> </a> 
-                          <a href="{{ URL::to(Config::get('constants.PREFIX') . '/magnet/'.$row['id']) }}/edit">
+                          <a href="{{ URL::to(Config::get('constants.PREFIX') . '/post/'.$post['id']) }}/edit">
                           <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button> </a>
-                           <a onclick="return confirm('Are you sure want to delete?');" href="{{ URL::to(Config::get('constants.PREFIX') . '/magnet/delete/'.$row['id']) }}">
+                           <a onclick="return confirm('Are you sure want to delete?');" href="{{ URL::to(Config::get('constants.PREFIX') . '/post/delete/'.$post['id']) }}">
                           <button class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
                           </a>
                         </td>
@@ -62,26 +60,12 @@
             </div>
           </div>
         </div>
-
-
- <!--modal start-->
-<div class="remodal" data-remodal-id="reModal">
-  <h3>View Magnet Board</h3>
-  <div class="viewMagnetData">
-    <div class="row">
-      <div class="col-md-12 ">
-        Loading...
-      </div>
-    </div>
-    <br>
-    <a class="remodal-cancel ls-red-btn btn" href="#">Close</a> 
-  </div>
-</div><!--modal ends--> 
+<!--modal ends--> 
 @stop
 
 @section('head')
 
-<title>Amaha - Magnet List</title>
+<title>Amaha - Post List</title>
 <!--Page loading plugin Start -->
 
 
@@ -107,7 +91,8 @@
 @stop
 
 @section('footerjs')
-   
+    
+
      <!--selectize Library start-->
      <script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>
      <!--selectize Library End-->
