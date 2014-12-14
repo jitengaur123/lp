@@ -15,6 +15,7 @@ $('#btnAdd').click(function () {
             newNum  = new Number(num + 1),      // the numeric ID of the new input field being added
             newElem = $('#entry' + num).clone().attr('id', 'entry' + newNum).fadeIn('slow'); // create the new element via clone(), and manipulate it's ID using newNum value
     // manipulate the name/id values of the input inside the new element
+       
         // H2 - section
         newElem.find('.heading-reference').attr('id', 'ID' + newNum + '_reference').attr('name', 'ID' + newNum + '_reference').html('Entry #' + newNum);
  
@@ -44,6 +45,7 @@ $('#btnAdd').click(function () {
  
     // insert the new element after the last "duplicatable" input field
         $('#entry' + num).after(newElem);
+        $('#entry' + newNum).find('input[type="text"]').val('');
         $('#ID' + newNum + '_title').focus();
  
     // enable the "remove" button
