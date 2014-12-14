@@ -21,46 +21,42 @@
 
     <div class="row">
         <div class="col-md-12">
-
+            @include('notification')
             <form class="ls_form" method="post" action="{{ URL::to(Config::get('constants.PREFIX').'/post/update/'.$post['id']) }}"><!--form starts here-->
-            <div class="panel panel-default userform no-border">
-                <div class="panel-heading ">
-                    <h3 class="panel-title">Update Post In This Section</h3>
-                </div>
-                <p class="margint15">You can create a new work report in this section by filling up the fields below. The fields with * are required & can not be left empty. For more information please refer to the documentation.<br/>If you are a journeyman the work reports will need the approval from project manager and will remain in pending status, if you are the admin then you can check the reports and change the status of report to available states.</p>
-                
-                <div class="panel-body">
-                    
-                        @include('notification')
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label><i class="fa fa-info-circle"></i> Page name </label>
+             <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Post Title</h3>
+                        </div>
+                        <div class="panel-body">
+                         
+                                <div class="form-group">
+                                    <label>Give A Title To Your Post</label>
                                 <input class="form-control" placeholder="Page name" name="page_name" type="text" value="{{ $post['page_name'] }}">
-                            </div>
-
-                           
-                        </div><!--form section 1 ends here-->
-                        
-
-                </div><!--panel ends here-->
-            </div>
+                                </div>
+                        </div>
+                    </div>
 
 
-            <!--additional comments-->
-            <div class="col-md-12 message">
-                <p>Description</p>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Post Body</h3>
+                            <ul class="panel-control">
+                                <li><a class="minus" href="javascript:void(0)"><i class="fa fa-minus"></i></a></li>
+                                <li><a class="refresh" href="javascript:void(0)"><i class="fa fa-refresh"></i></a></li>
+                                <li><a class="close-panel" href="javascript:void(0)"><i class="fa fa-times"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="panel-body no-padding">
                 <textarea name="description" class="form-control autogrow" placeholder="description">{{ $post['description'] }}</textarea>
-            </div>
-            <!--additiona comments end-->
+                        </div>
 
-             
-           
-            <div class="row marginb50">
-        
-             <div class="col-md-6 total_all">
-            <input type="submit" value="Submit Report" class="btn btn-primary">
-            </div>
-            </div>
+                  
+
+                    </div>
+                    <button type="submit" class="btn btn-primary" ><i class="glyphicon glyphicon-folder-open"></i> &nbsp; Publish Post</button>
+
+   
+
             </form><!--form ends here-->
         </div>
     </div>
@@ -71,17 +67,13 @@
 @section('head')
 
 <title>Amaha - Update Post</title>
-
-<!--Page loading plugin Start -->
     <link href="{{ URL::asset('assets/css/plugins/pace.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script><!--Page loading plugin End   -->
+   
     <!-- Plugin Css Put Here -->
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/fileinput.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/icheck/skins/all.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/css/plugins/jquery.datetimepicker.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/selectize.bootstrap3.css') }}">
-    <!-- Plugin Css End -->
+     <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/summernote.css') }}">
+
     <!-- Custom styles Style -->
     <link href="{{ URL::asset('assets/css/style.css') }}" rel="stylesheet">
     <!-- Custom styles Style End-->
@@ -98,7 +90,7 @@
 
 @section('footerjs')
 
-    
+     
 
      <!--selectize Library start-->
      <script src="{{ URL::asset('assets/js/selectize.min.js') }}"></script>
@@ -107,19 +99,12 @@
      <!--Select & Tag demo start-->
      <script src="{{ URL::asset('assets/js/pages/selectTag.js') }}"></script>
      <!--Select & Tag demo end-->
+ <!-- summernote Editor Script For Layout start-->
+    <script src="{{ URL::asset('assets/js/summernote.min.js') }}"></script>
+    <!-- summernote Editor Script For Layout End-->
 
-     <script src="{{ URL::asset('assets/js/fileinput.min.js') }}"></script> <!--Upload button Script End-->
-     <!--Auto resize  text area Script Start-->
-     <script src="{{ URL::asset('assets/js/jquery.autosize.js') }}"></script> <!--Auto resize  text area Script Start-->
-     <script src="{{ URL::asset('assets/js/pages/sampleForm.js') }}"></script> <!-- Script For Icheck -->
-     <script src="{{ URL::asset('assets/js/icheck.min.js') }}"></script> <!-- Script For Icheck -->
-     <!--Advance Radio and checkbox demo start-->
-     <script src="{{ URL::asset('assets/js/pages/checkboxRadio.js') }}"></script> <!--Advance Radio and checkbox demo start-->
-     <!-- Date & Time Picker Library Script Start -->
-     <script src="{{ URL::asset('assets/js/jquery.datetimepicker.js') }}"></script> <!-- Date & Time Picker Library Script End -->
-     <!--Demo for Date, Time Color Picker Script Start -->
+    <!-- Demo Ck Editor Script For Layout Start-->
+    <script src="{{ URL::asset('assets/js/pages/editor.js') }}"></script>
+    <!-- Demo Ck Editor Script For Layout ENd-->
      <script src="{{ URL::asset('assets/js/amaha.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
-
-     <script src="{{ URL::asset('assets/js/pages/pickerTool.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
-      <script src="{{ URL::asset('assets/js/pages/addfieldset.js') }}"></script>
 @stop
