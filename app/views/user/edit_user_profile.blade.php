@@ -121,7 +121,7 @@
 
                         <div class="form-group">
                             <label><i class="fa fa-calendar"></i> Date Of Birth</label>
-                            <input value="{{ $data['dob'] }}" class=
+                            <input value="{{ date('d/m/Y', strtotime($data['dob'])) }}" class=
                             "form-control datePickerOnly"
                             type="text" name="dob">
                         </div>
@@ -164,7 +164,6 @@
                              <label><i class="fa fa-flag"></i> Country</label>
                             <div class="control-group">
             <select id="select-country" name="country" class="demo-default" placeholder="Select a country...">
-                <option value="">Select a country...</option>
                
                 <option value="United States">United States</option>
                
@@ -299,8 +298,8 @@
 
                     <div class="col-md-12 ls-group-input">
                         <textarea class="form-control" id=
-                        "bio1" name="bio" value="{{ $data['about'] }}" placeholder=
-                        "About Yourself">
+                        "bio1" name="bio" placeholder=
+                        "About Yourself">{{ $data['about'] }}
 </textarea>
                     </div>
 
@@ -323,31 +322,31 @@
                             <div class=
                             "col-md-3 col-sm-12 col-xs-12">
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckboxNew" type=
                                 "checkbox" value="Blindness">
                                 Blindness</label>
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckboxNew2" type=
                                 "checkbox" value="Multiple sclerosis (MS)">
                                 Multiple sclerosis
                                 (MS)</label> <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckboxNew3" type=
                                 "checkbox" value="Muscular dystrophy">
                                 Muscular dystrophy</label>
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckboxNew3" type=
                                 "checkbox" value="Intellectual disability">
                                 Intellectual disability</label>
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckboxNew3" type=
                                 "checkbox" value="Obsessive compulsive disorder">
@@ -357,7 +356,7 @@
                             <div class=
                             "col-md-3 col-sm-12 col-xs-12">
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckbox4" type=
                                 "checkbox" value="Cancer">
@@ -367,13 +366,13 @@
                                 "checkbox" value="Diabetes">
                                 Diabetes</label>
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckbox6" type=
                                 "checkbox" value="Epilepsy">
                                 Epilepsy</label>
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckboxNew3" type=
                                 "checkbox" value="Missing limbs or partially missing limbs">
@@ -383,7 +382,7 @@
                             <div class=
                             "col-md-3 col-sm-12 col-xs-12">
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckbox4" type=
                                 "checkbox" value="Autism">
@@ -393,13 +392,13 @@
                                 "checkbox" value="HIV/AIDS">
                                 HIV/AIDS</label>
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckbox6" type=
                                 "checkbox" value="Cerebral palsy">
                                 Cerebral palsy</label>
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckboxNew3" type=
                                 "checkbox" value="Post‐traumatic stress disorder (PTSD)">
@@ -410,25 +409,25 @@
                             <div class=
                             "col-md-3 col-sm-12 col-xs-12">
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckbox4" type=
                                 "checkbox" value="Major depression">
                                 Major depression</label>
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckbox5" type=
                                 "checkbox" value="Deafness">
                                 Deafness</label>
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckbox6" type=
                                 "checkbox" value="Bipolar disorder">
                                 Bipolar disorder</label>
                                 <label class=
-                                "checkbox"><input name="disablity" class=
+                                "checkbox"><input name="disablity[]" class=
                                 "icheck-green" id=
                                 "inlineCheckboxNew3" type=
                                 "checkbox" value="Impairments requiring the use of a wheelchair">
@@ -461,29 +460,29 @@
 
                         <h3><i class="fa fa-star-o"></i> Veteran Status</h3>
 
-                        <div class=
+                         <div class=
                         "veteran">
                             <label class=
-                            "checkbox"><input name="veterun_status" class=
+                            "checkbox"><input name="veterun_status[]" class=
                             "icheck-green" id=
                             "inlineCheckboxNew" type=
                             "checkbox" value="I am not a protected veteran."> I am not a protected veteran.</label> 
 
                             <label class=
-                            "checkbox"><input name="veterun_status" class=
+                            "checkbox"><input name="veterun_status[]" class=
                             "icheck-green" id=
                             "inlineCheckboxNew2" type=
-                            "checkbox" value="option2"> I
+                            "checkbox" value="I am a protected veteran but I choose not to self‐identify the classifications to which I belong."> I
                             am a protected veteran but I
                             choose not to self‐identify the
                             classifications to which I
                             belong.</label> 
 
                             <label class=
-                            "checkbox"><input name="veterun_status" class=
+                            "checkbox"><input name="veterun_status[]" class=
                             "icheck-green" id=
                             "inlineCheckboxNew3" type=
-                            "checkbox" value="option3">
+                            "checkbox" value="Disabled Veteran: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under as administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a serviceconnect disability.">
                             Disabled Veteran: a veteran of
                             the U.S. military, ground,
                             naval or air service who is
@@ -499,10 +498,10 @@
                             disability.</label>
 
                             <label class=
-                            "checkbox"><input name="veterun_status" class=
+                            "checkbox"><input name="veterun_status[]" class=
                             "icheck-green" id=
                             "inlineCheckboxNew3" type=
-                            "checkbox" value="option3">
+                            "checkbox" value="Active duty wartime or campaign badge veteran: a veteran who served on active duty in the U.S. military, ground, naval,or air service during a war, or in a campaigned or expedition for which a campaign badge has been authorized under the laws administered by the Department of Defense.">
                             Active duty wartime or campaign
                             badge veteran: a veteran who
                             served on active duty in the
@@ -515,10 +514,10 @@
                             of Defense.</label>
 
                             <label class=
-                            "checkbox"><input name="veterun_status" class=
+                            "checkbox"><input name="veterun_status[]" class=
                             "icheck-green" id=
                             "inlineCheckboxNew3" type=
-                            "checkbox" value="option3">
+                            "checkbox" value=" Armed forces service medal veteran: a veteran who, while services on active duty in the U.S. military, ground,naval, or air service, participated in a U.S. military operation for which an Armed Forces service medal was awarded pursuant to Executive Order 12985.">
                             Armed forces service medal
                             veteran: a veteran who, while
                             services on active duty in the
@@ -530,16 +529,16 @@
                             Executive Order 12985.</label>
 
                             <label class=
-                            "checkbox"><input name="veterun_status" class=
+                            "checkbox"><input name="veterun_status[]" class=
                             "icheck-green" id=
                             "inlineCheckboxNew3" type=
-                            "checkbox" value="option3">
+                            "checkbox" value="Recently separated veteran:a veteran who was discharged or released from active duty in the U.S. military,ground,  naval, or air service within the last three years.">
                             Recently separated veteran:a veteran who was discharged or released from active duty in the U.S. military,ground,  naval, or air service within the last three years.</label>
                         </div>
                         <div class="padtop15"><div class="form-group">
                             <label><i class="fa fa-calendar"></i> Date Of Discharge (if recently seperated veteran)</label>
                             <input name="date_of_discharge" class=
-                            "form-control datePickerOnly"
+                            "form-control datePickerOnly" value="{{ date('d/m/Y', strtotime($data['date_of_discharge'])) }}"
                             type="text">
                         </div>
 

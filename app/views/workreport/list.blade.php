@@ -44,7 +44,7 @@
                        @foreach($reports as $report)
                       <tr>
                         <td>{{ $report['job_number'] }}</td>
-                        <td>{{ $report['client']['company_name'] }}</td>
+                        <td>{{ $report['client']['first_name'] }} {{ $report['client']['last_name'] }}</td>
                         <td>{{ $report['worksite']['job_name'] }}</td>
                         <td>{{ $report['submitby']['user_name'] }}</td>
                         <td>{{ date('d/m/Y', strtotime($report['date_create'])) }}</td>

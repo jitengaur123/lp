@@ -24,7 +24,7 @@
 
     <!-- TODO: Add a favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/ico/fab.ico') }}">
-
+    <script src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}" type="text/javascript"></script> 
      <script type="text/javascript">
 
         var ae = window.ae || {};
@@ -296,7 +296,7 @@
 
 
 <script src="{{ URL::asset('assets/js/color.js') }}" type="text/javascript"></script> 
-<script src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}" type="text/javascript"></script> 
+
 <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}" type="text/javascript"></script> 
 <script src="{{ URL::asset('assets/js/multipleAccordion.js') }}" type="text/javascript"></script>
 

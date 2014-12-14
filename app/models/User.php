@@ -50,7 +50,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		if(isset($input['last_name'])) $data['last_name'] 	= $input['last_name'];
 		if(isset($input['email'])) $data['email'] 		= $input['email'];
 
-		if(isset($input['emergency_contact_number'])) $data['emergency_contact_number'] = $input['emergency'];
+		if(isset($input['emergency'])) $data['emergency_contact_number'] = $input['emergency'];
 
 		if(isset($input['gender'])) $data['gender'] 	= $input['gender'];
 
@@ -58,13 +58,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		if(isset($input['address'])) $data['address'] = $input['address'];
 
-		if(isset($input['city'])) $data['city'] = $input['city'];
+		if(isset($input['locality'])) $data['city'] = $input['locality'];
 
 		if(isset($input['state'])) $data['state'] = $input['state'];
 
 		if(isset($input['country'])) $data['country'] = $input['country'];
 
-		if(isset($input['postcode'])) $data['postcode'] = $input['postcode'];
+		if(isset($input['postal_code'])) $data['postcode'] = $input['postal_code'];
 
 		if(isset($input['country'])) $data['country'] = $input['country'];
 
@@ -74,21 +74,27 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		if(isset($input['race'])) $data['race'] = $input['race'];
 
-		if(isset($input['about'])) $data['about'] = $input['bio'];
+		if(isset($input['bio'])) $data['about'] = $input['bio'];
 
 		if(isset($input['disability'])) $data['disability'] = json_encode($input['disability']);
 
 		if(isset($input['veterun_status'])) $data['veterun_status'] = json_encode($input['veterun_status']);
 
-		if(isset($input['date_of_discharge']))
-			$data['date_of_discharge'] = $input['date_of_discharge'];
+		if(isset($input['date_of_discharge'])){
+			list($d,$m,$y) = explode('/', $input['date_of_discharge']);
+			$date_of_discharge = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
+			$data['date_of_discharge'] = $date_of_discharge;
+		}
+
 
 		
-		if(isset($input['password']) && $input['password'] != "")
-			$data['password'] = Hash::make($input['password']);
+		if(isset($input['password']) && $input['password'] != "")	$data['password'] = Hash::make($input['password']);
 
-		if(isset($input['dob']))
-			$data['dob'] = date('m-d-Y', strtotime($input['dob']));
+		if(isset($input['dob'])){
+			list($d,$m,$y) = explode('/', $input['dob']);
+			$date_create = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
+			$data['dob'] = $date_create;
+		}
 
 		$data['is_complete'] = 1;
 
@@ -98,7 +104,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 			if(!in_array($extension, array('jpg','jpeg','png', 'gif'))){
 				throw new Exception("Only jpg, png and gif image is allowed", 1);
-				return;
+				//return;
 			}		
 				
 
@@ -107,6 +113,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		   	Input::file('profile_pic')->move($destinationPath, $file_name);
 		   	$data['profile_pic'] = $file_name;
 		}
+		
 		
 		User::whereId($userid)->update($data);
 		return true;

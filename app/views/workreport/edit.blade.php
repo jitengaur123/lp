@@ -222,7 +222,7 @@
             <!--additional comments-->
             <div class="col-md-12 message">
                 <p>additional comments</p>
-                <textarea name="description" class="form-control autogrow" placeholder="Type your comments & additional notes here....."></textarea>
+                <textarea name="description" class="form-control autogrow" placeholder="Type your comments & additional notes here.....">{{ $reports['description'] }}</textarea>
             </div>
             <!--additiona comments end-->
 

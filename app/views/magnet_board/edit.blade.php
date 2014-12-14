@@ -115,7 +115,11 @@
             </div>
           </div>
         </div>
-        
+        <script type="text/javascript">
+        $(document).ready(function(){
+          $(document).on('change','#client', changeWorksite);
+        });
+        </script>
 @stop
 
 @section('head')
@@ -167,4 +171,5 @@
      <script src="{{ URL::asset('assets/js/jquery.datetimepicker.js') }}"></script> <!-- Date & Time Picker Library Script End -->
      <!--Demo for Date, Time Color Picker Script Start -->
      <script src="{{ URL::asset('assets/js/pages/pickerTool.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
+     <script src="{{ URL::asset('assets/js/amaha.js') }}"></script> <!--Demo for Date, Time Color Picker Script End -->
 @stop

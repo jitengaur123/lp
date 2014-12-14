@@ -87,6 +87,12 @@
     @endforeach
     
   </div>
+
+  <div class="row">
+    <div class="col-md-12">
+        <p>Comment : {{ $report['description'] }}</p>
+    </div>
+  </div>
 <br>
 <a class="remodal-cancel ls-red-btn btn" href="#">Close</a> 
 <a class="remodal-confirm ls-light-green-btn btn editButton" href="{{ URL::to(Config::get('constants.PREFIX').'/workreport/'.$report['id'].'/edit') }}">Update/Edit Report</a>

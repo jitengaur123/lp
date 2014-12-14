@@ -135,6 +135,7 @@ class clientController extends \BaseController {
 			'company_name'	=> 'required',
 			'phone_office' 	=> 'required',
 			'mobile1' 		=> 'required',
+			'email' 		=> 'required|email',
 			'fax'			=> 'required',
 			'address'		=> 'required',
 			'city'			=> 'required',
@@ -150,6 +151,12 @@ class clientController extends \BaseController {
 		if($validation->fails()){
 			return Redirect::to( $this->prefix . '/client/'.$client_id.'/edit')->withErrors($validation);
 		}
+
+		$ClientEmail = Client::whereEmail($input['email'])->where('id','!=',$client_id)->get()->toArray();
+		if(!empty($ClientEmail)){
+			return Redirect::to( $this->prefix . '/client/'.$client_id.'/edit')->withErrors(['Email is allready exists']);
+		}
+
 
 		try{
 

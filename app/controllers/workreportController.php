@@ -265,7 +265,7 @@ class workreportController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function deleteSite($id)
+	public function deleteReport($id)
 	{
 		//
 		if(empty($id)) return Redirect::to($this->prefix.'/workreport');
@@ -276,7 +276,7 @@ class workreportController extends \BaseController {
 	}
 
 
-	public function editDeleteWorkSite(){
+	public function editDeleteWorkReport(){
 
 		$data = [
 			'workreports' => Workreport::all()
@@ -285,7 +285,7 @@ class workreportController extends \BaseController {
 	}
 
 	
-	public function postEditDeleteWorkSite(){
+	public function postEditDeleteWorkReport(){
 
 		$id = Input::get('id');
 		if(empty($id)) return false;

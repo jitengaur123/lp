@@ -121,7 +121,7 @@
 
                         <div class="form-group">
                             <label><i class="fa fa-calendar"></i> Date Of Birth</label>
-                            <input value="{{ $data['dob'] }}" class=
+                            <input value="{{ date('d/m/Y', strtotime($data['dob'])) }}" class=
                             "form-control datePickerOnly"
                             type="text" name="dob">
                         </div>
@@ -165,7 +165,6 @@
                              <label><i class="fa fa-flag"></i> Country</label>
                             <div class="control-group">
             <select id="select-country" name="country" class="demo-default" placeholder="Select a country...">
-                <option value="">Select a country...</option>
                 <option value="United States">United States</option>
             </select>
             
@@ -242,8 +241,8 @@
 
                     <div class="col-md-12 ls-group-input">
                         <textarea class="form-control" id=
-                        "bio1" name="bio" value="{{ $data['about'] }}" placeholder=
-                        "About Yourself">
+                        "bio1" name="bio"  placeholder=
+                        "About Yourself">{{ $data['about'] }}
 </textarea>
                     </div>
 
@@ -483,7 +482,7 @@
                             <label><i class="fa fa-calendar"></i> Date Of Discharge (if recently seperated veteran)</label>
                             <input name="date_of_discharge" class=
                             "form-control datePickerOnly"
-                            type="text">
+                            type="text" value="{{ date('d/m/Y', strtotime($data['date_of_discharge'])) }}">
                         </div>
 
                         <div class="row">

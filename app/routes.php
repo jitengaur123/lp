@@ -132,8 +132,8 @@ function workReportRoutes(){
 	Route::get('/workreport/delete/{id}', 'workreportController@deleteReport')->where('id', '[0-9]+');
 	Route::post('/workreport/updatereport/{id}', 'workreportController@updateReport')->where('id', '[0-9]+');
 
-	Route::get('/editdeletereport', 'workreportController@editDeleteWorkSite');
-	Route::post('/editdeletereport', 'workreportController@postEditDeleteWorkSite');	
+	Route::get('/editdeletereport', 'workreportController@editDeleteWorkReport');
+	Route::post('/editdeletereport', 'workreportController@postEditDeleteWorkReport');	
 
 	Route::post('/get_labors', 'workreportController@getLabors');
 	Route::get('/workreport/approve/{id}', 'workreportController@approve')->where('id', '[0-9]+');

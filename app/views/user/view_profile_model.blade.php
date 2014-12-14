@@ -25,10 +25,10 @@
 	<p><a href="#">Supervisor : None</a></p>
 	<p>About : {{ $user['about'] }} </p>
 	<p>Email: {{ $user['email'] }}</p>
-	<p>Disabilities : <?php if(!empty($user['disability'])) implode(', ',json_decode($user['disability'], true)); else echo 'No, I do not have a disability'; ?></p>
+	<p>Disabilities : <?php $disability = $user['disability']; if(!empty($user['disability']) && is_array($disability)) implode(', ',json_decode($user['disability'], true)); else echo 'No, I do not have a disability'; ?></p>
 	 <p>Race : {{ $user['race'] }}</p>
 	 <p>Gender : {{ $user['gender'] }}</p>
-	  <?php if(!empty($user['veterun_status'])): ?>
+	  <?php $veterun_status = $user['veterun_status']; if(!empty($user['veterun_status']) && is_array($veterun_status)): ?>
 	    <p>Veteran Status : <?php  implode(', ', json_decode($user['veterun_status'], true)); ?></p>
 	<?php endif; ?>
 	</div>
@@ -36,4 +36,4 @@
 </div>
 <br>
 <a class="remodal-cancel ls-red-btn btn" href="#">Close</a> 
-<a class="remodal-confirm ls-light-green-btn btn editButton" href="{{ URL::to(Config::get('constants.PREFIX').'/edituser/'.$user['first_name']) }}">Edit User Profile</a>
+<a class="remodal-confirm ls-light-green-btn btn editButton" href="{{ URL::to(Config::get('constants.PREFIX').'/edituser/'.$user['id']) }}">Edit User Profile</a>
