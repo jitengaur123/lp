@@ -8657,4 +8657,19 @@ padding-left: 0px;
 padding: 0px;
 }
 
+.captioned {
+line-height: 22px;
+font-size: 16px;
+margin-top: 0px;
+margin-bottom: 25px;
+}
+
+.seper{
+    line-height: 38px;
+}
+
+.bg2{
+background: #ffffff;
+}
+
 /*-----------------------------------------------------------------*/

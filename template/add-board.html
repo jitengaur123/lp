@@ -25,7 +25,7 @@
     "apple-touch-icon-precomposed" sizes="114x114">
 <!-- TODO: Add a favicon -->
 <link href="assets/images/ico/fab.ico" rel="shortcut icon">
-<title>Amaha - Edit/Delete Work Reports</title>
+<title>Amaha - Create New Board</title>
 <!--Page loading plugin Start -->
 <script src="assets/js/pace.min.js"></script><!--Page loading plugin End   -->
 <!-- Plugin Css Put Here -->
@@ -34,6 +34,7 @@
 <link rel="stylesheet" href="assets/css/plugins/dndTable.css">
 <link rel="stylesheet" href="assets/css/plugins/tsort.css">
   <link rel="stylesheet" href="assets/css/plugins/selectize.bootstrap3.css">
+  <link href="assets/css/plugins/jquery.datetimepicker.css" rel="stylesheet">
 
 <!-- Plugin Css End -->
 
@@ -197,8 +198,12 @@
         View</span></a> </li>
       <li> <a href="#"><i class="fa fa-copy"></i> <span>Repositories</span></a> </li>
       <li> <a href="#"><i class="fa fa-file-text"></i> <span>Forms</span></a> </li>
-      <li> <a href="#"><i class="fa fa-magnet"></i> <span>Magnet
-        Board</span></a> </li>
+      <li> <a href="#"><i class="fa fa-file-o"></i> <span>Magnet Board <span class="badge badge-red">114</span></span></a>
+        <ul>
+          <li> <a href="#">View Boards</a> </li>
+          <li> <a href="#">Add New Board</a> </li>
+        </ul>
+      </li>
       <li> <a href="#"><i class="fa fa-calendar-o"></i> <span>Calender</span></a> </li>
       <li> <a href="#"><i class="fa fa-gears"></i> <span>Settings</span></a> </li>
       <li> <a href="#"><i class="fa fa-flag-o"></i> <span>Policies/Update</span> <span class=
@@ -226,13 +231,13 @@
           <div class="col-md-12"> 
             <!--Top header start-->
             
-            <h3 class="ls-top-header">Edit/Delete Work Reports</h3>
+            <h3 class="ls-top-header">Create New Board</h3>
             <!--Top header end --> 
             <!--Top breadcrumb start -->
             
             <ol class="breadcrumb">
               <li> <a class="fa fa-home" href="#"></a> </li>
-              <li class="active">Edit/Delete Work Reports</li>
+              <li class="active">Create New Board</li>
             </ol>
             <!--Top breadcrumb start --> 
           </div>
@@ -241,17 +246,13 @@
         
         <div class="row">
           <div class="col-md-12">
-            <div class="panel panel-default userform no-border">
-              <div class="panel-heading">
-                <h3 class="panel-title">Edit/Delete Work Reports</h3>
-              </div>
-              <div class="panel-body"> 
+           <div class="panel-body"> 
                 <!--form Wrapper Start-->
                   <div class="row">
                         <div class="col-md-12">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Select the proper fields to get list of submitted reports.</h3>
+                                    <h3 class="panel-title">Allocate users to different work sites in this section.</h3>
                                 </div>
                                 <div class="panel-body">
                                     <div class="row">
@@ -283,15 +284,15 @@
                                                         <span class="stepNumber">3</span>
                                                         <span class="stepDesc">
                                                             Step 3<br/>
-                                                            <small>Select reports to edit</small>
+                                                            <small>Allocate the Users</small>
                                                         </span>
                                                     </a>
                                                 </li>
                                                 
                                             </ul>
                                             <div id="step-1">
-                                                <h2 class="StepTitle">Select The Client You Want To Shortlist</h2>
-                                                <p>Please select the client in this step for which you would like to see the reports submitted, in next steps you will get the option to view and edit from the reports submitted for selected client</p>
+                                                <h2 class="StepTitle">Select The Client & Date You Want To Create Board For</h2>
+                                                <p>Please select the client for which you want to create the board for, based upon this selection the worksites will be made available in the next section.</p>
 
                                                 <div class="container-fluid">
                                                     <div class="row">
@@ -299,11 +300,21 @@
                                                           <label><i class="fa fa-user"></i> Client</label>
                                                           <select id="select-client" class="demo-default" placeholder="Select Client...">
                                                           <option value="">Select A Client...</option>
-                                                          <option value="AF">SI GROUP</option>
-                                                          <option value="AX">CHAT'S</option>
-                                                          <option value="AL">FPI MECH.</option>
+                                                          <option value="AF">Client One</option>
+                                                          <option value="AX">Client Two</option>
+                                                          <option value="AL">Client Three</option>
                                                           </select>
                                                         </div>
+
+                                                        <div class="form-group col-md-4">
+                                                          <div class="form-group">
+                                                          <label><i class="fa fa-calendar marginl25"></i> Date</label>
+                                                          <input class=
+                                                              "form-control datePickerOnly marginl25"
+                                                                type="text">
+                                                          </div>
+                                                        </div>
+
                                                     </div>
 
                                         
@@ -319,10 +330,10 @@
                                                         <div class="form-group col-md-4">
                                                           <label><i class="fa fa-user"></i> Worksite</label>
                                                           <select id="select-worksite" class="demo-default" placeholder="Select worksite...">
-                                                          <option value="">Select A Worksite...</option>
-                                                          <option value="AF">SI GROUP</option>
-                                                          <option value="AX">CHAT'S</option>
-                                                          <option value="AL">FPI MECH.</option>
+                                                          <option value="">Select A Worksite...</option><!--these worksite options should autopopulate from the client selected-->
+                                                          <option value="AF">Worksite One</option>
+                                                          <option value="AX">Worksite Two</option>
+                                                          <option value="AL">Worksite Three</option>
                                                           </select>
                                                         </div>
                                                     </div>
@@ -330,66 +341,63 @@
                                                 </div>
                                             </div>
                                             <div id="step-3">
-                                                <h2 class="StepTitle">Work Reports Submitted For ShortListed WorkSite</h2>
+                
 
                                                 <div class="container-fluid">
-                                                    <div class="row">
-                                                        <div class="panel panel-default userform no-border">
-              <div class="panel-heading">
-                <h3 class="panel-title">View All Work Reports & Review</h3>
-              </div>
-              <div class="panel-body"> 
-                <!--Table Wrapper Start-->
-                <div class="ls-editable-table table-responsive ls-table">
-                  <table class="table table-bordered table-striped table-bottomless" id="ls-editable-table">
-                    <thead>
-                      <tr>
-                        <th class="id_emp">Job No.</th>
-                        <th>Client</th>
-                        <th>Worksite</th>
-                        <th>Sumitted By</th>
-                        <th>Submitted On</th>
-                        <th>Status</th>
-                        <th>Total</th>
-                        <th class="text-center">Edit/Delete</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>AMA-12-12322</td>
-                        <td>Quantum Web Solutions</td>
-                        <td>E 295 Fairvelle Avenue</td>
-                        <td>Sudhir Yadav</td>
-                        <td>14/01/2014</td>
-                        <td>Pending</td>
-                        <td>$1200.00</td>
-                        <td class="text-center"><a href="edit-profile.html">
-                          <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button>
-                          </a> <a href="delete-users.html">
-                          <button class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
-                          </a></td>
-                      </tr>
-                      <tr>
-                        <td>AMA-12-12322</td>
-                        <td>Quantum Web Solutions</td>
-                        <td>E 295 Fairvelle Avenue</td>
-                        <td>Sudhir Yadav</td>
-                        <td>14/01/2014</td>
-                        <td>Pending</td>
-                        <td>$1200.00</td>
-                        <td class="text-center"><a href="edit-profile.html">
-                          <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button>
-                          </a> <a href="delete-users.html">
-                          <button class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
-                          </a></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!--Table Wrapper Finish--> 
-              </div>
-            </div>
-                                                    </div>
+                                                     <div class="panel panel-default userform no-border"><!--time logging panel starts here -->
+                                                      <div class="panel-heading ">
+                                                          <h3 class="panel-title">Select Users & Shift Time</h3>
+                                                      </div>
+                                                      <!--section 1 starts here-->
+                                        <div class="col-md-12">
+                                            <div id="entry1" class="clonedInput row"><!--clonedinput starts-->
+                                                <fieldset class="col-md-6 col-md-6"><!--entry 1-->
+                                                    
+                                                    <select id="select-labor" class="demo-default" placeholder="Select Labor...">
+                                                        <option value="">Select User...</option>
+                                                            <option value="AF">Sudhir Yadav</option>
+                                                            <option value="AX">Kunal Sukhija</option>
+                                                            <option value="AL">Ivan Pavlov</option>
+                                                            <option value="DZ">Temperley Hammer</option>
+                                                            <option value="AS">Nikki Samoa</option>
+                                                            <option value="AD">Andorra Andrea</option>
+                                                            <option value="AO">Roughe Ruth</option>
+                                                            <option value="AI">Angeline Burk</option>
+                                                            <option value="AQ">Imam Michael</option>
+                                                    </select>
+                                                </fieldset><!--entry 1 ends-->
+
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 3-->
+ 
+                                                  <input class="form-control" type="text" value="10 : 00"/>
+                                                </fieldset><!--entry 3 ends-->
+
+                                                <div class="col-md-1"><span class="seper">To</span></div>
+
+                                                
+                                                <fieldset class="col-md-2 col-md-6"><!--entry 3-->
+                                                  <input class="form-control" type="text" value="18 : 00"/>
+                                                 
+                                                </fieldset><!--entry 3 ends-->
+
+
+                                                <fieldset class="col-md-10">
+                                                </fieldset>
+                                           </div><!-- cloned input ends -->
+                                          <div id="addDelButtons" class="margint15 col-md-6">
+                                            <input type="button" id="btnAdd" value="add section" class="btn ls-light-green-btn"> 
+                                            <input type="button" id="btnDel" value="remove section above" class="btn ls-red-btn">
+                                          </div>
+                                        </div>
+                                        <!--section ends here-->
+                                
+                                                      <div class="panel-body">
+                                    
+
+                                        
+
+                                </div><!--panel ends here-->
+                            </div><!--time logging ends here-->
 
                                                    
                                                 </div>
@@ -406,7 +414,6 @@
                     </div>
                 <!--form Wrapper Finish--> 
               </div>
-            </div>
           </div>
         </div>
       </div>
@@ -424,121 +431,12 @@
     <!--Right hidden  section close icon end--> 
     <!--Tab navigation start-->
     
-    <ul class="nav nav-tabs" id="setting-tab">
-      <li class="active"> <a data-toggle="tab" href="#chatTab"><i class="fa fa-comment-o"></i> Chat</a> </li>
-      <li> <a data-toggle="tab" href="#settingTab"><i class="fa fa-cogs"></i> Setting</a> </li>
-    </ul>
     <!--Tab navigation end --> 
     <!--Tab content start-->
     
-    <div class="tab-content">
-      <div class="tab-pane active" id="chatTab">
-        <div class="nano">
-          <div class="nano-content">
-            <div class="chat-group chat-group-fav">
-              <h3 class="ls-header">Favorites</h3>
-              <a href="javascript:void(0)"><span class="user-status is-online"></span> Catherine J. Watkins <span class="badge badge-lightBlue">1</span></a> <a href="javascript:void(0)"><span class="user-status is-idle"></span> Fernando G. Olson</a> <a href="javascript:void(0)"><span class="user-status is-busy"></span> Susan J. Best</a> <a href="javascript:void(0)"><span class="user-status is-offline"></span> Brandon S. Young</a> </div>
-            <div class="chat-group chat-group-coll">
-              <h3 class="ls-header">Colleagues</h3>
-              <a href="javascript:void(0)"><span class="user-status is-offline"></span> Brandon S. Young</a> <a href= "javascript:void(0)"><span class="user-status is-idle"></span> Fernando G. Olson</a> <a href="javascript:void(0)"><span class="user-status is-online"></span> Catherine J. Watkins <span class="badge badge-lightBlue">3</span></a> <a href="javascript:void(0)"><span class="user-status is-busy"></span> Susan J. Best</a> </div>
-            <div class="chat-group chat-group-social">
-              <h3 class="ls-header">Social</h3>
-              <a href="javascript:void(0)"><span class="user-status is-online"></span> Catherine J. Watkins <span class="badge badge-lightBlue">5</span></a> <a href="javascript:void(0)"><span class="user-status is-busy"></span> Susan J. Best</a> </div>
-          </div>
-        </div>
-        <div class="chat-box">
-          <div class="chat-box-header">
-            <h5><span class="user-status is-online"></span> Catherine J. Watkins</h5>
-          </div>
-          <div class="chat-box-content">
-            <div class="nano nano-chat">
-              <div class="nano-content">
-                <ul>
-                  <li> <span class="user">Catherine</span>
-                    <p>Are you here?</p>
-                    <span class="time">10:10</span> </li>
-                  <li> <span class="user">Catherine</span>
-                    <p>Whohoo!</p>
-                    <span class="time">10:12</span> </li>
-                  <li> <span class="user">Catherine</span>
-                    <p>This message is
-                      pre-queued.</p>
-                    <span class="time">10:15</span> </li>
-                  <li> <span class="user">Catherine</span>
-                    <p>Do you like it?</p>
-                    <span class="time">10:20</span> </li>
-                  <li> <span class="user">Catherine</span>
-                    <p>This message is
-                      pre-queued.</p>
-                    <span class="time">11:00</span> </li>
-                  <li> <span class="user">Catherine</span>
-                    <p>Hi, you there ?</p>
-                    <span class="time">12:00</span> </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="chat-write">
-          <textarea class="form-control autogrow" placeholder="Type your message">
-</textarea>
-        </div>
+  
       </div>
-      <div class="tab-pane" id="settingTab">
-        <div class="setting-box">
-          <h3 class="ls-header">Account Setting</h3>
-          <div class="setting-box-content">
-            <ul>
-              <li><span class="pull-left">Online status:</span>
-                <input class="js-switch-red" type="checkbox">
-              </li>
-              <li><span class="pull-left">Show offline
-                contact:</span>
-                <input class="js-switch-light-blue" type="checkbox">
-              </li>
-              <li><span class="pull-left">Invisible
-                mode:</span>
-                <input checked class="js-switch" type="checkbox">
-              </li>
-              <li><span class="pull-left">Log all
-                message:</span>
-                <input checked class="js-switch-light-green" type="checkbox">
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="setting-box">
-          <h3 class="ls-header">Maintenance</h3>
-          <div class="setting-box-content">
-            <div class="easy-pai-box"> <span class="easyPieChart" data-percent="90"><span class="easyPiePercent"></span></span> </div>
-            <div class="easy-pai-box">
-              <button class="btn btn-xs ls-red-btn js_update">Update
-              Data</button>
-            </div>
-          </div>
-        </div>
-        <div class="setting-box">
-          <h3 class="ls-header">Progress</h3>
-          <div class="setting-box-content">
-            <h5>File uploading</h5>
-            <div class="progress">
-              <div class="progress-bar ls-light-blue-progress six-sec-ease-in-out"> </div>
-            </div>
-            <h5>Plugin setup</h5>
-            <div class="progress progress-striped active">
-              <div class="progress-bar six-sec-ease-in-out ls-light-green-progress"> </div>
-            </div>
-            <h5>Post New Article</h5>
-            <div class="progress progress-striped active">
-              <div class="progress-bar ls-yellow-progress six-sec-ease-in-out"> </div>
-            </div>
-            <h5>Create New User</h5>
-            <div class="progress progress-striped active">
-              <div class="progress-bar ls-red-progress six-sec-ease-in-out"> </div>
-            </div>
-          </div>
-        </div>
-      </div>
+   
     </div>
     <!--Tab content --> 
   </section>
@@ -582,6 +480,7 @@
 <script src="assets/js/editable-table/jquery.validate.js"></script> 
 <script src="assets/js/editable-table/jquery.jeditable.js"></script> 
 <script src="assets/js/editable-table/jquery.dataTables.editable.js"></script> 
+
 <!--Editable-table Finish --> 
 
 <!--jqueryui for table start--> 
@@ -593,9 +492,9 @@
     <!--Demo Wizard Script Start-->
     <script src="assets/js/pages/formWizard.js"></script>
     <!--Demo Wizard Script End-->
-
- 
-
+<script src="assets/js/jquery.datetimepicker.js"></script> <!-- Date & Time Picker Library Script End -->
+<script src="assets/js/pages/pickerTool.js"></script> <!--Demo for Date, Time Color Picker Script End -->
+<script src="assets/js/pages/addfieldset.js"></script><!--for adding fields-->
 
 
 </body>
