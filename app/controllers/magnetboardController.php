@@ -95,13 +95,17 @@ class magnetboardController extends \BaseController {
 			$id = DB::getPdo()->lastInsertId();
 
 			$magnet_users = [];
+			$i = 0;
 			foreach($users as $user){
+				$start = (isset($start_time[$i])) ? $start_time[$i] : '0';
+				$end 	= (isset($end_time[$i])) ? $end_time[$i] : '0';
 				$magnet_users[] = [
 					'user_id' 		=> $user,
 					'magnetboard_id'=> $id,
-					'start_time' 	=> $start_time[$user],
-					'end_time' 		=> $end_time[$user],
+					'start_time' 	=> $start,
+					'end_time' 		=> $end,
 				];
+				$i++;
 			}
 
 			MagnetboardUser::insert($magnet_users);
@@ -168,7 +172,8 @@ class magnetboardController extends \BaseController {
 			'worksite'    => Worksite::where('client_id','=',$magnetboard['client_id'])->get(),
 			'magnetboard' => $magnetboard,
 			'magnetuser'  => $magnetuser,
-			'selectdUser' => $selectdUser
+			'selectdUser' => $selectdUser,
+			'm_users'	  => $m_users
 		];
 		//return $data;
 		return View::make('magnet_board.edit', $data);
@@ -226,13 +231,17 @@ class magnetboardController extends \BaseController {
 
 			MagnetboardUser::where('magnetboard_id','=',$magnet_id)->delete();
 			$magnet_users = [];
+			$i = 0;
 			foreach($users as $user){
+				$start = (isset($start_time[$i])) ? $start_time[$i] : '0';
+				$end 	= (isset($end_time[$i])) ? $end_time[$i] : '0';
 				$magnet_users[] = [
 					'user_id' => $user,
 					'magnetboard_id'=> $magnet_id,
-					'start_time' 	=> $start_time[$user],
-					'end_time' 		=> $end_time[$user],
+					'start_time' 	=> $start,
+					'end_time' 		=> $end,
 				];
+				$i++;
 			}
 			MagnetboardUser::insert($magnet_users);
 		

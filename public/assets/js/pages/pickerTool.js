@@ -15,6 +15,7 @@ jQuery(document).ready(function($) {
 
     date_and_time_picker_call();
     mini_color_call();
+
 });
 /*** Date & Time Picker Call ***/
 function date_and_time_picker_call(){
@@ -33,8 +34,6 @@ function date_and_time_picker_call(){
     $('.timePickerOnly').datetimepicker({
         datepicker: false,
         format: 'H:i',
-
-        mask:'00:00'
     });
     $('.datePickerOnly').datetimepicker({
         timepicker: false,
