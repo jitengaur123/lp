@@ -120,14 +120,14 @@ function clientValidateRule(){
 		},
 		phone_office: {
 			required: true,
-			number: true
+			phoneUS: true
 		},
 		mobile1: {
 			required: true,
-			number: true
+			phoneUS: true
 		},
 		mobile2: {
-			number: true
+			phoneUS: true
 		},
 		email: {
 			required: true,
@@ -193,7 +193,7 @@ function userUpdateValidateRule(){
 		},
 		emergency: {
 			required: true,
-			number: true
+			phoneUS: true
 		},
 		dob:{
 			required: true
@@ -216,11 +216,11 @@ function userUpdateValidateRule(){
 		},
 		phone_number:{
 			required: true,
-			number: true
+			phoneUS: true
 		},
 		mobile_number:{
 			required: true,
-			number: true
+			phoneUS: true
 		},
 		race:{
 			required: true

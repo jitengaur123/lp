@@ -319,6 +319,8 @@
  <!--Upload button Script Start-->
  <script src="{{ URL::asset('assets/js/jquery.validation.js') }}"></script>
  <script src="{{ URL::asset('assets/js/amaha.validation.js') }}"></script>
+ <script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+
 @yield('footerjs')
 </body>
 </html>
