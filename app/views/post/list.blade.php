@@ -33,6 +33,7 @@
                       <tr>
                         <th class="id_emp">Id</th>
                         <th>Page name</th>
+                        <th>Date Published</th>
                         <th class="text-center">View/Edit/Delete</th>
                       </tr>
                     </thead>
@@ -41,6 +42,7 @@
                       <tr>
                         <td>{{ $post['id'] }}</td>
                         <td>{{ $post['page_name'] }}</td>
+                         <td>{{ date('d/m/Y',strtotime($post['page_name'])) }}</td>
                         <td class="text-center">
                           <a class="viewsiteModel" href="{{ URL::to(Config::get('constants.PREFIX') . '/post/'.$post['id']) }}"><!-- #reModal -->
                           <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button> </a> 
