@@ -42,7 +42,7 @@
                       <tr>
                         <td>{{ $post['id'] }}</td>
                         <td>{{ $post['page_name'] }}</td>
-                         <td>{{ date('d/m/Y',strtotime($post['page_name'])) }}</td>
+                         <td>{{ date('d/m/Y',strtotime($post['updated_at'])) }}</td>
                         <td class="text-center">
                           <a class="viewsiteModel" href="{{ URL::to(Config::get('constants.PREFIX') . '/post/'.$post['id']) }}"><!-- #reModal -->
                           <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button> </a> 

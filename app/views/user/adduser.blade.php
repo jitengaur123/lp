@@ -76,7 +76,7 @@
               </select>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" style="display:none;">
               <label><i class="fa fa-sitemap"></i> Assign Supervisor/Manager</label>
               <select class="form-control parentUserData" name="parent_id">
                 @foreach($parentUser as $puser)
