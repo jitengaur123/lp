@@ -113,11 +113,7 @@
     </li>
     @endif
 
-<li>
-    <a href="#">
-        <i class="fa fa-clock-o"></i> <span>TimeLine View</span>
-    </a>
-</li>
+
 <li>
     <a href="#">
         <i class="fa fa-copy"></i> <span>Repositories</span>
