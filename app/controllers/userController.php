@@ -144,10 +144,16 @@ class userController extends \BaseController {
 		if($validation->fails()){
 			return Redirect::to( $this->prefix . '/editprofile')->withErrors($validation);
 		}
+		$input = Input::all();
+
+		$UserEmail = User::whereEmail($input['email'])->where('id','!=', Auth::user()->id)->get()->toArray();
+		if(!empty($UserEmail)){
+			return Redirect::to( $this->prefix . '/editprofile')->withErrors(['Email is allready exists']);
+		}
 
 		try{
 
-			$input = Input::all();
+			
 			User::updateProfile($input, Auth::user()->id);
 
 			return Redirect::to( $this->prefix . '/editprofile' )->withStatus('Profile has been successfully updated.');
@@ -308,9 +314,15 @@ class userController extends \BaseController {
 			return Redirect::to( $this->prefix . '/edituser/'.$user_id)->withErrors($validation);
 		}
 
+		$input = Input::all();
+		$UserEmail = User::whereEmail($input['email'])->where('id','!=',$user_id)->get()->toArray();
+		if(!empty($UserEmail)){
+			return Redirect::to( $this->prefix . '/edituser/'.$user_id)->withErrors(['Email is allready exists']);
+		}
+
 		try{
 
-			$input = Input::all();
+			
 			User::updateProfile($input, $user_id);
 
 			return Redirect::to( $this->prefix . '/edituser/'.$user_id )->withStatus('User has been successfully updated.');

@@ -63,7 +63,7 @@
 
                         <div class="form-group">
                             <label><i class="fa fa-envelope-o"></i> Email address</label>
-                            <input class="form-control" disabled value="{{ $data['email'] }}"
+                            <input class="form-control" value="{{ $data['email'] }}"
                             placeholder="Enter email" name="email" type=
                             "email">
                         </div>

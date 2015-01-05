@@ -63,7 +63,7 @@
 
                         <div class="form-group">
                             <label><i class="fa fa-envelope-o"></i> Email address</label>
-                            <input class="form-control" disabled value="{{ $data['email'] }}"
+                            <input class="form-control" value="{{ $data['email'] }}"
                             placeholder="Enter email" name="email" type=
                             "email">
                         </div>
@@ -106,7 +106,7 @@
                             "col-lg-4 no-padding">
                                 <i class="fa fa-check-circle-o"></i> Gender
                             </div><label class=
-                            "radio col-lg-4"><input @if ($data['gender'] == 'male') checked @endif
+                            "radio col-lg-4"><input @if ($data['gender'] == 'male' || $data['gender'] == '') checked @endif
                             class="icheck-green" id=
                             "optionsRadios4" name=
                             "gender" type="radio"

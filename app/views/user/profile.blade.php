@@ -14,7 +14,11 @@
     <div class="col-md-12">
         <p>You can view your profile in this section, please use the edit/update button to update the profile details, we prefer the users to please keep their profile updated in order to have the most accurate data in our databases & help the management to keep the records up to date. Thank you.</p><br/>
         <div class="col-md-3 userpic">
-            <img src="{{URL::asset('assets/images/demo/avatar.png') }}">
+            @if(isset($data['profile_pic']))
+             <img width="256" height="256" src="{{URL::asset('uploads/profile/'.$data['profile_pic']) }}">
+            @else
+            <img width="256" height="256" src="{{URL::asset('assets/images/demo/avatar.png') }}">
+            @endif
             <a href="{{ URL::to($prefix.'/editprofile') }}" class="btn btn-sm ls-red-btn js_update">Update/Edit Profile</a>
         </div>
         <div class="col-md-4 details_left">

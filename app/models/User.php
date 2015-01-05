@@ -107,8 +107,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 				//return;
 			}		
 				
-
 			$file_name = Input::file('profile_pic')->getClientOriginalName();
+			$file_name = time().$file_name;
 			$destinationPath = 'uploads/profile/';
 		   	Input::file('profile_pic')->move($destinationPath, $file_name);
 		   	$data['profile_pic'] = $file_name;

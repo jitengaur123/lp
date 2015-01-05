@@ -2,6 +2,11 @@
   <div class="col-md-12 ">
     <h2>{{$user['first_name']}} {{$user['last_name']}}</h2>
 	<div class="col-md-6 details_left">
+	@if(isset($user['profile_pic']))
+     <img width="256" height="256" src="{{URL::asset('uploads/profile/'.$user['profile_pic']) }}">
+    @else
+    <img width="256" height="256" src="{{URL::asset('assets/images/demo/avatar.png') }}">
+    @endif
 	<p>Position/Job Title : {{ $user['userrole']['title'] }}</p>
 	<p>User Role : {{ $user['userrole']['name'] }}</p>
 	<p>Employee Id : {{ $user['user_auth_id'] }}</p>
