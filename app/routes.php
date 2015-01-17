@@ -177,7 +177,7 @@ function repositoryRoutes(){
 	//Client section 
 	Route::get('/repository', 'repositoryController@index');
 
-
+	Route::get('/filemanager', 'repositoryController@filemanager');
 
 }
 

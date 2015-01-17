@@ -29,7 +29,7 @@
                 <!--Table Wrapper Start-->
                 <!--Table Wrapper Start-->
                 <div class="ls-editable-table table-responsive ls-table">
-                  <h1>testing here</h1>
+                  <h1>File Manager</h1>
                   <div id="elfinder"></div>
                 </div>
                 <!--Table Wrapper Finish--> 
@@ -74,10 +74,10 @@
 @stop
 
 @section('footerjs')
-    <!--  <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css">
+     <link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
- -->
+
 <!--Layout Script End --> 
 
 <!--file manager el finder script-->
@@ -87,7 +87,7 @@
     <script type="text/javascript" charset="utf-8">
       $(document).ready(function() {
         var elf = $('#elfinder').elfinder({
-          url : 'php/connector.php'  // connector URL (REQUIRED)
+          url : '{{ URL::asset("/")."php/connector.php" }}'  // connector URL (REQUIRED)
           // lang: 'ru',             // language (OPTIONAL)
         }).elfinder('instance');
       });
@@ -95,5 +95,5 @@
     <!-- elFinder JS (REQUIRED) -->
     <script type="text/javascript" src="{{ URL::asset('assets/js/elfinder/elfinder.min.js') }}"></script>
 
-    
+
 @stop
