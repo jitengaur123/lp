@@ -113,12 +113,13 @@
     </li>
     @endif
 
-
+@if(Auth::user()->role == 1 || Auth::user()->role == 2)
 <li>
-    <a href="#">
+    <a href="{{ URL::to('/'.$prefix.'/repository') }}">
         <i class="fa fa-copy"></i> <span>Repositories</span>
     </a>
 </li>
+@endif
 <li>
     <a href="#">
         <i class="fa fa-file-text"></i> <span>Forms</span>

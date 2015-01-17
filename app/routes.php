@@ -72,6 +72,9 @@ function allRoutes(){
 
 	//Post routes
 	postRoutes();
+
+	//repository routes
+	repositoryRoutes();
 }
 
 function userRoutes(){
@@ -165,6 +168,15 @@ function postRoutes(){
 	Route::resource('/post', 'postController');
 	Route::get('/post/delete/{id}', 'postController@delete')->where('id', '[0-9]+');
 	Route::post('/post/update/{id}', 'postController@update')->where('id', '[0-9]+');
+
+
+}
+
+function repositoryRoutes(){
+
+	//Client section 
+	Route::get('/repository', 'repositoryController@index');
+
 
 
 }
