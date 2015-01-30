@@ -52,6 +52,7 @@ class clientController extends \BaseController {
 			'phone_office' 	=> 'required',
 			'mobile1' 		=> 'required',
 			'email' 		=> 'required|email|unique:client',
+			'password' 		=> 'required',
 			'fax'			=> 'required',
 			'address'		=> 'required',
 			'city'			=> 'required',
@@ -72,6 +73,7 @@ class clientController extends \BaseController {
 
 			$input = Input::all();
 			$input['client_auto_id'] = 'AMA-CL-'.uniqid();
+			$input['password'] = Hash::make($input['password']);
 			Client::insert($input);
 
 			return Redirect::to( $this->prefix . '/client/create' )->withStatus('Client has been successfully added.');
@@ -161,6 +163,12 @@ class clientController extends \BaseController {
 		try{
 
 			$input = Input::all();
+			if($input['password'] == ""){
+				unset($input['password']);
+			}else{
+				$input['password'] = Hash::make($input['password']);
+			}
+
 			Client::whereId($client_id)->update($input);
 
 			return Redirect::to( $this->prefix . '/client/'.$client_id.'/edit' )->withStatus('Client has been successfully updated.');
@@ -219,6 +227,49 @@ class clientController extends \BaseController {
 		return Response::Json(['data'=>$data]);
 
 	}
+
+
+	public function login(){
+
+		return View::make('client.login');
+	}
+
+	public function postlogin(){
+		//validate login
+		$input = Input::all();
+
+		$rules = [
+			'email' => 'required',
+			'password' => 'required',
+		];
+
+		$validation = Validator::make($input, $rules);
+
+		if( $validation->fails() ) {
+
+			return Response::json(array('result'=>false, 'errors'=>$validation->errors()));
+
+		}
+
+		$user = [
+            'user_name' => Input::get('user_name'),
+            'password' 	=> Input::get('password')
+        ];
+
+        $auth = $this->_attemptUserLogin($user);
+
+        if($auth){
+
+			$prefix = $this->prefix;	
+			
+			$url = url($prefix.'/dashboard');
+			return Response::json(array('result'=>true, 'redirectUrl' => $url));
+        }
+
+        // authentication failure! lets go back to the login page
+        return Response::json(array('result'=>false, 'errors'=>array('Your username/password combination was incorrect.')));
+	}
+
 
 
 }

@@ -33,7 +33,7 @@ function forgo_password_view(){
 }
 function login_view_submit(){
     $('#form-login').submit(function () {
-        var url = ae.baseUrl + 'login',
+        var url = $(this).attr('action'),//ae.baseUrl + 'login',
             data = $(this).serialize();
 
         

@@ -69,6 +69,11 @@
                     <input class="form-control" placeholder="Enter email" type="email" name="email">
                   </div>
 
+                  <div class="form-group">
+                    <label><i class="fa fa-envelope-o"></i> Password</label>
+                    <input class="form-control" placeholder="Password" type="password" name="password">
+                  </div>
+
                   
                 </div>
                 <!--form section ends here--> 

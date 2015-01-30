@@ -133,6 +133,9 @@ function clientValidateRule(){
 			required: true,
 			email:true
 		},
+		password: {
+			required: true
+		},
 		fax:{
 			required: true,
 			number: true

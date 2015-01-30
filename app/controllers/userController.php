@@ -211,7 +211,6 @@ class userController extends \BaseController {
 			'parentUser' 	=> $parentUser,
 			'roles' 		=> $userRole,
 		];
-
 		return View::make('user.adduser', $data);
 	}
 
@@ -243,7 +242,7 @@ class userController extends \BaseController {
 			$input['user_auth_id'] = 'AMA-EM-'.uniqid();
 			$input['password'] = Hash::make($input['password']);
 			User::insert($input);
-
+			mkdir(public_path().'/files/'.$input['user_name'],0700);
 			Mail::send('emails.user.welcome', array('mailData' => $mailData), function($message)
 			{
 

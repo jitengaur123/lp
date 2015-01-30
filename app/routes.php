@@ -46,6 +46,12 @@ Route::group(array('before'=>'auth', 'prefix' => Config::get('constants.PREFIX')
 	
 });
 
+
+Route::get('/client/login', 'clientController@login');
+route::post('/client/login', 'clientController@postlogin');
+
+
+
 Route::group(array('before'=>'auth|roles', 'prefix' => Config::get('constants.PREFIX')), function(){
 	allRoutes();
 });
