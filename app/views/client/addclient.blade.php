@@ -75,18 +75,30 @@
                   </div>
 
                   
+
+                  
                 </div>
                 <!--form section ends here--> 
                 <!--form section 2 starts here-->
                 
                 <div class="col-md-6">
                   
+                  <div class="form-group">
+                    <label><i class="fa fa-envelope-o"></i> User Name</label>
+                    <input class="form-control" placeholder="User Name" type="text" name="user_name">
+                  </div>
+
+                  <div class="form-group">
+                    <label><i class="fa fa-envelope-o"></i> Password</label>
+                    <input class="form-control" placeholder="Password" type="password" name="password">
+                  </div>
 
                    <label><i class="fa fa-fax"></i>Fax</label>
                     <input class="form-control"  placeholder="Fax Number" type="text"  name="fax">
                     <br>
 
                   <div class="form-group">
+
                     <label><i class="fa fa-home"></i>Address</label>
                     <input class="form-control" placeholder="block name/number or street name" type="text"  name="address">
                     <br>

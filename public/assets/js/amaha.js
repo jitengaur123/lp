@@ -15,12 +15,13 @@ $(function(){
 
     $(document).on('change','#worksite',worksite);
 
-    $(document).on('blur','.reg_hour, .reg_rate, .ot_hour, .ot_rate, .dt_hour, .dt_rate',totalLabourHours);
+    /*$(document).on('blur','.reg_hour, .reg_rate, .ot_hour, .ot_rate, .dt_hour, .dt_rate',totalLabourHours);*/
+    $(document).on('blur','.reg_hour, .ot_hour, .dt_hour',totalLabourHours);
 
 });
 
 
-function totalLabourHours(){
+/*function totalLabourHours(){
     	var reg_hour = $(this).closest('.clonedInput').find('.reg_hour').val();
     	var reg_rate = $(this).closest('.clonedInput').find('.reg_rate').val();
     	var ot_hour = $(this).closest('.clonedInput').find('.ot_hour').val();
@@ -45,6 +46,26 @@ function totalLabourHours(){
     	$(this).closest('.clonedInput').find('.sub_total').val(reg_amount+ot_amount+dt_amount);
     	var total_amount = 0;
     	$('.clonedInput').find('.sub_total').each(function(){
+    		//alert($(this).val());
+    		total_amount += parseInt($(this).val());
+    	});
+
+    	$('.final_total').text(total_amount);
+
+  }*/
+
+  function totalLabourHours(){
+    	var reg_hour = $(this).closest('.clonedInput').find('.reg_hour').val();
+    	var ot_hour = $(this).closest('.clonedInput').find('.ot_hour').val();
+    	var dt_hour = $(this).closest('.clonedInput').find('.dt_hour').val();
+
+		if(reg_hour == "") reg_hour = 0;
+		if(ot_hour == "") ot_hour = 0;
+		if(dt_hour == "") dt_hour = 0;    	
+
+    	$(this).closest('.clonedInput').find('.sub_total_hour').val(parseInt(reg_hour) + parseInt(ot_hour) + parseInt(dt_hour));
+    	var total_amount = 0;
+    	$('.clonedInput').find('.sub_total_hour').each(function(){
     		//alert($(this).val());
     		total_amount += parseInt($(this).val());
     	});

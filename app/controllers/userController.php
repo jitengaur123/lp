@@ -127,8 +127,9 @@ class userController extends \BaseController {
 	{
 
 		$user_id = Auth::user()->id;
-		$data = User::find($user_id);
-		return View::make('user.edit_profile')->with('data', $data);
+		$data = User::where('id','=',$user_id)->with('certificate')->get()->toArray();
+		//return $data;
+		return View::make('user.edit_profile')->with('data', $data[0]);
 	}
 
 
@@ -152,7 +153,27 @@ class userController extends \BaseController {
 		}
 
 		try{
-
+			$user_name = Auth::user()->user_name;
+			$files = Input::file('files');
+			$destinationPath = public_path().'/files/'.$user_name;
+			$i = 0;
+			foreach($input['title'] as $title) {
+				$file = $files[$i];
+				// path is root/uploads
+				$filename = uniqid().$file->getClientOriginalName();
+				$upload_success = $file->move($destinationPath, $filename);
+				// flash message to show success.
+				$certificate = [
+					'title'					=> $title,
+					'date_of_completion'	=> date('Y-m-d H:i:s', strtotime($input['date_of_completion'][$i])),
+					'date_of_expiration'	=> date('Y-m-d H:i:s', strtotime($input['date_of_expiration'][$i])),
+					'files'					=> $filename,
+					'user_id'				=> Auth::user()->id
+				];
+				Usercertificate::insert($certificate);
+				$i++;
+			}
+			
 			
 			User::updateProfile($input, Auth::user()->id);
 
@@ -361,7 +382,9 @@ class userController extends \BaseController {
 		$user_id = Input::get('user_id');
 		if(empty($user_id)) return ['data'=>'User Not Found'];
 
-		$user = User::where('id','=',$user_id)->with('userrole')->get()->toArray();
+		$user = User::where('id','=',$user_id)->with('userrole')->with('certificate')->get()->toArray();
+
+		$user[0]['user_role'] = Auth::user()->role;
 		$data = View::make('user.view_profile_model')->with('user', $user[0])->render();
 		return Response::Json(['data'=>$data]);
 

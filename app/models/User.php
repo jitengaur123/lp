@@ -86,6 +86,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 			$data['date_of_discharge'] = $date_of_discharge;
 		}
 
+		if(isset($input['rating'])) $data['rating'] = $input['rating'];
+		if(isset($input['user_note'])) $data['user_note'] = $input['user_note'];
 
 		
 		if(isset($input['password']) && $input['password'] != "")	$data['password'] = Hash::make($input['password']);
@@ -97,6 +99,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		}
 
 		$data['is_complete'] = 1;
+		$data['has_certificate'] = $input['has_certificate'];
 
 		if (Input::hasFile('profile_pic'))
 		{
@@ -124,5 +127,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     {
         return $this->belongsTo('UserRole', 'role');
     }
+
+
+    public function certificate()
+    {
+        return $this->hasMany('Usercertificate', 'user_id');
+    }
+    
 
 }

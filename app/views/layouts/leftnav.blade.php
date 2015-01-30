@@ -43,7 +43,8 @@
         <li><a @if($segment == 'editprofile' ) class="active" @endif href="{{ URL::to('/'.$prefix.'/editprofile') }}">Edit Profile</a></li>
     </ul>
 </li>
-@if(Auth::user()->role != 4)
+
+@if(Auth::user()->role != 4 && Auth::user()->role != 5 && Auth::user()->role != 6)
 <li @if ($segment == 'users' || $segment == 'adduser' || $segment == "editdeleteuser") class="active" @endif>
     <a href="#">
         <i class="fa fa-group"></i> <span>Users</span> <!-- <span class="badge badge-red">58</span> --></a>
@@ -54,7 +55,7 @@
         <li><a @if ($segment == "editdeleteuser") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeleteuser') }}">Edit/Delete User</a></li>
     </ul>
 </li>
-    @if(Auth::user()->role != 3 && Auth::user()->role != 4) 
+    @if(Auth::user()->role != 3 && Auth::user()->role != 4 && Auth::user()->role != 5 && Auth::user()->role != 6) 
     <li @if ($segment == 'client' || $segment == "editdeleteclient") class="active" @endif>
         <a href="#">
             <i class="fa fa-group"></i> <span>Client</span> <!-- <span class="badge badge-red">58</span> --></a>
@@ -65,6 +66,16 @@
             <li><a @if ($segment == "editdeleteclient") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeleteclient') }}">Edit/Delete Client</a></li>
         </ul>
     </li>
+    <!-- <li @if ($segment == 'contractor' || $segment == "editdeletecontractor") class="active" @endif>
+        <a href="#">
+            <i class="fa fa-group"></i> <span>Sub Contractor</span> <span class="badge badge-red">58</span></a>
+        </a>
+        <ul>
+            <li><a @if($segment == 'contractor' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/contractor') }}">All Sub Contractor</a></li>
+            <li><a @if($thirdsegment == 'create' ) class="active" @endif href="{{ URL::to('/'.$prefix.'/contractor/create') }}">Add Sub Contractor</a></li>
+            <li><a @if ($segment == "editdeletecontractor") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletecontractor') }}">Edit/Delete Sub Contractor</a></li>
+        </ul>
+    </li> -->
 
     <li @if ($segment == 'worksite' || $segment == "editdeletesite") class="active" @endif>
         <a href="#">
@@ -120,6 +131,8 @@
     </a>
 </li>
 @endif
+
+
 <li>
     <a href="#">
         <i class="fa fa-file-text"></i> <span>Forms</span>
@@ -128,7 +141,13 @@
 
 
 @endif
-
+@if(Auth::user()->role == 5 || Auth::user()->role == 6)
+<li>
+    <a href="{{ URL::to('/'.$prefix.'/repository/upload') }}">
+        <i class="fa fa-copy"></i> <span>Upload File</span>
+    </a>
+</li>
+@endif
 <li>
     <a href="#">
         <i class="fa fa-calendar-o"></i> <span>Calender</span>

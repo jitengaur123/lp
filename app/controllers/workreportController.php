@@ -89,11 +89,11 @@ class workreportController extends \BaseController {
 					'labour_id' 		=> $labour_id,
 					'class' 			=> $input['class_name'][$i],
 					'reg_hour' 			=> $input['reg_hour'][$i],
-					'reg_rate' 			=> $input['reg_rate'][$i],
+					/*'reg_rate' 			=> $input['reg_rate'][$i],*/
 					'ot_hour' 			=> $input['ot_hour'][$i],
-					'ot_rate' 			=> $input['ot_rate'][$i],
+					/*'ot_rate' 			=> $input['ot_rate'][$i],*/
 					'dt_hour' 			=> $input['dt_hour'][$i],
-					'dt_rate' 			=> $input['dt_rate'][$i],
+					/*'dt_rate' 			=> $input['dt_rate'][$i],*/
 					'workreport_id' 	=> $id
 				];
 				$i++;
@@ -216,22 +216,22 @@ class workreportController extends \BaseController {
 						'labour_id' 		=> $labour_id,
 						'class' 			=> $input['class_name'][$i],
 						'reg_hour' 			=> $input['reg_hour'][$i],
-						'reg_rate' 			=> $input['reg_rate'][$i],
+						/*'reg_rate' 			=> $input['reg_rate'][$i],*/
 						'ot_hour' 			=> $input['ot_hour'][$i],
-						'ot_rate' 			=> $input['ot_rate'][$i],
+						/*'ot_rate' 			=> $input['ot_rate'][$i],*/
 						'dt_hour' 			=> $input['dt_hour'][$i],
-						'dt_rate' 			=> $input['dt_rate'][$i],
+						/*'dt_rate' 			=> $input['dt_rate'][$i],*/
 					];
 				}else{
 					$timesheet[] = [
 						'labour_id' 		=> $labour_id,
 						'class' 			=> $input['class_name'][$i],
 						'reg_hour' 			=> $input['reg_hour'][$i],
-						'reg_rate' 			=> $input['reg_rate'][$i],
+						/*'reg_rate' 			=> $input['reg_rate'][$i],*/
 						'ot_hour' 			=> $input['ot_hour'][$i],
-						'ot_rate' 			=> $input['ot_rate'][$i],
+						/*'ot_rate' 			=> $input['ot_rate'][$i],*/
 						'dt_hour' 			=> $input['dt_hour'][$i],
-						'dt_rate' 			=> $input['dt_rate'][$i],
+						/*'dt_rate' 			=> $input['dt_rate'][$i],*/
 						'workreport_id'		=> $workreport_id
 					];
 				}
@@ -341,9 +341,9 @@ class workreportController extends \BaseController {
 		$timesheet = Timesheet::where('workreport_id', '=', $id)->with('labor')->get();
 		$total =0;
 		foreach($timesheet as $row){
-			$reg_amount = $row['reg_hour']*$row['reg_rate'];
-			$ot_amount = $row['ot_hour']*$row['ot_rate'];
-			$dt_amount = $row['dt_hour']*$row['dt_rate'];
+			$reg_amount = $row['reg_hour']*$reports[0]['worksite']['labour_rate'];
+			$ot_amount = $row['ot_hour']*$reports[0]['worksite']['ot_rate'];
+			$dt_amount = $row['dt_hour']*$reports[0]['worksite']['dt_rate'];
 			$total += $reg_amount+$ot_amount+$dt_amount;
 		}
 

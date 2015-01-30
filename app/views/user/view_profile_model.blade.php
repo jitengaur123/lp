@@ -33,6 +33,21 @@
 	<p>Disabilities : <?php $disability = $user['disability']; if(!empty($user['disability']) && is_array($disability)) implode(', ',json_decode($user['disability'], true)); else echo 'No, I do not have a disability'; ?></p>
 	 <p>Race : {{ $user['race'] }}</p>
 	 <p>Gender : {{ $user['gender'] }}</p>
+
+	 @if($user['user_role'] == 1)
+	 <p>Rating: {{ $user['rating'] }}</p>
+     <p>Note: {{ $user['user_note'] }}</p>
+	 @endif
+	
+	@if(!empty($user['certificate']) && $user['has_certificate'])
+	 	@foreach($user['certificate'] as $certificate)
+			<p>Title: {{ $certificate['title'] }}</p>
+     		<p>Date of Completion: {{ date('d/m/Y', strtotime($certificate['date_of_completion'])) }}</p>
+     		<p>Date of Expiration: {{ date('d/m/Y', strtotime($certificate['date_of_expiration'])) }}</p>
+     		<p>File: <a href="{{URL::to(public_path().'/files/'.$user['user_name'].'/'.$certificate['files']) }}">Download</a></p>
+	 	@endforeach
+	@endif
+
 	  <?php $veterun_status = $user['veterun_status']; if(!empty($user['veterun_status']) && is_array($veterun_status)): ?>
 	    <p>Veteran Status : <?php  implode(', ', json_decode($user['veterun_status'], true)); ?></p>
 	<?php endif; ?>

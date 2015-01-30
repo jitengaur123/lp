@@ -127,6 +127,95 @@
                         </div>
 
                        
+                        <div class="panel panel-default userform no-border"><!--time logging panel starts here -->
+                <div class="panel-heading ">
+                    <h3 class="panel-title">Safety Training Status</h3>
+                </div>
+                <input type="radio" value="1" name="has_certificate" id="safety_training_status" /> Yes
+                <input type="radio" value="0" name="has_certificate" id="safety_training_status" /> No
+                
+                <div class="panel-body">
+                    
+                        <div class="col-md-12"><!--section 1 starts here-->
+
+                            @if(empty($data['certificate']))
+
+                            <div id="entry1" class="clonedInput row"><!--clonedinput starts-->
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Title</label>
+                                        <input type="text" value="" class="form-control" name="title[]">
+                                    </fieldset><!--entry 1 ends-->
+
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Date of Completion</label>
+                                        <input type="text" class="form-control datePickerOnly" value="" name="date_of_completion[]">
+                                    </fieldset><!--entry 1 ends-->
+
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Date of Expiration</label>
+                                        <input type="text" class="form-control datePickerOnly" value="" name="date_of_expiration[]">
+                                    </fieldset><!--entry 1 ends-->
+                                    
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Upload</label>
+                                        <input type="file" value="" name="files[]">
+                                    </fieldset><!--entry 1 ends-->
+
+                                </div><!-- cloned input ends -->
+                            @else
+
+                                @foreach($data['certificate'] as $certificate)
+                                <div id="entry1" class="clonedInput row"><!--clonedinput starts-->
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Title</label>
+                                        <input type="hidden" value="{{ $certificate['id'] }}" class="form-control" name="certificate_id[]">
+                                        <input type="text" value="{{ $certificate['title'] }}" class="form-control" name="title[]">
+                                    </fieldset><!--entry 1 ends-->
+
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Date of Completion</label>
+                                        <input type="text" class="form-control datePickerOnly" value="{{ date('d/m/Y', strtotime($certificate['date_of_completion'])) }}" name="date_of_completion[]">
+                                    </fieldset><!--entry 1 ends-->
+
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Date of Expiration</label>
+                                        <input type="text" class="form-control datePickerOnly" value="{{date('d/m/Y', strtotime($certificate['date_of_expiration'])) }}" name="date_of_expiration[]">
+                                    </fieldset><!--entry 1 ends-->
+                                    
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Upload</label>
+                                        {{ $certificate['files'] }}
+                                        <input type="file" value="" name="files[]">
+                                    </fieldset><!--entry 1 ends-->
+
+                                </div><!-- cloned input ends -->
+                                @endforeach
+                            @endif
+                            
+                            <div id="addDelButtons" class="margint15 col-md-6">
+                                <input type="button" id="btnAdd" value="add section" class="btn ls-light-green-btn"> 
+                                <input type="button" id="btnDel" value="remove section above" class="btn ls-red-btn">
+                            </div>
+
+                            
+
+                
+                        </div><!--section ends here-->
+                        
+
+                </div><!--panel ends here-->
+            </div><!--time logging ends here-->
+
+
+
 
                     </div><!--form section ends here-->
                     <!--form section 2 starts here-->

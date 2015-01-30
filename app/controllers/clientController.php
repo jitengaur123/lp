@@ -71,10 +71,30 @@ class clientController extends \BaseController {
 
 		try{
 
+			$user = [
+				'user_auth_id'	=>	'AMA-EM-'.uniqid(),
+				'first_name'	=> $input['first_name'],
+				'last_name'		=> $input['last_name'],
+				'email'			=> $input['email'],
+				'user_name'		=> $input['user_name'],
+				'password'		=> Hash::make($input['password']),
+				'role'			=> 5,
+				'parent_id'		=> 1
+			];
+			User::insert($user);
+			$user_id = DB::getPdo()->lastInsertId();
+			mkdir(public_path().'/files/'.$input['user_name'],0700);
+
 			$input = Input::all();
 			$input['client_auto_id'] = 'AMA-CL-'.uniqid();
-			$input['password'] = Hash::make($input['password']);
+
+			$input['user_id']	= $user_id;
+			unset($input['password']);
+			unset($input['user_name']);
 			Client::insert($input);
+
+
+
 
 			return Redirect::to( $this->prefix . '/client/create' )->withStatus('Client has been successfully added.');
 
@@ -228,47 +248,6 @@ class clientController extends \BaseController {
 
 	}
 
-
-	public function login(){
-
-		return View::make('client.login');
-	}
-
-	public function postlogin(){
-		//validate login
-		$input = Input::all();
-
-		$rules = [
-			'email' => 'required',
-			'password' => 'required',
-		];
-
-		$validation = Validator::make($input, $rules);
-
-		if( $validation->fails() ) {
-
-			return Response::json(array('result'=>false, 'errors'=>$validation->errors()));
-
-		}
-
-		$user = [
-            'user_name' => Input::get('user_name'),
-            'password' 	=> Input::get('password')
-        ];
-
-        $auth = $this->_attemptUserLogin($user);
-
-        if($auth){
-
-			$prefix = $this->prefix;	
-			
-			$url = url($prefix.'/dashboard');
-			return Response::json(array('result'=>true, 'redirectUrl' => $url));
-        }
-
-        // authentication failure! lets go back to the login page
-        return Response::json(array('result'=>false, 'errors'=>array('Your username/password combination was incorrect.')));
-	}
 
 
 
