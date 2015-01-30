@@ -131,10 +131,22 @@
                 <div class="panel-heading ">
                     <h3 class="panel-title">Safety Training Status</h3>
                 </div>
-                <input type="radio" value="1" name="has_certificate" id="safety_training_status" /> Yes
-                <input type="radio" value="0" name="has_certificate" id="safety_training_status" /> No
-                
-                <div class="panel-body">
+                <input type="radio" value="1" name="has_certificate" class="safety_training_status" @if($data['has_certificate'] == 1) checked @endif id="safety_training_status" /> Yes
+                <input type="radio" value="0" name="has_certificate" class="safety_training_status" @if($data['has_certificate'] == 0) checked @endif id="safety_training_status" /> No
+                <script type="text/javascript">
+                    $(document).ready(function(){
+
+                        $('.safety_training_status').on('click', function(){
+                            var checkedTraining = $('.safety_training_status:checked').val();
+                            if(checkedTraining == 1){
+                                $('.certificateView').slideDown();
+                            }else{
+                                $('.certificateView').slideUp();
+                            }
+                        });
+                    });
+                </script>
+                <div class="panel-body certificateView" @if($data['has_certificate'] == 1) style="display:block;" @else style="display:none;" @endif>
                     
                         <div class="col-md-12"><!--section 1 starts here-->
 
@@ -144,6 +156,7 @@
                                     <fieldset class="col-md-3 col-md-6"><!--entry 1-->
                                         
                                         <label>Title</label>
+                                        <input type="hidden" value="" class="form-control" name="certificate_id[]">
                                         <input type="text" value="" class="form-control" name="title[]">
                                     </fieldset><!--entry 1 ends-->
 

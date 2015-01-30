@@ -159,18 +159,34 @@ class userController extends \BaseController {
 			$i = 0;
 			foreach($input['title'] as $title) {
 				$file = $files[$i];
-				// path is root/uploads
-				$filename = uniqid().$file->getClientOriginalName();
-				$upload_success = $file->move($destinationPath, $filename);
-				// flash message to show success.
-				$certificate = [
-					'title'					=> $title,
-					'date_of_completion'	=> date('Y-m-d H:i:s', strtotime($input['date_of_completion'][$i])),
-					'date_of_expiration'	=> date('Y-m-d H:i:s', strtotime($input['date_of_expiration'][$i])),
-					'files'					=> $filename,
-					'user_id'				=> Auth::user()->id
-				];
-				Usercertificate::insert($certificate);
+				$filename = "";
+				if(!empty($file)){
+					// path is root/uploads
+					$filename = uniqid().$file->getClientOriginalName();
+					$upload_success = $file->move($destinationPath, $filename);
+				}
+
+				if($input['certificate_id'] != ""){
+					$certificateupdate = [
+						'title'					=> $title,
+						'date_of_completion'	=> date('Y-m-d H:i:s', strtotime($input['date_of_completion'][$i])),
+						'date_of_expiration'	=> date('Y-m-d H:i:s', strtotime($input['date_of_expiration'][$i])),
+						'user_id'				=> Auth::user()->id
+					];
+					if($filename != "") $certificateupdate['files'] = $filename;
+
+					Usercertificate::where('id', '=', $input['certificate_id'])->update($certificateupdate);
+				}else{
+					$certificateinsert = [
+						'title'					=> $title,
+						'date_of_completion'	=> date('Y-m-d H:i:s', strtotime($input['date_of_completion'][$i])),
+						'date_of_expiration'	=> date('Y-m-d H:i:s', strtotime($input['date_of_expiration'][$i])),
+						'user_id'				=> Auth::user()->id
+					];
+					if($filename != "") $certificateinsert['files'] = $filename;
+
+					Usercertificate::insert($certificateinsert);
+				}
 				$i++;
 			}
 			
@@ -263,7 +279,7 @@ class userController extends \BaseController {
 			$input['user_auth_id'] = 'AMA-EM-'.uniqid();
 			$input['password'] = Hash::make($input['password']);
 			User::insert($input);
-			mkdir(public_path().'/files/'.$input['user_name'],0700);
+			mkdir(public_path().'/files/'.$input['user_name'],0755);
 			Mail::send('emails.user.welcome', array('mailData' => $mailData), function($message)
 			{
 
@@ -383,7 +399,6 @@ class userController extends \BaseController {
 		if(empty($user_id)) return ['data'=>'User Not Found'];
 
 		$user = User::where('id','=',$user_id)->with('userrole')->with('certificate')->get()->toArray();
-
 		$user[0]['user_role'] = Auth::user()->role;
 		$data = View::make('user.view_profile_model')->with('user', $user[0])->render();
 		return Response::Json(['data'=>$data]);
