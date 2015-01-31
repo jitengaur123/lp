@@ -143,14 +143,14 @@
                                      <input class="form-control reg_hour" name="reg_hour[]"  placeholder="Reg Hours" type="text">                                                    
                                 </fieldset><!--entry 3 ends-->
 
-                                <fieldset class="col-md-2 col-md-6"><!--entry 4-->
-                                    
-                                     <input class="form-control reg_rate" name="reg_rate[]"  placeholder="Reg Rate" type="text">                                                    
-                                </fieldset><!--entry 4 ends-->
+                               <!--  <fieldset class="col-md-2 col-md-6">entry 4
+                                   
+                                    <input class="form-control reg_rate" name="reg_rate[]"  placeholder="Reg Rate" type="text">                                                    
+                               </fieldset> entry 4 ends -->
 
-                                <fieldset class="col-md-2 col-md-6"><!--entry 5-->
+                                <!-- <fieldset class="col-md-2 col-md-6">entry 5
                                     <input class="form-control reg_amount"  placeholder="Amount" type="text">
-                                </fieldset><!--entry 5 ends-->
+                                </fieldset> --><!--entry 5 ends-->
 
                                 
                                 <!--ot details start-->
@@ -161,13 +161,13 @@
                                     <input class="form-control ot_hour" name="ot_hour[]"  placeholder="OT Hours" type="text">
                                 </fieldset><!--entry 7 end-->
 
-                                <fieldset class="col-md-2 col-md-6"><!--entry 7-->
+                                <!-- <fieldset class="col-md-2 col-md-6">entry 7
                                     <input class="form-control ot_rate" name="ot_rate[]"  placeholder="OT Rate" type="text">
-                                </fieldset><!--entry 7 end-->
+                                </fieldset> --><!--entry 7 end-->
 
-                                <fieldset class="col-md-2 col-md-6"><!--entry 8-->
+                                <!-- <fieldset class="col-md-2 col-md-6">entry 8
                                     <input class="form-control ot_amount"  placeholder="Amount" type="text">
-                                </fieldset><!--entry 8 ends-->
+                                </fieldset> --><!--entry 8 ends-->
                                 <!--ot details end-->
 
                                 <!--dt details start-->
@@ -178,19 +178,20 @@
                                     <input class="form-control dt_hour" name="dt_hour[]"  placeholder="DT Hours" type="text">
                                 </fieldset><!--entry 7 end-->
 
-                                <fieldset class="col-md-2 col-md-6"><!--entry 7-->
+                                <!-- <fieldset class="col-md-2 col-md-6">entry 7
                                     <input class="form-control dt_rate" name="dt_rate[]"  placeholder="DT Rate" type="text">
-                                </fieldset><!--entry 7 end-->
+                                </fieldset> --><!--entry 7 end-->
 
-                                <fieldset class="col-md-2 col-md-6"><!--entry 8-->
+                                <!-- <fieldset class="col-md-2 col-md-6">entry 8
                                     <input class="form-control dt_amount" placeholder="Amount" type="text">
-                                </fieldset><!--entry 8 ends-->
+                                </fieldset> --><!--entry 8 ends-->
                                 <!--dt details end-->
                                 <fieldset class="col-md-10">
                                 </fieldset>
                                 <fieldset class="col-md-2">
-                                    <label><i class="fa fa-plus"></i> Total Labor</label>
-                                    <input class="form-control auto sub_total" placeholder="Amount" type="text" value="00.00" disabled>
+                                    <label><i class="fa fa-plus"></i> Total Labor Hours</label>
+                                    <input class="form-control auto sub_total_hour" placeholder="Hours" type="text" value="00" disabled>
+                                    <!-- <input class="form-control auto sub_total" placeholder="Amount" type="text" value="00.00" disabled> -->
                                     <!--total labor will be calculated autmatically by multiplying reg, ot and dt hours with rate-->
                                 </fieldset>
 
@@ -224,7 +225,8 @@
            
             <div class="row marginb50">
             <div class="col-md-6 total_all">
-                                <h3>Grand Total : $<span class="final_total">0</span></h3>
+                <h3>Total Hours : <span class="final_total">0</span></h3> 
+                                <!-- <h3>Grand Total : $<span class="final_total">0</span></h3> -->
                             </div>
 
              <div class="col-md-6 total_all">

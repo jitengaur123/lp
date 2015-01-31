@@ -40,8 +40,8 @@
             <td>{{$timesheet['labor']['user_name']}}</td>
             <td>{{$timesheet['class']}}</td>
             <td>{{$timesheet['reg_hour']}}</td>
-            <td>{{$timesheet['reg_rate']}}</td>
-            <td>{{ $timesheet['reg_hour']*$timesheet['reg_rate'] }}</td>
+            <td>{{$report['worksite']['labour_rate']}}</td>
+            <td>{{ $timesheet['reg_hour']*$report['worksite']['labour_rate'] }}</td>
             
           </tr>
           <tr>
@@ -58,8 +58,8 @@
             <td></td>
             <td></td>
             <td>{{$timesheet['ot_hour']}}</td>
-            <td>{{$timesheet['ot_rate']}}</td>
-            <td>{{$timesheet['ot_hour']*$timesheet['ot_rate'] }}</td>
+            <td>{{$report['worksite']['ot_rate']}}</td>
+            <td>{{$timesheet['ot_hour']*$report['worksite']['ot_rate'] }}</td>
             
           </tr>
 
@@ -77,8 +77,8 @@
             <td></td>
             <td></td>
           <td>{{$timesheet['dt_hour']}}</td>
-            <td>{{$timesheet['dt_rate']}}</td>
-            <td>{{$timesheet['dt_hour']*$timesheet['dt_rate'] }}</td>
+            <td>{{$report['worksite']['dt_rate']}}</td>
+            <td>{{$timesheet['dt_hour']*$report['worksite']['dt_rate'] }}</td>
             
           </tr>
 

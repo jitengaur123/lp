@@ -71,7 +71,9 @@
               <select class="form-control roleClass" name="role">
 
                 @foreach($roles as $role)
+                  @if($role['id'] != 5) 
                   <option value="{{$role['id']}}"> {{ $role['title'] }} </option>
+                  @endif
                 @endforeach
               </select>
             </div>

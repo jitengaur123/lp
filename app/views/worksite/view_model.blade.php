@@ -15,6 +15,9 @@
 <div class="col-md-5 ls-user-details">
     <h2>Client: {{ $worksite['client']['company_name'] }} </h2>
     <p>Description: {{ $worksite['description'] }}</p>
+    <p>Labour Rate: {{ $worksite['labour_rate'] }}</p>
+    <p>OT Rate: {{ $worksite['ot_rate'] }}</p>
+    <p>DT Rate: {{ $worksite['dt_rate'] }}</p>
     <p>OCIP : {{ $worksite['ocip'] }}</p>
     <p>PM : {{ $worksite['pm'] }}</p>
     <p>Billing Type : {{ $worksite['billing_type'] }}</p>

@@ -46,6 +46,9 @@ Route::group(array('before'=>'auth', 'prefix' => Config::get('constants.PREFIX')
 	
 });
 
+
+
+
 Route::group(array('before'=>'auth|roles', 'prefix' => Config::get('constants.PREFIX')), function(){
 	allRoutes();
 });
@@ -178,6 +181,12 @@ function repositoryRoutes(){
 	Route::get('/repository', 'repositoryController@index');
 
 	Route::get('/filemanager', 'repositoryController@filemanager');
+
+	Route::get('/repository/upload', 'repositoryController@upload');
+
+	Route::post('/repository/uploadfiles', 'repositoryController@uploadfiles');
+
+	
 
 }
 

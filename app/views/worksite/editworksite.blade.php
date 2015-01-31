@@ -161,6 +161,26 @@
                                 </select>
           
                           </div>
+
+
+                           <label><i class="fa fa-flag"></i> Labour Rate</label>
+                    <div class="control-group">
+                                <input class="form-control" placeholder="Labour Rate" value="{{ $worksite['labour_rate'] }}" type="text" name="labour_rate">
+          
+                          </div>
+
+
+                          <label><i class="fa fa-flag"></i> OT Rate</label>
+                    <div class="control-group">
+                               <input class="form-control" placeholder="OT Rate" value="{{ $worksite['labour_rate'] }}" type="text" name="ot_rate">
+          
+                          </div>
+
+                          <label><i class="fa fa-flag"></i> DT Rate</label>
+                    <div class="control-group">
+                                <input class="form-control" placeholder="DT Rate" value="{{ $worksite['labour_rate'] }}" type="text" name="dt_rate">
+          
+                          </div>
                       
                       </div>
 

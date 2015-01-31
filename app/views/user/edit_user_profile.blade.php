@@ -125,7 +125,17 @@
                             "form-control datePickerOnly"
                             type="text" name="dob">
                         </div>
-
+                        @if(Auth::user()->role==1)
+                        <div class="form-group">
+                            <label><i class="fa fa-calendar"></i> Rating</label>
+                            <input value="0" @if($data['dob'] ==0)checked @endif type="radio" name="rating"> 0
+                            <input value="1" @if($data['dob'] ==1)checked @endif type="radio" name="rating"> 1
+                            <input value="2" @if($data['dob'] ==2)checked @endif type="radio" name="rating"> 2
+                            <input value="3" @if($data['dob'] ==3)checked @endif type="radio" name="rating"> 3
+                            <input value="4" @if($data['dob'] ==4)checked @endif type="radio" name="rating"> 4
+                            <input value="5" @if($data['dob'] ==5)checked @endif type="radio" name="rating"> 5
+                        </div>
+                        @endif
                        
 
                     </div><!--form section ends here-->
@@ -295,6 +305,14 @@
 
                         
                     </div><!--form section 2 ends here-->
+                    @if(Auth::user()->role==1)
+                    <div class="col-md-12 ls-group-input">
+                        <textarea class="form-control" id=
+                        "user_note" name="user_note" placeholder=
+                        "Note">{{ $data['user_note'] }}
+</textarea>
+                    </div>
+                    @endif
 
                     <div class="col-md-12 ls-group-input">
                         <textarea class="form-control" id=

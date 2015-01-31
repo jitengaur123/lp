@@ -94,6 +94,10 @@ function worksiteValidateRule(){
 		},
 		country:{
 			required: true
+		},
+		labour_rate:{
+			required: true,
+			number:true
 		}
 	};
 	return rules;
@@ -132,6 +136,9 @@ function clientValidateRule(){
 		email: {
 			required: true,
 			email:true
+		},
+		password: {
+			required: true
 		},
 		fax:{
 			required: true,
@@ -267,3 +274,9 @@ function userValidateRule(){
 	};
 	return rules;
 }
+
+$(document).ready(function(){
+	jQuery.validator.addMethod("cents", function(value, element) {
+        return this.optional(element) || /^\d{0,12}(\.\d{0,2})?$/i.test(value); 
+	}, "You must include two decimal places");
+});

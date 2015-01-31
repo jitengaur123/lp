@@ -52,6 +52,7 @@ class clientController extends \BaseController {
 			'phone_office' 	=> 'required',
 			'mobile1' 		=> 'required',
 			'email' 		=> 'required|email|unique:client',
+			'password' 		=> 'required',
 			'fax'			=> 'required',
 			'address'		=> 'required',
 			'city'			=> 'required',
@@ -70,9 +71,29 @@ class clientController extends \BaseController {
 
 		try{
 
+			$user = [
+				'user_auth_id'	=>	'AMA-EM-'.uniqid(),
+				'first_name'	=> $input['first_name'],
+				'last_name'		=> $input['last_name'],
+				'email'			=> $input['email'],
+				'user_name'		=> $input['user_name'],
+				'password'		=> Hash::make($input['password']),
+				'role'			=> 5,
+				'parent_id'		=> 1
+			];
+			User::insert($user);
+			$user_id = DB::getPdo()->lastInsertId();
+			mkdir(public_path().'/files/'.$input['user_name'],0700);
+
 			$input = Input::all();
 			$input['client_auto_id'] = 'AMA-CL-'.uniqid();
+			$input['user_id']	= $user_id;
+			unset($input['password']);
+			unset($input['user_name']);
 			Client::insert($input);
+
+
+
 
 			return Redirect::to( $this->prefix . '/client/create' )->withStatus('Client has been successfully added.');
 
@@ -161,6 +182,12 @@ class clientController extends \BaseController {
 		try{
 
 			$input = Input::all();
+			if($input['password'] == ""){
+				unset($input['password']);
+			}else{
+				$input['password'] = Hash::make($input['password']);
+			}
+
 			Client::whereId($client_id)->update($input);
 
 			return Redirect::to( $this->prefix . '/client/'.$client_id.'/edit' )->withStatus('Client has been successfully updated.');
@@ -219,6 +246,8 @@ class clientController extends \BaseController {
 		return Response::Json(['data'=>$data]);
 
 	}
+
+
 
 
 }
