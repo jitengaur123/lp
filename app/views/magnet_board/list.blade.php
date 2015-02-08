@@ -32,7 +32,7 @@
                     <thead>
                       <tr>
                         <th>Date</th>
-                        <th>Client Name</th>
+                        <th>Supervisor Name</th>
                         <th>WorkSite Name</th>
                         <th class="text-center">View/Edit/Delete</th>
                       </tr>
@@ -41,7 +41,7 @@
                        @foreach($magnetboard as $row)
                       <tr>
                         <td>{{ date('d/m/Y',strtotime($row['started_at'])) }}</td>
-                        <td>{{ $row['client']['first_name'] }} {{ $row['client']['last_name'] }}</td>
+                        <td>{{ $row['supervisor']['first_name'] }} {{ $row['supervisor']['last_name'] }}</td>
                         <td>{{ $row['worksite']['job_name'] }}</td>
                         <td class="text-center">
                           <a data-id="{{ $row['id'] }}" class="viewsiteModel viewMagnetDataModel" href="#reModal"><!--  {{ URL::to(Config::get('constants.PREFIX') . '/magnet/'.$row['id']) }} -->

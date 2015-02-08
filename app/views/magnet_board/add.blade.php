@@ -1,4 +1,4 @@
-@extends('layouts.all') 
+@extends('layouts.magnet') 
 
 @section('content')
 
@@ -19,134 +19,75 @@
           </div>
         </div>
         <!-- Main Content Element  Start-->
-        
+        <div class="messageHere"></div>
          <div class="row">
           <div class="col-md-3 userlist_brd">
           <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="search from users...">
-                                    <span class="input-group-btn">
-                                                            <button type="button" class="btn btn-default">Go!</button>
-                                                        </span>
-                                    </div>
-                                </div>
-                                <div class="panel-body no-padding nano">
-                                    <ul class="nano-content">
-                                      @foreach($users as $user)
-                                      <li data-id="{{ $user['id'] }}">{{ $user['user_name'] }} <span><i class="fa fa-arrows"></i></span></li>
-                                      @foreach
-                                    </ul>
-                                </div>
-          </div>
-          </div>
-
-        <div class="col-md-9 ">
-          <div class="row site_det"> 
-            <div class="col-md-4"><label>Date</label><input class="form-control datePickerOnly" type="text"/></div>
-            <div class="col-md-6 site_sel">
-              <label>Site</label>
-              <div class="control-group">
-                                <select id="select-country" class="demo-default" placeholder="Select a country...">
-                                    <option value="">Select Work Site...</option>
-                                    <option value="AF">Afghanistan</option>
-                                    <option value="AX">&Aring;land Islands</option>
-                                    <option value="AL">Albania</option>
-                                    <option value="DZ">Algeria</option>
-                                    <option value="AS">American Samoa</option>
-                                    <option value="AD">Andorra</option>
-                                    <option value="AO">Angola</option>
-                                    <option value="AI">Anguilla</option>
-                                    <option value="AQ">Antarctica</option>
-                                    <option value="AG">Antigua and Barbuda</option>
-                                    <option value="AR">Argentina</option>
-                                    <option value="AM">Armenia</option>
-                                </select>
-              </div>
-
-            </div>
-            <div class="col-md-2">
-              <button class="btn ls-light-blue-btn"><i class="fa fa-arrow-right"></i> Go !</button>
-            </div>
-
-          </div>
-
-          <div class="wrksite_drop"><!--worksite drop box start (where the users will be dropped)-->
-
-            <!--this is where the users will start-->
-            <div class="panel panel-default"><!--first user starts-->
-                  <div class="panel-heading">
-                    <h3 class="panel-title">User Number One</h3>
-                      <ul class="panel-control">
-                        <li><a class="minus" href="javascript:void(0)"><i class="fa fa-minus"></i></a></li>
-                        <li><a class="close-panel" href="javascript:void(0)"><i class="fa fa-times"></i></a></li>
-                      </ul>
-                  </div>
-                  <div class="panel-body usrshft">
-                    <div id="wrk_1">
-                       <div class="row">
-                        <div class="col-md-3">
-                            <h6>Shift Start Time</h6>
-                            <input class="form-control timePickerOnly" type="text"/>
-                        </div>
-                        <div class="col-md-3">
-                            <h6>Shift End Time</h6>
-                            <input class="form-control timePickerOnly" type="text"/>
-                        </div>
-                        <div class="col-md-3">
-                            
-                          <button class="btn ls-light-green-btn"><i class="fa fa-save"></i> Save The Shift</button>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-            </div><!--user ends-->
-
-            <div class="panel panel-default"><!--second user starts-->
               <div class="panel-heading">
-                <h3 class="panel-title">User Number Two</h3>
-                  <ul class="panel-control">
-                    <li><a class="minus" href="javascript:void(0)"><i class="fa fa-minus"></i></a></li>
-                    <li><a class="close-panel" href="javascript:void(0)"><i class="fa fa-times"></i></a></li>
-                  </ul>
-              </div>
-              <div class="panel-body usrshft">
-                <div id="wrk_1">
-                  <div class="row">
-                    <div class="col-md-3">
-                        <h6>Shift Start Time</h6>
-                        <input class="form-control timePickerOnly" type="text"/>
-                    </div>
-                    <div class="col-md-3">
-                        <h6>Shift End Time</h6>
-                        <input class="form-control timePickerOnly" type="text"/>
-                    </div>
-                    <div class="col-md-3">
-                        
-                      <button class="btn ls-light-green-btn"><i class="fa fa-save"></i> Save The Shift</button>
-                    </div>
-
+                  <div class="input-group">
+                  <input type="text" class="form-control" placeholder="search from users...">
+                  <span class="input-group-btn">
+                                          <button type="button" class="btn  btn-default">Go!</button>
+                                      </span>
                   </div>
-                </div>
               </div>
-                </div><!--user ends-->
-            </div>
-            <!--this is where the users will end-->
+              <div class="panel-body no-padding nano">
+                  <ul class="nano-content">
+                    
+                  </ul>
+              </div>  
+          </div>
+          </div>   
 
-            <!--this is a static button to save the worksite-->
-            <div class="svwrkst"><button class="btn ls-light-green-btn staticsv">Save The User Allocation For Worksite One</button></div>
-          </div><!--worksite drop box end (where the users will be dropped)-->
+
+        <form action='' id="magnetForm" method="post">
+            <div class="col-md-9 ">
+              <div class="row site_det"> 
+                <div class="col-md-4"><label>Date</label><input class="form-control datePickerOnly dateMagnet" name="started_at" value="{{ date('d/m/Y') }}" type="text"/></div>
+                <div class="col-md-6 site_sel">
+                  <label>Site</label>
+                  <div class="control-group">
+                      <select id="select-country" class="demo-default worksites" name="worksite_id" placeholder="Select a Work site...">
+                          <option value="">Select Work Site...</option>
+                          @foreach($worksites as $worksite)
+                          <option value="{{ $worksite['id'] }}">{{ $worksite['job_name'] }}</option>
+                          @endforeach
+                      </select>
+                  </div>
+
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="btn searchMagnetUsers ls-light-blue-btn"><i class="fa fa-arrow-right"></i> Go !</button>
+                </div>
+
+              </div>
+
+              <div class="wrksite_drop"><!--worksite drop box start (where the users will be dropped)-->
+
+          
+              </div>
+              <!--this is where the users will end-->
+
+                <!--this is a static button to save the worksite-->
+                <div class="svwrkst allocateUserBtn"><button type="submit" id="submitMagnetForm" class="btn ls-light-green-btn staticsv disabled">Save The User Allocation For Worksite One</button></div>
+              </div><!--worksite drop box end (where the users will be dropped)-->
+      </form>
+
+
         </div>
   
-        
+       
 @stop
 
 @section('head')
 
 <title>Amaha - Create New Board</title>
 
-
+   <script type="text/javascript">
+          window.onbeforeunload = function() {
+              return 'Are You sure want to reload this page?';
+          };
+        </script>
 <!--Page loading plugin Start -->
     <link href="{{ URL::asset('assets/css/plugins/pace.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('assets/js/pace.min.js') }}"></script><!--Page loading plugin End   -->
@@ -187,7 +128,7 @@
 <script type="text/javascript" src="{{ URL::asset('assets/js/lib/jquery-1.11.min.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/js/lib/jquery-migrate-1.1.0.js') }}"></script>
 <script type="text/javascript" src="{{ URL::asset('assets/js/jquery-ui-1.8.custom.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::asset('assets/js/max_js.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('assets/js/max_js.js') }}"></script>
 <!-- Max Javascript END -->
 
 <script type="text/javascript" src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script> 

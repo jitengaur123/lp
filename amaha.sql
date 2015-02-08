@@ -115,9 +115,9 @@ CREATE TABLE IF NOT EXISTS `magnet_board` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
--- Dumping data for table lp.magnet_board: ~5 rows (approximately)
+-- Dumping data for table lp.magnet_board: ~7 rows (approximately)
 DELETE FROM `magnet_board`;
 /*!40000 ALTER TABLE `magnet_board` DISABLE KEYS */;
 INSERT INTO `magnet_board` (`id`, `started_at`, `client_id`, `supervisor_id`, `worksite_id`, `created_at`, `updated_at`) VALUES
@@ -125,7 +125,12 @@ INSERT INTO `magnet_board` (`id`, `started_at`, `client_id`, `supervisor_id`, `w
 	(3, '2014-12-12 00:00:00', 2, 0, 3, '0000-00-00 00:00:00', '2014-12-06 13:09:27'),
 	(4, '1970-01-01 00:00:00', 1, 0, 1, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 	(6, '2015-01-13 00:00:00', 2, 0, 3, '2014-12-13 16:42:57', '2014-12-14 17:23:44'),
-	(9, '2014-12-23 00:00:00', 1, 0, 2, '2014-12-14 23:01:43', '0000-00-00 00:00:00');
+	(9, '2014-12-23 00:00:00', 1, 0, 2, '2014-12-14 23:01:43', '0000-00-00 00:00:00'),
+	(10, '2015-02-04 00:00:00', 0, 0, 1, '2015-02-04 01:48:21', '0000-00-00 00:00:00'),
+	(11, '2015-02-01 00:00:00', 0, 0, 1, '2015-02-04 01:49:52', '0000-00-00 00:00:00'),
+	(12, '2015-02-04 00:00:00', 0, 3, 2, '2015-02-04 02:01:53', '0000-00-00 00:00:00'),
+	(13, '2015-02-04 00:00:00', 0, 3, 3, '2015-02-04 02:03:10', '0000-00-00 00:00:00'),
+	(14, '2015-02-03 00:00:00', 0, 3, 1, '2015-02-04 02:14:20', '0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `magnet_board` ENABLE KEYS */;
 
 
@@ -137,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `magnet_board_user` (
   `end_time` varchar(50) NOT NULL DEFAULT '0',
   `magnetboard_id` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table lp.magnet_board_user: ~14 rows (approximately)
 DELETE FROM `magnet_board_user`;
@@ -156,7 +161,13 @@ INSERT INTO `magnet_board_user` (`id`, `user_id`, `start_time`, `end_time`, `mag
 	(42, 4, '10 : 00', '18 : 00', 9),
 	(43, 5, '10 : 00', '18 : 00', 9),
 	(44, 7, '10 : 00', '18 : 00', 9),
-	(45, 9, '10 : 00', '18 : 00', 9);
+	(45, 9, '10 : 00', '18 : 00', 9),
+	(46, 5, '10', '2', 13),
+	(47, 7, '10', '2', 13),
+	(48, 5, '', '', 14),
+	(49, 6, '', '', 15),
+	(50, 4, '', '', 15),
+	(51, 9, '', '', 16);
 /*!40000 ALTER TABLE `magnet_board_user` ENABLE KEYS */;
 
 

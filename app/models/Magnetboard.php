@@ -22,6 +22,10 @@ class Magnetboard extends Eloquent {
 		return $this->belongsTo('Client', 'client_id');
 	}
 
+	public function supervisor(){
+		return $this->belongsTo('User', 'supervisor_id');	
+	}
+
 	public function worksite(){
 		return $this->belongsTo('Worksite','worksite_id');
 	}

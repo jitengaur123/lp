@@ -1,7 +1,7 @@
 
  <div class="col-md-4 details_left">
     <p>Date : {{ date('d/m/Y', strtotime($Magnetboard['started_at'])) }}</p>
-    <h2>Client: {{ $Magnetboard['client']['company_name'] }} </h2>
+    <h2>Supervisor: {{ $Magnetboard['supervisor']['first_name'] }} {{ $Magnetboard['supervisor']['last_name'] }}</h2>
     <p>Work Site: {{ $Magnetboard['worksite']['job_name'] }}</p>
 
 </div>
