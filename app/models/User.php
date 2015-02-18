@@ -80,7 +80,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
 		if(isset($input['veterun_status'])) $data['veterun_status'] = json_encode($input['veterun_status']);
 
-		if(isset($input['date_of_discharge'])){
+		if(isset($input['date_of_discharge']) && $input['date_of_discharge'] != ""){
 			list($d,$m,$y) = explode('/', $input['date_of_discharge']);
 			$date_of_discharge = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
 			$data['date_of_discharge'] = $date_of_discharge;
@@ -92,7 +92,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		
 		if(isset($input['password']) && $input['password'] != "")	$data['password'] = Hash::make($input['password']);
 
-		if(isset($input['dob'])){
+		if(isset($input['dob'])  && $input['dob'] != ""){
 			list($d,$m,$y) = explode('/', $input['dob']);
 			$date_create = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
 			$data['dob'] = $date_create;

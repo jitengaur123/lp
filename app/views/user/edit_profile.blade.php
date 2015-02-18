@@ -363,7 +363,7 @@
                         condition.Disabilities include, but
                         are not limited to</p>
 
-                        <div class="row disabilities">
+                        <div class="row disabilities" style="display:none;">
                             <div class=
                             "col-md-3 col-sm-12 col-xs-12">
                                 <label class=
@@ -483,13 +483,13 @@
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <label class=
-                                "col-md-4 col-sm-12 col-xs-12 margint15"><input checked name="has_disablity" class=
-                                "icheck-green" id=
+                                "col-md-4 col-sm-12 col-xs-12 margint15 withoutDisablities"><input checked name="has_disablity" class=
+                                "icheck-green withoutDisablities" id=
                                 "optionsRadios4"  type=
                                 "radio" value="0">
                                 No, I do not have a disability</label>
                                 <label class=
-                                "col-md-4 col-sm-12 col-xs-12 margint15"><input class="icheck-green"
+                                "col-md-4 col-sm-12 col-xs-12 margint15 withDisablities"><input class="icheck-green withDisablities"
                                 id="optionsRadios4" name=
                                 "has_disablity" type=
                                 "radio" value="1">
@@ -611,7 +611,18 @@
 
 
 </div>
+<script type="text/javascript">
+  $(function(){
 
+    $('.withoutDisablities').on('click', function(){
+      $('.disabilities').slideUp();
+    });
+
+    $('.withDisablities').on('click', function(){
+      $('.disabilities').slideDown();
+    });
+  });
+</script>
 
 <!-- Main Content Element  End-->
 @stop

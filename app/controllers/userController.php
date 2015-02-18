@@ -151,7 +151,7 @@ class userController extends \BaseController {
 		if(!empty($UserEmail)){
 			return Redirect::to( $this->prefix . '/editprofile')->withErrors(['Email is allready exists']);
 		}
-
+		//return $input;
 		try{
 			$user_name = Auth::user()->user_name;
 			$files = Input::file('files');
@@ -160,30 +160,54 @@ class userController extends \BaseController {
 			foreach($input['title'] as $title) {
 				$file = $files[$i];
 				$filename = "";
-				if(!empty($file)){
-					// path is root/uploads
-					$filename = uniqid().$file->getClientOriginalName();
-					$upload_success = $file->move($destinationPath, $filename);
-				}
+				
+				list($d,$m,$y) = explode('/', $input['date_of_completion'][$i]);
+				$date_of_completion = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
 
-				if($input['certificate_id'] != ""){
+
+				list($d,$m,$y) = explode('/', $input['date_of_expiration'][$i]);
+				$date_of_expiration = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
+
+				if($input['certificate_id'][$i] != ""){
 					$certificateupdate = [
 						'title'					=> $title,
-						'date_of_completion'	=> date('Y-m-d H:i:s', strtotime($input['date_of_completion'][$i])),
-						'date_of_expiration'	=> date('Y-m-d H:i:s', strtotime($input['date_of_expiration'][$i])),
+						'date_of_completion'	=> $date_of_completion,
+						'date_of_expiration'	=> $date_of_expiration,
 						'user_id'				=> Auth::user()->id
 					];
-					if($filename != "") $certificateupdate['files'] = $filename;
 
-					Usercertificate::where('id', '=', $input['certificate_id'])->update($certificateupdate);
+					if($file){
+						// path is root/uploads
+						$filename = uniqid().$file->getClientOriginalName();
+						$upload_success = $file->move($destinationPath, $filename);
+					
+						if($filename != "") $certificateupdate['files'] = $filename;
+					}
+					Usercertificate::where('id', '=', $input['certificate_id'][$i])->update($certificateupdate);
 				}else{
+
+
+					list($d,$m,$y) = explode('/', $input['date_of_completion'][$i]);
+					$date_of_completion = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
+
+
+					list($d,$m,$y) = explode('/', $input['date_of_expiration'][$i]);
+					$date_of_expiration = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
+
 					$certificateinsert = [
 						'title'					=> $title,
-						'date_of_completion'	=> date('Y-m-d H:i:s', strtotime($input['date_of_completion'][$i])),
-						'date_of_expiration'	=> date('Y-m-d H:i:s', strtotime($input['date_of_expiration'][$i])),
+						'date_of_completion'	=> $date_of_completion,
+						'date_of_expiration'	=> $date_of_expiration,
 						'user_id'				=> Auth::user()->id
 					];
-					if($filename != "") $certificateinsert['files'] = $filename;
+					if($file){
+						// path is root/uploads
+						$filename = uniqid().$file->getClientOriginalName();
+						$upload_success = $file->move($destinationPath, $filename);
+					
+						if($filename != "") $certificateinsert['files'] = $filename;
+					}
+					
 
 					Usercertificate::insert($certificateinsert);
 				}

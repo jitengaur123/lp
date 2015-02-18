@@ -28,7 +28,7 @@
               </div>
               <div class="panel-body client">
                 <p><i class="fa fa-users"></i> You can add new client in this section in order to create a work site. Please note that you will not get the select option in worksite if you have not added the client first. Please refer to documentation for reference</p>
-
+                <div class="clear"></div>
               <form class="ls_form" method="post" id="clientForm" action="{{ URL::to(Config::get('constants.PREFIX').'/client') }}">
                 <!--user profile form ends here--> 
                 <!--form section 1 starts here-->
@@ -69,10 +69,6 @@
                     <input class="form-control" placeholder="Enter email" type="email" name="email">
                   </div>
 
-                  <div class="form-group">
-                    <label><i class="fa fa-envelope-o"></i> Password</label>
-                    <input class="form-control" placeholder="Password" type="password" name="password">
-                  </div>
 
                   
 

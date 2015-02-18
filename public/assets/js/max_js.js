@@ -57,6 +57,14 @@ function updateMagnetForm(){
     });
 }
 
+
+function timePicker(){
+     $('.timePickerOnly').datetimepicker({
+        datepicker: false,
+        format: 'H:i',
+    });
+}
+
 function addMagnetUser(){
     jQuery('#magnetForm').on('submit', function(e){
         e.preventDefault();
@@ -166,7 +174,7 @@ function liUserBoard(resultData){
 
    jQuery('ul.nano-content').html(htmldata);
     a();
-    b();
+    //b();
 }
 
 
@@ -193,11 +201,12 @@ function a() {
             d["id"] = c.data('id');
             var e = '<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title '+newclass+'">' + d["name"] + '</h3><input class="user_id" value="' + d["id"] + '" name="'+inputName+'" type="hidden"/><ul class="panel-control"><li><a class="minus" href="javascript:void(0)"><i class="fa fa-minus"></i></a></li><li><a class="close-panel" href="javascript:void(0)"><i class="fa fa-times"></i></a></li></ul></div><div class="panel-body usrshft"><div id="wrk_1"><div class="row"><div class="col-md-3"><h6>Shift Start Time</h6><input class="form-control timePickerOnly" name="start_time[' + d["id"] + ']" type="text"/></div><div class="col-md-3"><h6>Shift End Time</h6><input class="form-control timePickerOnly" name="end_time[' + d["id"] + ']"  type="text"/></div><div class="col-md-3"><button class="btn ls-light-green-btn"><i class="fa fa-save"></i> Save The Shift</button></div></div></div></div></div>';
             jQuery(e).appendTo("div.wrksite_drop");
+            timePicker();
         },
         stop: function(a, c) {
             var s = c["item"];
             jQuery(s).remove();
-            b();
+            //b();
         }
     });
     jQuery("div.wrksite_drop").sortable();
@@ -207,7 +216,8 @@ function a() {
 
 
 function b() {
-    jQuery(".panel-control li a.close-panel").click(function() {
+    jQuery(document).on('click', ".panel-control li a.close-panel",  function() {
+
         var a = jQuery(this).parents(".panel");
         var classAdded = 'userClass';
 
@@ -222,6 +232,7 @@ function b() {
         }, 1e3, function() {
             jQuery(this).remove();
         });
+        timePicker();
         setTimeout(function() {
             jQuery(b).appendTo("ul.nano-content");
         }, 1e3);

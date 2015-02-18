@@ -18,6 +18,10 @@ $(function(){
     /*$(document).on('blur','.reg_hour, .reg_rate, .ot_hour, .ot_rate, .dt_hour, .dt_rate',totalLabourHours);*/
     $(document).on('blur','.reg_hour, .ot_hour, .dt_hour',totalLabourHours);
 
+
+    
+    
+
 });
 
 

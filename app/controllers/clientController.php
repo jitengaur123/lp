@@ -52,6 +52,7 @@ class clientController extends \BaseController {
 			'phone_office' 	=> 'required',
 			'mobile1' 		=> 'required',
 			'email' 		=> 'required|email|unique:client',
+			'user_name'		=> 'required|unique:users',
 			'password' 		=> 'required',
 			'fax'			=> 'required',
 			'address'		=> 'required',
@@ -183,11 +184,11 @@ class clientController extends \BaseController {
 		try{
 
 			$input = Input::all();
-			if($input['password'] == ""){
+			/*if($input['password'] == ""){
 				unset($input['password']);
 			}else{
 				$input['password'] = Hash::make($input['password']);
-			}
+			}*/
 
 			Client::whereId($client_id)->update($input);
 
