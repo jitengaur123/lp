@@ -181,6 +181,8 @@ function liUserBoard(resultData){
 function a() {
     jQuery("ul.nano-content").sortable({
         connectWith: "div.wrksite_drop",
+
+        zIndex: 99999,
         beforeStop: function(a, b) {
             var c = b["item"];
             removeMessage();

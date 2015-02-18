@@ -77,6 +77,8 @@ function allRoutes(){
 
 	//repository routes
 	repositoryRoutes();
+
+	magnetRoutes();
 }
 
 function userRoutes(){
@@ -163,6 +165,22 @@ function magnetBoardRoutes(){
 
 }
 
+
+function magnetRoutes(){
+
+	//Client section 
+	Route::resource('/magnetboard', 'magnetController');
+	Route::get('/magnetboard/delete/{id}', 'magnetController@delete')->where('id', '[0-9]+');
+	Route::post('/magnetboard/update/{id}', 'magnetController@update')->where('id', '[0-9]+');
+
+	Route::get('/editdeleteboard', 'magnetController@editDelete');
+	Route::post('/editdeleteboard', 'magnetController@postEditDelete');	
+	Route::get('/viewboarddata', 'magnetController@viewMagnet');
+
+	Route::post('/checkmboardexists', 'magnetController@checkBoardExists');
+	
+
+}
 
 function postRoutes(){
 
