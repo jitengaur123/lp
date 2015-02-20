@@ -61,7 +61,7 @@
                         <ul id="category299" class="connectedSortable sortableUl ui-sortable" style="list-style-type:none;padding:0px;width:200px;background:#fff;height:3000px;">
                             @foreach($users as $user)
                                 @if(!in_array($user['id'], $magnetUser['users']))
-                                    <li id="{{ $user['id'] }}" data-roleid="{{ $user['id'] }}" class="ui-state-default ui-sortable-handle" style="margin: 5px; height: 47px;" title="">
+                                    <li id="{{ $user['id'] }}" data-roleid="{{ $user['role'] }}" class="ui-state-default ui-sortable-handle" style="margin: 5px; height: 47px;" title="">
                                         <a href="javascript:void(0);" style="color:; vertical-align: top;">
                                             <div style="float:left; padding-right: 5px">
                                                 <?php $image = ($user['profile_pic'] == "")?'default.jpg':$user['profile_pic'] ?>
@@ -78,7 +78,10 @@
                         <ul id="job41" data-worksiteid="{{ $worksite->id }}" data-jobid="{{ $worksite->m_id }}" class="connectedSortable sortableUl ui-sortable"  style="list-style-type:none;padding:0px;width:200px;background:#fff;height:3000px;">
                             @if(isset($magnetUser['board'][$worksite->m_id]))
                                 @foreach($magnetUser['board'][$worksite->m_id] as $bUser)
-                                <li id="{{ $users[$bUser['user_id']]['id'] }}" data-worksiteid="{{ $worksite->id }}" data-jobid="{{ $worksite->m_id }}" data-roleid="{{ $users[$bUser['user_id']]['id'] }}" class="ui-state-default ui-sortable-handle" style="margin: 5px; height: 47px;" title="">
+
+                                <?php  if($bUser['user_id'] == 0) continue; ?>
+
+                                <li id="{{ $users[$bUser['user_id']]['id'] }}" data-roleid="{{ $users[$bUser['user_id']]['role'] }}" data-worksiteid="{{ $worksite->id }}" data-jobid="{{ $worksite->m_id }}" class="ui-state-default ui-sortable-handle" style="margin: 5px; height: 47px;" title="">
                                     <a href="javascript:void(0);" style="color:; vertical-align: top;">
                                         <div style="float:left; padding-right: 5px">
                                             <?php $image = ($users[$bUser['user_id']]['profile_pic'] == "")?'default.jpg':$users[$bUser['user_id']]['profile_pic'] ?>
@@ -101,13 +104,14 @@
   
        <script type="text/javascript">
        jQuery(function(){
+            var worksiteid,jobid;
+            var itemsUL = jQuery("#sortableDivs").find('ul.sortableUl');
 
-            jQuery("#sortableDivs").find('ul.sortableUl').sortable({
+            itemsUL.sortable({
                 connectWith: "ul.connectedSortable",
                  revert: true,
                  beforeStop: function(a, b) {
                     var c = b["item"];
-                    //alert(c.data('roleid'));
                     removeMessage();
 
                     if(c.hasClass('disableDrag')){                
@@ -115,11 +119,41 @@
                         return false;
                     }
                 },
-                receive: function( event, ui ) {
+                stop: function( event, ui ) {
                      var c = ui["item"];
-                    alert(c.data('worksiteid'));
+                     var p = ui["placeholder"];
+
+                     var roleid = c.data('roleid'),
+                         userid = c.attr('id');
+                         previousjobid = c.data('jobid');
+
+                    var data = {
+                        'userid' : userid,
+                        'roleid' : roleid,
+                        'previousjobid' : previousjobid,
+                        'jobid' : jobid,
+                        'worksiteid' :worksiteid,
+                        'date_started' : $('.dateMagnet').val()
+                    }
+                    console.log(data);
+                    return false;
+
+                    var url = ae.baseUrl + 'administrator/magnetboard/updateboard';
+                   $.post(url, data, function(resultData){
+                        console.log(resultData);
+                   },'json');
+                },
+                over: function( event, ui ) {
+                     var c = ui["item"];
+                     var p = ui["placeholder"];
+
+                     var worksiteid = p.parent().data('worksiteid'),
+                         jobid = p.parent().data('jobid');
+                    console.log(worksiteid + ':'+jobid);
                 }
             }).disableSelection();;
+
+
        })
           
 

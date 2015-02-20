@@ -173,6 +173,8 @@ function magnetRoutes(){
 	Route::get('/magnetboard/delete/{id}', 'magnetController@delete')->where('id', '[0-9]+');
 	Route::post('/magnetboard/update/{id}', 'magnetController@update')->where('id', '[0-9]+');
 
+	Route::post('/magnetboard/updateboard', 'magnetController@updateboard');
+
 	Route::get('/editdeleteboard', 'magnetController@editDelete');
 	Route::post('/editdeleteboard', 'magnetController@postEditDelete');	
 	Route::get('/viewboarddata', 'magnetController@viewMagnet');

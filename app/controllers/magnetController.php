@@ -70,6 +70,60 @@ class magnetController extends \BaseController {
 		return View::make('magnet.add', $data);
 	}
 
+	function updateboard(){
+
+		$input = Input::all();
+
+		if( isset($input['previousjobid']) && $input['previousjobid'] != "" ){
+			if( $input['roleid'] == 3){
+				Magnetboard::where('id','=', $input['previousjobid'])
+							->update(['supervisor_id'=>0]);
+			}else{
+				
+				MagnetboardUser::where('magnetboard_id','=', $input['previousjobid'])
+								->where('user_id','=', $input['userid'])
+								->delete();
+			}
+		}
+
+		if( isset($input['jobid']) && $input['jobid'] != "" ){
+			if( $input['roleid'] == 3){
+				Magnetboard::where('id','=', $input['jobid'])->update(['supervisor_id'=>$input['userid']]);
+			}else{
+				$magnet_users = [
+					'user_id' 		=> $input['userid'],
+					'magnetboard_id'=>  $input['jobid'],
+				];
+				MagnetboardUser::insert($magnet_users);
+			}
+		}else{
+
+			list($y,$m,$d) = explode('/', $input['date_started']);
+			$mktime = mktime(0,0,0,$m,$d,$y);
+			$start_date = date('Y-m-d H:i:s', $mktime);
+			
+			$insertData = [
+				'started_at'	=> $start_date,
+				'worksite_id'	=> $input['worksiteid'],
+				'user_id' 		=> 'required',
+			];
+			if( $input['roleid'] == 3){
+				$insertData['supervisor_id'] = $input['userid'];
+			}
+
+			Magnetboard::insert($insertData);
+			$id = DB::getPdo()->lastInsertId();
+			
+			if( $input['roleid'] == 3){
+				$magnet_users = [
+					'user_id' 		=> $input['userid'],
+					'magnetboard_id'=>  $id,
+				];
+				MagnetboardUser::insert($magnet_users);
+			}
+		}
+	}
+
 
 	function magnetUsers($start_date){
 
