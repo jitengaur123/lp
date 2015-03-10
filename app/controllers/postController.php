@@ -44,6 +44,8 @@ class postController extends \BaseController {
 	 */
 	public function store()
 	{
+
+		return Input::all();
 		//
 		$rules = [
 			'page_name'		=> 'required',

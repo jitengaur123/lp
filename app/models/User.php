@@ -99,7 +99,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		}
 
 		$data['is_complete'] = 1;
-		$data['has_certificate'] = $input['has_certificate'];
+
+		if (Input::has('has_certificate'))
+			$data['has_certificate'] = $input['has_certificate'];
 
 		if (Input::hasFile('profile_pic'))
 		{

@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 class magnetController extends \BaseController {
 
 	public $prefix = '';
@@ -32,50 +32,102 @@ class magnetController extends \BaseController {
 	 */
 	public function create()
 	{
-		
-		//$worksites = Worksite::all();
-		$start_date = date('Y-m-d');
-		list($y,$m,$d) = explode('-', $start_date);
-		$mktime = mktime(0,0,0,$m,$d,$y);
 
+		$start_date = Carbon::now();
+		
+		Carbon::setToStringFormat('Y-m-d');
 		if(Input::has('started_at')){
 			list($d,$m,$y) = explode('/', Input::get('started_at'));
-			$mktime = mktime(0,0,0,$m,$d,$y);
-			$start_date = date('Y-m-d H:i:s', $mktime);
+			$start_date = $start_date->setDate($y, $m, $d);
 		}
 
 		$worksites = DB::table('worksite')
 					->leftjoin('magnet_board', function($join) use ($start_date) {
 						$join->on('worksite.id', '=', 'magnet_board.worksite_id')
-							->on('magnet_board.started_at',	 '=', Db::raw("'".$start_date."'"));
+							->on(Db::raw('DATE(magnet_board.started_at)'),	 '=', Db::raw("'".$start_date."'"));
 					})
 					->select('worksite.id', 'worksite.job_name', 'magnet_board.id as m_id', 'magnet_board.supervisor_id')
 					->get();
 
 
+
 		$magnetUser = $this->magnetUsers($start_date);
-		
 
 		$usersData = User::whereIn('role',[3,4])->select('id', 'first_name', 'last_name', 'user_name', 'email', 'role', 'profile_pic')->get()->toArray();
 		$users = [];
 		foreach($usersData as $row){
 			$users[$row['id']] = $row;
 		}
+		Carbon::setToStringFormat('d/m/Y');
+
 		$data = [
 			'worksites'	=> $worksites,
 			'users'		=> $users,
 			'magnetUser'=>$magnetUser,
-			'start_date'=> $mktime
+			'start_date'=> $start_date
 		];
 		return View::make('magnet.add', $data);
 	}
 
+
+	/**
+	 * [updateboard description]
+	 * @return [type] [description]
+	 */
 	function updateboard(){
 
 		$input = Input::all();
 
-		if( isset($input['previousjobid']) && $input['previousjobid'] != "" ){
-			if( $input['roleid'] == 3){
+		$this->deletePreviousBoardUser($input);
+		
+		if( !Input::has('worksiteid') ) 
+			return Response::json(['removeJob'=>true]);
+
+		if( Input::has('jobid') ){
+			if( Input::has('roleid') && $input['roleid'] == 3){
+				Magnetboard::where('id','=', $input['jobid'])->update(['supervisor_id'=>$input['userid']]);
+			}else{
+				$magnet_users = [
+					'user_id' 		=> $input['userid'],
+					'magnetboard_id'=>  $input['jobid'],
+				];
+				MagnetboardUser::insert($magnet_users);
+			}
+			$result = [ 'jobid' => $input['jobid']];
+		}else{
+
+			list($d,$m,$y) = explode('/', $input['date_started']);
+			$dt = Carbon::now();
+			$start_date = $dt->setDate($y, $m, $d)->toDateTimeString();
+			
+			$insertData = [
+				'started_at'	=> $start_date,
+				'worksite_id'	=> $input['worksiteid'],
+			];
+
+			if( Input::has('roleid') && $input['roleid'] == 3){
+				$insertData['supervisor_id'] = $input['userid'];
+			}
+
+			Magnetboard::insert($insertData);
+			$id = DB::getPdo()->lastInsertId();
+			
+			if( Input::has('roleid') && $input['roleid'] == 4 ){
+				$magnet_users = [
+					'user_id' 		=> $input['userid'],
+					'magnetboard_id'=>  $id,
+				];
+				MagnetboardUser::insert($magnet_users);
+			}
+			$result = [ 'jobid' => $id];
+		}
+		return Response::json($result);
+	}
+
+	function deletePreviousBoardUser($input){
+
+		if( Input::has('previousjobid') ){
+			if( Input::has('roleid') && $input['roleid']== 3){
 				Magnetboard::where('id','=', $input['previousjobid'])
 							->update(['supervisor_id'=>0]);
 			}else{
@@ -85,43 +137,6 @@ class magnetController extends \BaseController {
 								->delete();
 			}
 		}
-
-		if( isset($input['jobid']) && $input['jobid'] != "" ){
-			if( $input['roleid'] == 3){
-				Magnetboard::where('id','=', $input['jobid'])->update(['supervisor_id'=>$input['userid']]);
-			}else{
-				$magnet_users = [
-					'user_id' 		=> $input['userid'],
-					'magnetboard_id'=>  $input['jobid'],
-				];
-				MagnetboardUser::insert($magnet_users);
-			}
-		}else{
-
-			list($y,$m,$d) = explode('/', $input['date_started']);
-			$mktime = mktime(0,0,0,$m,$d,$y);
-			$start_date = date('Y-m-d H:i:s', $mktime);
-			
-			$insertData = [
-				'started_at'	=> $start_date,
-				'worksite_id'	=> $input['worksiteid'],
-				'user_id' 		=> 'required',
-			];
-			if( $input['roleid'] == 3){
-				$insertData['supervisor_id'] = $input['userid'];
-			}
-
-			Magnetboard::insert($insertData);
-			$id = DB::getPdo()->lastInsertId();
-			
-			if( $input['roleid'] == 3){
-				$magnet_users = [
-					'user_id' 		=> $input['userid'],
-					'magnetboard_id'=>  $id,
-				];
-				MagnetboardUser::insert($magnet_users);
-			}
-		}
 	}
 
 
@@ -129,7 +144,7 @@ class magnetController extends \BaseController {
 
 		$user = [];
 		$board = [];
-		$Magnetboard = Magnetboard::where('started_at','=', Db::raw("'".$start_date."'"))->with('magnet_users')->get();
+		$Magnetboard = Magnetboard::where(Db::raw('DATE(started_at)'), '=', Db::raw("'".$start_date."'"))->with('magnet_users')->get();
 
 		foreach ($Magnetboard as $key => $value) {
 			$i =0;

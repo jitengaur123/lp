@@ -100,6 +100,16 @@
         </ul>
     </li>
 
+    <li @if ($segment == 'magnetboard') class="active" @endif>
+        <a href="#">
+           <i class="fa fa-magnet"></i>
+            <span>Magnet Board New <!-- <span class="badge badge-red">15</span> --></span>
+        </a>
+        <ul>
+            <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnetboard/create') }}">Allocate Users</a></li>
+        </ul>
+    </li>
+
     <li @if ($segment == 'workreport' || $segment == "editdeletereport") class="active" @endif>
         <a href="#">
             <i class="fa fa-building"></i>
