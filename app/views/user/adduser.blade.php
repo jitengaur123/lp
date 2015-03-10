@@ -49,6 +49,75 @@
               <label><i class="fa fa-user"></i> Username</label>
               <input class="form-control" placeholder="Username" name="user_name" type="username">
             </div>
+
+            <div class="panel panel-default userform no-border" ><!--time logging panel starts here -->
+                <div class="panel-heading ">
+                    <h3 class="panel-title">Safety Training Status</h3>
+                </div>
+                <input type="radio" value="1" name="has_certificate" class="safety_training_status"  id="safety_training_status" /> Yes
+                <input type="radio" value="0" name="has_certificate" class="safety_training_status" checked id="safety_training_status" /> No
+                <script type="text/javascript">
+                    $(document).ready(function(){
+
+                        $('.safety_training_status').on('click', function(){
+                            var checkedTraining = $('.safety_training_status:checked').val();
+                            if(checkedTraining == 1){
+                                $('.certificateView').slideDown();
+                            }else{
+                                $('.certificateView').slideUp();
+                            }
+                        });
+                    });
+                </script>
+                <div class="panel-body certificateView"  style="display:none;" >
+                    
+                        <div class="col-md-12"><!--section 1 starts here-->
+
+
+                            <div id="entry1" class="clonedInput row"><!--clonedinput starts-->
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Title</label>
+                                        <input type="hidden" value="" class="form-control" name="certificate_id[]">
+                                        <input type="text" value="" class="form-control" name="title[]">
+                                    </fieldset><!--entry 1 ends-->
+
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Date of Completion</label>
+                                        <input type="text" class="form-control datePickerOnly" value="" name="date_of_completion[]">
+                                    </fieldset><!--entry 1 ends-->
+
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Date of Expiration</label>
+                                        <input type="text" class="form-control datePickerOnly" value="" name="date_of_expiration[]">
+                                    </fieldset><!--entry 1 ends-->
+                                    
+                                    <fieldset class="col-md-3 col-md-6"><!--entry 1-->
+                                        
+                                        <label>Upload</label>
+                                        <input type="file" value="" name="files[]">
+                                    </fieldset><!--entry 1 ends-->
+
+                                </div><!-- cloned input ends -->
+                            
+                            
+                            <div id="addDelButtons" class="margint15 col-md-6">
+                                <input type="button" id="btnAdd" value="add section" class="btn ls-light-green-btn"> 
+                                <input type="button" id="btnDel" value="remove section above" class="btn ls-red-btn">
+                            </div>
+
+                            
+
+                
+                        </div><!--section ends here-->
+                        
+
+                </div><!--panel ends here-->
+            </div><!--time logging ends here-->
+
+
           </div>
           <!--form section ends here--> 
           <!--form section 2 starts here-->

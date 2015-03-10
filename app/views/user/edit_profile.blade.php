@@ -127,7 +127,7 @@
                         </div>
 
                        
-                        <div class="panel panel-default userform no-border"><!--time logging panel starts here -->
+                        <div class="panel panel-default userform no-border" @if(Auth::user()->role == 1 || Auth::user()->role == 2) style="display:none;" @endif><!--time logging panel starts here -->
                 <div class="panel-heading ">
                     <h3 class="panel-title">Safety Training Status</h3>
                 </div>

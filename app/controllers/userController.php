@@ -296,14 +296,59 @@ class userController extends \BaseController {
 
 		try{
 
-			$input = Input::all();
-			unset($input['password_confirmation']);
+			$userinput = [
+				'first_name'	=> $input['first_name'],
+				'last_name'		=> $input['last_name'],
+				'email'			=> $input['email'],
+				'user_name' 	=> $input['user_name'],
+				'password' 		=> Hash::make($input['password']),
+				'user_auth_id' 	=> 'AMA-EM-'.uniqid(),
+			];
 
 			$mailData = $input;
-			$input['user_auth_id'] = 'AMA-EM-'.uniqid();
-			$input['password'] = Hash::make($input['password']);
-			User::insert($input);
+			/*$input['user_auth_id'] = 'AMA-EM-'.uniqid();
+			$input['password'] = Hash::make($input['password']);*/
+			User::insert($userinput);
 			mkdir(public_path().'/files/'.$input['user_name'],0755);
+			$id = DB::getPdo()->lastInsertId();
+
+			$user_name = $input['user_name'];
+			$files = Input::file('files');
+			$destinationPath = public_path().'/files/'.$user_name;
+			$i = 0;
+			foreach($input['title'] as $title) {
+				$file = $files[$i];
+				$filename = "";
+				
+				list($d,$m,$y) = explode('/', $input['date_of_completion'][$i]);
+				$date_of_completion = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
+
+
+				list($d,$m,$y) = explode('/', $input['date_of_expiration'][$i]);
+				$date_of_expiration = date('Y-m-d H:i:s', mktime(0,0,0,$m,$d,$y));
+
+				$certificateinsert = [
+					'title'					=> $title,
+					'date_of_completion'	=> $date_of_completion,
+					'date_of_expiration'	=> $date_of_expiration,
+					'user_id'				=> $id
+				];
+				if($file){
+					// path is root/uploads
+					$filename = uniqid().$file->getClientOriginalName();
+					$upload_success = $file->move($destinationPath, $filename);
+				
+					if($filename != "") $certificateinsert['files'] = $filename;
+				}
+				
+
+				Usercertificate::insert($certificateinsert);
+				
+				$i++;
+			}
+
+
+			
 			Mail::send('emails.user.welcome', array('mailData' => $mailData), function($message)
 			{
 

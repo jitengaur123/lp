@@ -89,21 +89,22 @@
         </ul>
     </li>
 
-    <li @if ($segment == 'magnet' || $segment == "editdeletemagnet") class="active" @endif>
+
+    <!-- <li @if ($segment == 'magnet' || $segment == "editdeletemagnet") class="active" @endif>
         <a href="#">
            <i class="fa fa-magnet"></i>
-            <span>Magnet Board <!-- <span class="badge badge-red">15</span> --></span>
+            <span>Magnet Board </span>
         </a>
         <ul>
             <li><a @if ($segment == 'magnet' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnet') }}">View Board</a></li>
             <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnet/create') }}">Allocate Users</a></li>
         </ul>
-    </li>
+    </li> -->
 
     <li @if ($segment == 'magnetboard') class="active" @endif>
         <a href="#">
            <i class="fa fa-magnet"></i>
-            <span>Magnet Board New <!-- <span class="badge badge-red">15</span> --></span>
+            <span>Magnet Board <!-- <span class="badge badge-red">15</span> --></span>
         </a>
         <ul>
             <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnetboard/create') }}">Allocate Users</a></li>

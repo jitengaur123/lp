@@ -142,7 +142,7 @@ function clientValidateRule(){
 		},
 		fax:{
 			required: true,
-			number: true
+			phoneUS: true
 		},
 		address:{
 			required: true
