@@ -520,7 +520,7 @@
                             "checkbox"><input name="veterun_status[]" class=
                             "icheck-green" id=
                             "inlineCheckboxNew" type=
-                            "checkbox" value="I am not a protected veteran."> I am not a protected veteran.</label> 
+                            "checkbox" value="I am not a protected Veteran."> I am not a protected Veteran.</label> 
 
                             <label class=
                             "checkbox"><input name="veterun_status[]" class=

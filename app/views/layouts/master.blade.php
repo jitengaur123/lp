@@ -25,7 +25,7 @@
     <!-- TODO: Add a favicon -->
     <link rel="shortcut icon" href="{{ URL::asset('assets/images/ico/fab.ico') }}">
 
-    <title>Amaha Electricals - Login</title>
+    <title>Amaha Electrical - Login</title>
 
     <!--Page loading plugin Start -->
     <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/pace.css') }}">

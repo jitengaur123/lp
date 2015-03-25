@@ -14,7 +14,7 @@
                             <img src="{{ URL::asset('assets/images/logo.png') }}">
 
                         </div>
-                        <h3>Identify Yourself</h3>
+                        <h3>Mission First, People Always</h3>
                         <div class="social-btn-login">
                             <ul>
                                 <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
@@ -54,7 +54,7 @@
                                 </button>
 
                                 <a href="{{url('/forgotpass')}}">Forgot password</a>
-                                | <a class="forgot-password" href="{{url('/')}}">Back To Amaha Electricals</a>
+                                | <a class="forgot-password" href="{{url('/')}}">Back To Amaha Electrical</a>
 
                             </div>
                         </form>
@@ -66,7 +66,7 @@
         </div>
     </div>
     <p class="copy-right big-screen hidden-xs hidden-sm">
-        <span>&#169;</span> Amaha Electricals <span class="footer-year">2014</span>
+        <span>&#169;</span> Amaha Electrical <span class="footer-year">2014</span>
     </p>
 </section>
 </body>

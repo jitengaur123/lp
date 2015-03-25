@@ -1,7 +1,16 @@
+<?php $prefix = Config::get('constants.PREFIX'); ?>
+
 <!--Left navigation user details start-->
 <div class="user-image">
-    <img src="{{ URL::asset('assets/images/demo/avatar-80.png') }}" alt=""/>
+<a href="{{ URL::to('/'.$prefix.'/profile') }}">
+    @if(Auth::user()->profile_pic)
+     <img width="100" src="{{URL::asset('uploads/profile/'.Auth::user()->profile_pic) }}">
+    @else
+   	<img width="100" src="{{ URL::asset('assets/images/demo/avatar-80.png') }}" alt=""/>
+    @endif
     
+    
+</a>
 </div>
 <ul class="social-icon">
     <li><a href="javascript:void(0)"><i class="fa fa-facebook"></i></a></li>
@@ -24,7 +33,7 @@
 <!--Phone Navigation Menu icon start-->
 
 
-<?php $prefix = Config::get('constants.PREFIX'); ?>
+
 
 <?php $segment = Request::segment(2) ?>
 <?php $thirdsegment = Request::segment(3) ?>

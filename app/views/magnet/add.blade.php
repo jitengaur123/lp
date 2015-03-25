@@ -16,7 +16,7 @@
 
             
 
-            <h3 class="ls-top-header">Create New Board</h3>
+            <h3 class="ls-top-header">Job Assignment Board</h3>
 
             <!--Top header end --> 
 
@@ -28,7 +28,7 @@
 
               <li> <a class="fa fa-home" href="#"></a> </li>
 
-              <li class="active">Create New Board</li>
+              <li class="active">Job Assignment Board</li>
 
             </ol>
 

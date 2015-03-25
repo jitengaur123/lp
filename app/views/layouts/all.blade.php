@@ -40,7 +40,7 @@
 <div class="container-fluid">
 <!--Logo text start-->
 <div class="header-logo">
-    <a href="admin-dashboard.html" title="">
+    <a href="{{ URL::to('administrator/dashboard') }}" title="">
         <h1>Amaha</h1>
     </a>
 </div>

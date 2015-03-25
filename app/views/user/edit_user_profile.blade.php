@@ -207,60 +207,7 @@
                             "tel">
                         </div>
 
-                        <!-- <div class="form-group">
-                            <label><i class="fa fa-paper-plane"></i> Position/Job
-                            Title</label> <select class=
-                            "form-control" disabled>
-                                <option>
-                                    option one
-                                </option>
-
-                                <option selected=
-                                "selected">
-                                    option two
-                                </option>
-
-                                <option>
-                                    option three
-                                </option>
-
-                                <option>
-                                    option four
-                                </option>
-
-                                <option>
-                                    option five
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label><i class="fa fa-sitemap"></i> Immediate
-                            Supervisor</label>
-                            <select class="form-control"
-                            disabled>
-                                <option>
-                                    option one
-                                </option>
-
-                                <option>
-                                    option two
-                                </option>
-
-                                <option>
-                                    option three
-                                </option>
-
-                                <option selected=
-                                "selected">
-                                    option four
-                                </option>
-
-                                <option>
-                                    option five
-                                </option>
-                            </select>
-                        </div> -->
+                   
 
 
 
@@ -493,7 +440,7 @@
                             "checkbox"><input name="veterun_status[]" class=
                             "icheck-green" id=
                             "inlineCheckboxNew" type=
-                            "checkbox" value="I am not a protected veteran."> I am not a protected veteran.</label> 
+                            "checkbox" value="I am not a protected Veteran."> I am not a protected Veteran.</label> 
 
                             <label class=
                             "checkbox"><input name="veterun_status[]" class=

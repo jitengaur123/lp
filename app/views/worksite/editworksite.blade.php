@@ -90,6 +90,14 @@
                                                 <input class="icheck-blue" type="radio" name="pm"
                                                        id="radioRedCheckbox3" value="TA"  @if($worksite['pm'] == 'TA')checked="checked" @endif> TA
                                             </label>
+                                              <label class="radio">
+                                                <input class="icheck-blue" type="radio" name="pm"
+                                                       id="radioRedCheckbox3" value="JA"  @if($worksite['pm'] == 'JA')checked="checked" @endif> JA
+                                            </label>
+                                              <label class="radio">
+                                                <input class="icheck-blue" type="radio" name="pm"
+                                                       id="radioRedCheckbox3" value="JLA"  @if($worksite['pm'] == 'JLA')checked="checked" @endif> JLA
+                                            </label>
                                         </div>
                                      
                                     </div>
@@ -163,25 +171,35 @@
                           </div>
 
 
-                           <label><i class="fa fa-flag"></i> Labour Rate</label>
+
+
+                            <label><i class="fa fa-flag"></i> General Foreman Rate</label>
                     <div class="control-group">
-                                <input class="form-control" placeholder="Labour Rate" value="{{ $worksite['labour_rate'] }}" type="text" name="labour_rate">
+                                <input class="form-control" placeholder="General Foreman Rate" value="{{ $worksite['general_foreman_rate'] }}" type="text" name="general_foreman_rate">
           
                           </div>
 
 
-                          <label><i class="fa fa-flag"></i> OT Rate</label>
+                          <label><i class="fa fa-flag"></i> Foreman Rate</label>
                     <div class="control-group">
-                               <input class="form-control" placeholder="OT Rate" value="{{ $worksite['labour_rate'] }}" type="text" name="ot_rate">
+                               <input class="form-control" placeholder="Foreman Rate" type="text" value="{{ $worksite['foreman_rate'] }}" name="foreman_rate">
           
                           </div>
 
-                          <label><i class="fa fa-flag"></i> DT Rate</label>
+                          <label><i class="fa fa-flag"></i> Journeyman Rate</label>
                     <div class="control-group">
-                                <input class="form-control" placeholder="DT Rate" value="{{ $worksite['labour_rate'] }}" type="text" name="dt_rate">
+                                <input class="form-control" placeholder="Journeyman Rate" value="{{ $worksite['journyman_rate'] }}" type="text" name="journyman_rate">
           
                           </div>
-                      
+
+                            <label><i class="fa fa-flag"></i> Apprentice Rate</label>
+                    <div class="control-group">
+                                <input class="form-control" placeholder="Apprentice Rate" value="{{ $worksite['apprentice_rate'] }}" type="text" name="apprentice_rate">
+          
+                          </div>
+
+
+                          
                       </div>
 
                               <div class="panel panel-default">

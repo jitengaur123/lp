@@ -89,6 +89,14 @@
                                                 <input class="icheck-blue" type="radio" name="pm"
                                                        id="radioRedCheckbox3" value="TA"> TA
                                             </label>
+                                             <label class="radio">
+                                                <input class="icheck-blue" type="radio" name="pm"
+                                                       id="radioRedCheckbox3" value="JA"> JA
+                                            </label>
+                                             <label class="radio">
+                                                <input class="icheck-blue" type="radio" name="pm"
+                                                       id="radioRedCheckbox3" value="JLA"> JLA
+                                            </label>
                                         </div>
                                      
                                     </div>
@@ -163,22 +171,28 @@
           
                           </div>
 
-                          <label><i class="fa fa-flag"></i> Labour Rate</label>
+                          <label><i class="fa fa-flag"></i> General Foreman Rate</label>
                     <div class="control-group">
-                                <input class="form-control" placeholder="Labour Rate" value="0.00" type="text" name="labour_rate">
+                                <input class="form-control" placeholder="General Foreman Rate" value="0.00" type="text" name="general_foreman_rate">
           
                           </div>
 
 
-                          <label><i class="fa fa-flag"></i> OT Rate</label>
+                          <label><i class="fa fa-flag"></i> Foreman Rate</label>
                     <div class="control-group">
-                               <input class="form-control" placeholder="OT Rate" type="text" value="0.00" name="ot_rate">
+                               <input class="form-control" placeholder="Foreman Rate" type="text" value="0.00" name="foreman_rate">
           
                           </div>
 
-                          <label><i class="fa fa-flag"></i> DT Rate</label>
+                          <label><i class="fa fa-flag"></i> Journeyman Rate</label>
                     <div class="control-group">
-                                <input class="form-control" placeholder="DT Rate" value="0.00" type="text" name="dt_rate">
+                                <input class="form-control" placeholder="Journeyman Rate" value="0.00" type="text" name="journyman_rate">
+          
+                          </div>
+
+                            <label><i class="fa fa-flag"></i> Apprentice Rate</label>
+                    <div class="control-group">
+                                <input class="form-control" placeholder="Apprentice Rate" value="0.00" type="text" name="apprentice_rate">
           
                           </div>
                       

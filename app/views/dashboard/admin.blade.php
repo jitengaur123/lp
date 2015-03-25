@@ -176,7 +176,7 @@
     <div class="col-md-4 col-sm-6">
         <div class="contact_block white">
         <H2>CONTACT & LOCATION</H2>
-        <p><strong>Amaha Electrical Inc.</strong><br/>Cohoes, New York<br/>1217 Loudon Road, Cohoes, New York 12047<br>Telephone (518) 782 7400<br>Fax (518) 782 0617<br>Email Support : <a href="#">Support@amahaelectricals.com</a><br/>Email Sales : <a href="#">Sales@amahaelectricals.com</a><br/>Email Safety : <a href="#">Safety@amahaelectricals.com</a></p>
+        <p><strong>Amaha Electrical Inc.</strong><br/>Cohoes, New York<br/>1217 Loudon Road, Cohoes, New York 12047<br>Telephone (518) 782 7400<br>Fax (518) 782 0617<br>Email Support : <a href="#">Support@amahaelectrical.com</a><br/>Email Sales : <a href="#">Sales@amahaelectrical.com</a><br/>Email Safety : <a href="#">Safety@amahaelectrical.com</a></p>
         </div>
     </div>
     <div class="col-md-4 col-sm-6">
@@ -270,7 +270,7 @@
 
 @section('head')
 
-<title>Amaha Electricals - Dashboard</title>
+<title>Amaha Electrical - Dashboard</title>
 
 <!--Page loading plugin Start -->
 <link rel="stylesheet" href="{{ URL::asset('assets/css/plugins/pace.css') }}">
