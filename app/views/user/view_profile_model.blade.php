@@ -19,6 +19,7 @@
 	<p>Phone (Home): {{ $user['phone_number'] }}</p>
 	<p>Phone (mobile): {{ $user['mobile_number'] }}</p>
 	<p>Account Created On : {{ date('d/m/Y', strtotime($user['created_at'])) }}</p>
+	<p>Emergency Contact Name : {{ $user['emergency_contact_name'] }}</p>
 	<p>Emergency Contact Number : {{ $user['emergency_contact_number'] }}</p>
 	<p>Date Of Birth : {{ date('m/d/Y', strtotime($user['dob'])) }}</p>
 	<p>Name Of Spouse : {{ $user['spouse_name'] }}</p>

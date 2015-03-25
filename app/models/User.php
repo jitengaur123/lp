@@ -29,7 +29,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $fiilable = array('first_name', 'last_name', 'email', 'emergency_contact_number', 'gender', 'spouse_name', 'address', 
+	protected $fiilable = array('first_name', 'last_name', 'email', 'emergency_contact_name','emergency_contact_number', 'gender', 'spouse_name', 'address', 
 				'city', 'state', 'country', 'postcode', 'country', 'phone_number', 'mobile_number', 'race', 'about', 'disability',
 				 'veterun_status', 'date_of_discharge', 'dob', 'profile_pic');
 
@@ -50,6 +50,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		if(isset($input['last_name'])) $data['last_name'] 	= $input['last_name'];
 		if(isset($input['email'])) $data['email'] 		= $input['email'];
 
+		
+		if(isset($input['emergency_contact_name'])) $data['emergency_contact_name'] = $input['emergency_contact_name'];
 		if(isset($input['emergency'])) $data['emergency_contact_number'] = $input['emergency'];
 
 		if(isset($input['gender'])) $data['gender'] 	= $input['gender'];

@@ -47,7 +47,7 @@
                             </ul>
                         </div>
                         <div class="panel-body no-padding">
-                <textarea name="description" class="form-control autogrow" placeholder="description">{{ $post['description'] }}</textarea>
+                <textarea name="description" class="form-control autogrow summernote" placeholder="description">{{ $post['description'] }}</textarea>
                         </div>
 
                   

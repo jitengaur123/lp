@@ -94,6 +94,15 @@
 
                         <div class="form-group">
                             <label><i class="fa fa-phone"></i> Emergency Contact
+                            Name</label> <input class=
+                            "form-control" value="{{ $data['emergency_contact_name'] }}" name="emergency_contact_name"
+                            placeholder=
+                            "Emergency Contact Name"
+                            type="text">
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fa fa-phone"></i> Emergency Contact
                             Number</label> <input class=
                             "form-control" value="{{ $data['emergency_contact_number'] }}" name="emergency"
                             placeholder=

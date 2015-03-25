@@ -52,7 +52,10 @@
             <p><i class="fa fa-phone"></i> Phone (Home): {{ $data['phone_number'] }}</p>
             <p><i class="fa fa-mobile"></i> Phone (mobile): {{ $data['mobile_number'] }}</p>
             <p>Account Created On : <?php echo date('d/m/Y', strtotime($data['created_at'])); ?></p>
+
+            <p>Emergency Contact Name : {{ $user['emergency_contact_name'] }}</p>
             <p>Emergency Contact Number : {{ $data['emergency_contact_number'] }}</p>
+            
             <p>Date Of Birth : <?php if(isset($data['dob'])) echo date('m/d/Y', strtotime($data['dob'])); ?></p>
             <p>Name Of Spouse : {{ $data['spouse_name'] }}</p>
 
