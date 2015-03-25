@@ -47,7 +47,7 @@
                       <tr>
                         <td>{{ $user['user_auth_id'] }}</td>
                         <td>{{ $user['user_name'] }}</td>
-                        <td>{{ $user['first_name'] }} {{ $user['last_name'] }}</td>
+                        <td>{{ $user['first_name'] }} {{ $user['last_name'] }}, {{ $user['job_title'] }}</td>
                         <td>{{ $user['userrole']['title'] }}</td>
                         <td>{{ date('d/m/y', strtotime($user['created_at'])) }}</td>
                         <td class="text-center"><a data-userid="{{ $user['id'] }}" class="viewUserModel viewUserDataModel"  href="#reModal"><!-- #reModal -->

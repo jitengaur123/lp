@@ -78,6 +78,23 @@
               </select>
             </div>
 
+             <div class="form-group">
+              <label><i class="fa fa-paper-plane"></i> Job
+                Title</label>
+              <select class="form-control roleClass" name="job_title">
+                  <option value="Office"> Office </option>
+                  <option value="PM"> PM </option>
+                  <option value="FM"> FM </option>
+                  <option value="JM"> JM </option>
+                  <option value="AP6"> AP6 </option>
+                  <option value="AP5"> AP5 </option>
+                  <option value="AP4"> AP4 </option>
+                  <option value="AP3"> AP3 </option>
+                  <option value="AP2"> AP2 </option>
+                  <option value="AP1"> AP1 </option>
+              </select>
+            </div>
+
             <div class="form-group" style="display:none;">
               <label><i class="fa fa-sitemap"></i> Assign Supervisor/Manager</label>
               <select class="form-control parentUserData" name="parent_id">
@@ -86,6 +103,9 @@
                 @endforeach
               </select>
             </div>
+
+
+            , “PM”, FM “JM”, AP6, AP5, AP4, AP3, AP2, AP1
           </div>
           <!--form section 2 ends here-->
           

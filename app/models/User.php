@@ -4,10 +4,12 @@ use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	use UserTrait, RemindableTrait;
+	use UserTrait, RemindableTrait, SoftDeletingTrait;
 
 	/**
 	 * The database table used by the model.
@@ -15,6 +17,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
+
+	protected $dates = ['deleted_at'];
+
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -29,7 +34,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 *
 	 * @var array
 	 */
-	protected $fiilable = array('first_name', 'last_name', 'email', 'emergency_contact_name','emergency_contact_number', 'gender', 'spouse_name', 'address', 
+	protected $fiilable = array('job_title','first_name', 'last_name', 'email', 'emergency_contact_name','emergency_contact_number', 'gender', 'spouse_name', 'address', 
 				'city', 'state', 'country', 'postcode', 'country', 'phone_number', 'mobile_number', 'race', 'about', 'disability',
 				 'veterun_status', 'date_of_discharge', 'dob', 'profile_pic');
 
@@ -46,6 +51,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		if(empty($input)) return false;
 		$data = [];
 
+		if(isset($input['job_title'])) $data['job_title'] = $input['job_title'];
 		if(isset($input['first_name'])) $data['first_name'] = $input['first_name'];
 		if(isset($input['last_name'])) $data['last_name'] 	= $input['last_name'];
 		if(isset($input['email'])) $data['email'] 		= $input['email'];

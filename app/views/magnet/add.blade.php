@@ -137,7 +137,9 @@
 
                                                 <img src="{{ URL::asset('uploads/profile/'. $image) }}" width="47" height="47">
 
-                                            </div>{{ $user['first_name'] }} {{ $user['last_name'] }}
+                                            </div>
+                                            
+                                            {{ $user['first_name'] }} {{ $user['last_name'] }} {{ $user['job_title'] }}
 
                                         </a><div></div>
 
@@ -177,7 +179,9 @@
 
                                             <img src="{{ URL::asset('uploads/profile/'. $image) }}" width="47" height="47">
 
-                                        </div>{{ $users[$bUser['user_id']]['first_name'] }} {{ $users[$bUser['user_id']]['last_name'] }}
+                                        </div>
+                                        
+                                        {{ $users[$bUser['user_id']]['first_name'] }} {{ $users[$bUser['user_id']]['last_name'] }} {{ $users[$bUser['user_id']]['job_title'] }}
 
                                     </a><div></div>
 

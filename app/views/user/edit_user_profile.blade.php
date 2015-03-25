@@ -36,6 +36,23 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
+                          <label><i class="fa fa-paper-plane"></i> Job
+                            Title</label>
+                          <select class="form-control roleClass" name="job_title">
+                              <option value="Office" @if($data['job_title'] == 'Office') selected="selected" @endif> Office </option>
+                              <option value="PM" @if($data['job_title'] == 'PM') selected="selected" @endif> PM </option>
+                              <option value="FM" @if($data['job_title'] == 'FM') selected="selected" @endif> FM </option>
+                              <option value="JM" @if($data['job_title'] == 'JM') selected="selected" @endif> JM </option>
+                              <option value="AP6" @if($data['job_title'] == 'AP6') selected="selected" @endif> AP6 </option>
+                              <option value="AP5" @if($data['job_title'] == 'AP5') selected="selected" @endif> AP5 </option>
+                              <option value="AP4" @if($data['job_title'] == 'AP4') selected="selected" @endif> AP4 </option>
+                              <option value="AP3" @if($data['job_title'] == 'AP3') selected="selected" @endif> AP3 </option>
+                              <option value="AP2" @if($data['job_title'] == 'AP2') selected="selected" @endif> AP2 </option>
+                              <option value="AP1" @if($data['job_title'] == 'AP1') selected="selected" @endif> AP1 </option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
                             <label><i class="fa fa-quote-left"></i> Your First Name</label>
                             <input class="form-control" placeholder="Enter first name" name="first_name" type="text" value="{{ $data['first_name'] }}">
                         </div>

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12 ">
-    <h2>{{$user['first_name']}} {{$user['last_name']}}</h2>
+    <h2>{{$user['first_name']}} {{$user['last_name']}}, {{ $user['job_title'] }}</h2>
 	<div class="col-md-6 details_left">
 	@if(isset($user['profile_pic']))
      <img width="256" height="256" src="{{URL::asset('uploads/profile/'.$user['profile_pic']) }}">
