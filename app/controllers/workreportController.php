@@ -311,7 +311,7 @@ class workreportController extends \BaseController {
 				$labours[] = $row['users'];
 			}
 		}else{
-			$labours = User::where('role', '=', 4)->get()->toArray();
+			$labours = User::whereIn('role', [3,4,7,8])->get()->toArray();
 		}
 			
 

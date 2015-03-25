@@ -130,10 +130,10 @@
                                 <fieldset class="col-md-3 col-md-6"><!--entry 2-->
                                       <select id="class" class="demo-default form-control demo-default" name="class_name[]" placeholder="Select Grade...">
                                         <option value="">Select Grade...</option>
-                                        <option value="General Foreman">General Foreman</option>
-                                        <option value="Foreman">Foreman</option>
-                                        <option value="Journeyman">Journeyman</option>
-                                        <option value="Apprentice">Apprentice</option>
+                                        <option value="Class A">Class A</option>
+                                        <option value="Class B">Class B</option>
+                                        <option value="Class C">Class C</option>
+                                        <option value="Class D">Class D</option>
                                     </select>
 
                                 </fieldset><!--entry 2 ends-->

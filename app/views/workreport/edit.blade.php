@@ -136,10 +136,10 @@
                                 <fieldset class="col-md-3 col-md-6"><!--entry 2-->
                                       <select id="class" class="demo-default form-control demo-default" name="class_name[]" placeholder="Select Grade...">
                                         <option value="">Select Grade...</option>
-                                        <option value="General Foreman" @if($timesheet['class'] == 'General Foreman') selected="selected" @endif>General Foreman</option>
-                                        <option value="Foreman" @if($timesheet['class'] == 'Foreman') selected="selected" @endif>Foreman</option>
-                                        <option value="Journeyman" @if($timesheet['class'] == 'Journeyman') selected="selected" @endif>Journeyman</option>
-                                        <option value="Apprentice" @if($timesheet['class'] == 'Apprentice') selected="selected" @endif>Apprentice</option>
+                                        <option value="Class A" @if($timesheet['class'] == 'Class A') selected="selected" @endif>Class A</option>
+                                        <option value="Class B" @if($timesheet['class'] == 'Class B') selected="selected" @endif>Class B</option>
+                                        <option value="Class C" @if($timesheet['class'] == 'Class C') selected="selected" @endif>Class C</option>
+                                        <option value="Class D" @if($timesheet['class'] == 'Class D') selected="selected" @endif>Class D</option>
                                     </select>
 
                                 </fieldset><!--entry 2 ends-->

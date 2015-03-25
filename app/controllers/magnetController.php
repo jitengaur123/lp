@@ -53,7 +53,7 @@ class magnetController extends \BaseController {
 
 		$magnetUser = $this->magnetUsers($start_date);
 
-		$usersData = User::whereIn('role',[3,4])->select('id', 'first_name', 'last_name', 'user_name', 'email', 'role', 'profile_pic')->get()->toArray();
+		$usersData = User::whereIn('role',[3,4,7,8])->select('id', 'first_name', 'last_name', 'user_name', 'email', 'role', 'profile_pic')->get()->toArray();
 		$users = [];
 		foreach($usersData as $row){
 			$users[$row['id']] = $row;

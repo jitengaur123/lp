@@ -34,14 +34,32 @@
             
           </tr>
         </thead>
-
+        <?php 
+                if( $timesheet['labor']['role'] == 7  ){
+                  $rate = $report['worksite']['general_foreman_rate'];
+                }
+                elseif( $timesheet['labor']['role'] == 8 ){
+                    $rate = $report['worksite']['apprentice_rate'];
+                } 
+                elseif( $timesheet['labor']['role'] == 3 ){
+                    $rate = $report['worksite']['foreman_rate'];
+                } 
+                elseif( $timesheet['labor']['role'] == 4 ){
+                    $rate = $report['worksite']['journyman_rate'];
+                } 
+                ;
+              ?>
         <tbody>
           <tr>
             <td>{{$timesheet['labor']['user_name']}}</td>
             <td>{{$timesheet['class']}}</td>
             <td>{{$timesheet['reg_hour']}}</td>
-            <td>{{$report['worksite']['labour_rate']}}</td>
-            <td>{{ $timesheet['reg_hour']*$report['worksite']['labour_rate'] }}</td>
+            <td>{{ $rate }}</td>
+            <td>
+
+              {{ $timesheet['reg_hour'] * $rate }}
+
+            </td>
             
           </tr>
           <tr>
@@ -58,8 +76,8 @@
             <td></td>
             <td></td>
             <td>{{$timesheet['ot_hour']}}</td>
-            <td>{{$report['worksite']['ot_rate']}}</td>
-            <td>{{$timesheet['ot_hour']*$report['worksite']['ot_rate'] }}</td>
+            <td>{{ $rate * 1.5  }}</td>
+            <td>{{ $timesheet['ot_hour'] * $rate * 1.5 }}</td>
             
           </tr>
 
@@ -76,9 +94,9 @@
           <tr>
             <td></td>
             <td></td>
-          <td>{{$timesheet['dt_hour']}}</td>
-            <td>{{$report['worksite']['dt_rate']}}</td>
-            <td>{{$timesheet['dt_hour']*$report['worksite']['dt_rate'] }}</td>
+            <td>{{ $timesheet['dt_hour'] }}</td>
+            <td>{{ $rate * 2  }}</td>
+            <td>{{ $timesheet['dt_hour']  * $rate * 2 }}</td>
             
           </tr>
 

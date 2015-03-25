@@ -53,7 +53,7 @@
     </ul>
 </li>
 
-@if(Auth::user()->role != 4 && Auth::user()->role != 5 && Auth::user()->role != 6)
+@if(Auth::user()->role != 4 && Auth::user()->role != 5 && Auth::user()->role != 6 && Auth::user()->role != 7 && Auth::user()->role != 8)
 <li @if ($segment == 'users' || $segment == 'adduser' || $segment == "editdeleteuser") class="active" @endif>
     <a href="#">
         <i class="fa fa-group"></i> <span>Users</span> <!-- <span class="badge badge-red">58</span> --></a>
@@ -64,7 +64,7 @@
         <li><a @if ($segment == "editdeleteuser") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeleteuser') }}">Edit/Delete User</a></li>
     </ul>
 </li>
-    @if(Auth::user()->role != 3 && Auth::user()->role != 4 && Auth::user()->role != 5 && Auth::user()->role != 6) 
+    @if(Auth::user()->role != 3 && Auth::user()->role != 4 && Auth::user()->role != 5 && Auth::user()->role != 6 && Auth::user()->role != 7 && Auth::user()->role != 8 ) 
     <li @if ($segment == 'client' || $segment == "editdeleteclient") class="active" @endif>
         <a href="#">
             <i class="fa fa-group"></i> <span>Client</span> <!-- <span class="badge badge-red">58</span> --></a>

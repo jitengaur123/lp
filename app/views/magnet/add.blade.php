@@ -125,7 +125,9 @@
 
                                 @if(!in_array($user['id'], $magnetUser['users']))
 
-                                    <li id="{{ $user['id'] }}" data-roleid="{{ $user['role'] }}" class="ui-state-default ui-sortable-handle @if($user['role'] == 3) supervisor @endif" style="margin: 5px; height: 47px;" title="">
+                                    <li id="{{ $user['id'] }}" data-roleid="{{ $user['role'] }}" class="ui-state-default ui-sortable-handle 
+                                    @if($user['role'] == 3) supervisor @elseif($user['role'] == 7) supervisor  @endif
+                                    " style="margin: 5px; height: 47px;" title="">
 
                                         <a href="javascript:void(0);" style="color:; vertical-align: top;">
 
