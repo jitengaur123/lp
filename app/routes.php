@@ -43,6 +43,7 @@ Route::group(array('before'=>'auth', 'prefix' => Config::get('constants.PREFIX')
 	Route::get('/profile', 'userController@profile');
 	Route::get('/editprofile', 'userController@editProfile');
 	Route::post('/editprofile', 'userController@updateProfile');
+	//Route::get('/workreport/export', 'workreportController@exportReport');
 	
 });
 
@@ -50,6 +51,7 @@ Route::group(array('before'=>'auth', 'prefix' => Config::get('constants.PREFIX')
 
 Route::group(array('before'=>'auth|roles', 'prefix' => Config::get('constants.PREFIX')), function(){
 	allRoutes();
+
 });
 
 
@@ -79,6 +81,9 @@ function allRoutes(){
 	repositoryRoutes();
 
 	magnetRoutes();
+
+	//export routes
+	exoprtRoutes();
 }
 
 function userRoutes(){
@@ -89,6 +94,8 @@ function userRoutes(){
 
 	Route::get('/users', 'userController@userList');
 	Route::get('/delete_user/{user_id}', 'userController@deleteUser')->where('user_id', '[0-9]+');
+
+	Route::get('/restore_user/{user_id}', 'userController@restoreUser')->where('user_id', '[0-9]+');
 
 	Route::get('/viewuser/{user_id}', 'userController@viewUserProfile')->where('user_id', '[0-9]+');
 	Route::get('/edituser/{user_id}', 'userController@editUserProfile')->where('user_id', '[0-9]+');
@@ -135,6 +142,7 @@ function workSiteRoutes(){
 function workReportRoutes(){
 
 	//Client section 
+	Route::get('/workreport/export', 'workreportController@exportReport');
 	Route::resource('/workreport', 'workreportController');
 	Route::get('/workreport/delete/{id}', 'workreportController@deleteReport')->where('id', '[0-9]+');
 	Route::post('/workreport/updatereport/{id}', 'workreportController@updateReport')->where('id', '[0-9]+');
@@ -145,6 +153,7 @@ function workReportRoutes(){
 	Route::post('/get_labors', 'workreportController@getLabors');
 	Route::get('/workreport/approve/{id}', 'workreportController@approve')->where('id', '[0-9]+');
 	Route::get('/viewworkreportdata', 'workreportController@viewWorkreport');
+	
 	
 }
 
@@ -161,7 +170,7 @@ function magnetBoardRoutes(){
 	Route::get('/viewmagnetdata', 'magnetboardController@viewMagnet');
 
 	Route::post('/checkboardexists', 'magnetboardController@checkBoardExists');
-	
+	Route::get('/magnetboard/export', 'magnetController@export');
 
 }
 
@@ -180,6 +189,8 @@ function magnetRoutes(){
 	Route::get('/viewboarddata', 'magnetController@viewMagnet');
 
 	Route::post('/checkmboardexists', 'magnetController@checkBoardExists');
+	Route::get('/magnetboard/export', 'magnetController@export');
+	
 	
 
 }
@@ -205,8 +216,16 @@ function repositoryRoutes(){
 
 	Route::post('/repository/uploadfiles', 'repositoryController@uploadfiles');
 
-	
+}
 
+function exoprtRoutes()
+{
+	Route::get('/export/users', 'exportController@user_export');
+	Route::get('/export/clients', 'exportController@client_export');
+	Route::get('/export/worksite', 'exportController@worksite_export');
+	Route::get('/export/magnet', 'exportController@magnet_export');
+	Route::get('/export/workreport', 'exportController@workreport_export');
+	
 }
 
 

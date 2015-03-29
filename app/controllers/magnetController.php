@@ -490,4 +490,10 @@ class magnetController extends \BaseController {
 
 	}
 
+
+	public function export()
+	{
+		return View::make('magnet.export');
+	}
+
 }

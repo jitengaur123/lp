@@ -117,6 +117,7 @@
         </a>
         <ul>
             <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnetboard/create') }}">Allocate Users</a></li>
+            <li><a @if ($thirdsegment == "export") class="active" @endif href="{{ URL::to('/'.$prefix.'/magnetboard/export') }}">Export</a></li>
         </ul>
     </li>
 
@@ -129,6 +130,7 @@
             <li><a  @if ($segment == 'workreport' && $thirdsegment == "") class="active" @endif href="{{ URL::to('/'.$prefix.'/workreport') }}">View Work Report</a></li>
             <li><a @if ($thirdsegment == "create") class="active" @endif href="{{ URL::to('/'.$prefix.'/workreport/create') }}">Add New Report</a></li>
             <li><a @if ($segment == "editdeletereport") class="active" @endif href="{{ URL::to('/'.$prefix.'/editdeletereport') }}">Edit/Delete Report</a></li>
+            <li><a @if ($thirdsegment == "export") class="active" @endif href="{{ URL::to('/'.$prefix.'/workreport/export') }}">Export</a></li>
         </ul>
     </li>
 

@@ -23,6 +23,7 @@
             <div class="panel panel-default userform no-border">
               <div class="panel-heading">
                 <h3 class="panel-title">View All Worksites</h3>
+                <a href="{{ URL::to( Config::get('constants.PREFIX') . '/export/worksite' ) }}">Export Worksites</a>
               </div>
               <div class="panel-body"> 
                 @include('notification') 

@@ -324,7 +324,8 @@ class userController extends \BaseController {
 
 	public function userList(){
 
-		$users = User::where('id', '!=', Auth::user()->id)->with('userrole')->get();// User::all();
+		$users = User::where('id', '!=', Auth::user()->id)->withTrashed()->with('userrole')->get();// User::all();
+
 		return View::make('user.userlist')->with('users', $users);
 	}
 
@@ -337,6 +338,16 @@ class userController extends \BaseController {
 
 		return Redirect::to( $this->prefix . '/users' )->withStatus('User has been successfully deleted.');
 	}
+
+	public function restoreUser($user_id = NULL){
+
+		if(empty($user_id)) return false;
+
+		User::withTrashed()->find($user_id)->restore();
+
+		return Redirect::to( $this->prefix . '/users' )->withStatus('User has been successfully restored.');
+	}
+
 
 	public function viewUserProfile($user_id = NULL){
 

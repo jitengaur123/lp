@@ -358,5 +358,12 @@ class workreportController extends \BaseController {
 	}
 
 
+	public function exportReport()
+	{
+		//echo ';test';
+		return View::make('workreport.export');
+	}
+
+
 	
 }

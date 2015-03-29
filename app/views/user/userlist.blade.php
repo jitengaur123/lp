@@ -25,6 +25,7 @@
             <div class="panel panel-default userform no-border">
               <div class="panel-heading">
                 <h3 class="panel-title">View All Users & Status</h3>
+                <a href="{{ URL::to( Config::get('constants.PREFIX') . '/export/users' ) }}">Export Users</a>
               </div>
               <div class="panel-body">
                @include('notification') 
@@ -54,9 +55,17 @@
                           <button class="btn btn-xs btn-success"><i class="fa fa-eye"></i></button>
                           </a> <a href="{{ URL::to(Config::get('constants.PREFIX') . '/edituser/'.$user['id']) }}">
                           <button class="btn btn-xs btn-warning"><i class="fa fa-pencil-square-o"></i></button>
-                          </a> <a onclick="return confirm('Are you sure want to delete?');" href="{{ URL::to(Config::get('constants.PREFIX') . '/delete_user/'.$user['id']) }}">
+                          </a>
+                          @if($user['deleted_at'])
+                            <a title="Restore" onclick="return confirm('Are you sure want to restore?');" href="{{ URL::to(Config::get('constants.PREFIX') . '/restore_user/'.$user['id']) }}">
+                            <button class="btn btn-xs btn-status"><i class="fa fa-eye"></i></button>
+                          </a>
+                          @else
+                           <a title="Delete" onclick="return confirm('Are you sure want to delete?');" href="{{ URL::to(Config::get('constants.PREFIX') . '/delete_user/'.$user['id']) }}">
                           <button class="btn btn-xs btn-danger"><i class="fa fa-minus"></i></button>
-                          </a></td>
+                          </a>
+                          @endif
+                        </td>
                       </tr>
                       @endforeach
 
